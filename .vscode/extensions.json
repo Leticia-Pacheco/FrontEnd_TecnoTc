@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "mikestead.dotenv",
+        "coenraads.bracket-pair-colorizer",
+        "esbenp.prettier-vscode"
+    ]
+}
