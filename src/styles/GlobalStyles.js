@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     *{
@@ -42,9 +42,9 @@ export const GlobalStyles = createGlobalStyle`
     html, body {
         max-height: 100vh;
         max-width: 100vw;
-
+/* 
         width: 100%;
-        height: 100%;
+        height: 100%; */
     }
 
     span {
