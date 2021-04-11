@@ -1,13 +1,15 @@
-import { ApresentacaoEmpresa, Container, LoginEnter, Logo, ConfirmLogin, BoasVindas, InputsLogin, IconLock, IconEmail, RedefinirSenha, InputLogar, TextCadastro, GifColorLogin, GifImageLogin } from "./styles";
+import { ApresentacaoEmpresa, Container, LoginEnter, ConfirmLogin, BoasVindas, InputLogar, TextCadastro, GifColorLogin, GifImageLogin } from "./styles";
 import GifColor from "../../assets/ImagesLogin/GifColor.gif";
 import ImageLogin from "../../assets/ImagesLogin/ImageLogin.gif";
+import UsuaryLogin from "../../components/InputsLogin";
+import Logo from "../../components/Logo";
 
 
 function Login() {
     return(
         <Container>
             <LoginEnter>
-                <Logo> <p>Logo da empresa</p> </Logo>
+                <Logo/>
                 <ConfirmLogin>
                     <ApresentacaoEmpresa>
                         <p>Nós somos <span>TecnoTc!</span></p>
@@ -16,19 +18,7 @@ function Login() {
                         <p>Seja bem vinda(o) de volta</p>
                     </BoasVindas>
 
-                    <InputsLogin>
-                        <p>Email</p>
-                        <input type="text" placeholder="Digite aqui seu email"/>
-                        <IconEmail/>
-
-                        <p>Senha</p>
-                        <input type="password" placeholder="Digite aqui seu email"/>
-                        <IconLock/>
-
-                        <RedefinirSenha>
-                            <p>Esqueci a senha</p>
-                        </RedefinirSenha>
-                    </InputsLogin>
+                    <UsuaryLogin/>
 
                     <InputLogar>
                         <p>Login</p>

@@ -1,8 +1,9 @@
-import {Container, RegisterUsuary, Logo, ApresentacaoEmpresa, NivelUsuario, OpcaoNivelUsuario, InputCadastrar, TextLogin} from "./styles";
+import {Container, RegisterUsuary, ApresentacaoEmpresa, NivelUsuario, OpcaoNivelUsuario, InputCadastrar, TextLogin} from "./styles";
 import GifProfessores from "../../assets/ImagesRegister/GifProfessores.gif";
 import GifAlunos from "../../assets/ImagesRegister/GifAlunos.gif";
 import GifOutros from "../../assets/ImagesRegister/GifOutros.gif";
 import UsuaryRegister from "../../components/InputsRegister";
+import Logo from "../../components/Logo";
 
 
 function Register () {
@@ -10,9 +11,7 @@ function Register () {
         // <>
             <Container>
                 <RegisterUsuary>
-                    <Logo>
-                        <p>Logo da empresa</p>
-                    </Logo>
+                    <Logo/>
 
                     <ApresentacaoEmpresa>
                         <span>TecnoTc</span>

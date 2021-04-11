@@ -22,8 +22,11 @@ export const RegisterEnter = styled.div`
 
         padding-left: 25px;
         margin-bottom: 10px;
+        margin-top: 2px;
 
         border: solid 1px var(--primaryPurple);
+
+        border-radius: 10px 10px 10px 10px;
     }
 `;
 
@@ -33,7 +36,7 @@ export const IconUsuary = styled(FaUserAlt)`
 
     font-size: 15px;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
     color: var(--primaryPurple);
 
@@ -47,7 +50,7 @@ export const IconEmail = styled(FaEnvelope)`
 
     font-size: 15px;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
     color: var(--primaryPurple);
 
@@ -61,7 +64,7 @@ export const IconLock = styled(FaLock)`
 
     font-size: 15px;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
     color: var(--primaryPurple);
 

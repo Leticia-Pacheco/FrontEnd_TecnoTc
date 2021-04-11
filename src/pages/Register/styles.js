@@ -126,7 +126,7 @@ export const OpcaoNivelUsuario = styled.button`
 
         margin: 0px;
 
-        border: solid 2px var(--primaryPurple);
+        // border: solid 2px var(--primaryPurple);
         border-radius: 100px 100px 100px 100px;
 
         :hover {

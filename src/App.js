@@ -1,13 +1,13 @@
 import { GlobalStyles } from "./styles/GlobalStyles";
 // import Login from "./pages/Login";
-import Register from "./pages/Register";
+// import Register from "./pages/Register";
 // import ConfirmEmail from "./pages/ConfirmEmail";
-// import OrderConfirmEmail from "./pages/OrderConfirmEmail";
+import OrderConfirmEmail from "./pages/OrderConfirmEmail";
 
 function App() {
   return(
     <>
-      <Register/>
+      <OrderConfirmEmail/>
       <GlobalStyles/>
     </>
   );
