@@ -97,7 +97,7 @@ export const BoasVindas = styled.div`
   margin-bottom: 20px;
 `;
 
-export const InputsLogin = styled.div`
+export const InputsLogin = styled.form`
   width: 100%;
   min-height: 45px;
   height: auto;
@@ -164,7 +164,7 @@ export const RedefinirSenha = styled.div`
   float: right;
 `;
 
-export const InputLogar = styled.div`
+export const InputLogar = styled.button`
   width: 100%;
   height: 36px;
 

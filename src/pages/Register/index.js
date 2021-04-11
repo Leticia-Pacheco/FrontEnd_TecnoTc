@@ -70,7 +70,6 @@ function Register() {
   };
 
   return (
-    // <>
     <Container>
       <RegisterUsuary>
         <Logo>
@@ -156,7 +155,6 @@ function Register() {
         </TextLogin>
       </RegisterUsuary>
     </Container>
-    //</>
   );
 }
 

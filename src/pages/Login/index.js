@@ -16,62 +16,110 @@ import {
 } from './styles';
 import GifColor from '../../assets/ImagesLogin/GifColor.gif';
 import ImageLogin from '../../assets/ImagesLogin/ImageLogin.gif';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Input from '../../components/Input';
+import { useState } from 'react';
+import { api } from '../../service/api';
+import { signIn } from '../../service/security';
+import Alert from '../../components/Alert';
 
 function Login() {
+  const history = useHistory();
+
+  const [message, setMessage] = useState(undefined);
+
+  const [login, setLogin] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await api.post('/login', login);
+
+      signIn(response.data);
+
+      history.push('/home');
+    } catch (error) {
+      console.error(error);
+      setMessage({ title: 'Ops...', description: error.response.data.error });
+    }
+  };
+
+  const handleInput = (e) => {
+    setLogin({ ...login, [e.target.id]: e.target.value });
+  };
+
   return (
-    <Container>
-      <LoginEnter>
-        <Logo>
-          {' '}
-          <p>Logo da empresa</p>{' '}
-        </Logo>
-        <ConfirmLogin>
-          <ApresentacaoEmpresa>
-            <p>
-              Nós somos <span>TecnoTc!</span>
-            </p>
-          </ApresentacaoEmpresa>
-          <BoasVindas>
-            <p>Seja bem vinda(o) de volta</p>
-          </BoasVindas>
+    <>
+      <Alert message={message} type="error" handleClose={setMessage} />
 
-          <InputsLogin>
-            <p>Email</p>
-            <Input type="text" placeholder="Digite aqui seu email" />
-            <IconEmail />
+      <Container>
+        <LoginEnter>
+          <Logo>
+            {' '}
+            <p>Logo da empresa</p>{' '}
+          </Logo>
+          <ConfirmLogin>
+            <ApresentacaoEmpresa>
+              <p>
+                Nós somos <span>TecnoTc!</span>
+              </p>
+            </ApresentacaoEmpresa>
+            <BoasVindas>
+              <p>Seja bem vinda(o) de volta</p>
+            </BoasVindas>
 
-            <p>Senha</p>
-            <Input type="password" placeholder="Digite aqui seu email" />
-            <IconLock />
+            <InputsLogin onSubmit={handleSubmit}>
+              <p>Email</p>
+              <Input
+                id="email"
+                type="email"
+                handler={handleInput}
+                value={login.email}
+                placeholder="Digite aqui seu email"
+              />
+              <IconEmail />
 
-            <RedefinirSenha>
-              <p>Esqueci a senha</p>
-            </RedefinirSenha>
-          </InputsLogin>
+              <p>Senha</p>
+              <Input
+                id="password"
+                type="password"
+                value={login.password}
+                handler={handleInput}
+                placeholder="Digite aqui seu email"
+              />
+              <IconLock />
 
-          <InputLogar>
-            <p>Login</p>
-          </InputLogar>
-          <TextCadastro>
-            <p>
-              Não tem uma conta?{' '}
-              <Link to="/Register">
-                <span>Cadastre-se!</span>
-              </Link>
-            </p>
-          </TextCadastro>
-        </ConfirmLogin>
-      </LoginEnter>
+              <RedefinirSenha>
+                <p>Esqueci a senha</p>
+              </RedefinirSenha>
+              <InputLogar>
+                <p>Login</p>
+              </InputLogar>
+            </InputsLogin>
 
-      <GifImageLogin>
-        <img src={ImageLogin} alt="Imagem animada" title="Imagem animada" />
-      </GifImageLogin>
-      <GifColorLogin>
-        <img src={GifColor} alt="Imagem animada" title="Imagem animada" />
-      </GifColorLogin>
-    </Container>
+            <TextCadastro>
+              <p>
+                Não tem uma conta?{' '}
+                <Link to="/Register">
+                  <span>Cadastre-se!</span>
+                </Link>
+              </p>
+            </TextCadastro>
+          </ConfirmLogin>
+        </LoginEnter>
+
+        <GifImageLogin>
+          <img src={ImageLogin} alt="Imagem animada" title="Imagem animada" />
+        </GifImageLogin>
+        <GifColorLogin>
+          <img src={GifColor} alt="Imagem animada" title="Imagem animada" />
+        </GifColorLogin>
+      </Container>
+    </>
   );
 }
 
