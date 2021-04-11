@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
+=======
+import styled, {keyframes} from "styled-components";
+>>>>>>> master
 
 // Animação da abertura da aplicação
 const loginAnimation = keyframes`
@@ -50,6 +54,7 @@ export const LoginEnter = styled.div`
   flex-direction: column;
 `;
 
+<<<<<<< HEAD
 export const Logo = styled.div`
   width: 115px;
   height: 40px;
@@ -67,6 +72,8 @@ export const Logo = styled.div`
   }
 `;
 
+=======
+>>>>>>> master
 export const ConfirmLogin = styled.div`
   width: 260px;
   height: 300px;
@@ -97,6 +104,7 @@ export const BoasVindas = styled.div`
   margin-bottom: 20px;
 `;
 
+<<<<<<< HEAD
 export const InputsLogin = styled.form`
   width: 100%;
   min-height: 45px;
@@ -167,6 +175,11 @@ export const RedefinirSenha = styled.div`
 export const InputLogar = styled.button`
   width: 100%;
   height: 36px;
+=======
+export const InputLogar = styled.div`
+    width: 100%;
+    height: 36px;
+>>>>>>> master
 
   margin-top: 16px;
 

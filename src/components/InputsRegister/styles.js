@@ -20,11 +20,22 @@ export const FormRegister = styled.form`
 
     font-size: 14px;
 
+<<<<<<< HEAD
     padding-left: 25px;
     margin-bottom: 10px;
 
     border: solid 1px var(--primaryPurple);
   }
+=======
+        padding-left: 25px;
+        margin-bottom: 10px;
+        margin-top: 2px;
+
+        border: solid 1px var(--primaryPurple);
+
+        border-radius: 10px 10px 10px 10px;
+    }
+>>>>>>> master
 `;
 
 export const IconUsuary = styled(FaUserAlt)`
@@ -33,7 +44,11 @@ export const IconUsuary = styled(FaUserAlt)`
 
   font-size: 15px;
 
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+    margin-top: 12px;
+>>>>>>> master
 
   color: var(--primaryPurple);
 
@@ -46,7 +61,11 @@ export const IconEmail = styled(FaEnvelope)`
 
   font-size: 15px;
 
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+    margin-top: 12px;
+>>>>>>> master
 
   color: var(--primaryPurple);
 
@@ -59,7 +78,11 @@ export const IconLock = styled(FaLock)`
 
   font-size: 15px;
 
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+    margin-top: 12px;
+>>>>>>> master
 
   color: var(--primaryPurple);
 
