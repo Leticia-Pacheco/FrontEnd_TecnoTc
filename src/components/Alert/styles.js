@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;
@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   border-radius: 4px;
   background-color: ${(props) =>
-    props.type === "error" ? "#d90429aa" : "#04d929aa"};
+    props.type === 'error' ? '#f00' : '#04d929aa'};
 
   white-space: nowrap;
   overflow: hidden;
