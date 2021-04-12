@@ -62,7 +62,7 @@ function Register() {
 
       signIn(response.data);
 
-      history.push('/home');
+      history.push('/orderconfirmemail');
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -109,6 +109,7 @@ function Register() {
             handler={handleInput}
             type="text"
             placeholder="Digite aqui seu nome completo"
+            required
           />
           <IconUsuary />
           <p>Email</p>
@@ -118,6 +119,7 @@ function Register() {
             handler={handleInput}
             type="text"
             placeholder="Digite aqui seu email"
+            required
           />
           <IconEmail />
 
@@ -128,6 +130,7 @@ function Register() {
             handler={handleInput}
             type="password"
             placeholder="Digite aqui sua senha"
+            required
           />
           <Input
             id="validPassword"
@@ -138,6 +141,7 @@ function Register() {
             }}
             value={userRegister.validPassword}
             handler={handleInput}
+            required
           />
           <InputCadastrar disabled={buttonDisabled()}>
             <p>Cadastrar</p>
