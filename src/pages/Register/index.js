@@ -11,11 +11,65 @@ import {
 import GifProfessores from '../../assets/ImagesRegister/GifProfessores.gif';
 import GifAlunos from '../../assets/ImagesRegister/GifAlunos.gif';
 import GifOutros from '../../assets/ImagesRegister/GifOutros.gif';
-import UsuaryRegister from '../../components/InputsRegister';
+import { Link, useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import {
+  FormRegister,
+  IconEmail,
+  IconLock,
+  IconUsuary,
+} from '../../components/InputsRegister/styles';
+import Input from '../../components/Input';
+import { api } from './../../service/api';
+import { signIn } from '../../service/security';
 
 function Register() {
+  const history = useHistory();
+  const [userRegister, setUserRegister] = useState({
+    name: '',
+    email: '',
+    password: '',
+    validPassword: '',
+  });
+  const handleInput = (e) => {
+    setUserRegister({ ...userRegister, [e.target.id]: e.target.value });
+  };
+
+  const validPassword = () =>
+    userRegister.password === userRegister.validPassword;
+
+  const buttonDisabled = () => {
+    const { name, email, password } = userRegister;
+
+    if (!name || !email || !password || !validPassword()) return true;
+
+    return false;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validPassword()) return alert('As senhas precisam ser iguais!');
+
+    try {
+      const { name, email, password } = userRegister;
+
+      const response = await api.post('/students', {
+        name,
+        email,
+        password,
+      });
+
+      signIn(response.data);
+
+      history.push('/orderconfirmemail');
+    } catch (error) {
+      console.error(error);
+      alert(error.response.data.error);
+    }
+  };
+
   return (
-    // <>
     <Container>
       <RegisterUsuary>
         <Logo>
@@ -47,19 +101,64 @@ function Register() {
           </OpcaoNivelUsuario>
         </NivelUsuario>
 
-        <UsuaryRegister />
+        <FormRegister onSubmit={handleSubmit}>
+          <p>Nome Completo</p>
+          <Input
+            id="name"
+            value={userRegister.name}
+            handler={handleInput}
+            type="text"
+            placeholder="Digite aqui seu nome completo"
+            required
+          />
+          <IconUsuary />
+          <p>Email</p>
+          <Input
+            id="email"
+            value={userRegister.email}
+            handler={handleInput}
+            type="text"
+            placeholder="Digite aqui seu email"
+            required
+          />
+          <IconEmail />
 
-        <InputCadastrar>
-          <p>Cadastrar</p>
-        </InputCadastrar>
+          <p>Senha</p>
+          <Input
+            id="password"
+            value={userRegister.password}
+            handler={handleInput}
+            type="password"
+            placeholder="Digite aqui sua senha"
+            required
+          />
+          <Input
+            id="validPassword"
+            placeholder="Confirmar Senha"
+            type="password"
+            onBlur={(e) => {
+              if (!validPassword()) alert('As senhas precisam ser iguais');
+            }}
+            value={userRegister.validPassword}
+            handler={handleInput}
+            required
+          />
+          <InputCadastrar disabled={buttonDisabled()}>
+            <p>Cadastrar</p>
+          </InputCadastrar>
+          <IconLock />
+        </FormRegister>
+
         <TextLogin>
           <p>
-            Já possui uma conta? <span>Entre agora!</span>
+            Já possui uma conta?{' '}
+            <Link to="/">
+              <span>Entre agora!</span>
+            </Link>
           </p>
         </TextLogin>
       </RegisterUsuary>
     </Container>
-    //</>
   );
 }
 

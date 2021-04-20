@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FaLock, FaEnvelope, FaUserAlt } from 'react-icons/fa';
 
-export const RegisterEnter = styled.div`
+export const FormRegister = styled.form`
   width: 100%;
   min-height: 100px;
   height: auto;
