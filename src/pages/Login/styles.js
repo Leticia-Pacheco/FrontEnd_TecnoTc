@@ -19,24 +19,25 @@ const loginAnimation = keyframes`
 export const Container = styled.div`
   animation: ${loginAnimation} 0.5s;
 
-  max-width: 887px;
-  height: 570px;
+  max-width: 100vw;
+  height: 100vh;
   max-height: 100vh;
 
-  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 
   background-color: var(--primaryPurple);
 
-  border-radius: 0px 30px 30px 0px;
+  /* background-image: linear-gradient(to top, var(--primaryPurple), #453D70); */
 
-  // display: flex;
+  /* border-radius: 0px 30px 30px 0px; */
+
+  /* display: flex; */
 `;
 
 export const LoginEnter = styled.div`
-  width: 32%;
-  height: 570px;
+  width: 40%;
+  height: 100vh;
 
   padding: 58px;
 
@@ -50,25 +51,9 @@ export const LoginEnter = styled.div`
   flex-direction: column;
 `;
 
-export const Logo = styled.div`
-  width: 115px;
-  height: 40px;
-
-  padding-top: 11px;
-  text-align: center;
-
-  margin-bottom: 45px;
-
-  background-color: var(--primaryGreenWater);
-
-  > p {
-    color: white;
-    font-size: 14px;
-  }
-`;
 
 export const ConfirmLogin = styled.div`
-  width: 260px;
+  width: 600px;
   height: 300px;
 `;
 
@@ -226,8 +211,6 @@ export const GifColorLogin = styled.div`
 
   margin-top: -25px;
   margin-right: -370px;
-
-  // background-color: RGB(255, 255, 255, 0.5);
 
   float: right;
 

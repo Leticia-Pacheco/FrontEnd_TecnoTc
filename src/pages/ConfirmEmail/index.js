@@ -5,7 +5,7 @@ import {
   ImageConfirmEmail,
   Mensagem,
 } from './styles';
-import Logo from '../../components/Logo';
+// import Logo from '../../components/Logo';
 import GifConfirmEmail from '../../assets/ImagesConfirmEmail/ImageconfirmEmail.png';
 
 function PedidoConfirmEmail() {

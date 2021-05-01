@@ -2,17 +2,16 @@ import {
   ApresentacaoEmpresa,
   Container,
   LoginEnter,
-  Logo,
   ConfirmLogin,
   BoasVindas,
-  InputsLogin,
-  IconLock,
-  IconEmail,
-  RedefinirSenha,
   InputLogar,
   TextCadastro,
   GifColorLogin,
   GifImageLogin,
+  InputsLogin,
+  IconLock,
+  IconEmail,
+  RedefinirSenha,
 } from './styles';
 import GifColor from '../../assets/ImagesLogin/GifColor.gif';
 import ImageLogin from '../../assets/ImagesLogin/ImageLogin.gif';
@@ -22,6 +21,7 @@ import { useState } from 'react';
 import { api } from '../../service/api';
 import { signIn } from '../../service/security';
 import Alert from '../../components/Alert';
+import Logo from "../../components/Logo";
 
 function Login() {
   const history = useHistory();
@@ -93,9 +93,11 @@ function Login() {
               />
               <IconLock />
 
-              <RedefinirSenha>
-                <p>Esqueci a senha</p>
-              </RedefinirSenha>
+                <RedefinirSenha>
+                  <Link to="/recuperarsenha">
+                      <p>Esqueci a senha</p>
+                  </Link>
+                </RedefinirSenha>
               <InputLogar>
                 <p>Login</p>
               </InputLogar>

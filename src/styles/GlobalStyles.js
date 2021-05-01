@@ -7,6 +7,11 @@ export const GlobalStyles = createGlobalStyle`
         outline: 0px; /*Para não colocar aquelas linhas clarinhas em volta do componente*/
         box-sizing: border-box;
         font-family: arial;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
     }
 
 
@@ -17,8 +22,6 @@ export const GlobalStyles = createGlobalStyle`
         --grey: #4F4F4F;
         --greyIcons: #B8B8B8;
         --light: #EDF2F4;
-        --primary: #EF233C;
-        --secondary: #D90429;
     }
 
     /* A scrollbar num todo, tamanho, cores e afins */
