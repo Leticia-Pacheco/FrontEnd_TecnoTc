@@ -7,7 +7,7 @@ import { isSignedIn } from './service/security';
 // import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecuperarSenha from './components/ModalRecuperarSenha';
-import RedefinirSenha from "./components/ModalRedefinirSenha";
+import RedefinirSenha from './components/ModalRedefinirSenha';
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -30,14 +30,14 @@ function Router() {
         <PrivateRoute path="/home">
           <Home />
         </PrivateRoute>
-        <Route path="/orderconfirmemail">
+        <Route path="/confirmemail">
           <OrderConfirmEmail />
         </Route>
         <Route path="/recuperarsenha">
-          <RecuperarSenha/>
+          <RecuperarSenha />
         </Route>
         <Route path="/redefinirsenha">
-          <RedefinirSenha/>
+          <RedefinirSenha />
         </Route>
       </Switch>
     </BrowserRouter>

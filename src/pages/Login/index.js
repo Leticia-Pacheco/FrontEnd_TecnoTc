@@ -21,7 +21,7 @@ import { useState } from 'react';
 import { api } from '../../service/api';
 import { signIn } from '../../service/security';
 import Alert from '../../components/Alert';
-import Logo from "../../components/Logo";
+import Logo from '../../components/Logo';
 
 function Login() {
   const history = useHistory();
@@ -93,11 +93,11 @@ function Login() {
               />
               <IconLock />
 
-                <RedefinirSenha>
-                  <Link to="/recuperarsenha">
-                      <p>Esqueci a senha</p>
-                  </Link>
-                </RedefinirSenha>
+              <RedefinirSenha>
+                <Link to="/recuperarsenha">
+                  <p>Esqueci a senha</p>
+                </Link>
+              </RedefinirSenha>
               <InputLogar>
                 <p>Login</p>
               </InputLogar>

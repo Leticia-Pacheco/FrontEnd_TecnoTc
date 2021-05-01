@@ -51,7 +51,6 @@ export const LoginEnter = styled.div`
   flex-direction: column;
 `;
 
-
 export const ConfirmLogin = styled.div`
   width: 600px;
   height: 300px;
@@ -147,6 +146,10 @@ export const RedefinirSenha = styled.div`
   font-weight: bold;
 
   float: right;
+
+  p {
+    color: var(--primaryGreenWater);
+  }
 `;
 
 export const InputLogar = styled.button`

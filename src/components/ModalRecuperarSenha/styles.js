@@ -84,11 +84,12 @@ export const MensagemRecuperacaoSenha = styled.div`
     }
 `;
 
-export const InserirEmail = styled.div`
+export const InserirEmail = styled.form`
     width: 90%;
     height: 50px;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -106,6 +107,7 @@ export const InserirEmail = styled.div`
 
         border-radius: 5px;
         border: solid 2px var(--primaryPurple);
+        margin-bottom:10px;
     }
 `;
 
