@@ -1,6 +1,6 @@
-import { Container } from './styles';
+import {Container} from './styles';
 
-function Input({ id, label, value, handler, placeholder, ...rest }) {
+function Input({id, label, value, handler, placeholder, ...rest}) {
   return (
     <Container>
       <input
