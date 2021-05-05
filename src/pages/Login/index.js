@@ -2,6 +2,7 @@ import {
   ApresentacaoEmpresa,
   Container,
   LoginEnter,
+<<<<<<< HEAD
   Logo,
   ConfirmLogin,
   BoasVindas,
@@ -9,10 +10,21 @@ import {
   IconLock,
   IconEmail,
   RedefinirSenha,
+=======
+  ConfirmLogin,
+  BoasVindas,
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   InputLogar,
   TextCadastro,
   GifColorLogin,
   GifImageLogin,
+<<<<<<< HEAD
+=======
+  InputsLogin,
+  IconLock,
+  IconEmail,
+  RedefinirSenha,
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 } from './styles';
 import GifColor from '../../assets/ImagesLogin/GifColor.gif';
 import ImageLogin from '../../assets/ImagesLogin/ImageLogin.gif';
@@ -22,6 +34,10 @@ import { useState } from 'react';
 import { api } from '../../service/api';
 import { signIn } from '../../service/security';
 import Alert from '../../components/Alert';
+<<<<<<< HEAD
+=======
+import Logo from '../../components/Logo';
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 
 function Login() {
   const history = useHistory();
@@ -94,7 +110,13 @@ function Login() {
               <IconLock />
 
               <RedefinirSenha>
+<<<<<<< HEAD
                 <p>Esqueci a senha</p>
+=======
+                <Link to="/recuperarsenha">
+                  <p>Esqueci a senha</p>
+                </Link>
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
               </RedefinirSenha>
               <InputLogar>
                 <p>Login</p>

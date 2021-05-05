@@ -11,8 +11,13 @@ import {
 import GifProfessores from '../../assets/ImagesRegister/GifProfessores.gif';
 import GifAlunos from '../../assets/ImagesRegister/GifAlunos.gif';
 import GifOutros from '../../assets/ImagesRegister/GifOutros.gif';
+<<<<<<< HEAD
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
+=======
+import {Link, useHistory} from 'react-router-dom';
+import {useState} from 'react';
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 import {
   FormRegister,
   IconEmail,
@@ -20,8 +25,13 @@ import {
   IconUsuary,
 } from '../../components/InputsRegister/styles';
 import Input from '../../components/Input';
+<<<<<<< HEAD
 import { api } from './../../service/api';
 import { signIn } from '../../service/security';
+=======
+import {api} from './../../service/api';
+import {signIn} from '../../service/security';
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 
 function Register() {
   const history = useHistory();
@@ -32,16 +42,26 @@ function Register() {
     validPassword: '',
   });
   const handleInput = (e) => {
+<<<<<<< HEAD
     setUserRegister({ ...userRegister, [e.target.id]: e.target.value });
+=======
+    setUserRegister({...userRegister, [e.target.id]: e.target.value});
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   };
 
   const validPassword = () =>
     userRegister.password === userRegister.validPassword;
 
   const buttonDisabled = () => {
+<<<<<<< HEAD
     const { name, email, password } = userRegister;
 
     if (!name || !email || !password || !validPassword()) return true;
+=======
+    const {name, email, password} = userRegister;
+
+    if(!name || !email || !password || !validPassword()) return true;
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 
     return false;
   };
@@ -49,10 +69,17 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+<<<<<<< HEAD
     if (!validPassword()) return alert('As senhas precisam ser iguais!');
 
     try {
       const { name, email, password } = userRegister;
+=======
+    if(!validPassword()) return alert('As senhas precisam ser iguais!');
+
+    try {
+      const {name, email, password} = userRegister;
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 
       const response = await api.post('/students', {
         name,
@@ -62,8 +89,13 @@ function Register() {
 
       signIn(response.data);
 
+<<<<<<< HEAD
       history.push('/orderconfirmemail');
     } catch (error) {
+=======
+      history.push('/confirmemail');
+    } catch(error) {
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
       console.error(error);
       alert(error.response.data.error);
     }
@@ -137,7 +169,11 @@ function Register() {
             placeholder="Confirmar Senha"
             type="password"
             onBlur={(e) => {
+<<<<<<< HEAD
               if (!validPassword()) alert('As senhas precisam ser iguais');
+=======
+              if(!validPassword()) alert('As senhas precisam ser iguais');
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
             }}
             value={userRegister.validPassword}
             handler={handleInput}

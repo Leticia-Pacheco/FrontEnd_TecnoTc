@@ -29,6 +29,13 @@ export const InputsLogin = styled.div`
 
     border: solid 1px var(--primaryPurple);
   }
+<<<<<<< HEAD
+=======
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+  }
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 `;
 
 export const IconEmail = styled(FaEnvelope)`

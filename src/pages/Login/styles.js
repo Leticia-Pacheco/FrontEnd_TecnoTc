@@ -19,16 +19,24 @@ const loginAnimation = keyframes`
 export const Container = styled.div`
   animation: ${loginAnimation} 0.5s;
 
+<<<<<<< HEAD
   max-width: 887px;
   height: 570px;
   max-height: 100vh;
 
   margin-top: 30px;
+=======
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   margin-left: auto;
   margin-right: auto;
 
   background-color: var(--primaryPurple);
 
+<<<<<<< HEAD
   border-radius: 0px 30px 30px 0px;
 
   // display: flex;
@@ -37,6 +45,18 @@ export const Container = styled.div`
 export const LoginEnter = styled.div`
   width: 20%;
   height: 570px;
+=======
+  /* background-image: linear-gradient(to top, var(--primaryPurple), #453D70); */
+
+  /* border-radius: 0px 30px 30px 0px; */
+
+  /* display: flex; */
+`;
+
+export const LoginEnter = styled.div`
+  width: 40%;
+  height: 100vh;
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 
   padding: 58px;
 
@@ -50,6 +70,7 @@ export const LoginEnter = styled.div`
   flex-direction: column;
 `;
 
+<<<<<<< HEAD
 export const Logo = styled.div`
   width: 115px;
   height: 40px;
@@ -69,6 +90,10 @@ export const Logo = styled.div`
 
 export const ConfirmLogin = styled.div`
   width: 260px;
+=======
+export const ConfirmLogin = styled.div`
+  width: 600px;
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   height: 300px;
 `;
 
@@ -162,6 +187,13 @@ export const RedefinirSenha = styled.div`
   font-weight: bold;
 
   float: right;
+<<<<<<< HEAD
+=======
+
+  p {
+    color: var(--primaryGreenWater);
+  }
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 `;
 
 export const InputLogar = styled.button`
@@ -227,8 +259,11 @@ export const GifColorLogin = styled.div`
   margin-top: -25px;
   margin-right: -370px;
 
+<<<<<<< HEAD
   // background-color: RGB(255, 255, 255, 0.5);
 
+=======
+>>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   float: right;
 
   > img {
