@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
+// import px2vw from "../../utils/px2vw";
 
 // Animação da abertura da aplicação
 const loginAnimation = keyframes`
@@ -16,89 +17,73 @@ const loginAnimation = keyframes`
     }
 `;
 
-export const Container = styled.div`
-  animation: ${loginAnimation} 0.5s;
-
-<<<<<<< HEAD
-  max-width: 887px;
-  height: 570px;
-  max-height: 100vh;
-
-  margin-top: 30px;
-=======
+export const Overlay = styled.div`
+  width: 100%;
   max-width: 100vw;
   height: 100vh;
-  max-height: 100vh;
-
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
-  margin-left: auto;
-  margin-right: auto;
 
   background-color: var(--primaryPurple);
 
-<<<<<<< HEAD
-  border-radius: 0px 30px 30px 0px;
+  // background-image: linear-gradient(to top, var(--primaryPurple), #453D70); 
 
-  // display: flex;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Container = styled.div`
+  animation: ${loginAnimation} 0.5s;
+
+  width: 1100px;
+  min-height: 500px;
+  height: auto;
+  overflow: hidden;
+  // display: grid;
+  // grid-template-columns: 50% 50%;
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+  }
+`;
+
+export const Logo = styled.div`
+    width: 150px;
+    height: 60px;
+    
+    text-align: center;
+
+    margin-bottom: 45px;
+
+    > img {
+      width: 150px;
+      height: 60px;
+    }
 `;
 
 export const LoginEnter = styled.div`
-  width: 20%;
-  height: 570px;
-=======
-  /* background-image: linear-gradient(to top, var(--primaryPurple), #453D70); */
-
-  /* border-radius: 0px 30px 30px 0px; */
-
-  /* display: flex; */
-`;
-
-export const LoginEnter = styled.div`
-  width: 40%;
-  height: 100vh;
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
+  width: 50%;
+  min-height: 625px;
+  height: auto;
+  overflow: hidden;
 
   padding: 58px;
-
-  position: fixed;
+  padding-top: 30px;
 
   background-color: white;
   border: solid 2px var(--primaryPurple);
 
-  border-radius: 0px 500px 500px 0px;
-
   flex-direction: column;
+  float: left;
 `;
 
-<<<<<<< HEAD
-export const Logo = styled.div`
-  width: 115px;
-  height: 40px;
 
-  padding-top: 11px;
-  text-align: center;
-
-  margin-bottom: 45px;
-
-  background-color: var(--primaryGreenWater);
-
-  > p {
-    color: white;
-    font-size: 14px;
-  }
-`;
-
-export const ConfirmLogin = styled.div`
-  width: 260px;
-=======
 export const ConfirmLogin = styled.div`
   width: 600px;
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   height: 300px;
 `;
 
 export const ApresentacaoEmpresa = styled.div`
-  width: 100%;
+  width: 70%;
   height: 30px;
 
   text-align: center;
@@ -109,21 +94,22 @@ export const ApresentacaoEmpresa = styled.div`
 `;
 
 export const BoasVindas = styled.div`
-  width: 100%;
+  width: 70%;
   min-height: 5px;
 
   text-align: center;
-
   font-size: 14px;
   font-weight: bold;
 
   color: var(--grey);
 
   margin-bottom: 20px;
+
+  
 `;
 
 export const InputsLogin = styled.form`
-  width: 100%;
+  width: 70%;
   min-height: 45px;
   height: auto;
   overflow: hidden;
@@ -158,7 +144,7 @@ export const IconEmail = styled(FaEnvelope)`
 
   font-size: 15px;
 
-  margin-top: 10px;
+  margin-top: -35px;
   margin-left: 3px;
 
   color: var(--primaryPurple);
@@ -172,7 +158,7 @@ export const IconLock = styled(FaLock)`
 
   font-size: 15px;
 
-  margin-top: 10px;
+  margin-top: -35px;
   margin-left: 3px;
 
   color: var(--primaryPurple);
@@ -182,25 +168,28 @@ export const IconLock = styled(FaLock)`
 
 export const RedefinirSenha = styled.div`
   min-width: 50px;
-
   font-size: 12px;
   font-weight: bold;
 
-  float: right;
-<<<<<<< HEAD
-=======
+  margin-top: -10px;
 
-  p {
-    color: var(--primaryGreenWater);
+  float: right;
+
+  > a {
+    color: black;
+
+    :hover{
+      cursor: pointer;
+      pointer-events: auto; 
+    }
   }
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
 `;
 
 export const InputLogar = styled.button`
   width: 100%;
   height: 36px;
 
-  margin-top: 16px;
+  margin-top: 50px;
 
   background-color: var(--primaryPurple);
 
@@ -213,7 +202,7 @@ export const InputLogar = styled.button`
 
   > p {
     color: white;
-
+    font-size: 17px;
     font-weight: bold;
   }
 
@@ -223,8 +212,7 @@ export const InputLogar = styled.button`
 `;
 
 export const TextCadastro = styled.div`
-  width: 100%;
-
+  width: 70%;
   margin-top: 5px;
 
   text-align: center;
@@ -232,42 +220,58 @@ export const TextCadastro = styled.div`
   font-weight: bold;
   word-spacing: 1px;
 
-  :hover {
-    cursor: pointer;
+  > p {
+    cursor: not-allowed;
+  }
+
+  > span {
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 
+export const GifImages = styled.div`
+  width: 50%;
+  height: 100vh;
+
+  // align-items: center;
+  // justify-content: center
+  // display: inline-block;
+  // width: 1100px;
+  min-height: 500px;
+  height: auto;
+  overflow: hidden;
+
+  float: right;
+`;
+
 export const GifImageLogin = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
 
   margin-top: 110px;
-  margin-right: 100px;
+  margin-right: 250px;
 
   float: right;
 
   > img {
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
   }
 `;
 
 export const GifColorLogin = styled.div`
-  width: 600px;
-  height: 620px;
+  width: 850px;
+  height: 650px;
 
-  margin-top: -25px;
-  margin-right: -370px;
+  margin-top: -350px;
+  margin-right: -300px;
 
-<<<<<<< HEAD
-  // background-color: RGB(255, 255, 255, 0.5);
-
-=======
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   float: right;
 
   > img {
-    width: 630px;
-    height: 620px;
+    width: 860px;
+    height: 700px;
   }
 `;

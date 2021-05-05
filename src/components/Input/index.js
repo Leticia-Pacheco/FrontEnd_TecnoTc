@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import { Container } from './styles';
-
-function Input({ id, label, value, handler, placeholder, ...rest }) {
-=======
 import {Container} from './styles';
 
 function Input({id, label, value, handler, placeholder, ...rest}) {
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
   return (
     <Container>
       <input

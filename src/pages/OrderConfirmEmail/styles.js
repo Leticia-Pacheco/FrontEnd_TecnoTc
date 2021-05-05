@@ -1,6 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const modalAnimation = keyframes`
+    0%{
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    
+    100%{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+`;
 
 export const Container = styled.div`
+    animation: ${modalAnimation} 0.5s;
+
     width: 380px;
     max-width: 887vw;
     height: 565px;
@@ -79,15 +93,34 @@ export const ImageConfirmEmail = styled.div`
     }
 `;
 
-export const ButtonConfirm = styled.button`
-    width: 100%;
+export const ButtonConfirm = styled.div`
+    width: 300px;
     height: 35px;
 
     border-radius: 10px 10px 10px 10px;
     border: solid 2px var(--primaryPurple);
 
+    line-height: 35px;
+
     background-color: var(--primaryPurple);
 
     color: white;
     font-weight: bold;
+`;
+
+export const Logo = styled.div`
+    width: 115px;
+    height: 40px;
+    
+    padding-top: 11px;
+    text-align: center;
+
+    margin-bottom: 45px;
+
+    background-color: var(--primaryGreenWater);
+
+    > p {
+        color: white;
+        font-size: 14px;
+    }
 `;

@@ -4,8 +4,8 @@ import {
   Header,
   ImageConfirmEmail,
   Mensagem,
+  Logo
 } from './styles';
-import Logo from '../../components/Logo';
 import GifConfirmEmail from '../../assets/ImagesConfirmEmail/GifConfirmEmail.gif';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +33,6 @@ function PedidoConfirmEmail() {
           </ImageConfirmEmail>
 
           <Link to="/">
-            {' '}
             <ButtonConfirm>
               <p>OK!</p>
             </ButtonConfirm>

@@ -7,14 +7,11 @@ export const GlobalStyles = createGlobalStyle`
         outline: 0px; /*Para não colocar aquelas linhas clarinhas em volta do componente*/
         box-sizing: border-box;
         font-family: arial;
-<<<<<<< HEAD
-=======
 
         a {
             color: white;
             text-decoration: none;
         }
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
     }
 
 
@@ -23,13 +20,9 @@ export const GlobalStyles = createGlobalStyle`
         --primaryPurple: #1F1456;
         --primaryGreenWater: #4ADDA9;
         --grey: #4F4F4F;
-        --greyIcons: #B8B8B8;
+        --greySecondary: #B8B8B8;
+        --greyTerciary: #DEE4E4;
         --light: #EDF2F4;
-<<<<<<< HEAD
-        --primary: #EF233C;
-        --secondary: #D90429;
-=======
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
     }
 
     /* A scrollbar num todo, tamanho, cores e afins */
@@ -46,7 +39,7 @@ export const GlobalStyles = createGlobalStyle`
 
     /* O cursorzinho que, normalmente é cinza escuro. */
     ::-webkit-scrollbar-thumb {
-        background-color: var(--primaryPurple);
+        background-color: var(--primaryGreenWater);
         border-radius: 5px 5px 5px 5px;
     }
 
