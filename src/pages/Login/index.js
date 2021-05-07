@@ -97,12 +97,12 @@ function Login() {
                 <IconLock />
 
                 <RedefinirSenha>
-                  <Link to="/recuperarsenha">
+                  <Link to="/recoverpassword">
                       <p>Esqueci a senha</p>
                   </Link>
                 </RedefinirSenha>
                 
-                <Link to="/perfilprofessor">
+                <Link to="/profilestudent">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>

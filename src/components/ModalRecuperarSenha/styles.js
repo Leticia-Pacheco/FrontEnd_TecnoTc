@@ -1,11 +1,22 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const modalAnimation = keyframes`
+    0%{
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    
+    100%{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+`;
 
 export const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
-    /* background-color: var(--grey); */
 
-    opacity: 0.;
+    // opacity: 0;  
 
     z-index: 9;
 
@@ -15,10 +26,12 @@ export const Overlay = styled.div`
 `;
 
 export const ModalRecuperarSenha = styled.div`
+    animation: ${modalAnimation} 0.5s;
     width: 900px;
     height: 600px;
 
     border: solid 2px var(--primaryPurple);
+    background-color: white;
 
     margin-left: auto;
     margin-right: auto;
@@ -84,12 +97,11 @@ export const MensagemRecuperacaoSenha = styled.div`
     }
 `;
 
-export const InserirEmail = styled.form`
+export const InserirEmail = styled.div`
     width: 90%;
     height: 50px;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -107,7 +119,6 @@ export const InserirEmail = styled.form`
 
         border-radius: 5px;
         border: solid 2px var(--primaryPurple);
-        margin-bottom:10px;
     }
 `;
 
