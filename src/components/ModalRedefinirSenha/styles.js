@@ -108,5 +108,10 @@ export const ButtonRedefinirSenha = styled.div`
         font-size: 17px;
         color: white;
         font-weight: bold;
+
+        :hover {
+            cursor: pointer;
+            background-color: #1DD091;
+        }
     }
 `;

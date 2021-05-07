@@ -16,29 +16,37 @@ const loginAnimation = keyframes`
 
 export const Container = styled.div`
   animation: ${loginAnimation} 0.5s;
-  width: 887px;
-  height: 700px;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
 
-  padding-top: 20px;
-  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 
   background-color: var(--primaryPurple);
-
-  border-radius: 30px 30px 30px 30px;
+  
+  display: flex; 
+  justify-content: center;
+  align-items: center;
 `;
 
 export const RegisterUsuary = styled.div`
-  width: 370px;
-  height: 650px;
-  border-radius: 30px 30px 30px 30px;
+  width: 450px;
+  min-height: 625px;
+  height: auto;
+  overflow: hidden;
+
   margin-left: auto;
   margin-right: auto;
 
-  padding: 35px;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 10px;
 
   background-color: white;
+  border: solid 2px var(--primaryPurple);
 
   > p {
     font-size: 13px;
@@ -49,21 +57,18 @@ export const RegisterUsuary = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 115px;
-  height: 40px;
+  width: 130px;
+  height: 50px;
 
-  padding-top: 11px;
   text-align: center;
 
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
 
-  background-color: var(--primaryGreenWater);
-
-  > p {
-    color: white;
-    font-size: 14px;
+  > img {
+    width: 130px;
+    height: 50px;
   }
 `;
 
@@ -124,11 +129,7 @@ export const OpcaoNivelUsuario = styled.button`
     height: 80px;
 
     margin: 0px;
-
-<<<<<<< HEAD
     border: solid 2px var(--primaryPurple);
-=======
->>>>>>> 527f9d738fe29e5a8d964fb6fc2d1122860626eb
     border-radius: 100px 100px 100px 100px;
 
     :hover {
@@ -158,6 +159,7 @@ export const InputCadastrar = styled.button`
 
   > p {
     color: white;
+    font-size: 16px;
 
     font-weight: bold;
   }
@@ -180,4 +182,6 @@ export const TextLogin = styled.div`
   :hover {
     cursor: pointer;
   }
+
 `;
+

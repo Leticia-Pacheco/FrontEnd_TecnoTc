@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         outline: 0px; /*Para não colocar aquelas linhas clarinhas em volta do componente*/
         box-sizing: border-box;
         font-family: arial;
+        list-style: none;
 
         a {
             color: white;
@@ -22,6 +23,7 @@ export const GlobalStyles = createGlobalStyle`
         --grey: #4F4F4F;
         --greySecondary: #B8B8B8;
         --greyTerciary: #DEE4E4;
+        --greyProfile: #F1F0F0;
         --light: #EDF2F4;
     }
 

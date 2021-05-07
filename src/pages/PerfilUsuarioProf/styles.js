@@ -28,7 +28,7 @@ export const Header = styled.header`
   }
 `;
 
-export const InformacoesAluno = styled.div`
+export const InformacoesUsuario = styled.div`
   min-width: 120px;
   max-width: 500px;
   width: auto;
@@ -55,7 +55,8 @@ export const InformacoesAluno = styled.div`
   }
 
   > p {
-      text-family: Roboto;
+      font-size: 20px;
+      font-family: 'Roboto';
   }
 
   > input {
@@ -88,12 +89,17 @@ export const Logo = styled.div`
     }
 `;
 
-export const Menu = styled.div`
-    width: 35px;
-    height: 35px;
+export const ContainerConteudo = styled.div`
+    width: 100%;
+    min-height: 700px;
+    height: auto;
+    overflow: hidden;
 
-    margin-top: 15px;
-    margin-left: 40px;
+    align-items: center;
+    margin-bottom: 50px;
+
+    display: flex;
+    z-index: -1;
 `;
 
 export const Perfil = styled.div`
@@ -101,14 +107,15 @@ export const Perfil = styled.div`
     min-height: 500px;
     height: auto;
     overflow: hidden;
+    /* background-color: red; */
 
     margin-top: 150px;
-    margin-bottom: 60px;
+    margin-left: 50px;
 
     display: grid;
     grid-template-columns: 70% 30%;
 
-    // display: flex;
+    /* display: flex; */
 `;
 
 export const Grupos = styled.div`
@@ -131,8 +138,8 @@ export const GruposComponents = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-contents: center;
-    // display:table-cell; USE PRA FAZER A RESPONSIVIDADE, TONTA!
+    justify-content: center;
+    /* // display:table-cell; USE PRA FAZER A RESPONSIVIDADE, TONTA! */
     align-self: center;
 `;
 
@@ -148,12 +155,13 @@ export const GruposIndividuais = styled.div`
 
     // background-color: white;
 
-    background-image: linear-gradient(to top, black, #120456, var(--primaryPurple), #120456, black);
+    // background-image: linear-gradient(to top, black, #120456, var(--primaryPurple), #120456, black);
+    background-color: white;
+    box-shadow: 2px 2px 10px black;
 
     > p {
         padding: 20px;
         text-align: center;
-        color: white;
         font-weight: bold;
     }
 `;
@@ -249,7 +257,7 @@ export const ItensAnotacoes = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -281,7 +289,7 @@ export const ItensAnotacoes1 = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -313,7 +321,7 @@ export const ItensAnotacoes2 = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -345,7 +353,7 @@ export const ItensAnotacoes3 = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -377,7 +385,7 @@ export const ItensAnotacoes4 = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -409,7 +417,7 @@ export const ItensAnotacoes5 = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -440,7 +448,7 @@ export const ItensAnotacoes6 = styled.div`
         align-self: center;
         position: relative; 
         right: 0px; 
-        left: 110px;
+        left: 90px;
 
         :hover {
             cursor: pointer;
@@ -448,39 +456,24 @@ export const ItensAnotacoes6 = styled.div`
     }
 `;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const Footer = styled.footer`
     width: 100%;
-    height: 110px;
+    height: 70px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: var(--primaryPurple);
+    // background-color: var(--primaryPurple);
+    background-color: var(--greyTerciary);
 
     > p {
         width: 250px;
 
         text-align: center;
-        color: white;
+        // color: white;
         font-weight: bold;
 
-        font-size: 18px;
+        font-size: 16px;
     }
 `;
