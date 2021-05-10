@@ -102,6 +102,11 @@ function Login() {
                   </Link>
                 </RedefinirSenha>
                 
+                {/* <Link to="/profileteacher">
+                  <InputLogar>
+                    <p>Login</p>
+                  </InputLogar>
+                </Link> */}
                 <Link to="/profilestudent">
                   <InputLogar>
                     <p>Login</p>
