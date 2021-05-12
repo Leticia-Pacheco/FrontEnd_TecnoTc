@@ -74,7 +74,7 @@ function Register() {
     <Container>
       <RegisterUsuary>
         <Logo>
-          <img src={ImageLogo} alt="Logo" title="Logo" />
+          <img src={ImageLogo} alt="Logo" title="Logo"/>
         </Logo>
 
         <ApresentacaoEmpresa>
@@ -146,9 +146,11 @@ function Register() {
             required
           />
           <IconLock />
-          <InputCadastrar disabled={buttonDisabled()}>
-            <p>Cadastrar</p>
-          </InputCadastrar>
+          <Link to="orderconfirmemail">
+            <InputCadastrar disabled={buttonDisabled()}>
+              <p>Cadastrar</p>
+            </InputCadastrar>
+          </Link>
         </FormRegister>
 
         <TextLogin>

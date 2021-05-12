@@ -2,7 +2,7 @@ import { ContainerModal, Overlay, Header, MensagemUsuario, InserirNovaSenha, But
 import Logo from "../../assets/logos/logo_fundo_roxo_png.png";
 import { Link } from "react-router-dom";
 
-function RedefinirSenha () {
+function RedefinePassword () {
     return(
         <>
             <Overlay>
@@ -36,4 +36,4 @@ function RedefinirSenha () {
     );
 }
 
-export default RedefinirSenha;
+export default RedefinePassword;

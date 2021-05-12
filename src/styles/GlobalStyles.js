@@ -23,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
         --grey: #4F4F4F;
         --greySecondary: #B8B8B8;
         --greyTerciary: #DEE4E4;
-        --greyProfile: #F1F0F0;
+        --greyQuaternary: #F1F0F0;
         --light: #EDF2F4;
     }
 
