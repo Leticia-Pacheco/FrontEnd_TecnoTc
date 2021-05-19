@@ -101,8 +101,17 @@ function Login() {
                       <p>Esqueci a senha</p>
                   </Link>
                 </RedefinirSenha>
+<<<<<<< HEAD
                 
                 <Link to="/profileteacher">
+=======
+                {/* <Link to="/profileteacher">
+                  <InputLogar>
+                    <p>Login</p>
+                  </InputLogar>
+                </Link> */}
+                <Link to="/profilestudent">
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>
