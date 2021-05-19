@@ -19,7 +19,7 @@ import {
   ComponentAnotacoes,
   AgrupamentoAnotacoes,
 } from './styles';
-import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_professor.jpg';
+import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
@@ -46,8 +46,8 @@ function ProfileStudent() {
                 />
               </ImageUsuario>
               <TextInfos>
-                <span>José Bezerra</span>
-                <p>Senai Prof Vicente Amato | Jandira</p>
+                <span>Larissa Pacheco</span>
+                <p>Senai José Ephim Mindlin | Jandira</p>
               </TextInfos>
             </InformacoesUsuario>
 
@@ -140,7 +140,7 @@ function ProfileStudent() {
 
               
 
-              <h3>Anotações</h3>
+              <h3>Anotações +</h3>
               <Anotacoes>
                 <ButtonAvancarAnotacoes>
                   <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>

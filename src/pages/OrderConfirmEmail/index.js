@@ -8,13 +8,16 @@ import {
 } from './styles';
 import GifConfirmEmail from '../../assets/ImagesConfirmEmail/GifConfirmEmail.gif';
 import { Link } from 'react-router-dom';
+import LogoImage from "../../assets/logos/logo_fundo_roxo_png.png";
 
 function PedidoConfirmEmail() {
   return (
     <>
       <Container>
         <Header>
-          <Logo />
+          <Logo>
+            <img src={LogoImage} alt="Logo da empresa" title="Logo da empresa"/>
+          </Logo>
           <p>Bem vinda(o) ao TecnoTc!</p>
         </Header>
 
