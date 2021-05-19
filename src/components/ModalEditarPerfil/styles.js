@@ -1,29 +1,43 @@
 import styled from "styled-components";
 
+// export const Overlay = styled.div`
+//     position: absolute;
+//     width: 100vw;
+//     height: 100vh;
+//     z-index: 9;
+
+//     background-color: #333C;
+
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// `;
+
 export const Overlay = styled.div`
-    position: absolute;
     width: 100vw;
     height: 100vh;
+
+    opacity: 0.9;
     z-index: 9;
 
-    background-color: #333C;
+    position: absolute;
+
+    /* background-color: #333; */
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 `;
 
 export const ModalEditarPerfil = styled.div`
-    min-width: 800px;
+    width: 900px;
     min-height: 620px;
     max-height: calc(100vh - 20px); /*Para calcular uma boa altura e que não fique tão grande nem tão pequeno*/
     z-index: 19;
 
     position: absolute;
 
-    overflow-y: auto;
-
-    background-color: yellow;
+    border: solid 2px var(--primaryPurple);
 `;
 
 export const Header = styled.div`
@@ -76,9 +90,24 @@ export const EditarImagemUsuario = styled.div`
 
     background-color: var(--primaryGreenWater);
 
-    > img {
-        width: 25px;
-        height: 25px;
+    :hover {
+        cursor: pointer;
+    }
+
+    > button {
+        background-color: var(--primaryGreenWater);
+        border: solid 2px var(--primaryGreenWater);
+
+        border-radius: 50%;
+
+        :hover {
+            cursor: pointer;
+        }
+
+        > img {
+            width: 25px;
+            height: 25px;
+        }
     }
 `;
 
@@ -96,5 +125,69 @@ export const Logo = styled.div`
 `;
 
 export const EditarDados = styled.div`
-    
+    width: 100%;
+    min-height: 500px;
+    height: auto;
+    overflow: hidden;
+
+    padding: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* word-wrap:  normal; */
+    /* flex-direction: row; */
+
+    > button {
+        width: 220px;
+        height: 30px;
+
+        margin-top: 25px;
+        border-radius: 5px;
+
+        background-color: var(--primaryGreenWater);
+        border: solid 2px var(--primaryGreenWater);
+
+        color: white;
+        font-weight: bold;
+
+        font-size: 18px;
+    }
+`;
+
+export const ComponentEditarDados = styled.div`
+    min-width: 380px;
+    width: auto;
+    overflow: hidden;
+    height: 70px;
+
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+
+    > p {
+        font-size: 18px;
+        font-weight: bold;
+
+        color: var(--primaryPurple);
+    }
+
+    > input {
+        height: 35px;
+
+        padding-left: 5px;
+        font-size: 15px;
+
+        border-radius: 4px;
+        border: solid 2px var(--primaryPurple);
+    }
+
+    > span {
+        font-size: 12px;
+        color: var(--primaryPurple);
+
+        font-weight: bold;
+
+        align-self: flex-end;
+    }
 `;

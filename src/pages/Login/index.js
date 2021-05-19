@@ -106,7 +106,7 @@ function Login() {
                     <p>Login</p>
                   </InputLogar>
                 </Link> */}
-                <Link to="/profilestudent">
+                <Link to="/profileteacher">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>

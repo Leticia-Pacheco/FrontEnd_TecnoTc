@@ -47,9 +47,9 @@ export const Container = styled.div`
     flex-wrap: nowrap;
   }
 
-    // @media (min-width: 768px) {
+    /* // @media (min-width: 768px) {
     //   display:table-cell;
-    // }
+    // } */
 `;
 
 export const Logo = styled.div`

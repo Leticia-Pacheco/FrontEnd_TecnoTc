@@ -17,7 +17,7 @@ export const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
 
-    // opacity: 0;  
+    opacity: 0;
 
     z-index: 9;
 
@@ -55,9 +55,9 @@ export const ModalRecuperarSenha = styled.div`
     }
 
     @media (min-width: 360px) {
-        // flex-wrap: nowrap;
+        /* // flex-wrap: nowrap; */
         width: ${px2vw(1000)};
-        // height: 100%;
+        /* // height: 100%; */
     }
 `;
 
