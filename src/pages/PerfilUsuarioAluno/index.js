@@ -12,6 +12,15 @@ import {
   Grupos,
   ComponentGrupo,
   ImageGrupo,
+<<<<<<< HEAD
+=======
+  Agrupamento,
+  ButtonAvancarGrupos,
+  ButtonAvancarAnotacoes,
+  Anotacoes,
+  ComponentAnotacoes,
+  AgrupamentoAnotacoes,
+>>>>>>> 1b389d8db6f3efaf8cef1770580481a7f4de9f96
 } from './styles';
 import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_professor.jpg';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
@@ -20,6 +29,10 @@ import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png
 import ImageChats from '../../assets/ImagesPerfis/chats.png';
 import ImageLogout from '../../assets/ImagesPerfis/sair.png';
 import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
+import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
+import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
+import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
+import { Link } from 'react-router-dom';
 
 function ProfileStudent() {
   return (
@@ -36,7 +49,7 @@ function ProfileStudent() {
                 />
               </ImageUsuario>
               <TextInfos>
-                <span>Larissa Pacheco</span>
+                <span>José Bezerra</span>
                 <p>Senai Prof Vicente Amato | Jandira</p>
               </TextInfos>
             </InformacoesUsuario>
@@ -94,19 +107,25 @@ function ProfileStudent() {
               </ul>
             </MenuLateral>
 
-            <EditarPerfil>
-              <img
-                src={Configuracoes}
-                alt="Configurações do perfil"
-                title="Configurações do perfil"
-              />
-              <p>Editar perfil</p>
-            </EditarPerfil>
+            <Link to="/editprofile">
+              <EditarPerfil>
+                <img
+                  src={Configuracoes}
+                  alt="Configurações do perfil"
+                  title="Configurações do perfil"
+                />
+                <p>Editar perfil</p>
+              </EditarPerfil>
+            </Link>
           </PerfilInfoUsuario>
 
           <Conteudo>
+                <h3>Meus grupos</h3>
               <Grupos>
-                  <h3>Meus grupos</h3>
+                <ButtonAvancarGrupos>
+                  <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
+                </ButtonAvancarGrupos>
+                <Agrupamento>
 
                   <ComponentGrupo>
                       <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos"/>
@@ -115,7 +134,44 @@ function ProfileStudent() {
                       </ImageGrupo>
                       <p>Desenvolvimento de sistemas</p>
                   </ComponentGrupo>
+
+                </Agrupamento>
+                <ButtonAvancarGrupos>
+                  <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
+                </ButtonAvancarGrupos>
               </Grupos>
+
+              
+
+              <h3>Anotações</h3>
+              <Anotacoes>
+                <ButtonAvancarAnotacoes>
+                  <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
+                </ButtonAvancarAnotacoes>
+                <AgrupamentoAnotacoes>
+
+                  <ComponentAnotacoes>
+                    <p>03-11-2020</p>
+                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
+                  </ComponentAnotacoes>
+                  <ComponentAnotacoes>
+                    <p>03-11-2020</p>
+                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
+                  </ComponentAnotacoes>
+                  <ComponentAnotacoes>
+                    <p>03-11-2020</p>
+                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
+                  </ComponentAnotacoes>
+                  <ComponentAnotacoes>
+                    <p>03-11-2020</p>
+                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
+                  </ComponentAnotacoes>
+                </AgrupamentoAnotacoes>
+
+                <ButtonAvancarAnotacoes>
+                  <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
+                </ButtonAvancarAnotacoes>
+              </Anotacoes>
           </Conteudo>
         </ContainerPerfilConteudo>
       </Container>

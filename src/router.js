@@ -11,6 +11,7 @@ import RedefinePassword from "./components/ModalRedefinirSenha";
 import ProfileTeacher from "./pages/PerfilUsuarioProf";
 import ProfileStudent from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
+import EditProfile from "./components/ModalEditarPerfil";
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -50,7 +51,10 @@ function Router() {
         </Route>
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
           <ResetEmailPassword/>
-        </Route>       
+        </Route>
+        <Route path="/editprofile"> {/*Editar perfil*/}
+          <EditProfile/>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

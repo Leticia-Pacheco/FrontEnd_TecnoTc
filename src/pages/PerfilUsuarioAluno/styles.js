@@ -21,8 +21,9 @@ export const ContainerPerfilConteudo = styled.div`
 
   display: flex;
 
-  border: solid 2px var(--primaryPurple);
-  background-color: #f1f0f0;
+  border-top: solid 2px var(--primaryPurple);
+  border-left: solid 2px var(--primaryPurple);
+  border-right: solid 2px var(--primaryPurple);
 
   align-self: center;
 `;
@@ -35,13 +36,17 @@ export const PerfilInfoUsuario = styled.div`
 
   display: flex;
   flex-direction: column;
+  background-color: var(--greyTerciary);
+  a {
+    color: black;
+  }
 `;
 
 export const InformacoesUsuario = styled.div`
   width: 100%;
   height: 140px;
 
-  margin-bottom: 90px;
+  margin-bottom: 50px;
 
   padding-left: 15px;
   padding-right: 15px;
@@ -97,10 +102,14 @@ export const MenuLateral = styled.div`
 
   > ul > li {
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+
+    :hover {
+      cursor: pointer;
+    }
 
     > p {
-      margin-top: 17px;
+      margin-top: 20px;
 
       text-align: left;
       color: var(--primaryPurple);
@@ -133,9 +142,9 @@ export const EditarPerfil = styled.div`
   }
 
   > p {
-    font-weight: bold;
+    font-family: 'Roboto';
     line-height: 22px;
-    font-size: 15px;
+    font-size: 17px;
   }
 `;
 
@@ -145,31 +154,65 @@ export const Conteudo = styled.div`
 
   padding-top: 45px;
 
-  background-color: orange;
-`;
-
-export const Grupos = styled.div`
-  width: 100%;
-  height: 35%;
-
-  /* padding-left: 30px; */
-
-  background-color: green;
-
   > h3 {
     margin-bottom: 20px;
-    margin-left: 30px;
+    margin-left: 42px;
 
     color: var(--primaryPurple);
   }
 `;
 
+export const Grupos = styled.div`
+  width: 100%;
+  height: 25%;
+
+  margin-bottom: 50px;
+
+  display: flex;
+`;
+
+export const Agrupamento = styled.div`
+  width: 92%;
+  height: 200px;
+
+  padding-right: 5px;
+`;
+
+export const AgrupamentoAnotacoes = styled.div`
+  width: 92%;
+  height: 80px;
+
+  padding-right: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  // display:table-cell;
+`;
+
 export const ComponentGrupo = styled.div`
     width: 200px;
-    height: 240px;
+    height: 200px;
 
-    background-color: red;
+    padding: 5px;
+    margin-left: 5px;
 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    box-shadow: 8px 5px 30px black;
+
+    text-align: center;
+    > img {
+        width: 20px;
+        height: 20px;
+
+        margin-left: 170px;
+    }
+
+<<<<<<< HEAD
     padding: 5px;
     margin-left: 30px;
 
@@ -185,10 +228,13 @@ export const ComponentGrupo = styled.div`
         margin-left: 170px;
     }
 
+=======
+>>>>>>> 1b389d8db6f3efaf8cef1770580481a7f4de9f96
     > p {
         color: var(--primaryPurple);
         font-weight: bold;
     }
+<<<<<<< HEAD
 `;
 
 export const ImageGrupo = styled.div`
@@ -208,9 +254,107 @@ export const ImageGrupo = styled.div`
         font-weight: bold;
         color: white;
     }
+=======
+>>>>>>> 1b389d8db6f3efaf8cef1770580481a7f4de9f96
 `;
 
+export const ImageGrupo = styled.div`
+    width: 80px;
+    height: 80px;
 
+    margin-top: 15px;
+
+    border-radius: 15px 15px 15px 15px;
+    background-color: var(--primaryGreenWater);
+
+    line-height: 80px;
+    margin-bottom: 20px;
+
+    > p {
+        font-weight: bold;
+        color: white;
+    }
+`;
+
+export const ButtonAvancarGrupos = styled.div`
+    width: 4%;
+    height: 200px;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    :hover {
+      background-color: var(--greyQuaternary);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+`;
+
+export const ButtonAvancarAnotacoes = styled.div`
+    width: 4%;
+    height: 80px;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    line-height: 10px;
+
+    :hover {
+      background-color: var(--greyQuaternary);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+`;
+
+export const Anotacoes = styled.div`
+  width: 100%;
+  height: 25%;
+
+  display: flex;
+`;
+
+export const ComponentAnotacoes= styled.div`
+    width: 200px;
+    height: 35px;
+
+    margin-left: 5px;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+
+    background-color: #DD4A88;
+
+    > p {
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    > img {
+      width: 17px;
+      height: 17px;
+
+      // margin-right: -100px;
+
+      margin-left: 90px;
+    }
+`;
 
 
 
