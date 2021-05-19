@@ -102,7 +102,7 @@ function Login() {
                   </Link>
                 </RedefinirSenha>
                 
-                <Link to="/profilestudent">
+                <Link to="/profileteacher">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>

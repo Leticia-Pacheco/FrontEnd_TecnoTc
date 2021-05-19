@@ -11,6 +11,7 @@ import {
   EditarPerfil,
   Grupos,
   ComponentGrupo,
+  ImageGrupo,
 } from './styles';
 import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_professor.jpg';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
@@ -108,7 +109,11 @@ function ProfileStudent() {
                   <h3>Meus grupos</h3>
 
                   <ComponentGrupo>
-                      <img src={Configuracoes}/>
+                      <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos"/>
+                      <ImageGrupo>
+                          <p>DS</p>
+                      </ImageGrupo>
+                      <p>Desenvolvimento de sistemas</p>
                   </ComponentGrupo>
               </Grupos>
           </Conteudo>

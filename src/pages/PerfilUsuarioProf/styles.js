@@ -110,7 +110,7 @@ export const Perfil = styled.div`
     /* background-color: red; */
 
     margin-top: 150px;
-    margin-left: 50px;
+    margin-left: 200px;
 
     display: grid;
     grid-template-columns: 70% 30%;
@@ -155,7 +155,7 @@ export const GruposIndividuais = styled.div`
 
     // background-color: white;
 
-    // background-image: linear-gradient(to top, black, #120456, var(--primaryPurple), #120456, black);
+    /* // background-image: linear-gradient(to top, black, #120456, var(--primaryPurple), #120456, black); */
     background-color: white;
     box-shadow: 2px 2px 10px black;
 
@@ -175,10 +175,18 @@ export const ConfiguracaoGrupos = styled.div`
     right: 10px; 
     left: 200px;
 
+    :hover {
+        cursor: pointer;
+    }
+
     > img {
         width: 18px;
         height: 18px;
         align-self: right;
+
+        :hover {
+            cursor: pointer;
+        }
     }
 `;
 
