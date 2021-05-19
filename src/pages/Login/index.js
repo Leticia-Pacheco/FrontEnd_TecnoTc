@@ -102,19 +102,13 @@ function Login() {
                   </Link>
                 </RedefinirSenha>
                 
-                {/* <Link to="/profileteacher">
-                  <InputLogar>
-                    <p>Login</p>
-                  </InputLogar>
-                </Link> */}
-                <Link to="/profilestudent">
+                <Link to="/profileteacher">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>
                 </Link>
-              </InputsLogin>
 
-              <TextCadastro>
+                <TextCadastro>
                 <p>
                   Não tem uma conta?
                   <Link to="/Register">
@@ -122,6 +116,7 @@ function Login() {
                   </Link>
                 </p>
               </TextCadastro>
+              </InputsLogin>
             </ConfirmLogin>
           </LoginEnter>
 

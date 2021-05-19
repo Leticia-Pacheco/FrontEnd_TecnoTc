@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import px2vw from "../../utils/px2vw";
 
 const modalAnimation = keyframes`
     0%{
@@ -42,6 +43,22 @@ export const ModalRecuperarSenha = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
+    @media (min-width: 1024px) {
+        flex-wrap: nowrap;
+        width: ${px2vw(470)};
+    }
+
+    @media (min-width: 768px) {
+        flex-wrap: wrap;
+        width: ${px2vw(450)};
+    }
+
+    @media (min-width: 360px) {
+        // flex-wrap: nowrap;
+        width: ${px2vw(1000)};
+        // height: 100%;
+    }
 `;
 
 export const Header = styled.div`

@@ -1,21 +1,19 @@
 import styled from "styled-components";
 
 export const Overlay = styled.div`
-    width: 100vw;
-    height: 100vh;
-    /* background-color: var(--grey); */
+position: absolute;
+width: 100vw;
+height: 100vh;
+z-index: 9;
 
-    opacity: 0.;
+background-color: #333C;
 
-    z-index: 9;
-
-    display: table;
-    vertical-align:middle;
-    display:table-cell;
-    align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 `;
 
-export const ContainerModal = styled.div`
+export const ModalRedefinirSenha = styled.div`
     width: 900px;
     height: 600px;
 

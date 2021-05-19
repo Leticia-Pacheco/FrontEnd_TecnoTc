@@ -113,6 +113,7 @@ function Register() {
             required
           />
           <IconUsuary />
+
           <p>Email</p>
           <Input
             id="email"
@@ -134,6 +135,7 @@ function Register() {
             required
           />
           <IconLock />
+
           <Input
             id="validPassword"
             placeholder="Confirmar Senha"
@@ -146,6 +148,7 @@ function Register() {
             required
           />
           <IconLock />
+          
           <Link to="orderconfirmemail">
             <InputCadastrar disabled={buttonDisabled()}>
               <p>Cadastrar</p>

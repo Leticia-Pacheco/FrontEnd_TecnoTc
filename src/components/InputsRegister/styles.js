@@ -29,7 +29,7 @@ export const FormRegister = styled.form`
 
 export const IconUsuary = styled(FaUserAlt)`
   position: absolute;
-  left: 777px;
+  margin-left: 5px;
 
   font-size: 15px;
 
@@ -41,8 +41,8 @@ export const IconUsuary = styled(FaUserAlt)`
 `;
 
 export const IconEmail = styled(FaEnvelope)`
-  position: absolute;
-  left: 777px;
+position: absolute;
+  margin-left: 5px;
 
   font-size: 15px;
 
@@ -55,7 +55,7 @@ export const IconEmail = styled(FaEnvelope)`
 
 export const IconLock = styled(FaLock)`
   position: absolute;
-  left: 777px;
+  margin-left: 5px;
 
   font-size: 15px;
 

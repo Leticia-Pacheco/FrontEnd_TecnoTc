@@ -1,503 +1,367 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  min-height: 850px;
+  height: auto;
+  overflow: hidden;
 
-    display: flex;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  z-index: -1;
 `;
 
-export const Header = styled.header`
-  width: 100%;
-  height: 110px;
+export const ContainerPerfilConteudo = styled.div`
+  width: 1300px;
+  min-height: 800px;
+  height: auto;
+  overflow: hidden;
 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  padding: 45px;
+  border-top: solid 2px var(--primaryPurple);
+  border-left: solid 2px var(--primaryPurple);
+  border-right: solid 2px var(--primaryPurple);
 
-  background-image: linear-gradient(to left, black, var(--primaryPurple), black);
+  align-self: center;
+`;
 
-  > p {
-      color: white;
-      font-weight: bold;
+export const PerfilInfoUsuario = styled.div`
+  width: 30%;
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
 
-      font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--greyTerciary);
+  a {
+    color: black;
   }
 `;
 
 export const InformacoesUsuario = styled.div`
-  min-width: 120px;
-  max-width: 500px;
-  width: auto;
-  overflow: hidden;
-  min-height: 120px;
-  height: auto;
+  width: 100%;
+  height: 140px;
 
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  margin-bottom: 50px;
 
-  margin-top: 120px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+
+  display: flex;
+`;
+
+export const ImageUsuario = styled.div`
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
 
   > img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 
     border-radius: 50%;
-    border: solid 4px white;
-    box-shadow: 2px 5px 30px black;
+  }
+`;
 
-    margin-bottom: 5px;
+export const TextInfos = styled.div`
+  width: 100%;
+  height: 35px;
+
+  margin-top: 30px;
+  margin-left: 8px;
+
+  > span {
+    font-weight: bold;
+
+    color: black;
+    font-size: 18px;
+  }
+`;
+
+export const MenuLateral = styled.div`
+  width: 100%;
+  min-height: 200px;
+  height: auto;
+  overflow: hidden;
+
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  margin-bottom: 200px;
+
+  display: flex;
+  flex-direction: column;
+
+  > ul > li {
+    display: flex;
+    margin-bottom: 40px;
+
+    :hover {
+      cursor: pointer;
+    }
+
+    > p {
+      margin-top: 20px;
+
+      text-align: left;
+      color: var(--primaryPurple);
+      font-weight: bold;
+    }
+
+    > img {
+      width: 50px;
+      height: 50px;
+
+      margin-right: 10px;
+    }
+  }
+`;
+
+export const EditarPerfil = styled.div`
+  width: 100%¨;
+  height: 25px;
+
+  text-align: center;
+  justify-content: center;
+
+  display: flex;
+
+  > img {
+    width: 20px;
+    height: 20px;
+
+    margin-right: 5px;
   }
 
   > p {
-      font-size: 20px;
-      font-family: 'Roboto';
+    font-family: 'Roboto';
+    line-height: 22px;
+    font-size: 17px;
   }
+`;
 
-  > input {
-      width: 100px;
-      height: 20px;
+export const Conteudo = styled.div`
+  width: 70%;
+  height: inherit;
 
-    margin-top: 5px;
+  padding-top: 45px;
 
-      background-color: var(--primaryPurple);
-      color: white;
-      font-weight: bold;
+  > h3 {
+    margin-bottom: 20px;
+    margin-left: 42px;
 
-      border-radius: 4px 4px 4px 4px;
-      border: solid 2px var(--primaryPurple);
+    color: var(--primaryPurple);
+
+    > span {
+      color: var(--primaryPurple);
 
       :hover {
-          cursor: pointer;
-          background-color: #312182;
+        cursor: pointer;
       }
-  }
-`;
-
-export const Logo = styled.div`
-    width: 150px;
-    height: 60px;
-
-    > img {
-        width: 150px;
-        height: 60px;
     }
-`;
-
-export const ContainerConteudo = styled.div`
-    width: 100%;
-    min-height: 700px;
-    height: auto;
-    overflow: hidden;
-
-    align-items: center;
-    margin-bottom: 50px;
-
-    display: flex;
-    z-index: -1;
-`;
-
-export const Perfil = styled.div`
-    width: 1300px;
-    min-height: 500px;
-    height: auto;
-    overflow: hidden;
-    /* background-color: red; */
-
-    margin-top: 150px;
-    margin-left: 200px;
-
-    display: grid;
-    grid-template-columns: 70% 30%;
-
-    /* display: flex; */
+  }
 `;
 
 export const Grupos = styled.div`
-    border-right: solid 3px var(--primaryPurple);
+  width: 100%;
+  height: 25%;
 
-    > h3 {
-        color: var(--primaryPurple);
-    }
+  margin-bottom: 50px;
 
-    display: flex;
+  display: flex;
 `;
 
-export const GruposComponents = styled.div`
-    width: 80%;
-    min-height: 500px;
-    height: auto;
-    overflow: hidden;
+export const Agrupamento = styled.div`
+  width: 92%;
+  height: 200px;
 
-    margin-top: 40px;
+  padding-right: 5px;
+`;
+
+export const AgrupamentoAnotacoes = styled.div`
+  width: 92%;
+  height: 80px;
+
+  padding-right: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  // display:table-cell;
+`;
+
+export const ComponentGrupo = styled.div`
+    width: 200px;
+    height: 200px;
+
+    padding: 5px;
+    margin-left: 5px;
+
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    /* // display:table-cell; USE PRA FAZER A RESPONSIVIDADE, TONTA! */
-    align-self: center;
-`;
-
-export const GruposIndividuais = styled.div`
-    width: 230px;
-    height: 260px;
-
-    padding: 7px;
-    margin: 35px;
-    display: flex;
-    // align-items: center;
     flex-direction: column;
 
-    // background-color: white;
+    box-shadow: 8px 5px 30px black;
 
-    /* // background-image: linear-gradient(to top, black, #120456, var(--primaryPurple), #120456, black); */
-    background-color: white;
-    box-shadow: 2px 2px 10px black;
-
-    > p {
-        padding: 20px;
-        text-align: center;
-        font-weight: bold;
-    }
-`;
-
-export const ConfiguracaoGrupos = styled.div`
-    width: 18px;
-    height: 18px;
-
-    align-self: right;
-    position: relative; 
-    right: 10px; 
-    left: 200px;
-
-    :hover {
-        cursor: pointer;
-    }
-
+    text-align: center;
     > img {
-        width: 18px;
-        height: 18px;
-        align-self: right;
+        width: 20px;
+        height: 20px;
+
+        margin-left: 170px;
 
         :hover {
-            cursor: pointer;
+          cursor: pointer;
         }
+    }
+
+    > p {
+        color: var(--primaryPurple);
+        font-weight: bold;
     }
 `;
 
 export const ImageGrupo = styled.div`
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 
-    margin-top: 30px;
-    margin-bottom: 20px;
-    align-self: center;
-    margin-bottom: 35px;
+    margin-top: 15px;
 
-    border-radius: 10px;
+    border-radius: 15px 15px 15px 15px;
     background-color: var(--primaryGreenWater);
 
+    line-height: 80px;
+    margin-bottom: 20px;
+
     > p {
-        text-align: center;
-        color: white;
         font-weight: bold;
-        line-height: 70px;
+        color: white;
     }
 `;
-export const ImageGrupo2 = styled.div`
-    width: 70px;
-    height: 70px;
 
-    margin-top: 30px;
-    margin-bottom: 20px;
-    align-self: center;
-    margin-bottom: 35px;
+export const ButtonAvancarGrupos = styled.div`
+    width: 4%;
+    height: 200px;
 
-    border-radius: 10px;
-    background-color: #E1A0EC;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 
-    > p {
-        text-align: center;
-        color: white;
-        font-weight: bold;
-        line-height: 70px;
+    :hover {
+      background-color: var(--greyQuaternary);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+`;
+
+export const ButtonAvancarAnotacoes = styled.div`
+    width: 4%;
+    height: 80px;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    line-height: 10px;
+
+    :hover {
+      background-color: var(--greyQuaternary);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    > img {
+      width: 20px;
+      height: 20px;
     }
 `;
 
 export const Anotacoes = styled.div`
-    text-align: center;
+  width: 100%;
+  height: 25%;
 
-    padding-left: 50px;
-    padding-right: 50px;
-
-    > h3 {
-        color: var(--primaryPurple);
-        margin-bottom: 47px;
-    }
+  display: flex;
 `;
 
-export const ItensAnotacoes = styled.div`
-    width: 100%;
-    height: 50px;
+export const ComponentAnotacoes= styled.div`
+    width: 200px;
+    height: 35px;
+
+    margin-left: 5px;
 
     display: flex;
     text-align: center;
-    padding-left: 10px;
-    margin-bottom: 35px;
-
-    background-color: #84F44F;
-
-    > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
-    }
-
-    > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
-
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
-
-export const ItensAnotacoes1 = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    text-align: center;
-    padding-left: 10px;
-    margin-bottom: 35px;
-
-    background-color: #1F1456;
-
-    > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
-    }
-
-    > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
-
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
-
-export const ItensAnotacoes2 = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    text-align: center;
-    padding-left: 10px;
-    margin-bottom: 35px;
-
-    background-color: #E1A0EC;
-
-    > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
-    }
-
-    > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
-
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
-
-export const ItensAnotacoes3 = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    text-align: center;
-    padding-left: 10px;
-    margin-bottom: 35px;
-
-    background-color: #4ADDA9;
-
-    > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
-    }
-
-    > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
-
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
-
-export const ItensAnotacoes4 = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    text-align: center;
-    padding-left: 10px;
-    margin-bottom: 35px;
-
-    background-color: #0085FF;
-
-    > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
-    }
-
-    > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
-
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
-
-export const ItensAnotacoes5 = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    text-align: center;
-    padding-left: 10px;
-    margin-bottom: 35px;
-
-    background-color: #F6F05C;
-
-    > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
-    }
-
-    > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
-
-        :hover {
-            cursor: pointer;
-        }
-    }
-`;
-
-export const ItensAnotacoes6 = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    text-align: center;
-    padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
 
     background-color: #DD4A88;
 
     > p {
-        align-self: center;
-        font-weight: bold;
-        color: white;
-        // line-height: 50px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      font-size: 15px;
     }
 
     > img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-        position: relative; 
-        right: 0px; 
-        left: 90px;
+      width: 17px;
+      height: 17px;
 
-        :hover {
-            cursor: pointer;
-        }
+      // margin-right: -100px;
+
+      margin-left: 90px;
+
+      :hover {
+        cursor: pointer;
+      }
     }
 `;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const Footer = styled.footer`
-    width: 100%;
-    height: 70px;
+  width: 100%;
+  height: 100px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    // background-color: var(--primaryPurple);
-    background-color: var(--greyTerciary);
+  background-color: var(--primaryPurple);
 
-    > p {
-        width: 250px;
+  > p {
+    width: 250px;
 
-        text-align: center;
-        // color: white;
-        font-weight: bold;
+    text-align: center;
+    font-weight: bold;
 
-        font-size: 16px;
-    }
+    color: white;
+
+    font-size: 16px;
+  }
+`;
+
+export const Logo = styled.div`
+  width: 150px;
+  height: 60px;
+
+  align-self: flex-end;
+
+  > img {
+    width: 150px;
+    height: 60px;
+  }
 `;

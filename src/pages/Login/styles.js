@@ -1,8 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
+import px2vw from '../../utils/px2vw';
 // import px2vw from "../../utils/px2vw";
 
-// Animação da abertura da aplicação
+// Animação da abertura da aplicação]
 const loginAnimation = keyframes`
     0%{
         top: -250px;
@@ -18,32 +19,37 @@ const loginAnimation = keyframes`
 `;
 
 export const Overlay = styled.div`
-  width: 100%;
-  max-width: 100vw;
-  height: 100vh;
-
-  background-color: var(--primaryPurple);
-
-  // background-image: linear-gradient(to top, var(--primaryPurple), #453D70); 
+  max-width: 100%;
 
   display: flex; 
   justify-content: center;
   align-items: center;
+
+  background-color: var(--primaryPurple);
 `;
 
 export const Container = styled.div`
   animation: ${loginAnimation} 0.5s;
 
   width: 1100px;
+  max-width: 100%;
   min-height: 500px;
   height: auto;
   overflow: hidden;
-  // display: grid;
-  // grid-template-columns: 50% 50%;
+  display: flex;
+  flex-wrap: nowrap;
+
+  // position: relative;
+
+  background-color: var(--primary-purple);
 
   @media (min-width: 1024px) {
     flex-wrap: nowrap;
   }
+
+    // @media (min-width: 768px) {
+    //   display:table-cell;
+    // }
 `;
 
 export const Logo = styled.div`
@@ -62,9 +68,7 @@ export const Logo = styled.div`
 
 export const LoginEnter = styled.div`
   width: 50%;
-  min-height: 625px;
-  height: auto;
-  overflow: hidden;
+  height: 625px;
 
   padding: 58px;
   padding-top: 30px;
@@ -72,8 +76,9 @@ export const LoginEnter = styled.div`
   background-color: white;
   border: solid 2px var(--primaryPurple);
 
+  // position: relative;
+
   flex-direction: column;
-  float: left;
 `;
 
 
@@ -91,6 +96,21 @@ export const ApresentacaoEmpresa = styled.div`
 
   color: var(--primaryPurple);
   font-size: 25px;
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(470)};
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    width: ${px2vw(450)};
+  }
+
+  @media (min-width: 360px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(450)};
+  }
 `;
 
 export const BoasVindas = styled.div`
@@ -105,17 +125,32 @@ export const BoasVindas = styled.div`
 
   margin-bottom: 20px;
 
-  
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(450)};
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(450)};
+  }
+
+  @media (min-width: 360px) {
+    flex-wrap: nowrap;
+    text-align: center;
+    // background-color: red;
+  }
 `;
 
 export const InputsLogin = styled.form`
-  width: 70%;
+  max-width: 80%;
   min-height: 45px;
   height: auto;
   overflow: hidden;
   position: relative;
 
   margin-top: 28px;
+  // background-color: red;
 
   > p {
     margin-top: 10px;
@@ -135,6 +170,26 @@ export const InputsLogin = styled.form`
     padding-left: 25px;
 
     border: solid 1px var(--primaryPurple);
+  }
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(500)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(500)};
+    min-height: ${px2vw(100)};
+    height: 100%;
+  }
+
+  @media (min-width: 360px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(600)};
+    margin-left: -30px;
   }
 `;
 
@@ -173,8 +228,6 @@ export const RedefinirSenha = styled.div`
 
   margin-top: -10px;
 
-  float: right;
-
   > a {
     color: black;
 
@@ -212,13 +265,15 @@ export const InputLogar = styled.button`
 `;
 
 export const TextCadastro = styled.div`
-  width: 70%;
+  width: 100%;
   margin-top: 5px;
 
   text-align: center;
   font-size: 13px;
   font-weight: bold;
   word-spacing: 1px;
+  
+  align-self: unsafe-center;
 
   > p {
     cursor: not-allowed;
@@ -235,6 +290,8 @@ export const GifImages = styled.div`
   width: 50%;
   height: 100vh;
 
+  // background-color: red;
+
   // align-items: center;
   // justify-content: center
   // display: inline-block;
@@ -242,8 +299,6 @@ export const GifImages = styled.div`
   min-height: 500px;
   height: auto;
   overflow: hidden;
-
-  float: right;
 `;
 
 export const GifImageLogin = styled.div`
