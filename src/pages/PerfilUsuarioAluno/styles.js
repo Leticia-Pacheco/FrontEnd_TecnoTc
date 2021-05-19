@@ -188,7 +188,7 @@ export const AgrupamentoAnotacoes = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  // display:table-cell;
+  /* // display:table-cell; */
 `;
 
 export const ComponentGrupo = styled.div`
@@ -211,31 +211,11 @@ export const ComponentGrupo = styled.div`
 
         margin-left: 170px;
     }
-
-<<<<<<< HEAD
-    padding: 5px;
-    margin-left: 30px;
-
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    text-align: center;
-    > img {
-        width: 20px;
-        height: 20px;
-
-        margin-left: 170px;
-    }
-
-=======
->>>>>>> 1b389d8db6f3efaf8cef1770580481a7f4de9f96
     > p {
         color: var(--primaryPurple);
         font-weight: bold;
     }
-<<<<<<< HEAD
-`;
+  `;
 
 export const ImageGrupo = styled.div`
     width: 80px;
@@ -246,26 +226,6 @@ export const ImageGrupo = styled.div`
     border-radius: 15px 15px 15px 15px;
 
     background-color: blue;
-
-    line-height: 80px;
-    margin-bottom: 20px;
-
-    > p {
-        font-weight: bold;
-        color: white;
-    }
-=======
->>>>>>> 1b389d8db6f3efaf8cef1770580481a7f4de9f96
-`;
-
-export const ImageGrupo = styled.div`
-    width: 80px;
-    height: 80px;
-
-    margin-top: 15px;
-
-    border-radius: 15px 15px 15px 15px;
-    background-color: var(--primaryGreenWater);
 
     line-height: 80px;
     margin-bottom: 20px;
@@ -350,7 +310,7 @@ export const ComponentAnotacoes= styled.div`
       width: 17px;
       height: 17px;
 
-      // margin-right: -100px;
+      margin-right: -100px;
 
       margin-left: 90px;
     }

@@ -12,15 +12,12 @@ import {
   Grupos,
   ComponentGrupo,
   ImageGrupo,
-<<<<<<< HEAD
-=======
-  Agrupamento,
   ButtonAvancarGrupos,
-  ButtonAvancarAnotacoes,
+  Agrupamento,
   Anotacoes,
-  ComponentAnotacoes,
+  ButtonAvancarAnotacoes,
   AgrupamentoAnotacoes,
->>>>>>> 1b389d8db6f3efaf8cef1770580481a7f4de9f96
+  ComponentAnotacoes,
 } from './styles';
 import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
