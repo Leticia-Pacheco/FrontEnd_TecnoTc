@@ -40,13 +40,16 @@ function Login() {
     e.preventDefault();
     try {
       const response = await api.post('/login', login);
-      console.log(response.data);
 
       signIn(response.data);
-      if (response.data.user.userRole === "student")
+
+      if (response.data.user.userRole === "student") {
         history.push('/profilestudent');
-      else
+      } 
+      else {
         history.push('/profileteacher');
+      }
+        
 
     } catch (error) {
       console.error(error);

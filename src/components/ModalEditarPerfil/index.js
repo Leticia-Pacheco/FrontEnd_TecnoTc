@@ -15,21 +15,25 @@ function EditProfile() {
         repeatNewPassword: '',
     });
 
+    const validPassword = () =>
+        editPerfil.newPassword === editPerfil.repeatNewPassword;
+
     const handleSubmit = async (e) => {
-        
+
+        if (!validPassword()) return alert('As senhas precisam ser iguais!');
+
         e.preventDefault();
 
         try {
 
-            let user = getUser();
-            console.log(user.token);
+            const user = await getUser();
 
             let userRoute;
 
-            if(user.userRole === "teacher")
+            if (user.userRole === "teacher")
                 userRoute = "teachers"
             else
-                userRoute = "students"    
+                userRoute = "students"
 
             const response = await api.put(`/${userRoute}`, {
                 name: editPerfil.name,
@@ -37,9 +41,7 @@ function EditProfile() {
                 currentPassword: editPerfil.currentPassword,
                 newPassword: editPerfil.newPassword,
             });
-
-            console.log(response);
-
+            
         } catch (error) {
             console.error(error);
         }
