@@ -7,7 +7,7 @@ import {api} from '../../service/api';
 import {getUser} from '../../service/security';
 import Input from '../Input';
 
-function RecoverPassword({ handleClose }) {
+function RecoverPassword() {
 
     const history = useHistory();
 
@@ -65,7 +65,7 @@ function RecoverPassword({ handleClose }) {
 
                     <Link to="/">
                         <ButtonEnviarLink>
-                            <button onClick={handleClose}>Enviar link de recuperação</button>
+                            <button>Enviar link de recuperação</button>
                         </ButtonEnviarLink>
                     </Link>
                 </ModalRecuperarSenha>
