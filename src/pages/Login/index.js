@@ -101,13 +101,9 @@ function Login() {
                       <p>Esqueci a senha</p>
                   </Link>
                 </RedefinirSenha>
-                
-                <Link to="/profileteacher">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>
-                </Link>
-
                 <TextCadastro>
                 <p>
                   Não tem uma conta?

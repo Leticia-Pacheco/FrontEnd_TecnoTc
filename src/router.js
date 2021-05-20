@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { isSignedIn } from './service/security';
-// import ConfirmEmail from './pages/ConfirmEmail';
+import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from "./components/ModalRedefinirSenha";
@@ -37,7 +37,10 @@ function Router() {
         <Route path="/orderconfirmemail"> {/*Permissão para enviar o email de confirmação*/}
           <OrderConfirmEmail />
         </Route>
-        <Route path="/recoverpassword"> {/*Recuperar senha*/}
+        <Route path="/confirmemail"> {/*Permissão para enviar o email de confirmação*/}
+          <ConfirmEmail />
+        </Route>
+        <Route path="/recoverpassword">
           <RecoverPassword/>
         </Route>
         <Route path="/redefinepassword"> {/*Redefinir senha*/}
