@@ -46,18 +46,18 @@ function Router() {
         <Route path="/redefinepassword"> {/*Redefinir senha*/}
           <RedefinePassword/>
         </Route>
-        <Route path="/profileteacher"> {/*Perfil do professor*/}
+        <PrivateRoute path="/profileteacher"> {/*Perfil do professor*/}
           <ProfileTeacher/>
-        </Route>
-        <Route path="/profilestudent"> {/*Perfil do aluno*/}
+        </PrivateRoute>
+        <PrivateRoute path="/profilestudent"> {/*Perfil do aluno*/}
           <ProfileStudent/>
-        </Route>
+        </PrivateRoute>
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
           <ResetEmailPassword/>
         </Route>
-        <Route path="/editprofile"> {/*Editar perfil*/}
+        <PrivateRoute path="/editprofile"> {/*Editar perfil*/}
           <EditProfile/>
-        </Route>
+        </PrivateRoute>
       </Switch>
     </BrowserRouter>
   );

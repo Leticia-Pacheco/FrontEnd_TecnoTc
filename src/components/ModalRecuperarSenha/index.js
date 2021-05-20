@@ -63,11 +63,10 @@ function RecoverPassword() {
                         </Input>
                     </InserirEmail>
 
-                    <Link to="/">
-                        <ButtonEnviarLink>
+                        <ButtonEnviarLink onClick={handleSubmit}>
                             <button>Enviar link de recuperação</button>
                         </ButtonEnviarLink>
-                    </Link>
+
                 </ModalRecuperarSenha>
             </Overlay>
         </>

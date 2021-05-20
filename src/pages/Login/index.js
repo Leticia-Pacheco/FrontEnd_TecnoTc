@@ -38,13 +38,16 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await api.post('/login', login);
+      console.log(response.data);
 
       signIn(response.data);
+      if (response.data.user.userRole === "student")
+        history.push('/profilestudent');
+      else
+        history.push('/profileteacher');
 
-      history.push('/home');
     } catch (error) {
       console.error(error);
       setMessage({ title: 'Ops...', description: error.response.data.error });
@@ -63,7 +66,7 @@ function Login() {
         <Container>
           <LoginEnter>
             <Logo>
-              <img src={ImageLogo} alt="Logo" title="Logo"/>
+              <img src={ImageLogo} alt="Logo" title="Logo" />
             </Logo>
             <ConfirmLogin>
               <ApresentacaoEmpresa>
@@ -98,24 +101,20 @@ function Login() {
 
                 <RedefinirSenha>
                   <Link to="/recoverpassword">
-                      <p>Esqueci a senha</p>
+                    <p>Esqueci a senha</p>
                   </Link>
                 </RedefinirSenha>
-                
-                <Link to="/profileteacher">
-                  <InputLogar>
-                    <p>Login</p>
-                  </InputLogar>
-                </Link>
-
+                <InputLogar>
+                  <p>Login</p>
+                </InputLogar>
                 <TextCadastro>
-                <p>
-                  Não tem uma conta?
+                  <p>
+                    Não tem uma conta?
                   <Link to="/Register">
-                    <span> Cadastre-se!</span>
-                  </Link>
-                </p>
-              </TextCadastro>
+                      <span> Cadastre-se!</span>
+                    </Link>
+                  </p>
+                </TextCadastro>
               </InputsLogin>
             </ConfirmLogin>
           </LoginEnter>
