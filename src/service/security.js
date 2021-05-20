@@ -18,7 +18,6 @@ export const signOut = () => {
 
 export const getUser = () => {
   const student = JSON.parse(localStorage.getItem(USER_KEY));
-  console.log(student);
 
   return student;
 };

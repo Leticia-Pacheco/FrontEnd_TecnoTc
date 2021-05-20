@@ -7,6 +7,7 @@ import { api } from "../../service/api";
 import { useState } from "react";
 
 function EditProfile() {
+    
     const [editPerfil, setEditPerfil] = useState({
         email: '',
         name: '',
@@ -26,8 +27,8 @@ function EditProfile() {
 
         try {
 
-            const user = await getUser();
-
+            const user = getUser();
+            console.log(user.token);
             let userRoute;
 
             if (user.userRole === "teacher")
