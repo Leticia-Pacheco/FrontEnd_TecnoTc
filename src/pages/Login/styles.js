@@ -1,8 +1,12 @@
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
+import px2vw from '../../utils/px2vw';
+<<<<<<< HEAD
+=======
 // import px2vw from "../../utils/px2vw";
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 
-// Animação da abertura da aplicação
+// Animação da abertura da aplicação]
 const loginAnimation = keyframes`
     0%{
         top: -250px;
@@ -18,32 +22,55 @@ const loginAnimation = keyframes`
 `;
 
 export const Overlay = styled.div`
+<<<<<<< HEAD
   width: 100%;
   max-width: 100vw;
-  height: 100vh;
-
-  background-color: var(--primaryPurple);
-
-  // background-image: linear-gradient(to top, var(--primaryPurple), #453D70); 
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
+=======
+  max-width: 100%;
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 
   display: flex; 
   justify-content: center;
   align-items: center;
+
+  background-color: var(--primaryPurple);
 `;
 
 export const Container = styled.div`
   animation: ${loginAnimation} 0.5s;
 
   width: 1100px;
+  max-width: 100%;
+<<<<<<< HEAD
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+=======
   min-height: 500px;
   height: auto;
   overflow: hidden;
-  // display: grid;
-  // grid-template-columns: 50% 50%;
+  display: flex;
+  flex-wrap: nowrap;
 
-  @media (min-width: 1024px) {
+  // position: relative;
+
+  background-color: var(--primary-purple);
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
+
+  background-color: black;
+
+  @media (max-width: 1024px) {
     flex-wrap: nowrap;
+    width: 900px;
   }
+
+    /* // @media (min-width: 768px) {
+    //   display:table-cell;
+    // } */
 `;
 
 export const Logo = styled.div`
@@ -58,13 +85,23 @@ export const Logo = styled.div`
       width: 150px;
       height: 60px;
     }
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    margin-top: -10px;
+    margin-left: -30px;
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    margin-top: -10px;
+    margin-left: -35px;
+  }
 `;
 
 export const LoginEnter = styled.div`
   width: 50%;
-  min-height: 625px;
-  height: auto;
-  overflow: hidden;
+  height: 625px;
 
   padding: 58px;
   padding-top: 30px;
@@ -72,8 +109,18 @@ export const LoginEnter = styled.div`
   background-color: white;
   border: solid 2px var(--primaryPurple);
 
+<<<<<<< HEAD
+
   flex-direction: column;
-  float: left;
+
+  @media (max-width: 1024px) {
+    flex-wrap: nowrap;
+  }
+=======
+  // position: relative;
+
+  flex-direction: column;
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 `;
 
 
@@ -91,6 +138,37 @@ export const ApresentacaoEmpresa = styled.div`
 
   color: var(--primaryPurple);
   font-size: 25px;
+
+<<<<<<< HEAD
+  @media (max-width: 1024px) {
+    width: 60%;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    width: 45%;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 360px) {
+    flex-wrap: nowrap;
+=======
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(470)};
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    width: ${px2vw(450)};
+  }
+
+  @media (min-width: 360px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(450)};
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
+  }
 `;
 
 export const BoasVindas = styled.div`
@@ -105,17 +183,52 @@ export const BoasVindas = styled.div`
 
   margin-bottom: 20px;
 
-  
+<<<<<<< HEAD
+  @media (max-width: 1024px) {
+    width: 60%;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    width: 45%;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 360px) {
+    flex-wrap: nowrap;
+=======
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(450)};
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(450)};
+  }
+
+  @media (min-width: 360px) {
+    flex-wrap: nowrap;
+    text-align: center;
+    // background-color: red;
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
+  }
 `;
 
 export const InputsLogin = styled.form`
-  width: 70%;
+  max-width: 80%;
   min-height: 45px;
   height: auto;
   overflow: hidden;
   position: relative;
 
   margin-top: 28px;
+<<<<<<< HEAD
+  background-color: coral;
+  padding: 5px;
+=======
+  // background-color: red;
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 
   > p {
     margin-top: 10px;
@@ -132,15 +245,73 @@ export const InputsLogin = styled.form`
 
     font-size: 15px;
 
-    padding-left: 25px;
-
     border: solid 1px var(--primaryPurple);
+  }
+
+<<<<<<< HEAD
+  @media (max-width: 1280px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(550)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -22px;
+  }
+
+  @media (max-width: 1200px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(565)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -22px;
+  }
+
+  @media (max-width: 1100px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(640)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(600)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -15px;
+  }
+
+  @media (max-width: 768px) {
+=======
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(500)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
+    flex-wrap: nowrap;
+    width: ${px2vw(500)};
+    min-height: ${px2vw(100)};
+    height: 100%;
+  }
+
+<<<<<<< HEAD
+  @media (max-width: 360px) {
+=======
+  @media (min-width: 360px) {
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
+    flex-wrap: nowrap;
+    width: ${px2vw(600)};
+    margin-left: -30px;
   }
 `;
 
 export const IconEmail = styled(FaEnvelope)`
   position: absolute;
-  left: 3px;
+  left: 4px;
 
   font-size: 15px;
 
@@ -154,7 +325,7 @@ export const IconEmail = styled(FaEnvelope)`
 
 export const IconLock = styled(FaLock)`
   position: absolute;
-  left: 3px;
+  left: 4px;
 
   font-size: 15px;
 
@@ -172,8 +343,6 @@ export const RedefinirSenha = styled.div`
   font-weight: bold;
 
   margin-top: -10px;
-
-  float: right;
 
   > a {
     color: black;
@@ -212,13 +381,15 @@ export const InputLogar = styled.button`
 `;
 
 export const TextCadastro = styled.div`
-  width: 70%;
+  width: 100%;
   margin-top: 5px;
 
   text-align: center;
   font-size: 13px;
   font-weight: bold;
   word-spacing: 1px;
+  
+  align-self: unsafe-center;
 
   > p {
     cursor: not-allowed;
@@ -235,6 +406,8 @@ export const GifImages = styled.div`
   width: 50%;
   height: 100vh;
 
+  // background-color: red;
+
   // align-items: center;
   // justify-content: center
   // display: inline-block;
@@ -242,8 +415,6 @@ export const GifImages = styled.div`
   min-height: 500px;
   height: auto;
   overflow: hidden;
-
-  float: right;
 `;
 
 export const GifImageLogin = styled.div`
@@ -258,6 +429,25 @@ export const GifImageLogin = styled.div`
   > img {
     width: 400px;
     height: 400px;
+  }
+
+  @media (max-width: 1280px) {
+    margin-right: 275px;
+    margin-top: 120px;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    width: 180px;
+    height: 180px;
+    margin-right: 185px;
+    margin-top: 120px;
+    flex-wrap: nowrap;
+
+    > img {
+    width: 345px;
+    height: 345px;
+  }
   }
 `;
 

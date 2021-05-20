@@ -101,20 +101,27 @@ function Login() {
                       <p>Esqueci a senha</p>
                   </Link>
                 </RedefinirSenha>
+<<<<<<< HEAD
                 
+                <Link to="/profileteacher">
+=======
                 {/* <Link to="/profileteacher">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>
                 </Link> */}
+<<<<<<< HEAD
+                <Link to="/profileteacher">
+=======
                 <Link to="/profilestudent">
+>>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
+>>>>>>> 27340b00d629fa50e3f29504ea297cde387e1157
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>
                 </Link>
-              </InputsLogin>
 
-              <TextCadastro>
+                <TextCadastro>
                 <p>
                   Não tem uma conta?
                   <Link to="/Register">
@@ -122,6 +129,7 @@ function Login() {
                   </Link>
                 </p>
               </TextCadastro>
+              </InputsLogin>
             </ConfirmLogin>
           </LoginEnter>
 

@@ -188,7 +188,7 @@ export const AgrupamentoAnotacoes = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  // display:table-cell;
+  /* // display:table-cell; */
 `;
 
 export const ComponentGrupo = styled.div`
@@ -211,12 +211,11 @@ export const ComponentGrupo = styled.div`
 
         margin-left: 170px;
     }
-
     > p {
         color: var(--primaryPurple);
         font-weight: bold;
     }
-`;
+  `;
 
 export const ImageGrupo = styled.div`
     width: 80px;
@@ -225,7 +224,8 @@ export const ImageGrupo = styled.div`
     margin-top: 15px;
 
     border-radius: 15px 15px 15px 15px;
-    background-color: var(--primaryGreenWater);
+
+    background-color: blue;
 
     line-height: 80px;
     margin-bottom: 20px;
@@ -310,7 +310,7 @@ export const ComponentAnotacoes= styled.div`
       width: 17px;
       height: 17px;
 
-      // margin-right: -100px;
+      margin-right: -100px;
 
       margin-left: 90px;
     }

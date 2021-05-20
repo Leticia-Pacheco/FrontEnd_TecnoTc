@@ -13,6 +13,7 @@ export const InputsLogin = styled.div`
   > p {
     margin-top: 10px;
     margin-bottom: 5px;
+    text-align: center;
 
     color: var(--primaryPurple);
 
