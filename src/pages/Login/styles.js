@@ -1,11 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
 import px2vw from '../../utils/px2vw';
-<<<<<<< HEAD
-=======
-// import px2vw from "../../utils/px2vw";
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
-
 // Animação da abertura da aplicação]
 const loginAnimation = keyframes`
     0%{
@@ -22,15 +17,11 @@ const loginAnimation = keyframes`
 `;
 
 export const Overlay = styled.div`
-<<<<<<< HEAD
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
   height: auto;
   overflow: hidden;
-=======
-  max-width: 100%;
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 
   display: flex; 
   justify-content: center;
@@ -44,22 +35,10 @@ export const Container = styled.div`
 
   width: 1100px;
   max-width: 100%;
-<<<<<<< HEAD
   height: 100%;
   overflow: hidden;
   display: flex;
   flex-wrap: nowrap;
-=======
-  min-height: 500px;
-  height: auto;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: nowrap;
-
-  // position: relative;
-
-  background-color: var(--primary-purple);
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 
   background-color: black;
 
@@ -67,10 +46,6 @@ export const Container = styled.div`
     flex-wrap: nowrap;
     width: 900px;
   }
-
-    /* // @media (min-width: 768px) {
-    //   display:table-cell;
-    // } */
 `;
 
 export const Logo = styled.div`
@@ -109,18 +84,11 @@ export const LoginEnter = styled.div`
   background-color: white;
   border: solid 2px var(--primaryPurple);
 
-<<<<<<< HEAD
-
   flex-direction: column;
 
   @media (max-width: 1024px) {
     flex-wrap: nowrap;
   }
-=======
-  // position: relative;
-
-  flex-direction: column;
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 `;
 
 
@@ -153,21 +121,6 @@ export const ApresentacaoEmpresa = styled.div`
 
   @media (max-width: 360px) {
     flex-wrap: nowrap;
-=======
-  @media (min-width: 1024px) {
-    flex-wrap: nowrap;
-    width: ${px2vw(470)};
-  }
-
-  @media (min-width: 768px) {
-    flex-wrap: wrap;
-    width: ${px2vw(450)};
-  }
-
-  @media (min-width: 360px) {
-    flex-wrap: nowrap;
-    width: ${px2vw(450)};
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
   }
 `;
 
@@ -183,7 +136,6 @@ export const BoasVindas = styled.div`
 
   margin-bottom: 20px;
 
-<<<<<<< HEAD
   @media (max-width: 1024px) {
     width: 60%;
     flex-wrap: nowrap;
@@ -196,22 +148,6 @@ export const BoasVindas = styled.div`
 
   @media (max-width: 360px) {
     flex-wrap: nowrap;
-=======
-  @media (min-width: 1024px) {
-    flex-wrap: nowrap;
-    width: ${px2vw(450)};
-  }
-
-  @media (min-width: 768px) {
-    flex-wrap: nowrap;
-    width: ${px2vw(450)};
-  }
-
-  @media (min-width: 360px) {
-    flex-wrap: nowrap;
-    text-align: center;
-    // background-color: red;
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
   }
 `;
 
@@ -223,12 +159,11 @@ export const InputsLogin = styled.form`
   position: relative;
 
   margin-top: 28px;
-<<<<<<< HEAD
+
   background-color: coral;
   padding: 5px;
-=======
+
   // background-color: red;
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
 
   > p {
     margin-top: 10px;
@@ -248,7 +183,6 @@ export const InputsLogin = styled.form`
     border: solid 1px var(--primaryPurple);
   }
 
-<<<<<<< HEAD
   @media (max-width: 1280px) {
     flex-wrap: nowrap;
     width: ${px2vw(550)};
@@ -282,27 +216,13 @@ export const InputsLogin = styled.form`
   }
 
   @media (max-width: 768px) {
-=======
-  @media (min-width: 1024px) {
-    flex-wrap: nowrap;
-    width: ${px2vw(500)};
-    min-height: ${px2vw(300)};
-    height: 100%;
-  }
-
-  @media (min-width: 768px) {
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
     flex-wrap: nowrap;
     width: ${px2vw(500)};
     min-height: ${px2vw(100)};
     height: 100%;
   }
 
-<<<<<<< HEAD
-  @media (max-width: 360px) {
-=======
   @media (min-width: 360px) {
->>>>>>> 7d2fca5298211320acb3f3388069b25e24520584
     flex-wrap: nowrap;
     width: ${px2vw(600)};
     margin-left: -30px;
