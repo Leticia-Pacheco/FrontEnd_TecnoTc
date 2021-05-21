@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { isSignedIn } from './service/security';
-// import ConfirmEmail from './pages/ConfirmEmail';
+import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from "./components/ModalRedefinirSenha";
@@ -39,24 +39,27 @@ function Router() {
         <Route path="/orderconfirmemail"> {/*Permissão para enviar o email de confirmação*/}
           <OrderConfirmEmail />
         </Route>
-        <Route path="/recoverpassword"> {/*Recuperar senha*/}
+        <Route path="/confirmemail"> {/*Permissão para enviar o email de confirmação*/}
+          <ConfirmEmail />
+        </Route>
+        <Route path="/recoverpassword">
           <RecoverPassword/>
         </Route>
         <Route path="/redefinepassword"> {/*Redefinir senha*/}
           <RedefinePassword/>
         </Route>
-        <Route path="/profileteacher"> {/*Perfil do professor*/}
+        <PrivateRoute path="/profileteacher"> {/*Perfil do professor*/}
           <ProfileTeacher/>
-        </Route>
-        <Route path="/profilestudent"> {/*Perfil do aluno*/}
+        </PrivateRoute>
+        <PrivateRoute path="/profilestudent"> {/*Perfil do aluno*/}
           <ProfileStudent/>
-        </Route>
+        </PrivateRoute>
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
           <ResetEmailPassword/>
         </Route>
-        <Route path="/editprofile"> {/*Editar perfil*/}
+        <PrivateRoute path="/editprofile"> {/*Editar perfil*/}
           <EditProfile/>
-        </Route>
+        </PrivateRoute>
         <Route path="/creategroups"> {/*Criar grupos*/}
           <CreateGroups/>
         </Route>

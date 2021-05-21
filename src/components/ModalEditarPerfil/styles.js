@@ -108,7 +108,7 @@ export const Logo = styled.div`
     }
 `;
 
-export const EditarDados = styled.div`
+export const EditarDados = styled.form`
     width: 100%;
     min-height: 500px;
     height: auto;
@@ -131,6 +131,7 @@ export const EditarDados = styled.div`
 
         background-color: var(--primaryGreenWater);
         border: solid 2px var(--primaryGreenWater);
+        cursor: pointer;
 
         color: white;
         font-weight: bold;

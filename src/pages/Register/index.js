@@ -149,11 +149,10 @@ function Register() {
           />
           <IconLock />
           
-          <Link to="orderconfirmemail">
             <InputCadastrar disabled={buttonDisabled()}>
               <p>Cadastrar</p>
             </InputCadastrar>
-          </Link>
+             
         </FormRegister>
 
         <TextLogin>
