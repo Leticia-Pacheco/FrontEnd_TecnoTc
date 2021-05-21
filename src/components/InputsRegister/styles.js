@@ -29,11 +29,11 @@ export const FormRegister = styled.form`
 
 export const IconUsuary = styled(FaUserAlt)`
   position: absolute;
-  left: 535px;
+  margin-left: 5px;
 
   font-size: 15px;
 
-  margin-top: 10px;
+  margin-top: -36px;
 
   color: var(--primaryPurple);
 
@@ -41,12 +41,12 @@ export const IconUsuary = styled(FaUserAlt)`
 `;
 
 export const IconEmail = styled(FaEnvelope)`
-  position: absolute;
-  left: 535px;
+position: absolute;
+  margin-left: 5px;
 
   font-size: 15px;
 
-  margin-top: 10px;
+  margin-top: -36px;
 
   color: var(--primaryPurple);
 
@@ -55,11 +55,11 @@ export const IconEmail = styled(FaEnvelope)`
 
 export const IconLock = styled(FaLock)`
   position: absolute;
-  left: 535px;
+  margin-left: 5px;
 
   font-size: 15px;
 
-  margin-top: 10px;
+  margin-top: -36px;
 
   color: var(--primaryPurple);
 

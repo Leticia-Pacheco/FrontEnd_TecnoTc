@@ -11,16 +11,46 @@ import {
   EditarPerfil,
   Grupos,
   ComponentGrupo,
+  ImageGrupo,
+  ButtonAvancarGrupos,
+  Agrupamento,
+  Anotacoes,
+  ButtonAvancarAnotacoes,
+  AgrupamentoAnotacoes,
+  ComponentAnotacoes,
 } from './styles';
-import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_professor.jpg';
+import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
 import ImageChats from '../../assets/ImagesPerfis/chats.png';
 import ImageLogout from '../../assets/ImagesPerfis/sair.png';
 import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
+import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
+import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
+import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
+import { Link } from 'react-router-dom';
+import { api } from '../../service/api';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function ProfileStudent() {
+
+  const [perfil, setPerfil] = useState({});
+
+  const loadPerfilInfo = async (reload) => {
+    //se já tiver buscando, não busca de novo
+    const response = await api.get("/students");
+    console.log(response.data);
+    setPerfil(response.data.Student);
+
+  };
+
+  useEffect(() => {
+      loadPerfilInfo();
+
+  }, []);
+
   return (
     <>
       <Container>
@@ -29,14 +59,14 @@ function ProfileStudent() {
             <InformacoesUsuario>
               <ImageUsuario>
                 <img
-                  src={ImgUsuarioAluno}
+                  src={perfil.profileImage || ImgUsuarioAluno}
                   alt="Foto de perfil do usuário"
                   title="Foto de perfil do usuário"
                 />
               </ImageUsuario>
               <TextInfos>
-                <span>Larissa Pacheco</span>
-                <p>Senai Prof Vicente Amato | Jandira</p>
+                <span>{perfil.name}</span>
+                <p>Senai José Ephim Mindlin | Jandira</p>
               </TextInfos>
             </InformacoesUsuario>
 
@@ -93,24 +123,68 @@ function ProfileStudent() {
               </ul>
             </MenuLateral>
 
-            <EditarPerfil>
-              <img
-                src={Configuracoes}
-                alt="Configurações do perfil"
-                title="Configurações do perfil"
-              />
-              <p>Editar perfil</p>
-            </EditarPerfil>
+            <Link to="/editprofile">
+              <EditarPerfil>
+                <img
+                  src={Configuracoes}
+                  alt="Configurações do perfil"
+                  title="Configurações do perfil"
+                />
+                <p>Editar perfil</p>
+              </EditarPerfil>
+            </Link>
           </PerfilInfoUsuario>
 
           <Conteudo>
-              <Grupos>
-                  <h3>Meus grupos</h3>
+            <h3>Meus grupos</h3>
+            <Grupos>
+              <ButtonAvancarGrupos>
+                <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+              </ButtonAvancarGrupos>
+              <Agrupamento>
 
-                  <ComponentGrupo>
-                      <img src={Configuracoes}/>
-                  </ComponentGrupo>
-              </Grupos>
+                <ComponentGrupo>
+                  <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                  <ImageGrupo>
+                    <p>DS</p>
+                  </ImageGrupo>
+                  <p>Desenvolvimento de sistemas</p>
+                </ComponentGrupo>
+
+              </Agrupamento>
+              <ButtonAvancarGrupos>
+                <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+              </ButtonAvancarGrupos>
+            </Grupos>
+            <h3>Anotações +</h3>
+            <Anotacoes>
+              <ButtonAvancarAnotacoes>
+                <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+              </ButtonAvancarAnotacoes>
+              <AgrupamentoAnotacoes>
+
+                <ComponentAnotacoes>
+                  <p>03-11-2020</p>
+                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
+                </ComponentAnotacoes>
+                <ComponentAnotacoes>
+                  <p>03-11-2020</p>
+                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
+                </ComponentAnotacoes>
+                <ComponentAnotacoes>
+                  <p>03-11-2020</p>
+                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
+                </ComponentAnotacoes>
+                <ComponentAnotacoes>
+                  <p>03-11-2020</p>
+                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
+                </ComponentAnotacoes>
+              </AgrupamentoAnotacoes>
+
+              <ButtonAvancarAnotacoes>
+                <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+              </ButtonAvancarAnotacoes>
+            </Anotacoes>
           </Conteudo>
         </ContainerPerfilConteudo>
       </Container>

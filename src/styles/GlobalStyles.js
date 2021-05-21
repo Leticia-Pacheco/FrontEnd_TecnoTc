@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import px2vw from '../utils/px2vw';
 
 export const GlobalStyles = createGlobalStyle`
     *{
@@ -23,8 +24,18 @@ export const GlobalStyles = createGlobalStyle`
         --grey: #4F4F4F;
         --greySecondary: #B8B8B8;
         --greyTerciary: #DEE4E4;
-        --greyProfile: #F1F0F0;
+        --greyQuaternary: #F1F0F0;
         --light: #EDF2F4;
+
+        // font-size: ${px2vw(24)};
+
+        @media (min-width: 768px) {
+            font-size: ${px2vw(18)};
+        }
+
+        @media (min-width: 1024px) {
+            font-size: ${px2vw(16)};
+        }
     }
 
     /* A scrollbar num todo, tamanho, cores e afins */
@@ -48,9 +59,9 @@ export const GlobalStyles = createGlobalStyle`
     html, body {
         max-height: 100vh;
         max-width: 100vw;
-/* 
+ 
         width: 100%;
-        height: 100%; */
+        height: 100%;
     }
 
     span {

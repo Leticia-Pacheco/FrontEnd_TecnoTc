@@ -129,7 +129,7 @@ export const OpcaoNivelUsuario = styled.button`
     height: 80px;
 
     margin: 0px;
-    border: solid 2px var(--primaryPurple);
+
     border-radius: 100px 100px 100px 100px;
 
     :hover {
@@ -160,7 +160,6 @@ export const InputCadastrar = styled.button`
   > p {
     color: white;
     font-size: 16px;
-
     font-weight: bold;
   }
 
@@ -182,6 +181,4 @@ export const TextLogin = styled.div`
   :hover {
     cursor: pointer;
   }
-
 `;
-

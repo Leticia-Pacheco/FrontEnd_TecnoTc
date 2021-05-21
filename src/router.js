@@ -4,13 +4,16 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { isSignedIn } from './service/security';
-// import ConfirmEmail from './pages/ConfirmEmail';
+import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
-import RecuperarSenha from './components/ModalRecuperarSenha';
-import RedefinirSenha from "./components/ModalRedefinirSenha";
-import PerfilProfessor from "./pages/PerfilUsuarioProf";
-import PerfilAluno from "./pages/PerfilUsuarioAluno";
-import RedefinirSenhaEmail from "./components/ModalRedefinirSenha";
+import RecoverPassword from './components/ModalRecuperarSenha';
+import RedefinePassword from "./components/ModalRedefinirSenha";
+import ProfileTeacher from "./pages/PerfilUsuarioProf";
+import ProfileStudent from "./pages/PerfilUsuarioAluno";
+import ResetEmailPassword from "./components/RedefinirSenhaEmail";
+import EditProfile from "./components/ModalEditarPerfil";
+import CreateGroups from "./components/ModalCriarGrupos";
+import CreateAnotacoes from "./components/ModalCriarAnotacoes";
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -33,24 +36,36 @@ function Router() {
         <PrivateRoute path="/home">
           <Home />
         </PrivateRoute>
-        <Route path="/orderconfirmemail">
+        <Route path="/orderconfirmemail"> {/*Permissão para enviar o email de confirmação*/}
           <OrderConfirmEmail />
         </Route>
-        <Route path="/recuperarsenha">
-          <RecuperarSenha/>
+        <Route path="/confirmemail"> {/*Permissão para enviar o email de confirmação*/}
+          <ConfirmEmail />
         </Route>
-        <Route path="/redefinirsenha">
-          <RedefinirSenha/>
+        <Route path="/recoverpassword">
+          <RecoverPassword/>
         </Route>
-        <Route path="/perfilprofessor">
-          <PerfilProfessor/>
+        <Route path="/redefinepassword"> {/*Redefinir senha*/}
+          <RedefinePassword/>
         </Route>
-        <Route path="/perfilaluno">
-          <PerfilAluno/>
+        <PrivateRoute path="/profileteacher"> {/*Perfil do professor*/}
+          <ProfileTeacher/>
+        </PrivateRoute>
+        <PrivateRoute path="/profilestudent"> {/*Perfil do aluno*/}
+          <ProfileStudent/>
+        </PrivateRoute>
+        <Route path="/resetemailpassword"> {/*Redefinir senha*/}
+          <ResetEmailPassword/>
         </Route>
-        <Route path="/redefinirsenhaemail">
-          <RedefinirSenhaEmail/>
-        </Route>       
+        <PrivateRoute path="/editprofile"> {/*Editar perfil*/}
+          <EditProfile/>
+        </PrivateRoute>
+        <Route path="/creategroups"> {/*Criar grupos*/}
+          <CreateGroups/>
+        </Route>
+        <Route path="/createanotacoes"> {/*Criar grupos*/}
+          <CreateAnotacoes/>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

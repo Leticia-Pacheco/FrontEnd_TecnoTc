@@ -1,12 +1,12 @@
-import { ContainerModal, Overlay, Header, MensagemUsuario, InserirNovaSenha, ButtonRedefinirSenha } from "./styles";
+import { ModalRedefinirSenha, Overlay, Header, MensagemUsuario, InserirNovaSenha, ButtonRedefinirSenha } from "./styles";
 import Logo from "../../assets/logos/logo_fundo_roxo_png.png";
 import { Link } from "react-router-dom";
 
-function RedefinirSenha () {
+function RedefinePassword () {
     return(
         <>
             <Overlay>
-                <ContainerModal>
+                <ModalRedefinirSenha>
                     <Header>
                         <img src={Logo} alt="Logo" title="Logo"/>
                     </Header>
@@ -30,10 +30,10 @@ function RedefinirSenha () {
                             <button>Redefinir senha</button>
                         </ButtonRedefinirSenha>
                     </Link>
-                </ContainerModal>
+                </ModalRedefinirSenha>
             </Overlay>
         </>
     );
 }
 
-export default RedefinirSenha;
+export default RedefinePassword;

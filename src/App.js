@@ -4,6 +4,7 @@ import Router from './router';
 function App() {
   return (
     <>
+      <title>TecnoTc</title>
       <GlobalStyles />
       <Router />
     </>

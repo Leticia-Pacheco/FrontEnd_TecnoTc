@@ -1,8 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
-// import px2vw from "../../utils/px2vw";
-
-// Animação da abertura da aplicação
+import px2vw from '../../utils/px2vw';
+// Animação da abertura da aplicação]
 const loginAnimation = keyframes`
     0%{
         top: -250px;
@@ -20,29 +19,30 @@ const loginAnimation = keyframes`
 export const Overlay = styled.div`
   width: 100%;
   max-width: 100vw;
-  height: 100vh;
-
-  background-color: var(--primaryPurple);
-
-  // background-image: linear-gradient(to top, var(--primaryPurple), #453D70); 
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
 
   display: flex; 
   justify-content: center;
   align-items: center;
+
+  background-color: var(--primaryPurple);
 `;
 
 export const Container = styled.div`
   animation: ${loginAnimation} 0.5s;
 
   width: 1100px;
-  min-height: 500px;
-  height: auto;
+  max-width: 100%;
+  height: 100%;
   overflow: hidden;
-  // display: grid;
-  // grid-template-columns: 50% 50%;
+  display: flex;
+  flex-wrap: nowrap;
 
-  @media (min-width: 1024px) {
+  @media (max-width: 1024px) {
     flex-wrap: nowrap;
+    width: 900px;
   }
 `;
 
@@ -58,13 +58,23 @@ export const Logo = styled.div`
       width: 150px;
       height: 60px;
     }
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    margin-top: -10px;
+    margin-left: -30px;
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    margin-top: -10px;
+    margin-left: -35px;
+  }
 `;
 
 export const LoginEnter = styled.div`
   width: 50%;
-  min-height: 625px;
-  height: auto;
-  overflow: hidden;
+  height: 625px;
 
   padding: 58px;
   padding-top: 30px;
@@ -73,7 +83,10 @@ export const LoginEnter = styled.div`
   border: solid 2px var(--primaryPurple);
 
   flex-direction: column;
-  float: left;
+
+  @media (max-width: 1024px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 
@@ -91,6 +104,22 @@ export const ApresentacaoEmpresa = styled.div`
 
   color: var(--primaryPurple);
   font-size: 25px;
+
+<<<<<<< HEAD
+  @media (max-width: 1024px) {
+    width: 60%;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    width: 45%;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 360px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 export const BoasVindas = styled.div`
@@ -105,17 +134,33 @@ export const BoasVindas = styled.div`
 
   margin-bottom: 20px;
 
-  
+  @media (max-width: 1024px) {
+    width: 60%;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    width: 45%;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 360px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 export const InputsLogin = styled.form`
-  width: 70%;
+  max-width: 80%;
   min-height: 45px;
   height: auto;
   overflow: hidden;
   position: relative;
 
   margin-top: 28px;
+
+  padding: 5px;
+
+  // background-color: red;
 
   > p {
     margin-top: 10px;
@@ -132,20 +177,63 @@ export const InputsLogin = styled.form`
 
     font-size: 15px;
 
-    padding-left: 25px;
-
     border: solid 1px var(--primaryPurple);
+  }
+
+  @media (max-width: 1280px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(550)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -22px;
+  }
+
+  @media (max-width: 1200px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(565)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -22px;
+  }
+
+  @media (max-width: 1100px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(640)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(600)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+    margin-left: -15px;
+  }
+
+  @media (max-width: 768px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(500)};
+    min-height: ${px2vw(100)};
+    height: 100%;
+  }
+
+  @media (min-width: 360px) {
+    flex-wrap: nowrap;
+    width: ${px2vw(600)};
+    margin-left: -30px;
   }
 `;
 
 export const IconEmail = styled(FaEnvelope)`
   position: absolute;
-  left: 3px;
+  left: 4px;
 
   font-size: 15px;
 
   margin-top: -35px;
-  margin-left: 3px;
+  margin-left: 4px;
 
   color: var(--primaryPurple);
 
@@ -154,7 +242,7 @@ export const IconEmail = styled(FaEnvelope)`
 
 export const IconLock = styled(FaLock)`
   position: absolute;
-  left: 3px;
+  left: 4px;
 
   font-size: 15px;
 
@@ -172,8 +260,6 @@ export const RedefinirSenha = styled.div`
   font-weight: bold;
 
   margin-top: -10px;
-
-  float: right;
 
   > a {
     color: black;
@@ -212,13 +298,15 @@ export const InputLogar = styled.button`
 `;
 
 export const TextCadastro = styled.div`
-  width: 70%;
+  width: 100%;
   margin-top: 5px;
 
   text-align: center;
   font-size: 13px;
   font-weight: bold;
   word-spacing: 1px;
+  
+  align-self: unsafe-center;
 
   > p {
     cursor: not-allowed;
@@ -235,6 +323,8 @@ export const GifImages = styled.div`
   width: 50%;
   height: 100vh;
 
+  // background-color: red;
+
   // align-items: center;
   // justify-content: center
   // display: inline-block;
@@ -242,8 +332,6 @@ export const GifImages = styled.div`
   min-height: 500px;
   height: auto;
   overflow: hidden;
-
-  float: right;
 `;
 
 export const GifImageLogin = styled.div`
@@ -258,6 +346,25 @@ export const GifImageLogin = styled.div`
   > img {
     width: 400px;
     height: 400px;
+  }
+
+  @media (max-width: 1280px) {
+    margin-right: 275px;
+    margin-top: 120px;
+    flex-wrap: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    width: 180px;
+    height: 180px;
+    margin-right: 185px;
+    margin-top: 120px;
+    flex-wrap: nowrap;
+
+    > img {
+    width: 345px;
+    height: 345px;
+  }
   }
 `;
 

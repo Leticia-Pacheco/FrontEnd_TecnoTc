@@ -1,7 +1,9 @@
 import styled, { keyframes } from "styled-components";
+import px2vw from "../../utils/px2vw";
 
 const modalAnimation = keyframes`
-    0%{
+    
+    0% {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
@@ -16,7 +18,7 @@ export const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
 
-    // opacity: 0;  
+    opacity: 1;
 
     z-index: 9;
 
@@ -42,6 +44,22 @@ export const ModalRecuperarSenha = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
+    @media (min-width: 1024px) {
+        flex-wrap: nowrap;
+        width: ${px2vw(470)};
+    }
+
+    @media (min-width: 768px) {
+        flex-wrap: wrap;
+        width: ${px2vw(450)};
+    }
+
+    @media (min-width: 360px) {
+        /* // flex-wrap: nowrap; */
+        width: ${px2vw(1000)};
+        /* // height: 100%; */
+    }
 `;
 
 export const Header = styled.div`
@@ -111,11 +129,10 @@ export const InserirEmail = styled.div`
     }
 
     > input {
-        width: 60%;
+        width: 70%;
         height: 40px;
 
         font-size: 20px;
-        padding: 5px;
 
         border-radius: 5px;
         border: solid 2px var(--primaryPurple);

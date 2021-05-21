@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   > input {
-    width: 100%;
-
+    width: 450px;
     height: 36px;
 
-    font-size: 14px;
+    font-size: 16px;
 
-    padding-left: 25px;
+    padding-left: 20px;
     margin-bottom: 10px;
 
-    border: solid 1px var(--primaryPurple);
+    border: solid 2px var(--primaryPurple);
   }
 `;

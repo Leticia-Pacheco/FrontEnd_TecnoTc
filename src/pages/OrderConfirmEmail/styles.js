@@ -12,10 +12,19 @@ const modalAnimation = keyframes`
     }
 `;
 
+export const Overlay = styled.body`
+    width: 100%;
+    height: 100vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
 export const Container = styled.div`
     animation: ${modalAnimation} 0.5s;
 
-    width: 380px;
+    width: 800px;
     max-width: 887vw;
     height: 565px;
     max-height: 100vh;
@@ -25,8 +34,8 @@ export const Container = styled.div`
     flex-direction: column;
 
     margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 
     border-radius: 25px 25px 25px 25px;
     border: solid 1px var(--primaryPurple);
@@ -42,14 +51,14 @@ export const Header = styled.div`
 
     flex-direction: column;
     align-items: center;
+ 
+    padding-top: 30px;
 
     background-color: var(--primaryPurple);
     border-radius: 25px 25px 0px 0px;
 
-    padding-top: 30px;
-
     > p {
-        Font-size: 22px;
+        font-size: 22px;
 
         color: white;
         font-weight: bold;
@@ -73,7 +82,7 @@ export const Mensagem = styled.div`
     text-align: center;
 
     > p {
-        font-size: 17px;
+        font-size: 20px;
         font-weight: bold;
 
         color: var(--grey);
@@ -84,8 +93,8 @@ export const ImageConfirmEmail = styled.div`
     width: 140px;
     height: 140px;
 
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
     > img {
         width: 140px;
@@ -94,7 +103,7 @@ export const ImageConfirmEmail = styled.div`
 `;
 
 export const ButtonConfirm = styled.div`
-    width: 300px;
+    width: 500px;
     height: 35px;
 
     border-radius: 10px 10px 10px 10px;
@@ -109,18 +118,14 @@ export const ButtonConfirm = styled.div`
 `;
 
 export const Logo = styled.div`
-    width: 115px;
-    height: 40px;
-    
-    padding-top: 11px;
+    width: 150px;
+    height: 60px;
     text-align: center;
 
-    margin-bottom: 45px;
+    margin-bottom: 30px;
 
-    background-color: var(--primaryGreenWater);
-
-    > p {
-        color: white;
-        font-size: 14px;
+    > img {
+        width: 150px;
+        height: 60px;
     }
 `;
