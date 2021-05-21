@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import styled, { keyframes } from 'styled-components';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
 import px2vw from '../../utils/px2vw';
 // Animação da abertura da aplicação]
+=======
+import styled, {keyframes} from 'styled-components';
+import {FaLock, FaEnvelope} from 'react-icons/fa';
+// import px2vw from "../../utils/px2vw";
+
+// Animação da abertura da aplicação
+>>>>>>> feature/reset_senha
 const loginAnimation = keyframes`
     0%{
         top: -250px;
@@ -261,11 +269,17 @@ export const RedefinirSenha = styled.div`
 
   margin-top: -10px;
 
+<<<<<<< HEAD
+=======
+  float: right;
+  cursor: pointer;
+
+>>>>>>> feature/reset_senha
   > a {
     color: black;
-
     :hover{
       cursor: pointer;
+      color: var(--primaryGreenWater);
       pointer-events: auto; 
     }
   }

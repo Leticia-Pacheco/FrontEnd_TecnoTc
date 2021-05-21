@@ -29,10 +29,10 @@ import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
 import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
 import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
-import { Link } from 'react-router-dom';
-import { api } from '../../service/api';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import {Link} from 'react-router-dom';
+import {api} from '../../service/api';
+import {useState} from 'react';
+import {useEffect} from 'react';
 
 function ProfileStudent() {
 
@@ -47,7 +47,7 @@ function ProfileStudent() {
   };
 
   useEffect(() => {
-      loadPerfilInfo();
+    loadPerfilInfo();
 
   }, []);
 

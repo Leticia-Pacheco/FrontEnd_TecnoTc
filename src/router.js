@@ -1,9 +1,8 @@
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home';
-
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { isSignedIn } from './service/security';
+import {isSignedIn} from './service/security';
 import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
@@ -15,8 +14,8 @@ import EditProfile from "./components/ModalEditarPerfil";
 import CreateGroups from "./components/ModalCriarGrupos";
 import CreateAnotacoes from "./components/ModalCriarAnotacoes";
 
-function PrivateRoute({ children, ...rest }) {
-  if (isSignedIn()) {
+function PrivateRoute({children, ...rest}) {
+  if(isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
   } else {
     return <Redirect to="/" />;
@@ -43,28 +42,28 @@ function Router() {
           <ConfirmEmail />
         </Route>
         <Route path="/recoverpassword">
-          <RecoverPassword/>
+          <RecoverPassword />
         </Route>
         <Route path="/redefinepassword"> {/*Redefinir senha*/}
-          <RedefinePassword/>
+          <RedefinePassword />
         </Route>
         <PrivateRoute path="/profileteacher"> {/*Perfil do professor*/}
-          <ProfileTeacher/>
+          <ProfileTeacher />
         </PrivateRoute>
         <PrivateRoute path="/profilestudent"> {/*Perfil do aluno*/}
-          <ProfileStudent/>
+          <ProfileStudent />
         </PrivateRoute>
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
-          <ResetEmailPassword/>
+          <ResetEmailPassword />
         </Route>
         <PrivateRoute path="/editprofile"> {/*Editar perfil*/}
-          <EditProfile/>
+          <EditProfile />
         </PrivateRoute>
         <Route path="/creategroups"> {/*Criar grupos*/}
-          <CreateGroups/>
+          <CreateGroups />
         </Route>
         <Route path="/createanotacoes"> {/*Criar grupos*/}
-          <CreateAnotacoes/>
+          <CreateAnotacoes />
         </Route>
       </Switch>
     </BrowserRouter>

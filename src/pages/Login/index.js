@@ -19,11 +19,11 @@ import {
 import GifColor from '../../assets/ImagesLogin/GifColor.gif';
 import ImageLogin from '../../assets/ImagesLogin/ImageLogin.gif';
 import ImageLogo from "../../assets/logos/logo_fundo_branco_png.png";
-import { Link, useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import Input from '../../components/Input';
-import { useState } from 'react';
-import { api } from '../../service/api';
-import { signIn } from '../../service/security';
+import {useState} from 'react';
+import {api} from '../../service/api';
+import {signIn} from '../../service/security';
 import Alert from '../../components/Alert';
 
 function Login() {
@@ -43,22 +43,22 @@ function Login() {
 
       signIn(response.data);
 
-      if (response.data.user.userRole === "student") {
+      if(response.data.user.userRole === "student") {
         history.push('/profilestudent');
-      } 
+      }
       else {
         history.push('/profileteacher');
       }
-        
 
-    } catch (error) {
+
+    } catch(error) {
       console.error(error);
-      setMessage({ title: 'Ops...', description: error.response.data.error });
+      setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
 
   const handleInput = (e) => {
-    setLogin({ ...login, [e.target.id]: e.target.value });
+    setLogin({...login, [e.target.id]: e.target.value});
   };
 
   return (

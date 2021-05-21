@@ -1,7 +1,7 @@
-import { Overlay, ModalRecuperarSenha, Header, ImageSenha, MensagemRecuperacaoSenha, InserirEmail, ButtonEnviarLink } from "./styles";
+import {Overlay, ModalRecuperarSenha, Header, ImageSenha, MensagemRecuperacaoSenha, InserirEmail, ButtonEnviarLink} from "./styles";
 import Logo from "../../assets/logos/logo_fundo_roxo_png.png";
 import CadeadoRecSenha from "../../assets/ImagesRecuperarSenha/cadeadoSenha.jpg";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {useState} from 'react';
 import {api} from '../../service/api';
 import {getUser} from '../../service/security';
@@ -14,20 +14,20 @@ function RecoverPassword() {
     const [userEmail, setUserEmail] = useState('');
 
     const handleInput = (e) => {
-        setUserEmail({ ...userEmail, [e.target.id]: e.target.value });
+        setUserEmail({...userEmail, [e.target.id]: e.target.value});
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const { email } = userEmail;
+            const {email} = userEmail;
 
             const response = await api.get(`/emailpassword/${email}`);
             console.log(email);
             getUser(response.data);
             history.push('/orderconfirmemail');
-        } catch (error) {
+        } catch(error) {
             console.error(error);
             alert(error.response.data.error);
         }
@@ -63,9 +63,9 @@ function RecoverPassword() {
                         </Input>
                     </InserirEmail>
 
-                        <ButtonEnviarLink onClick={handleSubmit}>
-                            <button>Enviar link de recuperação</button>
-                        </ButtonEnviarLink>
+                    <ButtonEnviarLink onClick={handleSubmit}>
+                        <button>Enviar link de recuperação</button>
+                    </ButtonEnviarLink>
 
                 </ModalRecuperarSenha>
             </Overlay>
