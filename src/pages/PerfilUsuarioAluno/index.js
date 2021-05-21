@@ -156,9 +156,6 @@ function ProfileStudent() {
                 <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
               </ButtonAvancarGrupos>
             </Grupos>
-
-
-
             <h3>Anotações +</h3>
             <Anotacoes>
               <ButtonAvancarAnotacoes>
