@@ -104,13 +104,13 @@ function ProfileStudent() {
           </PerfilInfoUsuario>
 
           <Conteudo>
-              <Grupos>
-                  <h3>Meus grupos</h3>
+            <Grupos>
+              <h3>Meus grupos</h3>
 
-                  <ComponentGrupo>
-                      <img src={Configuracoes}/>
-                  </ComponentGrupo>
-              </Grupos>
+              <ComponentGrupo>
+                <img alt="img" src={Configuracoes} />
+              </ComponentGrupo>
+            </Grupos>
           </Conteudo>
         </ContainerPerfilConteudo>
       </Container>

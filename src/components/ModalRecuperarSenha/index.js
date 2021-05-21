@@ -30,7 +30,7 @@ function RecuperarSenha() {
       const response = await api.get(`/emailpassword/${email}`);
       console.log(email);
       getUser(response.data);
-      history.push('/orderconfirmemail');
+      history.push('/confirmemail');
     } catch(error) {
       console.error(error);
       alert(error.response.data.error);

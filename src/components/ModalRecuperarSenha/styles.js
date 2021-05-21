@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 const modalAnimation = keyframes`
     0%{
@@ -97,13 +97,14 @@ export const MensagemRecuperacaoSenha = styled.div`
     }
 `;
 
-export const InserirEmail = styled.div`
+export const InserirEmail = styled.form`
     width: 90%;
     height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     > p {
         font-size: 25px;

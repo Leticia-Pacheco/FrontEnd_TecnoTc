@@ -1,19 +1,16 @@
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home';
-
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { isSignedIn } from './service/security';
-// import ConfirmEmail from './pages/ConfirmEmail';
+import {isSignedIn} from './service/security';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecuperarSenha from './components/ModalRecuperarSenha';
 import RedefinirSenha from "./components/ModalRedefinirSenha";
 import PerfilProfessor from "./pages/PerfilUsuarioProf";
 import PerfilAluno from "./pages/PerfilUsuarioAluno";
-import RedefinirSenhaEmail from "./components/ModalRedefinirSenha";
 
-function PrivateRoute({ children, ...rest }) {
-  if (isSignedIn()) {
+function PrivateRoute({children, ...rest}) {
+  if(isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
   } else {
     return <Redirect to="/" />;
@@ -33,24 +30,21 @@ function Router() {
         <PrivateRoute path="/home">
           <Home />
         </PrivateRoute>
-        <Route path="/orderconfirmemail">
+        <Route path="/confirmemail">
           <OrderConfirmEmail />
         </Route>
-        <Route path="/recuperarsenha">
-          <RecuperarSenha/>
+        <Route path="/recoverpassword">
+          <RecuperarSenha />
         </Route>
-        <Route path="/redefinirsenha">
-          <RedefinirSenha/>
+        <Route path="/passwordreset">
+          <RedefinirSenha />
         </Route>
         <Route path="/perfilprofessor">
-          <PerfilProfessor/>
+          <PerfilProfessor />
         </Route>
         <Route path="/perfilaluno">
-          <PerfilAluno/>
+          <PerfilAluno />
         </Route>
-        <Route path="/redefinirsenhaemail">
-          <RedefinirSenhaEmail/>
-        </Route>       
       </Switch>
     </BrowserRouter>
   );

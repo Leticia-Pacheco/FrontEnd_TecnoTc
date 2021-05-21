@@ -19,11 +19,11 @@ import {
 import GifColor from '../../assets/ImagesLogin/GifColor.gif';
 import ImageLogin from '../../assets/ImagesLogin/ImageLogin.gif';
 import ImageLogo from "../../assets/logos/logo_fundo_branco_png.png";
-import { Link, useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import Input from '../../components/Input';
-import { useState } from 'react';
-import { api } from '../../service/api';
-import { signIn } from '../../service/security';
+import {useState} from 'react';
+import {api} from '../../service/api';
+import {signIn} from '../../service/security';
 import Alert from '../../components/Alert';
 
 function Login() {
@@ -45,14 +45,14 @@ function Login() {
       signIn(response.data);
 
       history.push('/home');
-    } catch (error) {
+    } catch(error) {
       console.error(error);
-      setMessage({ title: 'Ops...', description: error.response.data.error });
+      setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
 
   const handleInput = (e) => {
-    setLogin({ ...login, [e.target.id]: e.target.value });
+    setLogin({...login, [e.target.id]: e.target.value});
   };
 
   return (
@@ -63,7 +63,7 @@ function Login() {
         <Container>
           <LoginEnter>
             <Logo>
-              <img src={ImageLogo} alt="Logo" title="Logo"/>
+              <img src={ImageLogo} alt="Logo" title="Logo" />
             </Logo>
             <ConfirmLogin>
               <ApresentacaoEmpresa>
@@ -98,15 +98,12 @@ function Login() {
 
                 <RedefinirSenha>
                   <Link to="/recoverpassword">
-                      <p>Esqueci a senha</p>
+                    <p>Esqueci a senha</p>
                   </Link>
                 </RedefinirSenha>
-                
-                <Link to="/profilestudent">
-                  <InputLogar>
-                    <p>Login</p>
-                  </InputLogar>
-                </Link>
+                <InputLogar>
+                  <p>Login</p>
+                </InputLogar>
               </InputsLogin>
 
               <TextCadastro>

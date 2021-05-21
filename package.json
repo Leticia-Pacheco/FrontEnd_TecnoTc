@@ -16,6 +16,7 @@
     "jsx": "^0.9.89",
     "jwt-decode": "^3.1.2",
     "mjml": "^4.9.3",
+    "query-string": "^4.3.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-embed-gist": "^1.0.11",
@@ -53,7 +54,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
   "author": "Letícia Pacheco dos Santos",
   "license": "ISC"
 }

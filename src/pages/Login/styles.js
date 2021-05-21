@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { FaLock, FaEnvelope } from 'react-icons/fa';
+import styled, {keyframes} from 'styled-components';
+import {FaLock, FaEnvelope} from 'react-icons/fa';
 // import px2vw from "../../utils/px2vw";
 
 // Animação da abertura da aplicação
@@ -174,12 +174,13 @@ export const RedefinirSenha = styled.div`
   margin-top: -10px;
 
   float: right;
+  cursor: pointer;
 
   > a {
     color: black;
-
     :hover{
       cursor: pointer;
+      color: var(--primaryGreenWater);
       pointer-events: auto; 
     }
   }
