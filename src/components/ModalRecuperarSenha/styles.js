@@ -18,7 +18,7 @@ export const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
 
-    opacity: 0;
+    opacity: 1;
 
     z-index: 9;
 
@@ -129,11 +129,10 @@ export const InserirEmail = styled.div`
     }
 
     > input {
-        width: 60%;
+        width: 70%;
         height: 40px;
 
         font-size: 20px;
-        padding: 5px;
 
         border-radius: 5px;
         border: solid 2px var(--primaryPurple);

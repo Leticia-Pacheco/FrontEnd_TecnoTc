@@ -233,7 +233,7 @@ export const IconEmail = styled(FaEnvelope)`
   font-size: 15px;
 
   margin-top: -35px;
-  margin-left: 3px;
+  margin-left: 4px;
 
   color: var(--primaryPurple);
 

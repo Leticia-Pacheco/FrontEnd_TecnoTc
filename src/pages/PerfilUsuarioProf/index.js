@@ -90,67 +90,6 @@ function ProfileTeacher() {
                     alt="Menu opção tarefas"
                     title="Menu opção tarefas"
                   />
-<<<<<<< HEAD
-                  <p>Editar perfil</p>
-                </EditarPerfil>
-              </Link>
-            </PerfilInfoUsuario>
-  
-            <Conteudo>
-                    <h3>Meus grupos  
-                      <Link to="/creategroups">
-                          <span> +</span>
-                      </Link>
-                    </h3>
-                <Grupos>
-                  <ButtonAvancarGrupos>
-                    <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                  </ButtonAvancarGrupos>
-                  <Agrupamento>
-  
-                    <ComponentGrupo>
-                        <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos"/>
-                        <ImageGrupo>
-                            <p>DS</p>
-                        </ImageGrupo>
-                        <p>Desenvolvimento de sistemas</p>
-                    </ComponentGrupo>
-  
-                  </Agrupamento>
-                  <ButtonAvancarGrupos>
-                    <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                  </ButtonAvancarGrupos>
-                </Grupos>
-
-                <h3>Anotações  
-                      <Link to="/createanotacoes">
-                          <span> +</span>
-                      </Link>
-                    </h3>
-                <Anotacoes>
-                  <ButtonAvancarAnotacoes>
-                    <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                  </ButtonAvancarAnotacoes>
-                  <AgrupamentoAnotacoes>
-  
-                    <ComponentAnotacoes>
-                      <p>03-11-2020</p>
-                      <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
-                    </ComponentAnotacoes>
-                  </AgrupamentoAnotacoes>
-  
-                  <ButtonAvancarAnotacoes>
-                    <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                  </ButtonAvancarAnotacoes>
-                </Anotacoes>
-            </Conteudo>
-          </ContainerPerfilConteudo>
-        </Container>
-        <Footer>
-          <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
-          
-          {/* <Logo>
-=======
                   <p>Tarefas</p>
                 </li>
               </ul>
@@ -268,7 +207,6 @@ function ProfileTeacher() {
         <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
 
         {/* <Logo>
->>>>>>> e10db548aed1035b815194c501f69a5a81d39298
             <img src={ImageLogo} alt="Logo da empresa" title="Logo da empresa"/>
           </Logo> */}
       </Footer>

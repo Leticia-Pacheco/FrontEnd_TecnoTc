@@ -1,13 +1,9 @@
 import { Overlay, ModalEditarPerfil, Header, ImagemUsuario, EditarImagemUsuario, Logo, EditarDados, ComponentEditarDados, } from "./styles";
 import ImageUsuario from "../../assets/ImagesPerfis/image_perfil_professor.jpg";
 import ImageLogo from "../../assets/logos/logo_fundo_roxo_png.png";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-=======
 import { getUser } from "../../service/security";
 import { api } from "../../service/api";
 import { useState } from "react";
->>>>>>> e10db548aed1035b815194c501f69a5a81d39298
 
 function EditProfile() {
     
@@ -62,14 +58,8 @@ function EditProfile() {
                     <ImagemUsuario>
                         <img src={ImageUsuario} alt="Alterar imagem perfil de usuário" title="Alterar imagem perfil de usuário" />
                         <EditarImagemUsuario>
-<<<<<<< HEAD
                             <label for="arquivo">Editar imagem</label>
                             <input type="file" name="arquivo" id="arquivo"/>
-=======
-                            <button type="file">
-                                <img src={EditarFotoUsuario} alt="Editar foto de perfil" title="Editar foto de perfil" />
-                            </button>
->>>>>>> e10db548aed1035b815194c501f69a5a81d39298
                         </EditarImagemUsuario>
                     </ImagemUsuario>
 
@@ -83,13 +73,6 @@ function EditProfile() {
                 <EditarDados onSubmit={handleSubmit}>
                     <ComponentEditarDados>
                         <p>Nome</p>
-<<<<<<< HEAD
-                        <input type="text" name="nomeUsuario" value="José Bezerra" size="46"/>
-                    </ComponentEditarDados>
-                    <ComponentEditarDados>
-                        <p>E-mail</p>
-                        <input type="text" name="emailUsuario" value="jose.bezerra@gmail.com" size="46"/>
-=======
                         <input type="text" id="name" size="43" onChange={handleInput}
                             value={editPerfil.name} />
                     </ComponentEditarDados>
@@ -97,7 +80,6 @@ function EditProfile() {
                         <p>E-mail</p>
                         <input type="text" id="email" size="43" onChange={handleInput}
                             value={editPerfil.email} />
->>>>>>> e10db548aed1035b815194c501f69a5a81d39298
                         <span>Adicionar mais um e-mail +</span>
                     </ComponentEditarDados>
                     <ComponentEditarDados>
@@ -107,28 +89,6 @@ function EditProfile() {
                     </ComponentEditarDados>
                     <ComponentEditarDados>
                         <p>Você é</p>
-<<<<<<< HEAD
-                        <input type="text" name="nivelUsuario" value="Professor" size="46"/>
-                    </ComponentEditarDados>
-                    <ComponentEditarDados>
-                        <p>Senha atual</p>
-                        <input type="password" name="senhaUsuario" value="123456456789" size="115"/>
-                    </ComponentEditarDados>
-                    <ComponentEditarDados>
-                        <p>Nova Senha</p>
-                        <input type="text" name="novaSenhaUsuario" value="" size="46"/>
-                    </ComponentEditarDados>
-                    <ComponentEditarDados>
-                        <p>Repetir senha</p>
-                        <input type="text" name="confirmacaoNovaSenhaUsuario" value="" size="46"/>
-                    </ComponentEditarDados>
-
-                        <button>
-                            <Link to="/profileteacher">
-                                <p>Salvar dados</p>
-                            </Link>
-                        </button>
-=======
                         <input type="text" id="role" value="Teacher" size="43" />
                     </ComponentEditarDados>
                     <ComponentEditarDados>
@@ -148,7 +108,6 @@ function EditProfile() {
                     <button>
                         <p>Salvar dados</p>
                     </button>
->>>>>>> e10db548aed1035b815194c501f69a5a81d39298
                 </EditarDados>
             </ModalEditarPerfil>
         </Overlay>

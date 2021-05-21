@@ -108,11 +108,11 @@ function Login() {
                   </Link>
                 </RedefinirSenha>
 
-                <Link to="/profileteacher">
+                {/* <Link to="/profileteacher">
                   <InputLogar>
                     <p>Login</p>
                   </InputLogar>
-                </Link>
+                </Link> */}
                 <InputLogar>
                   <p>Login</p>
                 </InputLogar>

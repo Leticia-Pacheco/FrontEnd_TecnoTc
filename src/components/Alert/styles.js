@@ -21,11 +21,13 @@ export const Container = styled.div`
   > h1 {
     font-size: 18px;
     margin: 5px;
+    color: white;
   }
 
   > p {
     font-size: 14px;
     margin-left: 5px;
+    color: white;
   }
 
   > span {
@@ -39,7 +41,8 @@ export const Container = styled.div`
     transition: 0.2s;
 
     :hover {
-      color: var(--dark);
+      // color: var(--dark);
+      color: white;
     }
   }
 `;

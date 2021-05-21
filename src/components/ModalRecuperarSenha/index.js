@@ -1,7 +1,7 @@
 import { Overlay, ModalRecuperarSenha, Header, ImageSenha, MensagemRecuperacaoSenha, InserirEmail, ButtonEnviarLink } from "./styles";
 import Logo from "../../assets/logos/logo_fundo_roxo_png.png";
 import CadeadoRecSenha from "../../assets/ImagesRecuperarSenha/cadeadoSenha.jpg";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {useState} from 'react';
 import {api} from '../../service/api';
 import {getUser} from '../../service/security';
