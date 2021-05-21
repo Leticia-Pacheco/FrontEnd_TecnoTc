@@ -1,43 +1,32 @@
 import styled from "styled-components";
 
-// export const Overlay = styled.div`
-//     position: absolute;
-//     width: 100vw;
-//     height: 100vh;
-//     z-index: 9;
-
-//     background-color: #333C;
-
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// `;
-
 export const Overlay = styled.div`
+    position: absolute;
     width: 100vw;
     height: 100vh;
-
-    opacity: 0.9;
     z-index: 9;
 
-    position: absolute;
-
-    /* background-color: #333; */
+    background-color: #333C;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 `;
 
 export const ModalEditarPerfil = styled.div`
-    width: 900px;
-    min-height: 620px;
+    width: 950px;
+    min-height: 250px;
     max-height: calc(100vh - 20px); /*Para calcular uma boa altura e que não fique tão grande nem tão pequeno*/
+
     z-index: 19;
 
-    position: absolute;
+    overflow-y: auto;
 
-    border: solid 2px var(--primaryPurple);
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 4px;
+
+    position: absolute;
 `;
 
 export const Header = styled.div`
@@ -53,15 +42,16 @@ export const Header = styled.div`
     background-image: linear-gradient(to left, var(--primaryPurple), #38288C, var(--primaryPurple));
 
     > h3 {
+        font-size: 20px;
         margin-top: 50px;
-        margin-left: 150px;
+        margin-left: 200px;
 
         color: white;
     }
 `;
 
 export const ImagemUsuario = styled.div`
-    max-width: 130px;
+    width: 120px;
     min-height: 120px;
     height: auto;
     overflow: hidden;
@@ -77,37 +67,31 @@ export const ImagemUsuario = styled.div`
 `;
 
 export const EditarImagemUsuario = styled.div`
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 25px;
 
-    margin-left: -40px;
-    border-radius: 50%;
+    margin-left: -120px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     align-self: flex-end;
 
-    background-color: var(--primaryGreenWater);
-
-    :hover {
-        cursor: pointer;
+    input[type="file"] {
+        display: none;
     }
+    label {
+        width: 100%;
+        height: 25px;
 
-    > button {
+        padding: 4px;
+        display: block;
+        cursor: pointer;
+        
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+
+        border-radius: 5px;
+        color: white;
         background-color: var(--primaryGreenWater);
-        border: solid 2px var(--primaryGreenWater);
-
-        border-radius: 50%;
-
-        :hover {
-            cursor: pointer;
-        }
-
-        > img {
-            width: 25px;
-            height: 25px;
-        }
     }
 `;
 
@@ -116,7 +100,7 @@ export const Logo = styled.div`
     height: 50px;
 
     margin-top: 35px;
-    margin-left: 155px;
+    margin-left: 200px;
 
     > img {
         width: 130px;
@@ -152,6 +136,10 @@ export const EditarDados = styled.div`
         font-weight: bold;
 
         font-size: 18px;
+
+        :hover {
+            cursor: pointer;
+        }
     }
 `;
 

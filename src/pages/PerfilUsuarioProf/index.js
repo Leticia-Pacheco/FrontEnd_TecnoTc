@@ -130,7 +130,11 @@ import {
             </PerfilInfoUsuario>
   
             <Conteudo>
-                  <h3>Meus grupos <span>+</span></h3>
+                    <h3>Meus grupos  
+                      <Link to="/creategroups">
+                          <span> +</span>
+                      </Link>
+                    </h3>
                 <Grupos>
                   <ButtonAvancarGrupos>
                     <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
@@ -150,28 +154,18 @@ import {
                     <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
                   </ButtonAvancarGrupos>
                 </Grupos>
-  
-                
-  
-                <h3>Anotações <span>+</span></h3>
+
+                <h3>Anotações  
+                      <Link to="/createanotacoes">
+                          <span> +</span>
+                      </Link>
+                    </h3>
                 <Anotacoes>
                   <ButtonAvancarAnotacoes>
                     <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
                   </ButtonAvancarAnotacoes>
                   <AgrupamentoAnotacoes>
   
-                    <ComponentAnotacoes>
-                      <p>03-11-2020</p>
-                      <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
-                    </ComponentAnotacoes>
-                    <ComponentAnotacoes>
-                      <p>03-11-2020</p>
-                      <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
-                    </ComponentAnotacoes>
-                    <ComponentAnotacoes>
-                      <p>03-11-2020</p>
-                      <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
-                    </ComponentAnotacoes>
                     <ComponentAnotacoes>
                       <p>03-11-2020</p>
                       <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>

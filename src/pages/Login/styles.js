@@ -40,8 +40,6 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: nowrap;
 
-  background-color: black;
-
   @media (max-width: 1024px) {
     flex-wrap: nowrap;
     width: 900px;
@@ -160,7 +158,6 @@ export const InputsLogin = styled.form`
 
   margin-top: 28px;
 
-  background-color: coral;
   padding: 5px;
 
   // background-color: red;

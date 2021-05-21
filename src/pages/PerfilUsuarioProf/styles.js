@@ -11,6 +11,11 @@ export const Container = styled.div`
   display: flex;
 
   z-index: -1;
+
+  a {
+    color: var(--primaryPurple);
+    text-decoration: none;
+  }
 `;
 
 export const ContainerPerfilConteudo = styled.div`
@@ -194,7 +199,7 @@ export const AgrupamentoAnotacoes = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   flex-direction: row;
   // display:table-cell;
 `;
@@ -210,7 +215,7 @@ export const ComponentGrupo = styled.div`
     align-items: center;
     flex-direction: column;
 
-    box-shadow: 8px 5px 30px black;
+    box-shadow: 2px 2px 10px black;
 
     text-align: center;
     > img {
