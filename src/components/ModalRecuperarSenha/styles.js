@@ -2,7 +2,6 @@ import styled, {keyframes} from "styled-components";
 import px2vw from "../../utils/px2vw";
 
 const modalAnimation = keyframes`
-    
     0% {
         -webkit-transform: scale(0);
         transform: scale(0);

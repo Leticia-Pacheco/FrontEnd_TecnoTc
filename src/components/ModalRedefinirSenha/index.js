@@ -1,4 +1,4 @@
-import {ContainerModal, Overlay, Header, MensagemUsuario, InserirNovaSenha, ButtonRedefinirSenha} from "./styles";
+import {ContainerModal, Overlay, Header, MensagemUsuario, InserirNovaSenha, ButtonRedefinirSenha, ModalRedefinirSenha} from "./styles";
 import Logo from "../../assets/logos/logo_fundo_roxo_png.png";
 import Input from "../Input";
 import {useHistory} from "react-router";
@@ -95,4 +95,4 @@ function RedefinirSenha(props) {
     );
 }
 
-export default RedefinePassword;
+export default RedefinirSenha;
