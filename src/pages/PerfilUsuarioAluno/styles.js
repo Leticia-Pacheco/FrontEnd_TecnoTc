@@ -9,8 +9,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
 
   z-index: -1;
+  
 `;
 
 export const ContainerPerfilConteudo = styled.div`
@@ -128,7 +130,6 @@ export const MenuLateral = styled.div`
 export const EditarPerfil = styled.div`
   width: 100%¨;
   height: 25px;
-
   text-align: center;
   justify-content: center;
 
@@ -142,6 +143,7 @@ export const EditarPerfil = styled.div`
   }
 
   > p {
+    cursor: pointer;
     font-family: 'Roboto';
     line-height: 22px;
     font-size: 17px;
@@ -159,6 +161,18 @@ export const Conteudo = styled.div`
     margin-left: 42px;
 
     color: var(--primaryPurple);
+  }
+  >#btn-anotation{
+    :hover{
+      cursor: pointer;
+      color: var(--primaryGreenWater);
+    }
+  }
+  >#btn-grup{
+    :hover{
+      cursor: pointer;
+      color: var(--primaryGreenWater);
+    }
   }
 `;
 
@@ -285,7 +299,7 @@ export const Anotacoes = styled.div`
   display: flex;
 `;
 
-export const ComponentAnotacoes= styled.div`
+export const ComponentAnotacoes = styled.div`
     width: 200px;
     height: 35px;
 

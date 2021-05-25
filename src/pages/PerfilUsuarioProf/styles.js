@@ -147,6 +147,7 @@ export const EditarPerfil = styled.div`
   }
 
   > p {
+    cursor: pointer;
     font-family: 'Roboto';
     line-height: 22px;
     font-size: 17px;
@@ -158,7 +159,18 @@ export const Conteudo = styled.div`
   height: inherit;
 
   padding-top: 45px;
-
+  >#btn-anotation{
+    :hover{
+      cursor: pointer;
+      color: var(--primaryGreenWater);
+    }
+  }
+  >#btn-grup{
+    :hover{
+      cursor: pointer;
+      color: var(--primaryGreenWater);
+    }
+  }
   > h3 {
     margin-bottom: 20px;
     margin-left: 42px;
@@ -302,7 +314,7 @@ export const Anotacoes = styled.div`
   display: flex;
 `;
 
-export const ComponentAnotacoes= styled.div`
+export const ComponentAnotacoes = styled.div`
     width: 200px;
     height: 35px;
 

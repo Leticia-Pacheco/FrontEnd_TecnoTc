@@ -10,7 +10,6 @@ import RedefinePassword from "./components/ModalRedefinirSenha";
 import ProfileTeacher from "./pages/PerfilUsuarioProf";
 import ProfileStudent from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
-import EditProfile from "./components/ModalEditarPerfil";
 import CreateGroups from "./components/ModalCriarGrupos";
 import CreateAnotacoes from "./components/ModalCriarAnotacoes";
 
@@ -56,14 +55,8 @@ function Router() {
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
           <ResetEmailPassword />
         </Route>
-        <PrivateRoute path="/editprofile"> {/*Editar perfil*/}
-          <EditProfile />
-        </PrivateRoute>
         <Route path="/creategroups"> {/*Criar grupos*/}
           <CreateGroups />
-        </Route>
-        <Route path="/createanotacoes"> {/*Criar grupos*/}
-          <CreateAnotacoes />
         </Route>
       </Switch>
     </BrowserRouter>

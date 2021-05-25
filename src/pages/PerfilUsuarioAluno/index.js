@@ -29,13 +29,17 @@ import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
 import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
 import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
-import {Link} from 'react-router-dom';
 import {api} from '../../service/api';
 import {useState} from 'react';
 import {useEffect} from 'react';
+import ModalEditProfile from '../../components/ModalEditarPerfil';
+import ModalAnotation from '../../components/ModalCriarAnotacoes';
+import ModalCreateGrup from '../../components/ModalCriarGrupos';
 
 function ProfileStudent() {
-
+  const [modalEditProfile, setModalEditProfile] = useState(false);
+  const [modalAnotation, setModalAnotation] = useState(false);
+  const [modalCreateGrup, setModalCreateGrup] = useState(false);
   const [perfil, setPerfil] = useState({});
 
   const loadPerfilInfo = async (reload) => {
@@ -53,6 +57,9 @@ function ProfileStudent() {
 
   return (
     <>
+      {modalEditProfile && <ModalEditProfile handleClose={() => setModalEditProfile(false)} />}
+      {modalAnotation && <ModalAnotation handleClose={() => setModalAnotation(false)} />}
+      {modalCreateGrup && <ModalCreateGrup handleClose={() => setModalCreateGrup(false)} />}
       <Container>
         <ContainerPerfilConteudo>
           <PerfilInfoUsuario>
@@ -123,20 +130,18 @@ function ProfileStudent() {
               </ul>
             </MenuLateral>
 
-            <Link to="/editprofile">
-              <EditarPerfil>
-                <img
-                  src={Configuracoes}
-                  alt="Configurações do perfil"
-                  title="Configurações do perfil"
-                />
-                <p>Editar perfil</p>
-              </EditarPerfil>
-            </Link>
+            <EditarPerfil onClick={() => setModalEditProfile(true)}>
+              <img
+                src={Configuracoes}
+                alt="Configurações do perfil"
+                title="Configurações do perfil"
+              />
+              <p>Editar perfil</p>
+            </EditarPerfil>
           </PerfilInfoUsuario>
 
           <Conteudo>
-            <h3>Meus grupos</h3>
+            <h3 id="btn-grup" onClick={() => setModalCreateGrup(true)}>Meus grupos +</h3>
             <Grupos>
               <ButtonAvancarGrupos>
                 <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
@@ -156,7 +161,7 @@ function ProfileStudent() {
                 <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
               </ButtonAvancarGrupos>
             </Grupos>
-            <h3>Anotações +</h3>
+            <h3 id="btn-anotation" onClick={() => setModalAnotation(true)}>Anotações +</h3>
             <Anotacoes>
               <ButtonAvancarAnotacoes>
                 <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
@@ -187,10 +192,11 @@ function ProfileStudent() {
             </Anotacoes>
           </Conteudo>
         </ContainerPerfilConteudo>
+        <Footer>
+          <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
+        </Footer>
       </Container>
-      <Footer>
-        <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
-      </Footer>
+
     </>
   );
 }

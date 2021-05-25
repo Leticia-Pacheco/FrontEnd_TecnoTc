@@ -50,7 +50,6 @@ function Login() {
         history.push('/profileteacher');
       }
 
-
     } catch(error) {
       console.error(error);
       setMessage({title: 'Ops...', description: error.response.data.error});

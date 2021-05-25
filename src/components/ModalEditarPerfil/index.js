@@ -1,12 +1,10 @@
-import { Overlay, ModalEditarPerfil, Header, ImagemUsuario, EditarImagemUsuario, Logo, EditarDados, ComponentEditarDados, } from "./styles";
+import {Overlay, ModalEditarPerfil, Header, ImagemUsuario, EditarImagemUsuario, Logo, EditarDados, ComponentEditarDados, } from "./styles";
 import ImageUsuario from "../../assets/ImagesPerfis/image_perfil_professor.jpg";
 import ImageLogo from "../../assets/logos/logo_fundo_roxo_png.png";
-import { getUser } from "../../service/security";
-import { api } from "../../service/api";
-import { useState } from "react";
-
-function EditProfile() {
-    
+import {getUser} from "../../service/security";
+import {api} from "../../service/api";
+import {useState} from "react";
+function EditProfile({handleClose}) {
     const [editPerfil, setEditPerfil] = useState({
         email: '',
         name: '',
@@ -20,7 +18,7 @@ function EditProfile() {
 
     const handleSubmit = async (e) => {
 
-        if (!validPassword()) return alert('As senhas precisam ser iguais!');
+        if(!validPassword()) return alert('As senhas precisam ser iguais!');
 
         e.preventDefault();
 
@@ -30,7 +28,7 @@ function EditProfile() {
             console.log(user.token);
             let userRoute;
 
-            if (user.userRole === "teacher")
+            if(user.userRole === "teacher")
                 userRoute = "teachers"
             else
                 userRoute = "students"
@@ -41,14 +39,14 @@ function EditProfile() {
                 currentPassword: editPerfil.currentPassword,
                 newPassword: editPerfil.newPassword,
             });
-            
-        } catch (error) {
+
+        } catch(error) {
             console.error(error);
         }
     };
 
     const handleInput = (e) => {
-        setEditPerfil({ ...editPerfil, [e.target.id]: e.target.value });
+        setEditPerfil({...editPerfil, [e.target.id]: e.target.value});
     };
 
     return (
@@ -59,7 +57,7 @@ function EditProfile() {
                         <img src={ImageUsuario} alt="Alterar imagem perfil de usuário" title="Alterar imagem perfil de usuário" />
                         <EditarImagemUsuario>
                             <label for="arquivo">Editar imagem</label>
-                            <input type="file" name="arquivo" id="arquivo"/>
+                            <input type="file" name="arquivo" id="arquivo" />
                         </EditarImagemUsuario>
                     </ImagemUsuario>
 
@@ -68,6 +66,7 @@ function EditProfile() {
                     <Logo>
                         <img src={ImageLogo} alt="Logo da empresa" title="Logo da empresa" />
                     </Logo>
+                    <span onClick={handleClose}>X</span>
                 </Header>
 
                 <EditarDados onSubmit={handleSubmit}>
@@ -84,7 +83,7 @@ function EditProfile() {
                     </ComponentEditarDados>
                     <ComponentEditarDados>
                         <p>Instituição de ensino</p>
-                        <input type="text" name="instituicaoEnsinoUsuario" value="Senai Prof Vicente Amato | Jandira" size="46"/>
+                        <input type="text" name="instituicaoEnsinoUsuario" value="Senai Prof Vicente Amato | Jandira" size="46" />
                         <span>Adicionar mais uma instituição de ensino +</span>
                     </ComponentEditarDados>
                     <ComponentEditarDados>

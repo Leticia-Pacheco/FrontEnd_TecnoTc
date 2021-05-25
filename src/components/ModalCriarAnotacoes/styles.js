@@ -6,9 +6,7 @@ export const Overlay = styled.div`
     height: 100vh;
     z-index: 9;
 
-    // background-color: #333C;
-    // background-color: var(--primaryPurple);
-
+    background-color: #333C;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,11 +51,35 @@ export const Container = styled.div`
         color: black;
     }
 
-    > span {
+    > h3 {
         font-size: 18px;
         color: var(--primaryPurple);
 
         margin-bottom: 5px;
+
+        align-self: flex-start;
+    }
+    >span{
+        margin-left: 650px;
+        color: black;
+        cursor: pointer;
+        :hover {
+            color: red;  
+        }
+    }
+
+    > textarea {
+        width: 100%;
+
+        // resize: vertical;
+        resize: none;
+        
+        font-size: 16px;
+        padding: 5px;
+        
+        border-radius: 4px;
+        background-color: var(--greyQuaternary);
+        border: solid 2px var(--greyQuaternary);
 
         align-self: flex-start;
     }

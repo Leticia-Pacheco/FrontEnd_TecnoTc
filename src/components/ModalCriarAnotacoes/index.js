@@ -1,33 +1,25 @@
-import { Link } from "react-router-dom";
-import { Container, Overlay } from "./styles";
+import {Container, Overlay} from "./styles";
 
-function CreateAnotacoes () {
-    return(
+function CreateAnotacoes({handleClose}) {
+    return (
         <>
             <Overlay>
                 <Container>
+                    <span onClick={handleClose}>X</span>
+
                     <h2>Criar uma anotação</h2>
 
-                    <p>Crie sua equipe para que trabalhem em harmonia, mantendo uma boa comunicação e foco em seu projeto. 
-                       Temos certeza que será eficaz!</p>
+                    <p>As anotações servem para que você se oriente durante o processo de construção de seu projeto.
+                    Elas são úteis para que não se esqueça das tarefas mais importantes! Fique atento!
+                    </p>
 
-                    <span>Nome do grupo:</span>
-                    <input type="text" placeholder="Digite o nome do grupo aqui"/>
+                    <h3>Título da anotação:</h3>
+                    <input type="text" placeholder="Digite o título da anotação aqui" />
 
-                    <span>Descrição:</span>
-                    <input type="text" placeholder="Digite a descrição do grupo aqui"/>
-                    
-                    <span>Adicionar membros:</span>
-                    <input type="text" placeholder="Pesquise o e-mail do membro aqui"/>
-
-                    <span>Escolha uma foto para identificação do grupo:</span>
-                    <label for="arquivo">Adicionar imagem</label>
-                    <input type="file" name="arquivo" id="arquivo"/>
-
+                    <h3>Descrição:</h3>
+                    <textarea rows="7" placeholder="Digite a descrição da anotação aqui"></textarea>
                     <button>
-                        <Link to="/profileteacher">
-                            Criar anotação
-                        </Link>
+                        Criar anotação
                     </button>
                 </Container>
             </Overlay>

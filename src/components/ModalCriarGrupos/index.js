@@ -1,25 +1,31 @@
-import { Link } from "react-router-dom";
-import { Container, Overlay } from "./styles";
+import {Container, Overlay} from "./styles";
 
-function CreateGroups () {
-    return(
+function CreateGroups({handleClose}) {
+    return (
         <>
             <Overlay>
                 <Container>
-                    <h2>Criar uma anotação</h2>
+                    <span onClick={handleClose}>X</span>
+                    <h2>Criar um grupo</h2>
 
-                    <p>As anotações servem para que você se oriente durante o processo de construção de seu projeto. 
-                       Elas são úteis para que não se esqueça das tarefas mais importantes! Fique atento!</p>
+                    <p>Crie sua equipe para que trabalhem em harmonia, mantendo uma boa comunicação e foco em seu projeto.
+   Temos certeza que será eficaz!</p>
 
-                    <span>Título da anotação:</span>
-                    <input type="text" placeholder="Digite o título da anotação aqui"/>
+                    <h3>Nome do grupo:</h3>
+                    <input type="text" placeholder="Digite o nome do grupo aqui" />
 
-                    <span>Descrição:</span>
-                    <textarea rows="7" placeholder="Digite a descrição da anotação aqui"></textarea>
+                    <h3>Descrição:</h3>
+                    <input type="text" placeholder="Digite a descrição do grupo aqui" />
+
+                    <h3>Adicionar membros:</h3>
+                    <input type="text" placeholder="Pesquise o e-mail do membro aqui" />
+
+                    <h3>Escolha uma foto para identificação do grupo:</h3>
+                    <label for="arquivo">Adicionar imagem</label>
+                    <input type="file" name="arquivo" id="arquivo" />
+
                     <button>
-                        <Link to="/profileteacher">
-                            Criar anotação
-                        </Link>
+                        Criar grupo
                     </button>
                 </Container>
             </Overlay>

@@ -5,7 +5,7 @@ export const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 9;
-
+    overflow-x: hidden;
     background-color: #333C;
 
     display: flex;
@@ -45,8 +45,14 @@ export const Header = styled.div`
         font-size: 20px;
         margin-top: 50px;
         margin-left: 200px;
-
         color: white;
+    }
+    >span{
+        color: black;
+        cursor: pointer;
+        :hover {
+            color: red;  
+        }
     }
 `;
 

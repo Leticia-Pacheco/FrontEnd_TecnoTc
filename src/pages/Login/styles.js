@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import styled, { keyframes } from 'styled-components';
-import { FaLock, FaEnvelope } from 'react-icons/fa';
-import px2vw from '../../utils/px2vw';
-// Animação da abertura da aplicação]
-=======
 import styled, {keyframes} from 'styled-components';
 import {FaLock, FaEnvelope} from 'react-icons/fa';
-// import px2vw from "../../utils/px2vw";
-
+import px2vw from '../../utils/px2vw';
 // Animação da abertura da aplicação
->>>>>>> feature/reset_senha
 const loginAnimation = keyframes`
-    0%{
+    0% {
         top: -250px;
         opacity: 0;
         transform: scale(0.01) rotate(90deg);
@@ -113,7 +105,6 @@ export const ApresentacaoEmpresa = styled.div`
   color: var(--primaryPurple);
   font-size: 25px;
 
-<<<<<<< HEAD
   @media (max-width: 1024px) {
     width: 60%;
     flex-wrap: nowrap;
@@ -269,12 +260,6 @@ export const RedefinirSenha = styled.div`
 
   margin-top: -10px;
 
-<<<<<<< HEAD
-=======
-  float: right;
-  cursor: pointer;
-
->>>>>>> feature/reset_senha
   > a {
     color: black;
     :hover{
