@@ -1,10 +1,38 @@
+import {useState} from "react";
+import Input from "../Input";
+import {api} from "../../service/api";
 import {Container, Overlay} from "./styles";
+import {signIn} from "../../service/security";
 
 function CreateAnotacoes({handleClose}) {
+    const [newAnnotation, setAnnotation] = useState({
+        title: "",
+        text: "",
+    });
+    const handleInput = (e) => {
+        setAnnotation({...newAnnotation, [e.target.id]: e.target.value});
+    };
+    const handleAddAnnotation = async (e) => {
+        e.preventDefault();
+
+        try {
+            const {title, text} = newAnnotation;
+
+            const response = await api.post('/annotations', {
+                title,
+                text
+            });
+
+            signIn(response.data);
+        } catch(error) {
+            console.error(error);
+            alert(error.response.data.error);
+        }
+    };
     return (
         <>
             <Overlay>
-                <Container>
+                <Container onSubmit={handleAddAnnotation}>
                     <span onClick={handleClose}>X</span>
 
                     <h2>Criar uma anotação</h2>
@@ -14,10 +42,20 @@ function CreateAnotacoes({handleClose}) {
                     </p>
 
                     <h3>Título da anotação:</h3>
-                    <input type="text" placeholder="Digite o título da anotação aqui" />
+                    <Input
+                        id="title"
+                        placeholder="Digite o título da anotação aqui"
+                        value={newAnnotation.title}
+                        handler={handleInput}
+                    />
 
                     <h3>Descrição:</h3>
-                    <textarea rows="7" placeholder="Digite a descrição da anotação aqui"></textarea>
+                    <Input
+                        id="text"
+                        handler={handleInput}
+                        value={newAnnotation.text}
+                        rows="7"
+                        placeholder="Digite a descrição da anotação aqui"></Input>
                     <button>
                         Criar anotação
                     </button>

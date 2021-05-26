@@ -12,7 +12,7 @@ export const Overlay = styled.div`
     align-items: center;
 `;
 
-export const Container = styled.div`
+export const Container = styled.form`
     width: 800px;
     min-height: 550px;
     height: auto;
