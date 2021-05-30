@@ -7,8 +7,7 @@ import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from "./components/ModalRedefinirSenha";
-import ProfileTeacher from "./pages/PerfilUsuarioProf";
-import ProfileStudent from "./pages/PerfilUsuarioAluno";
+import ProfileUser from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
 import CreateGroups from "./components/ModalCriarGrupos";
 import CreateAnotacoes from "./components/ModalCriarAnotacoes";
@@ -46,11 +45,8 @@ function Router() {
         <Route path="/redefinepassword"> {/*Redefinir senha*/}
           <RedefinePassword />
         </Route>
-        <PrivateRoute path="/profileteacher"> {/*Perfil do professor*/}
-          <ProfileTeacher />
-        </PrivateRoute>
-        <PrivateRoute path="/profilestudent"> {/*Perfil do aluno*/}
-          <ProfileStudent />
+        <PrivateRoute path="/profile"> {/*Perfil do aluno*/}
+          <ProfileUser />
         </PrivateRoute>
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
           <ResetEmailPassword />

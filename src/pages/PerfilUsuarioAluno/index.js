@@ -19,22 +19,24 @@ import {
   AgrupamentoAnotacoes,
   ComponentAnotacoes,
 } from './styles';
-import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
 import ImageChats from '../../assets/ImagesPerfis/chats.png';
+import ImageVisuAlunos from '../../assets/ImagesPerfis/ver_meus_alunos.png';
 import ImageLogout from '../../assets/ImagesPerfis/sair.png';
 import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
 import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
 import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
-import {api} from '../../service/api';
-import {useState} from 'react';
-import {useEffect} from 'react';
+import { api } from '../../service/api';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
+import { getUser } from '../../service/security';
 
 function ProfileStudent() {
   const [modalEditProfile, setModalEditProfile] = useState(false);
@@ -42,17 +44,23 @@ function ProfileStudent() {
   const [modalCreateGrup, setModalCreateGrup] = useState(false);
   const [perfil, setPerfil] = useState({});
 
-  const loadPerfilInfo = async (reload) => {
-    //se já tiver buscando, não busca de novo
-    const response = await api.get("/students");
-    console.log(response.data);
-    setPerfil(response.data.Student);
+  const user = getUser();
 
+  const loadPerfilInfo = async (reload) => {
+
+    if (user.user.userRole === "student") {
+      const response = await api.get("/students");
+      setPerfil(response.data);
+      console.log(response.data)
+    }
+    if (user.user.userRole === "teacher") {
+      const response = await api.get("/teachers");
+      setPerfil(response.data);
+    }
   };
 
   useEffect(() => {
     loadPerfilInfo();
-
   }, []);
 
   return (
@@ -66,7 +74,7 @@ function ProfileStudent() {
             <InformacoesUsuario>
               <ImageUsuario>
                 <img
-                  src={perfil.profileImage || ImgUsuarioAluno}
+                  src={perfil.profileImage || ImgUser}
                   alt="Foto de perfil do usuário"
                   title="Foto de perfil do usuário"
                 />
@@ -118,6 +126,18 @@ function ProfileStudent() {
                   <p>Chats</p>
                 </li>
               </ul>
+              {perfil.role === "teacher" && (
+                <ul>
+                  <li>
+                    <img
+                      src={ImageVisuAlunos}
+                      alt="Menu opção visualizar progresso de alunos"
+                      title="Menu opção visualizar progresso de alunos"
+                    />
+                    <p>Visualizar alunos</p>
+                  </li>
+                </ul>
+              )}
               <ul>
                 <li>
                   <img

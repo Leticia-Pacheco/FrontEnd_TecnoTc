@@ -43,12 +43,7 @@ function Login() {
 
       signIn(response.data);
 
-      if(response.data.user.userRole === "student") {
-        history.push('/profilestudent');
-      }
-      else {
-        history.push('/profileteacher');
-      }
+      history.push('/profile')
 
     } catch(error) {
       console.error(error);
