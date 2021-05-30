@@ -301,7 +301,7 @@ export const Anotacoes = styled.div`
 
 export const ComponentAnotacoes = styled.div`
     width: 200px;
-    height: 35px;
+    height: 50px;
 
     margin-left: 5px;
 
