@@ -36,13 +36,16 @@ import { useEffect } from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
-import { getUser } from '../../service/security';
+import { getUser, signOut } from '../../service/security';
+import { useHistory } from 'react-router';
 
 function ProfileStudent() {
   const [modalEditProfile, setModalEditProfile] = useState(false);
   const [modalAnotation, setModalAnotation] = useState(false);
   const [modalCreateGrup, setModalCreateGrup] = useState(false);
   const [perfil, setPerfil] = useState({});
+  const history = useHistory();
+
 
   const user = getUser();
 
@@ -51,12 +54,17 @@ function ProfileStudent() {
     if (user.user.userRole === "student") {
       const response = await api.get("/students");
       setPerfil(response.data);
-      console.log(response.data)
     }
     if (user.user.userRole === "teacher") {
       const response = await api.get("/teachers");
       setPerfil(response.data);
     }
+  };
+
+  const handleSignOut = () => {
+    signOut();
+
+    history.replace("/");
   };
 
   useEffect(() => {
@@ -145,7 +153,7 @@ function ProfileStudent() {
                     alt="Menu opção Sair da aplicação"
                     title="Menu opção Sair da aplicação"
                   />
-                  <p>Sair</p>
+                  <p onClick={handleSignOut}>Sair</p>
                 </li>
               </ul>
             </MenuLateral>
