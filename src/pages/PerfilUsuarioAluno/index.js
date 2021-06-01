@@ -38,14 +38,15 @@ import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
 import { getUser, signOut } from '../../service/security';
 import { useHistory } from 'react-router';
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 function ProfileStudent() {
   const [modalEditProfile, setModalEditProfile] = useState(false);
   const [modalAnotation, setModalAnotation] = useState(false);
   const [modalCreateGrup, setModalCreateGrup] = useState(false);
-  const [perfil, setPerfil] = useState({});
+  const [perfil, setPerfil] = useState([]);
+  const [annotations, setAnnotations] = useState([]);
   const history = useHistory();
-
 
   const user = getUser();
 
@@ -61,6 +62,12 @@ function ProfileStudent() {
     }
   };
 
+  const loadAnnotations = async () => {
+    const response = await api.get("/annotations");
+
+    setAnnotations(response.data);
+  }
+
   const handleSignOut = () => {
     signOut();
 
@@ -69,6 +76,7 @@ function ProfileStudent() {
 
   useEffect(() => {
     loadPerfilInfo();
+    loadAnnotations();
   }, []);
 
   return (
@@ -170,50 +178,63 @@ function ProfileStudent() {
 
           <Conteudo>
             <h3 id="btn-grup" onClick={() => setModalCreateGrup(true)}>Meus grupos +</h3>
+
+
             <Grupos>
               <ButtonAvancarGrupos>
                 <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
               </ButtonAvancarGrupos>
-              <Agrupamento>
-
-                <ComponentGrupo>
-                  <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
-                  <ImageGrupo>
-                    <p>DS</p>
-                  </ImageGrupo>
-                  <p>Desenvolvimento de sistemas</p>
-                </ComponentGrupo>
-
-              </Agrupamento>
+              <ScrollContainer horizontal={true}>
+                <Agrupamento>
+                  <ComponentGrupo>
+                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <ImageGrupo>
+                      <p>DS</p>
+                    </ImageGrupo>
+                    <p>Desenvolvimento de sistemas</p>
+                  </ComponentGrupo>
+                  <ComponentGrupo>
+                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <ImageGrupo>
+                      <p>DS</p>
+                    </ImageGrupo>
+                    <p>Desenvolvimento de sistemas</p>
+                  </ComponentGrupo>
+                  <ComponentGrupo>
+                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <ImageGrupo>
+                      <p>DS</p>
+                    </ImageGrupo>
+                    <p>Desenvolvimento de sistemas</p>
+                  </ComponentGrupo>
+                  <ComponentGrupo>
+                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <ImageGrupo>
+                      <p>DS</p>
+                    </ImageGrupo>
+                    <p>Desenvolvimento de sistemas</p>
+                  </ComponentGrupo>
+                </Agrupamento>
+              </ScrollContainer>
               <ButtonAvancarGrupos>
                 <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
               </ButtonAvancarGrupos>
             </Grupos>
+
             <h3 id="btn-anotation" onClick={() => setModalAnotation(true)}>Anotações +</h3>
             <Anotacoes>
               <ButtonAvancarAnotacoes>
                 <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
               </ButtonAvancarAnotacoes>
               <AgrupamentoAnotacoes>
-
-                <ComponentAnotacoes>
-                  <p>03-11-2020</p>
-                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
-                </ComponentAnotacoes>
-                <ComponentAnotacoes>
-                  <p>03-11-2020</p>
-                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
-                </ComponentAnotacoes>
-                <ComponentAnotacoes>
-                  <p>03-11-2020</p>
-                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
-                </ComponentAnotacoes>
-                <ComponentAnotacoes>
-                  <p>03-11-2020</p>
-                  <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
-                </ComponentAnotacoes>
+                {annotations.map((annotation) => (
+                  <ComponentAnotacoes key={annotation.id}>
+                    <p>{annotation.text}</p>
+                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
+                  </ComponentAnotacoes>
+                )
+                )}
               </AgrupamentoAnotacoes>
-
               <ButtonAvancarAnotacoes>
                 <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
               </ButtonAvancarAnotacoes>
@@ -224,7 +245,6 @@ function ProfileStudent() {
           <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
         </Footer>
       </Container>
-
     </>
   );
 }

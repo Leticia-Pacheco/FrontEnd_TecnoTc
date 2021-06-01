@@ -183,12 +183,14 @@ export const Grupos = styled.div`
   margin-bottom: 50px;
 
   display: flex;
+  flex-direction: row;
 `;
 
 export const Agrupamento = styled.div`
   width: 92%;
   height: 200px;
-
+  display: flex;
+  flex-direction: row;
   padding-right: 5px;
 `;
 
@@ -210,13 +212,14 @@ export const ComponentGrupo = styled.div`
     height: 200px;
 
     padding: 5px;
-    margin-left: 5px;
+    margin-left: 20px;
 
     display: flex;
     align-items: center;
     flex-direction: column;
-
-    box-shadow: 8px 5px 30px black;
+  
+    box-shadow: 2px 2px 2px black;
+    border: 1px solid black;
 
     text-align: center;
     > img {
@@ -255,7 +258,7 @@ export const ButtonAvancarGrupos = styled.div`
     height: 200px;
 
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     display: flex;
 
     :hover {
