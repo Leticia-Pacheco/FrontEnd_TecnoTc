@@ -43,8 +43,12 @@ function Grups() {
 
 
     const handleTradeStade = () => {
-        setShowComponentQuadro(!showComponentQuadro);
-        setShowChat(!showChat);
+        setShowComponentQuadro(true);
+        setShowChat(false);
+    }
+    const handleTradeStadeChat = () => {
+        setShowComponentQuadro(false);
+        setShowChat(true);
     }
 
     return (
@@ -55,7 +59,7 @@ function Grups() {
                 <ComponetSubMenu onClick={handleTradeStade}>
                     Grupo
                 </ComponetSubMenu>
-                <ComponetSubMenu onClick={handleTradeStade}>
+                <ComponetSubMenu onClick={handleTradeStadeChat}>
                     Chat
                 </ComponetSubMenu>
             </Submenu>
