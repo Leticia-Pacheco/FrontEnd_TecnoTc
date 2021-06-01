@@ -55,8 +55,8 @@ function Grups() {
                 <ComponetSubMenu onClick={handleTradeStade}>
                     Grupo
                 </ComponetSubMenu>
-                <ComponetSubMenu >
-                    <p onClick={handleTradeStade}>Chaat</p>
+                <ComponetSubMenu onClick={handleTradeStade}>
+                    Chat
                 </ComponetSubMenu>
             </Submenu>
             {showChat && <ChatGrup />}
