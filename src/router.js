@@ -10,7 +10,7 @@ import RedefinePassword from "./components/ModalRedefinirSenha";
 import ProfileUser from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
 import CreateGroups from "./components/ModalCriarGrupos";
-import CreateAnotacoes from "./components/ModalCriarAnotacoes";
+import Gruop from "./pages/Group";
 
 function PrivateRoute({children, ...rest}) {
   if(isSignedIn()) {
@@ -23,6 +23,9 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/group">
+          <Gruop />
+        </Route>
         <Route exact path="/">
           <Login />
         </Route>
@@ -51,7 +54,7 @@ function Router() {
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
           <ResetEmailPassword />
         </Route>
-        <Route path="/creategroups"> {/*Criar grupos*/}
+        <Route path="/creategroups"> {/*Criar oos*/}
           <CreateGroups />
         </Route>
       </Switch>
