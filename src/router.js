@@ -11,7 +11,7 @@ import ProfileUser from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
 import CreateGroups from "./components/ModalCriarGrupos";
 import Gruop from "./pages/Group";
-
+import Chat from "./pages/Chat";
 function PrivateRoute({children, ...rest}) {
   if(isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
@@ -23,8 +23,11 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/group">
+        <Route path="/group">
           <Gruop />
+        </Route>
+        <Route path="/chat">
+          <Chat />
         </Route>
         <Route exact path="/">
           <Login />

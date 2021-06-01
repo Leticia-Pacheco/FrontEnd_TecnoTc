@@ -236,6 +236,7 @@ export const ContainerQuadros = styled.div`
 export const Quadros = styled.div`
     width: 450px;
     height: 200px;
+    grid-column-start: auto;
     background-image: url(${ImageQuadro});
     background-repeat: no-repeat;
     background-size: cover;
@@ -260,3 +261,39 @@ export const CriarQuadros = styled.div`
         background-color:#b3b3b3;
     }
 `;
+
+
+export const UltimaMensagem = styled.div`
+
+    > p {
+        color: white;
+        font-size: 12px;
+    }
+`;
+
+export const Mensagens = styled.div`
+    width: 72%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -1px 0px 15px black;
+    z-index: 1;
+`;
+
+export const ContatoMensagem = styled.div`
+    width: 100%;
+    min-height: 8%;
+    background-color: ${colors.primaryPurple};
+    padding: 12px;
+
+    > h1 {
+        color: white;
+        font-size: 20px;
+    }
+`;
+
+export const ContainerMensagens = styled.div`
+    width: 100%;
+    height: 80%;
+    padding: 15px;
+`;
+
