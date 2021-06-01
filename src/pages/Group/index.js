@@ -33,6 +33,7 @@ function ChatGrup() {
 
     const [message, setMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
+    const [inRoom, setInRoom] = useState(false);
 
     const user = getUser();
 
@@ -52,7 +53,8 @@ function ChatGrup() {
     }
 
     const connectToRoom = () => {
-        socket.emit("join_room", 1);
+        setInRoom(true)
+        socket.emit("join_room", "teste");
     };
 
     useEffect(() => {
