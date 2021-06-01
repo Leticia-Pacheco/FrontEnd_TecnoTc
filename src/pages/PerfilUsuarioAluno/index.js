@@ -36,7 +36,7 @@ import { useEffect } from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
-import { getUser, signOut } from '../../service/security';
+import { getUser, setUser, signIn, signOut } from '../../service/security';
 import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll'
 
@@ -55,10 +55,12 @@ function ProfileStudent() {
     if (user.user.userRole === "student") {
       const response = await api.get("/students");
       setPerfil(response.data);
+      setUser(response.data)
     }
     if (user.user.userRole === "teacher") {
       const response = await api.get("/teachers");
       setPerfil(response.data);
+      setUser(response.data)
     }
   };
 

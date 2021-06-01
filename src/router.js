@@ -23,9 +23,9 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/group">
+        <PrivateRoute path="/group">
           <Gruop />
-        </Route>
+        </PrivateRoute>
         <Route path="/chat">
           <Chat />
         </Route>

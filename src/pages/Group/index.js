@@ -1,9 +1,15 @@
-import {Container, ComponetSubMenu, ComponetQuadros, TituloQuadros, Submenu, ContainerQuadros, Quadros, CriarQuadros, Mensagens, ContatoMensagem, ContainerMensagens} from './styles';
+import { Container, ComponetSubMenu, ComponetQuadros, TituloQuadros, Submenu, ContainerQuadros, Quadros, CriarQuadros, Mensagens, ContatoMensagem, ContainerMensagens } from './styles';
 import MenuComponent from '../../components/MenuComponent';
 import TemplateChatLeft from '../../components/TemplateChatLeft';
 import TemplateChatRight from '../../components/TemplateChatRight';
-import SendMessage from '../../components/SendMessage';
-import {useState} from 'react';
+import { useState } from 'react';
+import io from "socket.io-client";
+import { useEffect } from 'react';
+import { getUser } from '../../service/security';
+import { ContainerInputMessage, IconSend, Send } from "../../components/SendMessage/styles";
+import { api } from '../../service/api';
+
+
 function ComponentQuadros() {
     return (
         <ComponetQuadros>
@@ -21,18 +27,74 @@ function ComponentQuadros() {
         </ComponetQuadros>
     )
 }
-
+const CONNECTION_PORT = 'localhost:3002/';
+let socket;
 function ChatGrup() {
+
+    const [message, setMessage] = useState("");
+    const [messageList, setMessageList] = useState([]);
+
+    const user = getUser();
+
+    useEffect(() => {
+        socket = io(CONNECTION_PORT, { transports: ['websocket', 'polling', 'flashsocket'] });
+    }, [CONNECTION_PORT]);
+
+    useEffect(() => {
+        socket.on("receive_message", (data) => {
+            setMessageList([...messageList, data]);
+        });
+    }, []);
+
+    const loadMessages = async () => {
+        const response = await api.get("/messages/1");
+        setMessageList(response.data)
+    }
+
+    const connectToRoom = () => {
+        socket.emit("join_room", 1);
+    };
+
+    useEffect(() => {
+        loadMessages();
+        connectToRoom();
+    }, [])
+
+    const sendMessage = async () => {
+        let messageContent = {
+            userId: user.user.userId,
+            groupId: 1,
+            chatId: 1,
+            content: {
+                author: user.student.name,
+                message: message
+            }
+        }
+
+        await socket.emit("send_message", messageContent);
+        setMessageList([...messageList, messageContent.content])
+        setMessage("")
+    }
+
     return (
         <Mensagens>
             <ContatoMensagem>
                 <h1> Karina Soares </h1>
             </ContatoMensagem>
             <ContainerMensagens>
-                <TemplateChatRight />
-                <TemplateChatLeft />
+                <TemplateChatRight key={message.id} msg={message} />
+                {messageList.map((message) => (
+                    <>
+                        <TemplateChatLeft key={message.id} msg={message} />
+                    </>
+                ))}
             </ContainerMensagens>
-            <SendMessage />
+            <ContainerInputMessage>
+                <input type="text" placeholder="Digite uma mensagem" onChange={(e) => { setMessage(e.target.value) }} />
+                <Send onClick={sendMessage} >
+                    <IconSend />
+                </Send>
+            </ContainerInputMessage>
         </Mensagens>
     )
 }

@@ -1,12 +1,17 @@
 import { Container } from "./styles";
+import { useEffect, useState } from "react";
 
-function TemplateChatRight() {
+
+function TemplateChatRight({ msg }) {
+
+    const [message, setMessage] = useState([])
+
+    useEffect(() => {
+        setMessage(msg);
+    });
     return (
         <Container>
-            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                Maecenas porttitor congue massa. Fusce posuere, magna sed 
-                pulvinar ultricies, purus lectus malesuada libero, sit amet 
-                commodo magna eros quis urna. </p>
+            <p> {message.message}</p>
         </Container>
     )
 }

@@ -274,7 +274,6 @@ export const UltimaMensagem = styled.div`
 export const Mensagens = styled.div`
     width: 72%;
     min-height: 100vh;
-    background-color: #ffffff;
     box-shadow: -1px 0px 15px black;
     z-index: 1;
 `;
@@ -295,5 +294,6 @@ export const ContainerMensagens = styled.div`
     width: 100%;
     height: 80%;
     padding: 15px;
+    overflow-y: auto;
 `;
 

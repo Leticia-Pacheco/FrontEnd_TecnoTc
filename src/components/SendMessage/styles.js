@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FaPaperPlane } from "react-icons/fa";
 import colors from "../../styles/colors";
 
-export const Container = styled.div`
+export const ContainerInputMessage = styled.div`
     width: 100%;
     height: 10%;
     display: flex;
