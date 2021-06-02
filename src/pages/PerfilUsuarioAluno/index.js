@@ -208,6 +208,7 @@ function ProfileStudent() {
               <ScrollContainer horizontal={true}>
                 <Agrupamento>
                   <ComponentGrupo>
+                    {/* testando o scroll */}
                     <img
                       src={Configuracoes}
                       alt="Configuração dos grupos"

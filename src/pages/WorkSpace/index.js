@@ -1,7 +1,11 @@
 import { Container } from './styles';
 
 function Workspace() {
-  return <Container>Teste de tela</Container>;
+  return (
+    <Container>
+      <h1></h1>
+    </Container>
+  );
 }
 
 export default Workspace;
