@@ -82,7 +82,6 @@ function ProfileStudent() {
   };
 
   const goGroup = async (e) => {
-    console.log(e)
     history.push(`/group/${e}`)
   }
 
