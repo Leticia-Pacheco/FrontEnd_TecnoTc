@@ -11,7 +11,7 @@ function TemplateChatRight({ msg }) {
     });
     return (
         <Container>
-            <p> {message.message}</p>
+            <p> {message.message ? message.message : message.text}</p>
         </Container>
     )
 }

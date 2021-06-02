@@ -39,13 +39,14 @@ function ChatGrup() {
 
     useEffect(() => {
         socket = io(CONNECTION_PORT, { transports: ['websocket', 'polling', 'flashsocket'] });
+
     }, [CONNECTION_PORT]);
 
     useEffect(() => {
         socket.on("receive_message", (data) => {
             setMessageList([...messageList, data]);
         });
-    }, []);
+    })
 
     const loadMessages = async () => {
         const response = await api.get("/messages/1");
@@ -53,7 +54,7 @@ function ChatGrup() {
     }
 
     const connectToRoom = () => {
-        setInRoom(true)
+        setInRoom(true);
         socket.emit("join_room", "teste");
     };
 
@@ -65,6 +66,7 @@ function ChatGrup() {
     const sendMessage = async () => {
         let messageContent = {
             userId: user.user.userId,
+            room: "teste",
             groupId: 1,
             chatId: 1,
             content: {
@@ -84,15 +86,15 @@ function ChatGrup() {
                 <h1> Karina Soares </h1>
             </ContatoMensagem>
             <ContainerMensagens>
-                <TemplateChatRight key={message.id} msg={message} />
+
                 {messageList.map((message) => (
                     <>
-                        <TemplateChatLeft key={message.id} msg={message} />
+                        {message.author === user.student.name ? <TemplateChatLeft key={message.id} msg={message} /> : <TemplateChatRight key={message.id} msg={message} />}
                     </>
                 ))}
             </ContainerMensagens>
             <ContainerInputMessage>
-                <input type="text" placeholder="Digite uma mensagem" onChange={(e) => { setMessage(e.target.value) }} />
+                <input type="text" placeholder="Digite uma mensagem" onChange={(e) => { setMessage(e.target.value) }} value={message} />
                 <Send onClick={sendMessage} >
                     <IconSend />
                 </Send>
