@@ -10,7 +10,7 @@ import RedefinePassword from "./components/ModalRedefinirSenha";
 import ProfileUser from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
 import CreateGroups from "./components/ModalCriarGrupos";
-import Gruop from "./pages/Group";
+import Group from "./pages/Group";
 import Chat from "./pages/Chat";
 import WorkSpace from "./pages/WorkSpace";
 function PrivateRoute({ children, ...rest }) {
@@ -24,16 +24,13 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute path="/group">
-          <Gruop />
-        </PrivateRoute>
+        <PrivateRoute path="/group/:id" children={<Group/>}/>
         <Route path="/chat">
           <Chat />
         </Route>
         <Route exact path="/">
           <Login />
         </Route>
-
         <Route path="/Register">
           <Register />
         </Route>

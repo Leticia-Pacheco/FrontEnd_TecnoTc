@@ -75,10 +75,17 @@ function ProfileStudent() {
 
     history.replace('/');
   };
+
   const loadGroups = async () => {
     const response = await api.get('/group');
     setGroups(response.data);
   };
+
+  const goGroup = async (e) => {
+    console.log(e)
+    history.push(`/group/${e}`)
+  }
+
   useEffect(() => {
     loadPerfilInfo();
     loadAnnotations();
@@ -213,7 +220,7 @@ function ProfileStudent() {
               <ScrollContainer horizontal={true}>
                 <Agrupamento>
                   {groups.map((group) => (
-                    <ComponentGrupo>
+                    <ComponentGrupo onClick={() => goGroup(group.id)}>
                       <img
                         src={Configuracoes}
                         alt="Configuração dos grupos"

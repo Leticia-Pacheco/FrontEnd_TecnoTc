@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { getUser } from '../../service/security';
 import { ContainerInputMessage, IconSend, Send } from "../../components/SendMessage/styles";
 import { api } from '../../service/api';
+import { useParams } from 'react-router-dom';
 
 
 function ComponentQuadros() {
@@ -107,6 +108,7 @@ function Grups() {
     const [showChat, setShowChat] = useState(false);
     const [showComponentQuadro, setShowComponentQuadro] = useState(true);
 
+    let { id } = useParams();
 
     const handleTradeStade = () => {
         setShowComponentQuadro(true);
