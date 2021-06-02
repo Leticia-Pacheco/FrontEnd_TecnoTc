@@ -1,8 +1,8 @@
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import {isSignedIn} from './service/security';
+import { isSignedIn } from './service/security';
 import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
@@ -12,8 +12,9 @@ import ResetEmailPassword from "./components/RedefinirSenhaEmail";
 import CreateGroups from "./components/ModalCriarGrupos";
 import Gruop from "./pages/Group";
 import Chat from "./pages/Chat";
-function PrivateRoute({children, ...rest}) {
-  if(isSignedIn()) {
+import WorkSpace from "./pages/WorkSpace";
+function PrivateRoute({ children, ...rest }) {
+  if (isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
   } else {
     return <Redirect to="/" />;
@@ -59,6 +60,9 @@ function Router() {
         </Route>
         <Route path="/creategroups"> {/*Criar oos*/}
           <CreateGroups />
+        </Route>
+        <Route path="/workspace"> {/*Tela WorkSpace*/}
+          <WorkSpace />
         </Route>
       </Switch>
     </BrowserRouter>

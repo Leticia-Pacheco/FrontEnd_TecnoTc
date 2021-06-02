@@ -83,10 +83,19 @@ function ProfileStudent() {
   return (
     <>
       {modalEditProfile && (
-        <ModalEditProfile handleClose={() => setModalEditProfile(false)} />
+        <ModalEditProfile
+          handleClose={() => {
+            setModalEditProfile(false);
+          }}
+        />
       )}
       {modalAnotation && (
-        <ModalAnotation handleClose={() => setModalAnotation(false)} />
+        <ModalAnotation
+          handleClose={() => {
+            setModalAnotation(false);
+            loadAnnotations();
+          }}
+        />
       )}
       {modalCreateGrup && (
         <ModalCreateGrup handleClose={() => setModalCreateGrup(false)} />
@@ -267,7 +276,7 @@ function ProfileStudent() {
               <AgrupamentoAnotacoes>
                 {annotations.map((annotation) => (
                   <ComponentAnotacoes key={annotation.id}>
-                    <p>{annotation.text}</p>
+                    <p>{annotation.title}</p>
                     <img
                       src={ConfiguracoesAnotacoes}
                       alt="Configuração de anotações"
