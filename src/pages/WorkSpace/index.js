@@ -1,10 +1,11 @@
 import { Container, Content } from './styles';
-
+import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
+import logo from '../../assets/ImagesPerfis/logo_fundo_roxo_png.png';
 function Workspace() {
   return (
     <Container>
       <header>
-        <img src="" alt="icon" />
+        <img src={imgHomeFeed} alt="icon" />
         <img src="" alt="logo" />
         <img src="" alt="profileUser" />
       </header>

@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { getUser } from '../../service/security';
 import { ContainerInputMessage, IconSend, Send } from "../../components/SendMessage/styles";
 import { api } from '../../service/api';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 
 function ComponentQuadros() {
@@ -107,8 +107,24 @@ function Grups() {
 
     const [showChat, setShowChat] = useState(false);
     const [showComponentQuadro, setShowComponentQuadro] = useState(true);
+    const [group, setGroup] = useState([]);
+
+    const history = useHistory();
 
     let { id } = useParams();
+    console.log(id);
+
+    const verifyGroup = async () => {
+        const response = await api.get(`/group/${id}`)
+    
+        if(!response.data)
+            return history.push("/profile");
+        setGroup(response.data);
+    }
+
+    useEffect(() => {
+        verifyGroup();
+    }, [])
 
     const handleTradeStade = () => {
         setShowComponentQuadro(true);
