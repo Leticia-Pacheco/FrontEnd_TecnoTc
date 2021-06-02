@@ -82,9 +82,9 @@ function ProfileStudent() {
   };
 
   const goGroup = async (e) => {
-    console.log(e)
-    history.push(`/group/${e}`)
-  }
+    console.log(e);
+    history.push(`/group/${e}`);
+  };
 
   useEffect(() => {
     loadPerfilInfo();
@@ -254,18 +254,20 @@ function ProfileStudent() {
                   title="Avançar para outros componentes"
                 />
               </ButtonAvancarAnotacoes>
-              <AgrupamentoAnotacoes>
-                {annotations.map((annotation) => (
-                  <ComponentAnotacoes key={annotation.id}>
-                    <p>{annotation.title}</p>
-                    <img
-                      src={ConfiguracoesAnotacoes}
-                      alt="Configuração de anotações"
-                      title="Configuração de anotações"
-                    />
-                  </ComponentAnotacoes>
-                ))}
-              </AgrupamentoAnotacoes>
+              <ScrollContainer>
+                <AgrupamentoAnotacoes>
+                  {annotations.map((annotation) => (
+                    <ComponentAnotacoes key={annotation.id}>
+                      <p>{annotation.title}</p>
+                      <img
+                        src={ConfiguracoesAnotacoes}
+                        alt="Configuração de anotações"
+                        title="Configuração de anotações"
+                      />
+                    </ComponentAnotacoes>
+                  ))}
+                </AgrupamentoAnotacoes>
+              </ScrollContainer>
               <ButtonAvancarAnotacoes>
                 <img
                   src={buttonAvancar}
