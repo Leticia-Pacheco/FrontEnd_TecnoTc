@@ -46,6 +46,7 @@ function ProfileStudent() {
   const [modalCreateGrup, setModalCreateGrup] = useState(false);
   const [perfil, setPerfil] = useState([]);
   const [annotations, setAnnotations] = useState([]);
+  const [groups, setGroups] = useState([]);
   const history = useHistory();
 
   const user = getUser();
@@ -74,10 +75,14 @@ function ProfileStudent() {
 
     history.replace('/');
   };
-
+  const loadGroups = async () => {
+    const response = await api.get('/group');
+    setGroups(response.data);
+  };
   useEffect(() => {
     loadPerfilInfo();
     loadAnnotations();
+    loadGroups();
   }, []);
 
   return (
@@ -207,51 +212,19 @@ function ProfileStudent() {
               </ButtonAvancarGrupos>
               <ScrollContainer horizontal={true}>
                 <Agrupamento>
-                  <ComponentGrupo>
-                    {/* testando o scroll */}
-                    <img
-                      src={Configuracoes}
-                      alt="Configuração dos grupos"
-                      title="Configuração dos grupos"
-                    />
-                    <ImageGrupo>
-                      <p>DS</p>
-                    </ImageGrupo>
-                    <p>Desenvolvimento de sistemas</p>
-                  </ComponentGrupo>
-                  <ComponentGrupo>
-                    <img
-                      src={Configuracoes}
-                      alt="Configuração dos grupos"
-                      title="Configuração dos grupos"
-                    />
-                    <ImageGrupo>
-                      <p>DS</p>
-                    </ImageGrupo>
-                    <p>Desenvolvimento de sistemas</p>
-                  </ComponentGrupo>
-                  <ComponentGrupo>
-                    <img
-                      src={Configuracoes}
-                      alt="Configuração dos grupos"
-                      title="Configuração dos grupos"
-                    />
-                    <ImageGrupo>
-                      <p>DS</p>
-                    </ImageGrupo>
-                    <p>Desenvolvimento de sistemas</p>
-                  </ComponentGrupo>
-                  <ComponentGrupo>
-                    <img
-                      src={Configuracoes}
-                      alt="Configuração dos grupos"
-                      title="Configuração dos grupos"
-                    />
-                    <ImageGrupo>
-                      <p>DS</p>
-                    </ImageGrupo>
-                    <p>Desenvolvimento de sistemas</p>
-                  </ComponentGrupo>
+                  {groups.map((group) => (
+                    <ComponentGrupo>
+                      <img
+                        src={Configuracoes}
+                        alt="Configuração dos grupos"
+                        title="Configuração dos grupos"
+                      />
+                      <ImageGrupo>
+                        <p>DS</p>
+                      </ImageGrupo>
+                      <p>{group.name}</p>
+                    </ComponentGrupo>
+                  ))}
                 </Agrupamento>
               </ScrollContainer>
               <ButtonAvancarGrupos>
