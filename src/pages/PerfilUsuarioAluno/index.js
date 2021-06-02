@@ -27,8 +27,8 @@ import ImageChats from '../../assets/ImagesPerfis/chats.png';
 import ImageVisuAlunos from '../../assets/ImagesPerfis/ver_meus_alunos.png';
 import ImageLogout from '../../assets/ImagesPerfis/sair.png';
 import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
-import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
-import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
+import buttonAvancar from '../../assets/ImagesPerfis/seta_passar_itens.png';
+import buttonVoltar from '../../assets/ImagesPerfis/seta_voltar_itens.png';
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
 import { api } from '../../service/api';
 import { useState } from 'react';
@@ -36,9 +36,9 @@ import { useEffect } from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
-import { getUser, setUser, signIn, signOut } from '../../service/security';
+import { getUser, setUser, signOut } from '../../service/security';
 import { useHistory } from 'react-router';
-import ScrollContainer from 'react-indiana-drag-scroll'
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 function ProfileStudent() {
   const [modalEditProfile, setModalEditProfile] = useState(false);
@@ -51,29 +51,28 @@ function ProfileStudent() {
   const user = getUser();
 
   const loadPerfilInfo = async (reload) => {
-
-    if (user.user.userRole === "student") {
-      const response = await api.get("/students");
+    if (user.user.userRole === 'student') {
+      const response = await api.get('/students');
       setPerfil(response.data);
-      setUser(response.data)
+      setUser(response.data);
     }
-    if (user.user.userRole === "teacher") {
-      const response = await api.get("/teachers");
+    if (user.user.userRole === 'teacher') {
+      const response = await api.get('/teachers');
       setPerfil(response.data);
-      setUser(response.data)
+      setUser(response.data);
     }
   };
 
   const loadAnnotations = async () => {
-    const response = await api.get("/annotations");
+    const response = await api.get('/annotations');
 
     setAnnotations(response.data);
-  }
+  };
 
   const handleSignOut = () => {
     signOut();
 
-    history.replace("/");
+    history.replace('/');
   };
 
   useEffect(() => {
@@ -83,9 +82,15 @@ function ProfileStudent() {
 
   return (
     <>
-      {modalEditProfile && <ModalEditProfile handleClose={() => setModalEditProfile(false)} />}
-      {modalAnotation && <ModalAnotation handleClose={() => setModalAnotation(false)} />}
-      {modalCreateGrup && <ModalCreateGrup handleClose={() => setModalCreateGrup(false)} />}
+      {modalEditProfile && (
+        <ModalEditProfile handleClose={() => setModalEditProfile(false)} />
+      )}
+      {modalAnotation && (
+        <ModalAnotation handleClose={() => setModalAnotation(false)} />
+      )}
+      {modalCreateGrup && (
+        <ModalCreateGrup handleClose={() => setModalCreateGrup(false)} />
+      )}
       <Container>
         <ContainerPerfilConteudo>
           <PerfilInfoUsuario>
@@ -144,7 +149,7 @@ function ProfileStudent() {
                   <p>Chats</p>
                 </li>
               </ul>
-              {perfil.role === "teacher" && (
+              {perfil.role === 'teacher' && (
                 <ul>
                   <li>
                     <img
@@ -179,38 +184,59 @@ function ProfileStudent() {
           </PerfilInfoUsuario>
 
           <Conteudo>
-            <h3 id="btn-grup" onClick={() => setModalCreateGrup(true)}>Meus grupos +</h3>
-
+            <h3 id="btn-grup" onClick={() => setModalCreateGrup(true)}>
+              Meus grupos +
+            </h3>
 
             <Grupos>
               <ButtonAvancarGrupos>
-                <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+                <img
+                  src={buttonVoltar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
               </ButtonAvancarGrupos>
               <ScrollContainer horizontal={true}>
                 <Agrupamento>
                   <ComponentGrupo>
-                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <img
+                      src={Configuracoes}
+                      alt="Configuração dos grupos"
+                      title="Configuração dos grupos"
+                    />
                     <ImageGrupo>
                       <p>DS</p>
                     </ImageGrupo>
                     <p>Desenvolvimento de sistemas</p>
                   </ComponentGrupo>
                   <ComponentGrupo>
-                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <img
+                      src={Configuracoes}
+                      alt="Configuração dos grupos"
+                      title="Configuração dos grupos"
+                    />
                     <ImageGrupo>
                       <p>DS</p>
                     </ImageGrupo>
                     <p>Desenvolvimento de sistemas</p>
                   </ComponentGrupo>
                   <ComponentGrupo>
-                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <img
+                      src={Configuracoes}
+                      alt="Configuração dos grupos"
+                      title="Configuração dos grupos"
+                    />
                     <ImageGrupo>
                       <p>DS</p>
                     </ImageGrupo>
                     <p>Desenvolvimento de sistemas</p>
                   </ComponentGrupo>
                   <ComponentGrupo>
-                    <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos" />
+                    <img
+                      src={Configuracoes}
+                      alt="Configuração dos grupos"
+                      title="Configuração dos grupos"
+                    />
                     <ImageGrupo>
                       <p>DS</p>
                     </ImageGrupo>
@@ -219,26 +245,43 @@ function ProfileStudent() {
                 </Agrupamento>
               </ScrollContainer>
               <ButtonAvancarGrupos>
-                <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+                <img
+                  src={buttonAvancar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
               </ButtonAvancarGrupos>
             </Grupos>
 
-            <h3 id="btn-anotation" onClick={() => setModalAnotation(true)}>Anotações +</h3>
+            <h3 id="btn-anotation" onClick={() => setModalAnotation(true)}>
+              Anotações +
+            </h3>
             <Anotacoes>
               <ButtonAvancarAnotacoes>
-                <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+                <img
+                  src={buttonVoltar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
               </ButtonAvancarAnotacoes>
               <AgrupamentoAnotacoes>
                 {annotations.map((annotation) => (
                   <ComponentAnotacoes key={annotation.id}>
                     <p>{annotation.text}</p>
-                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações" />
+                    <img
+                      src={ConfiguracoesAnotacoes}
+                      alt="Configuração de anotações"
+                      title="Configuração de anotações"
+                    />
                   </ComponentAnotacoes>
-                )
-                )}
+                ))}
               </AgrupamentoAnotacoes>
               <ButtonAvancarAnotacoes>
-                <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes" />
+                <img
+                  src={buttonAvancar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
               </ButtonAvancarAnotacoes>
             </Anotacoes>
           </Conteudo>
