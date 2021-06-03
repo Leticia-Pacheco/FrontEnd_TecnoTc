@@ -12,7 +12,6 @@ import { useParams, useHistory } from 'react-router-dom';
 
 
 function ComponentQuadros({ workspaces }) {
-    console.log(workspaces)
     return (
         <ComponetQuadros>
             <TituloQuadros>
@@ -33,7 +32,7 @@ function ComponentQuadros({ workspaces }) {
 }
 const CONNECTION_PORT = 'localhost:3002/';
 let socket;
-function ChatGrup() {
+function ChatGrup({ chat }) {
 
     const [message, setMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
@@ -52,27 +51,26 @@ function ChatGrup() {
         });
     })
 
-    const loadMessages = async () => {
-        const response = await api.get("/messages/1");
-        setMessageList(response.data)
-    }
+    // const loadMessages = async () => {
+    //     const response = await api.get(`/messages/${chat.id}`);
+    //     setMessageList(response.data)
+    // }
 
     const connectToRoom = () => {
         setInRoom(true);
-        socket.emit("join_room", "teste");
+        socket.emit("join_room", chat.id);
     };
 
     useEffect(() => {
-        loadMessages();
+        //loadMessages();
         connectToRoom();
     }, [])
 
     const sendMessage = async () => {
         let messageContent = {
             userId: user.user.userId,
-            room: "teste",
             groupId: 1,
-            chatId: 1,
+            chatId: chat.id,
             content: {
                 author: user.student.name,
                 message: message
@@ -93,7 +91,7 @@ function ChatGrup() {
 
                 {messageList.map((message) => (
                     <>
-                        {message.author === user.student.name ? <TemplateChatLeft key={message.id} msg={message} /> : <TemplateChatRight key={message.id} msg={message} />}
+                        {<TemplateChatLeft key={message.id} msg={message} />}
                     </>
                 ))}
             </ContainerMensagens>
@@ -111,6 +109,7 @@ function Grups() {
     const [showChat, setShowChat] = useState(false);
     const [showComponentQuadro, setShowComponentQuadro] = useState(true);
     const [group, setGroup] = useState([]);
+    const [workspaces, setWorkspaces] = useState([]);
 
     const history = useHistory();
 
@@ -118,11 +117,11 @@ function Grups() {
 
     const verifyGroup = async () => {
         const response = await api.get(`/group/${id}`)
-        //console.log(response.data)
 
         if (!response.data)
             return history.push("/profile");
         setGroup(response.data);
+        setWorkspaces(response.data.Workspaces);
     }
 
     useEffect(() => {
@@ -150,8 +149,8 @@ function Grups() {
                     Chat
                 </ComponetSubMenu>
             </Submenu>
-            {showChat && <ChatGrup />}
-            {showComponentQuadro && <ComponentQuadros workspaces={group.Workspaces} />}
+            {showChat && <ChatGrup chat={group.Chat} />}
+            {showComponentQuadro && <ComponentQuadros workspaces={workspaces} />}
         </Container>
     )
 }

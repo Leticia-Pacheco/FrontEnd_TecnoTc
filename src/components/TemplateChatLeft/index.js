@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import { Container } from "./styles";
 
-function TemplateChatLeft({msg}) {
+function TemplateChatLeft({ msg }) {
+    // console.log(msg)
 
-    const [message, setMessage] = useState([])
-
-    useEffect(() => {
-        setMessage(msg);
-    }, [message]);
-    
     return (
         <Container>
-            <p>  {message.message ? message.message : message.text}</p>
+            <p>  {msg.message}</p>
         </Container>
     )
 }
