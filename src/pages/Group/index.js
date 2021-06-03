@@ -11,19 +11,22 @@ import { api } from '../../service/api';
 import { useParams, useHistory } from 'react-router-dom';
 
 
-function ComponentQuadros() {
+function ComponentQuadros({ workspaces }) {
+    console.log(workspaces)
     return (
         <ComponetQuadros>
             <TituloQuadros>
                 <h1> Quadros </h1>
             </TituloQuadros>
             <ContainerQuadros>
-                <Quadros>
-                    <h2>Titulo do Quadro</h2>
-                </Quadros>
                 <CriarQuadros>
                     Criar um novo quadro +
-                    </CriarQuadros>
+                </CriarQuadros>
+                {workspaces.map((workspace) => (
+                    <Quadros key={workspace.id}>
+                        <h2>{workspace.name}</h2>
+                    </Quadros>
+                ))}
             </ContainerQuadros>
         </ComponetQuadros>
     )
@@ -112,12 +115,12 @@ function Grups() {
     const history = useHistory();
 
     let { id } = useParams();
-    console.log(id);
 
     const verifyGroup = async () => {
         const response = await api.get(`/group/${id}`)
-    
-        if(!response.data)
+        //console.log(response.data)
+
+        if (!response.data)
             return history.push("/profile");
         setGroup(response.data);
     }
@@ -148,7 +151,7 @@ function Grups() {
                 </ComponetSubMenu>
             </Submenu>
             {showChat && <ChatGrup />}
-            {showComponentQuadro && <ComponentQuadros />}
+            {showComponentQuadro && <ComponentQuadros workspaces={group.Workspaces} />}
         </Container>
     )
 }
