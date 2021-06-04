@@ -1,6 +1,13 @@
+import { useParams } from "react-router";
 import { Container, Conteudo, Form } from "./styles";
 
 function SprintRetrospective () {
+
+
+    const {groupId} = useParams();
+
+    console.log(groupId)
+
     return(
         <Container>
             <Form>
@@ -15,11 +22,8 @@ function SprintRetrospective () {
                     <span>Funcionalidades entregues</span>
                     <textarea  placeholder="Escreva aqui as funcionalidades entregues"/>
 
-                    <span>Feedback do Product Owner (P.O)</span>
+                    <span>Feedback</span>
                     <textarea placeholder="Escreva aqui o que não foi feito"/>
-
-                    <span>Novas tarefas para o Product Backlog</span>
-                    <textarea placeholder="Escreva novas tarefas para o Product Backlog aqui"/>
 
                     <button>Enviar sua Sprint Review!</button>
                 </Conteudo>

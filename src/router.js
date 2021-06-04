@@ -13,6 +13,11 @@ import CreateGroups from "./components/ModalCriarGrupos";
 import Group from "./pages/Group";
 import Chat from "./pages/Chat";
 import WorkSpace from "./pages/WorkSpace";
+import SprintReview from "./pages/SprintReview";
+import SprintDaily from "./pages/SprintDaily";
+import SprintRetrospective from "./pages/SprintRetrospective";
+
+
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
@@ -24,7 +29,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute path="/group/:id" children={<Group/>}/>
+        <PrivateRoute path="/group/:id" children={<Group />} />
         <Route path="/chat">
           <Chat />
         </Route>
@@ -61,6 +66,15 @@ function Router() {
         <Route path="/workspace"> {/*Tela WorkSpace*/}
           <WorkSpace />
         </Route>
+        <PrivateRoute path="/dailyScrum/:groupId">
+            <SprintDaily/>
+        </PrivateRoute>
+        <PrivateRoute path="/sprintRetrospective/:groupId">
+            <SprintRetrospective/>
+        </PrivateRoute>
+        <PrivateRoute path="/sprintReview/:groupId">
+            <SprintReview/>
+        </PrivateRoute>
       </Switch>
     </BrowserRouter>
   );
