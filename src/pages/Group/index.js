@@ -88,7 +88,7 @@ function ChatGrup({ chat }) {
                 <h1> Karina Soares </h1>
             </ContatoMensagem>
             <ContainerMensagens>
-
+                {/* <TemplateChatRight/> */}
                 {messageList.map((message) => (
                     <>
                         {<TemplateChatLeft key={message.id} msg={message} />}

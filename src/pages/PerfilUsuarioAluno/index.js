@@ -47,6 +47,8 @@ function ProfileStudent() {
   const [perfil, setPerfil] = useState([]);
   const [annotations, setAnnotations] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [reload, setReload] = useState(null);
+
   const history = useHistory();
 
   const user = getUser();
