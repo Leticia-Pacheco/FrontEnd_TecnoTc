@@ -1,22 +1,21 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Input from '../Input';
-import { api } from '../../service/api';
-import { Container, Overlay } from './styles';
-import { signIn } from '../../service/security';
+import {api} from '../../service/api';
+import {Container, Overlay} from './styles';
 
-function CreateAnotacoes({ handleClose }) {
+function CreateAnotacoes({handleClose}) {
   const [newAnnotation, setAnnotation] = useState({
     title: '',
     text: '',
   });
   const handleInput = (e) => {
-    setAnnotation({ ...newAnnotation, [e.target.id]: e.target.value });
+    setAnnotation({...newAnnotation, [e.target.id]: e.target.value});
   };
   const handleAddAnnotation = async (e) => {
     e.preventDefault();
 
     try {
-      const { title, text } = newAnnotation;
+      const {title, text} = newAnnotation;
 
       const response = await api.post('/annotations', {
         title,
@@ -25,7 +24,7 @@ function CreateAnotacoes({ handleClose }) {
 
       setAnnotation(response.data);
       handleClose();
-    } catch (error) {
+    } catch(error) {
       console.error(error);
       alert(error.response.data.error);
     }

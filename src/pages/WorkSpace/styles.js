@@ -9,18 +9,60 @@ export const Container = styled.div`
   > header {
     width: 100%;
     height: 75px;
+    padding: 50px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: blueviolet;
+    background-color: var(--primaryPurple);
+
+    #home{
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+
+      background-color: #dcddd7;
+    }
+    #logo{
+      width: 300px;
+      height: 90px;
+      image-rendering: pixelated;
+    }
+    .profileUser{
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
   }
   > #sub-menu {
     width: 100%;
-    height: 50px;
+    height: 65px;
+    background-color: #8b85a7;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: blue;
+    >h3{
+      margin-left: 10px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    >article{
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      .profileUser{
+      width: 60px;
+      height: 60px;
+      margin-left: 5px;
+      border-radius: 50%;
+    }
+    >button{
+      margin: 0px 20px;
+      width: 140px;
+      height: 50px;
+      border-radius: 10px;
+      background-color:#dcddd7;
+    }
+    }
   }
 `;
 export const Content = styled.div`
