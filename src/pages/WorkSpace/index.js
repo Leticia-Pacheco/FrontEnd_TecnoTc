@@ -5,6 +5,8 @@ import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import { api } from "../../service/api";
+import { useEffect } from 'react';
 
 const itemsFromBackend = [
   {id: uuid(), content: "First task"},
@@ -39,18 +41,40 @@ const columnsFromBackend = {
 };
 
 const onDragEnd = (result, columns, setColumns) => {
+
   if(!result.destination) return;
   const {source, destination} = result;
 
   if(source.droppableId !== destination.droppableId) {
+
+
+    //A LISTA QUE ESTOU ATUALMENTE
     const sourceColumn = columns[source.droppableId];
+    console.log(sourceColumn)
+
+    //RETORNA A LISTA PARA QUAL EU VOU
     const destColumn = columns[destination.droppableId];
+    console.log(destColumn)
+
+
+    //RETORNA O QUE SOBROU DE UMA LISTA
     const sourceItems = [...sourceColumn.items];
+    console.log(sourceItems)
+
+
+    //RETORNA UM ARRAY COM TUDO DE NOVO DA NOVA LISTA
     const destItems = [...destColumn.items];
+    console.log(destItems)
+
+    //REMOVE UM ELEMENTO DA LISTA
     const [removed] = sourceItems.splice(source.index, 1);
+    console.log(removed)
+
+
     destItems.splice(destination.index, 0, removed);
     setColumns({
       ...columns,
+      //seta as colunas retornando tudo da lista que estou atualmente mais o que vem de noovo 
       [source.droppableId]: {
         ...sourceColumn,
         items: sourceItems
@@ -78,6 +102,23 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function Workspace() {
   const [columns, setColumns] = useState(columnsFromBackend);
+  console.log(columnsFromBackend)
+
+  const loadColumns = async () => {
+
+    try {
+      const response = await api.get(`/lists/${1}`)
+      console.log(response.data)
+    } catch (error) {
+      console.error(error);
+    }
+   
+  }
+
+  useEffect(() => {
+    loadColumns();
+  }, [])
+  
   return (
     <Container>
       <header>
