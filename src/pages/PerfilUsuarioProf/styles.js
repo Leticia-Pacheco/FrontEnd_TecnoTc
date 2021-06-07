@@ -11,6 +11,11 @@ export const Container = styled.div`
   display: flex;
 
   z-index: -1;
+
+  a {
+    color: var(--primaryPurple);
+    text-decoration: none;
+  }
 `;
 
 export const ContainerPerfilConteudo = styled.div`
@@ -167,6 +172,14 @@ export const Conteudo = styled.div`
     margin-left: 42px;
 
     color: var(--primaryPurple);
+
+    > span {
+      color: var(--primaryPurple);
+
+      :hover {
+        cursor: pointer;
+      }
+    }
   }
 `;
 
@@ -213,12 +226,22 @@ export const ComponentGrupo = styled.div`
     box-shadow: 2px 2px 10px black;
 
     text-align: center;
+    > img {
+        width: 20px;
+        height: 20px;
+
+        margin-left: 170px;
+
+        :hover {
+          cursor: pointer;
+        }
+    }
 
     > p {
         color: var(--primaryPurple);
         font-weight: bold;
     }
-  `;
+`;
 
 export const ImageGrupo = styled.div`
     width: 80px;
@@ -227,7 +250,6 @@ export const ImageGrupo = styled.div`
     margin-top: 15px;
 
     border-radius: 15px 15px 15px 15px;
-
     background-color: var(--primaryGreenWater);
 
     line-height: 80px;
@@ -300,7 +322,7 @@ export const ComponentAnotacoes= styled.div`
     align-items: center;
     padding-left: 5px;
 
-    background-color: var(--primaryGreenWater);
+    background-color: #DD4A88;
 
     > p {
       font-weight: bold;
@@ -342,5 +364,17 @@ export const Footer = styled.footer`
     color: white;
 
     font-size: 16px;
+  }
+`;
+
+export const Logo = styled.div`
+  width: 150px;
+  height: 60px;
+
+  align-self: flex-end;
+
+  > img {
+    width: 150px;
+    height: 60px;
   }
 `;

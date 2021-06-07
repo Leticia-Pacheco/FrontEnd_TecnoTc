@@ -1,6 +1,6 @@
-import { Container, Content } from './styles';
+import { Container } from './styles';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
-import logo from '../../assets/logos/logo_fundo_roxo_png.png';
+// import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 function Workspace() {
   return (
     <Container>

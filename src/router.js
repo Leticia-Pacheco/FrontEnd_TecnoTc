@@ -3,16 +3,20 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { isSignedIn } from './service/security';
-import ConfirmEmail from './pages/ConfirmEmail';
+// import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from "./components/ModalRedefinirSenha";
-import ProfileUser from "./pages/PerfilUsuarioAluno";
+import ProfileTeacher from "./pages/PerfilUsuarioProf";
+import ProfileStudent from "./pages/PerfilUsuarioAluno";
 import ResetEmailPassword from "./components/RedefinirSenhaEmail";
+import EditProfile from "./components/ModalEditarPerfil";
 import CreateGroups from "./components/ModalCriarGrupos";
-import Group from "./pages/Group";
-import Chat from "./pages/Chat";
-import WorkSpace from "./pages/WorkSpace";
+import CreateAnotacoes from "./components/ModalCriarAnotacoes";
+import SprintRetrospective from "./pages/SprintRetrospective";
+import SprintReview from "./pages/SprintReview";
+import SprintDaily from "./pages/SprintDaily";
+
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
@@ -24,42 +28,51 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute path="/group/:id" children={<Group/>}/>
-        <Route path="/chat">
-          <Chat />
-        </Route>
         <Route exact path="/">
-          <Login />
+          <Home />
         </Route>
+
         <Route path="/Register">
           <Register />
         </Route>
-        <PrivateRoute path="/home">
-          <Home />
-        </PrivateRoute>
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route path="/orderconfirmemail"> {/*Permissão para enviar o email de confirmação*/}
           <OrderConfirmEmail />
         </Route>
-        <Route path="/confirmemail"> {/*Permissão para enviar o email de confirmação*/}
-          <ConfirmEmail />
-        </Route>
-        <Route path="/recoverpassword">
-          <RecoverPassword />
+        <Route path="/recoverpassword"> {/*Recuperar senha*/}
+          <RecoverPassword/>
         </Route>
         <Route path="/redefinepassword"> {/*Redefinir senha*/}
-          <RedefinePassword />
+          <RedefinePassword/>
         </Route>
-        <PrivateRoute path="/profile"> {/*Perfil do aluno*/}
-          <ProfileUser />
-        </PrivateRoute>
+        <Route path="/profileteacher"> {/*Perfil do professor*/}
+          <ProfileTeacher/>
+        </Route>
+        <Route path="/profilestudent"> {/*Perfil do aluno*/}
+          <ProfileStudent/>
+        </Route>
         <Route path="/resetemailpassword"> {/*Redefinir senha*/}
-          <ResetEmailPassword />
+          <ResetEmailPassword/>
         </Route>
-        <Route path="/creategroups"> {/*Criar oos*/}
-          <CreateGroups />
+        <Route path="/editprofile"> {/*Editar perfil*/}
+          <EditProfile/>
         </Route>
-        <Route path="/workspace"> {/*Tela WorkSpace*/}
-          <WorkSpace />
+        <Route path="/creategroups"> {/*Criar grupos*/}
+          <CreateGroups/>
+        </Route>
+        <Route path="/createanotacoes"> {/*Criar grupos*/}
+          <CreateAnotacoes/>
+        </Route>
+        <Route path="/sprintRetrospective">
+          <SprintRetrospective/>
+        </Route>
+        <Route path="/sprintReview">
+          <SprintReview/>
+        </Route>
+        <Route path="/sprintDaily">
+          <SprintDaily/>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -7,10 +7,8 @@ import {
 } from './styles';
 // import Logo from '../../components/Logo';
 import GifConfirmEmail from '../../assets/ImagesConfirmEmail/ImageconfirmEmail.png';
-import { Link } from 'react-router-dom';
 
 function PedidoConfirmEmail() {
-
   return (
     <>
       <Container>
@@ -28,11 +26,10 @@ function PedidoConfirmEmail() {
         <Mensagem>
           <p>O seu email foi confirmado!</p>
           <p>Aproveite as ferramentas feitas especialmente para você!</p>
-          <Link to="/">
-            <ButtonConfirm>
-              <p>Ir para a página principal!</p>
-            </ButtonConfirm>
-          </Link>
+
+          <ButtonConfirm>
+            <p>Ir para a página principal!</p>
+          </ButtonConfirm>
         </Mensagem>
       </Container>
     </>

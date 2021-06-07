@@ -1,9 +1,9 @@
-import styled, {keyframes} from 'styled-components';
-import {FaLock, FaEnvelope} from 'react-icons/fa';
+import styled, { keyframes } from 'styled-components';
+import { FaLock, FaEnvelope } from 'react-icons/fa';
 import px2vw from '../../utils/px2vw';
-// Animação da abertura da aplicação
+// Animação da abertura da aplicação]
 const loginAnimation = keyframes`
-    0% {
+    0%{
         top: -250px;
         opacity: 0;
         transform: scale(0.01) rotate(90deg);
@@ -105,6 +105,7 @@ export const ApresentacaoEmpresa = styled.div`
   color: var(--primaryPurple);
   font-size: 25px;
 
+<<<<<<< HEAD
   @media (max-width: 1024px) {
     width: 60%;
     flex-wrap: nowrap;
@@ -232,7 +233,7 @@ export const IconEmail = styled(FaEnvelope)`
   font-size: 15px;
 
   margin-top: -35px;
-  margin-left: 4px;
+  margin-left: 3px;
 
   color: var(--primaryPurple);
 
@@ -262,9 +263,9 @@ export const RedefinirSenha = styled.div`
 
   > a {
     color: black;
+
     :hover{
       cursor: pointer;
-      color: var(--primaryGreenWater);
       pointer-events: auto; 
     }
   }

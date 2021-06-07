@@ -66,26 +66,23 @@ export const MensagemUsuario = styled.div`
     text-align: center;
 `;
 
-export const InserirNovaSenha = styled.form`
+export const InserirNovaSenha = styled.div`
     min-width: 280px;
     width: auto;
     min-height: 50px;
     height: auto;
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
 
     margin: 15px;
 
     > p {
-        text-align: center;
         color: white;
-        margin: 15px 0px;
     }
 
     > input {
         width: 100%;
         height: 35px;
+
         border-radius: 5px;
         border: solid 2px white;
 
@@ -97,7 +94,7 @@ export const InserirNovaSenha = styled.form`
 export const ButtonRedefinirSenha = styled.div`
     width: 300px;
     height: 30px;
-    margin-top: 20px;
+
     > button {
         width: 100%;
         height: 30px;

@@ -5,7 +5,7 @@ export const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 9;
-    overflow-x: hidden;
+
     background-color: #333C;
 
     display: flex;
@@ -45,14 +45,8 @@ export const Header = styled.div`
         font-size: 20px;
         margin-top: 50px;
         margin-left: 200px;
+
         color: white;
-    }
-    >span{
-        color: black;
-        cursor: pointer;
-        :hover {
-            color: red;  
-        }
     }
 `;
 
@@ -114,7 +108,7 @@ export const Logo = styled.div`
     }
 `;
 
-export const EditarDados = styled.form`
+export const EditarDados = styled.div`
     width: 100%;
     min-height: 500px;
     height: auto;
@@ -137,7 +131,6 @@ export const EditarDados = styled.form`
 
         background-color: var(--primaryGreenWater);
         border: solid 2px var(--primaryGreenWater);
-        cursor: pointer;
 
         color: white;
         font-weight: bold;

@@ -23,7 +23,6 @@ export const Header = styled.header`
     height: 550px;
     
     display: flex;
-    justify-content: center;
 
     background-color: var(--primaryPurple);
 
@@ -37,8 +36,8 @@ export const MenuContainer = styled.header`
     width: 100%;
     height: 85px;
 
-    padding-top: 20px;
-    padding-left: 60px;
+    padding-top: 10px;
+    padding-left: 20px;
     padding-right: 70px;
 
     position: fixed;
@@ -52,7 +51,7 @@ export const MenuContainer = styled.header`
 
     > ul {
         margin-left: 350px;
-        margin-top: 10px;
+        margin-top: 20px;
     }
     > ul li {
         margin-left: 20px;
@@ -157,11 +156,10 @@ export const Informacoes = styled.div`
     min-height: 100px;
     height: auto;
     overflow: hidden;
-
-    // background-color: green;
     word-break: break-word;
 
     padding-bottom: 15px;
+    padding-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,8 +173,10 @@ export const Informacoes = styled.div`
     > p {
         width: 700px;
         text-align: justify;
-        font-size: 35px;
-        font-family: Roboto;
+        font-size: 30px;
+        
+        // color: #4A4E4E;
+        color: #262C2C;
 
         margin-left: 80px;
     }
@@ -184,7 +184,7 @@ export const Informacoes = styled.div`
 
 export const Oferecemos = styled.section`
     width: 100%;
-    height: 800px;
+    height: 650px;
 
     padding-top: 50px;
     padding-bottom: 20px;
@@ -223,9 +223,7 @@ export const OferecItem = styled.div`
 
     > img {
         width: 120px;
-        height: 90px;
-
-        background-color: green;
+        height: 100px;
     }
 
     > p {
@@ -234,30 +232,198 @@ export const OferecItem = styled.div`
 
         color: var(--grey);
     }
+
+    :hover {
+        margin-top: -10px;
+        transition: 1s;
+    }
 `;
 
 export const NossoApp = styled.section`
     width: 100%;
     height: 500px;
 
+    padding-left: 70px;
+    padding-right: 70px;
+
     border-bottom: solid 6px var(--primaryPurple);
-    box-shadow: 2px 2px 10px var(--primaryPurple);
+
+    > img {
+        width: 100px;
+        height: 500px;
+    }
+`;
+
+export const TextoNossoApp = styled.div`
+    width: 450px;
+    min-height: 100px;
+    height: auto;
+    overflow: hidden;
+
+    margin-right: 250px;
+    margin-top: -80px;
+
+    line-height: 35px;
+
+    > h1 {
+        font-size: 30px;
+        color: var(--primaryPurple);
+
+        margin-bottom: 10px;
+    }
+
+    > p {
+        text-align: justify;
+        font-size: 30px;
+
+        color: #4A4E4E;
+    }
+`;
+
+export const ImageApp = styled.div`
+    width: 400px;
+    min-height: 450px;
+    height: auto;
+    overflow: hidden;
+
+    // background-color: yellow;
+
+    align-self: self-end;
+
+    > img {
+        width: 350px;
+        height: 479px;
+    }
 `;
 
 export const Equipe = styled.section`
     width: 100%;
-    height: 500px;
+    height: 650px;
+
+    padding-top: 70px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    > h1 {
+        text-align: center;
+        font-size: 30px;
+        color: var(--primaryPurple);
+
+        margin-bottom: 20px;
+    }
+
+    > p {
+        text-align: justify;
+        font-size: 25px;
+
+        margin-bottom: 50px;
+    }
 `;
 
+export const PerfisEquipe = styled.div`
+    width: 230px;
+    height: 300px;
 
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    flex-direction: column;
 
+    padding-top: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
 
+    > h3 {
+        margin-bottom: 10px;
 
+        text-align: center;
 
+        color: var(--primaryPurple);
+    }
+
+    > h2 {
+        font-size: 18px;
+        text-align: center;
+        margin-top: -10px;
+
+        color: var(--primaryPurple);
+    }
+
+    > img {
+        width: 150px;
+        height: 150px;
+
+        margin-bottom: 10px;
+        border-radius: 50%;
+    }
+
+    > span {
+        margin-bottom: 5px;
+
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--primaryPurple);
+    }
+
+    > p {
+        width: 150px;
+
+        text-align: center;
+        font-size: 18px;
+    }
+`;
 
 export const Footer = styled.footer`
     width: 100%;
     height: 120px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 10px;
+    padding-left: 70px;
+    padding-right: 70px;
+
     background-color: var(--primaryPurple);
+`;
+
+export const Contatos = styled.div`
+    width: 180px;
+    height: 100px;
+
+    margin-right: 320px;
+
+    > ul li {
+        margin-bottom: 10px;
+
+        font-size: 16px;
+        color: white;
+
+        display: flex;
+
+        > p {
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        :hover {
+            cursor: pointer;
+        }
+    }
+`;
+
+export const TermosPrivacidade = styled.div`
+    width: 230px;
+    min-height: 30px;
+    height: auto;
+    overflow: hidden;
+    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin-right: 320px;
+
+    color: white;
 `;
