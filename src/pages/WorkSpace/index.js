@@ -10,27 +10,8 @@ import { useEffect } from 'react';
 
 function Workspace() {
 
-  const columnsFromBackend = {
-    [uuid()]: {
-      name: 'Requested',
-      items: [{ id: uuid(), content: 'First task' }, { id: uuid(), content: 'First task' }, { id: uuid(), content: 'First task' }],
-    },
-    [uuid()]: {
-      name: 'To do',
-      items: [],
-    },
-    [uuid()]: {
-      name: 'In Progress',
-      items: [],
-    },
-    [uuid()]: {
-      name: 'Done',
-      items: [],
-    },
-  };
 
-  const [columns, setColumns] = useState(columnsFromBackend);
-  console.log(columnsFromBackend)
+  const [columns, setColumns] = useState([]);
 
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
@@ -46,11 +27,11 @@ function Workspace() {
       console.log(destColumn);
 
       //RETORNA O QUE SOBROU DE UMA LISTA
-      const sourceItems = [...sourceColumn.items];
+      const sourceItems = [...sourceColumn.Cards];
       console.log(sourceItems);
 
       //RETORNA UM ARRAY COM TUDO DE NOVO DA NOVA LISTA
-      const destItems = [...destColumn.items];
+      const destItems = [...destColumn.Cards];
       console.log(destItems);
 
       //REMOVE UM ELEMENTO DA LISTA
@@ -63,23 +44,23 @@ function Workspace() {
         //seta as colunas retornando tudo da lista que estou atualmente mais o que vem de noovo
         [source.droppableId]: {
           ...sourceColumn,
-          items: sourceItems,
+          Cards: sourceItems,
         },
         [destination.droppableId]: {
           ...destColumn,
-          items: destItems,
+          Cards: destItems,
         },
       });
     } else {
       const column = columns[source.droppableId];
-      const copiedItems = [...column.items];
+      const copiedItems = [...column.Cards];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
       setColumns({
         ...columns,
         [source.droppableId]: {
           ...column,
-          items: copiedItems,
+          Cards: copiedItems,
         },
       });
     }
@@ -89,7 +70,7 @@ function Workspace() {
     try {
       const response = await api.get(`/lists/${1}`);
       console.log(response.data);
-      // setColumns(response.data)
+      setColumns(response.data)
     } catch (error) {
       console.error(error);
     }
@@ -158,7 +139,7 @@ function Workspace() {
                               minHeight: 400,
                             }}
                           >
-                            {column.items.map((item, index) => {
+                            {column.Cards.map((item, index) => {
                               return (
                                 <Draggable
                                   key={item.id}
@@ -184,7 +165,7 @@ function Workspace() {
                                           ...provided.draggableProps.style,
                                         }}
                                       >
-                                        {item.content}
+                                        {item.description}
                                       </div>
                                     );
                                   }}
