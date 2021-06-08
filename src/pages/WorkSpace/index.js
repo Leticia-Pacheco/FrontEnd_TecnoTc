@@ -1,124 +1,104 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import uuid from 'uuid/dist/v4';
-import {Container, Content} from './styles';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import { Container, Content } from './styles';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import { api } from "../../service/api";
+import { api } from '../../service/api';
 import { useEffect } from 'react';
 
-const itemsFromBackend = [
-  {id: uuid(), content: "First task"},
-  {id: uuid(), content: "Second task"},
-  {id: uuid(), content: "Third task"},
-  {id: uuid(), content: "Fourth task"},
-  {id: uuid(), content: "Fifth task"},
-  {id: uuid(), content: "6 task"},
-  {id: uuid(), content: "7 task"},
-  {id: uuid(), content: "8 task"},
-  {id: uuid(), content: "9 task"},
-  {id: uuid(), content: "10 task"}
-];
-
-const columnsFromBackend = {
-  [uuid()]: {
-    name: "Requested",
-    items: itemsFromBackend
-  },
-  [uuid()]: {
-    name: "To do",
-    items: []
-  },
-  [uuid()]: {
-    name: "In Progress",
-    items: []
-  },
-  [uuid()]: {
-    name: "Done",
-    items: []
-  }
-};
-
-const onDragEnd = (result, columns, setColumns) => {
-
-  if(!result.destination) return;
-  const {source, destination} = result;
-
-  if(source.droppableId !== destination.droppableId) {
-
-
-    //A LISTA QUE ESTOU ATUALMENTE
-    const sourceColumn = columns[source.droppableId];
-    console.log(sourceColumn)
-
-    //RETORNA A LISTA PARA QUAL EU VOU
-    const destColumn = columns[destination.droppableId];
-    console.log(destColumn)
-
-
-    //RETORNA O QUE SOBROU DE UMA LISTA
-    const sourceItems = [...sourceColumn.items];
-    console.log(sourceItems)
-
-
-    //RETORNA UM ARRAY COM TUDO DE NOVO DA NOVA LISTA
-    const destItems = [...destColumn.items];
-    console.log(destItems)
-
-    //REMOVE UM ELEMENTO DA LISTA
-    const [removed] = sourceItems.splice(source.index, 1);
-    console.log(removed)
-
-
-    destItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      //seta as colunas retornando tudo da lista que estou atualmente mais o que vem de noovo 
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems
-      }
-    });
-  } else {
-    const column = columns[source.droppableId];
-    const copiedItems = [...column.items];
-    const [removed] = copiedItems.splice(source.index, 1);
-    copiedItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems
-      }
-    });
-  }
-};
-
-
 function Workspace() {
+
+  const columnsFromBackend = {
+    [uuid()]: {
+      name: 'Requested',
+      items: [{ id: uuid(), content: 'First task' }, { id: uuid(), content: 'First task' }, { id: uuid(), content: 'First task' }],
+    },
+    [uuid()]: {
+      name: 'To do',
+      items: [],
+    },
+    [uuid()]: {
+      name: 'In Progress',
+      items: [],
+    },
+    [uuid()]: {
+      name: 'Done',
+      items: [],
+    },
+  };
+
   const [columns, setColumns] = useState(columnsFromBackend);
   console.log(columnsFromBackend)
 
-  const loadColumns = async () => {
+  const onDragEnd = (result, columns, setColumns) => {
+    if (!result.destination) return;
+    const { source, destination } = result;
 
+    if (source.droppableId !== destination.droppableId) {
+      //A LISTA QUE ESTOU ATUALMENTE
+      const sourceColumn = columns[source.droppableId];
+      console.log(sourceColumn);
+
+      //RETORNA A LISTA PARA QUAL EU VOU
+      const destColumn = columns[destination.droppableId];
+      console.log(destColumn);
+
+      //RETORNA O QUE SOBROU DE UMA LISTA
+      const sourceItems = [...sourceColumn.items];
+      console.log(sourceItems);
+
+      //RETORNA UM ARRAY COM TUDO DE NOVO DA NOVA LISTA
+      const destItems = [...destColumn.items];
+      console.log(destItems);
+
+      //REMOVE UM ELEMENTO DA LISTA
+      const [removed] = sourceItems.splice(source.index, 1);
+      console.log(removed);
+
+      destItems.splice(destination.index, 0, removed);
+      setColumns({
+        ...columns,
+        //seta as colunas retornando tudo da lista que estou atualmente mais o que vem de noovo
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems,
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems,
+        },
+      });
+    } else {
+      const column = columns[source.droppableId];
+      const copiedItems = [...column.items];
+      const [removed] = copiedItems.splice(source.index, 1);
+      copiedItems.splice(destination.index, 0, removed);
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...column,
+          items: copiedItems,
+        },
+      });
+    }
+  };
+
+  const loadColumns = async () => {
     try {
-      const response = await api.get(`/lists/${1}`)
-      console.log(response.data)
+      const response = await api.get(`/lists/${1}`);
+      console.log(response.data);
+      // setColumns(response.data)
     } catch (error) {
       console.error(error);
     }
-   
-  }
+  };
 
   useEffect(() => {
     loadColumns();
-  }, [])
-  
+  }, []);
+
   return (
     <Container>
       <header>
@@ -141,22 +121,28 @@ function Workspace() {
           <div>+ Adicionar nova tarefa</div>
           <div>+ Adicionar outra lista</div>
         </section>
-        <div style={{display: "flex", justifyContent: "space-between", height: "100%"}}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            height: '100%',
+          }}
+        >
           <DragDropContext
-            onDragEnd={result => onDragEnd(result, columns, setColumns)}
+            onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
           >
             {Object.entries(columns).map(([columnId, column], index) => {
               return (
                 <div
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center"
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                   }}
                   key={columnId}
                 >
                   <h2>{column.name}</h2>
-                  <div style={{margin: 8}}>
+                  <div style={{ margin: 8 }}>
                     <Droppable droppableId={columnId} key={columnId}>
                       {(provided, snapshot) => {
                         return (
@@ -165,11 +151,11 @@ function Workspace() {
                             ref={provided.innerRef}
                             style={{
                               background: snapshot.isDraggingOver
-                                ? "lightblue"
-                                : "lightgrey",
+                                ? 'lightblue'
+                                : 'lightgrey',
                               padding: 4,
                               width: 300,
-                              minHeight: 400
+                              minHeight: 400,
                             }}
                           >
                             {column.items.map((item, index) => {
@@ -186,16 +172,16 @@ function Workspace() {
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         style={{
-                                          userSelect: "none",
+                                          userSelect: 'none',
                                           padding: 16,
-                                          margin: "0 0 8px 0",
-                                          minHeight: "50px",
+                                          margin: '0 0 8px 0',
+                                          minHeight: '50px',
                                           backgroundColor: snapshot.isDragging
-                                            ? "#fff"
-                                            : "#a2a6a3",
-                                          color: "black",
+                                            ? '#fff'
+                                            : '#a2a6a3',
+                                          color: 'black',
                                           fontSize: 16,
-                                          ...provided.draggableProps.style
+                                          ...provided.draggableProps.style,
                                         }}
                                       >
                                         {item.content}
@@ -216,9 +202,8 @@ function Workspace() {
             })}
           </DragDropContext>
         </div>
-
       </Content>
-    </Container >
+    </Container>
   );
 }
 
