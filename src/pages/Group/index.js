@@ -60,7 +60,7 @@ function ChatGrup({ chat }) {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      setMessageList([...messageList, data]);
+        setMessageList([...messageList, data]);
     });
   });
 
