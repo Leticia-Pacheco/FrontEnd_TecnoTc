@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import uuid from 'uuid/dist/v4';
-import { Container, Content } from './styles';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import {Container, Content} from './styles';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import { api } from '../../service/api';
-import { useEffect } from 'react';
+import {api} from '../../service/api';
+import {useEffect} from 'react';
 
 function Workspace() {
 
@@ -14,10 +14,10 @@ function Workspace() {
   const [columns, setColumns] = useState([]);
 
   const onDragEnd = (result, columns, setColumns) => {
-    if (!result.destination) return;
-    const { source, destination } = result;
+    if(!result.destination) return;
+    const {source, destination} = result;
 
-    if (source.droppableId !== destination.droppableId) {
+    if(source.droppableId !== destination.droppableId) {
       //A LISTA QUE ESTOU ATUALMENTE
       const sourceColumn = columns[source.droppableId];
       console.log(sourceColumn);
@@ -71,7 +71,7 @@ function Workspace() {
       const response = await api.get(`/lists/${1}`);
       console.log(response.data);
       setColumns(response.data)
-    } catch (error) {
+    } catch(error) {
       console.error(error);
     }
   };
@@ -123,7 +123,7 @@ function Workspace() {
                   key={columnId}
                 >
                   <h2>{column.name}</h2>
-                  <div style={{ margin: 8 }}>
+                  <div style={{margin: 8}}>
                     <Droppable droppableId={columnId} key={columnId}>
                       {(provided, snapshot) => {
                         return (
