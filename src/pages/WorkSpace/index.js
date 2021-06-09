@@ -9,34 +9,46 @@ import { api } from '../../service/api';
 import { useEffect } from 'react';
 
 function Workspace() {
-
-
   const [columns, setColumns] = useState([]);
+
+  const updateOrderCard = async ({id, order, listId}) => {
+
+    const convertToInt = parseInt(id)
+
+    const response = await api.put(`/cards/order/${convertToInt}/${listId}`, {
+      order : order + 1
+    });
+    
+  };
+
+  const updateCardList = async ({cardId, listId}) => {
+    const response = await api.put(`/cards/list/${cardId}/${listId}`)
+  }
 
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
-    const { source, destination } = result;
+
+    const { source, destination, draggableId } = result;
+    //console.log(result);
 
     if (source.droppableId !== destination.droppableId) {
       //A LISTA QUE ESTOU ATUALMENTE
       const sourceColumn = columns[source.droppableId];
-      console.log(sourceColumn);
 
       //RETORNA A LISTA PARA QUAL EU VOU
       const destColumn = columns[destination.droppableId];
-      console.log(destColumn);
+      //console.log(destColumn);
 
       //RETORNA O QUE SOBROU DE UMA LISTA
       const sourceItems = [...sourceColumn.Cards];
-      console.log(sourceItems);
+      //console.log(sourceItems);
 
       //RETORNA UM ARRAY COM TUDO DE NOVO DA NOVA LISTA
       const destItems = [...destColumn.Cards];
-      console.log(destItems);
+      //console.log(destItems);
 
       //REMOVE UM ELEMENTO DA LISTA
       const [removed] = sourceItems.splice(source.index, 1);
-      console.log(removed);
 
       destItems.splice(destination.index, 0, removed);
       setColumns({
@@ -51,6 +63,9 @@ function Workspace() {
           Cards: destItems,
         },
       });
+
+      updateCardList({cardId : draggableId, listId:  destination.droppableId})
+      
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.Cards];
@@ -63,6 +78,8 @@ function Workspace() {
           Cards: copiedItems,
         },
       });
+
+      updateOrderCard({id : draggableId, order : destination.index, listId : column.id})
     }
   };
 
@@ -70,7 +87,7 @@ function Workspace() {
     try {
       const response = await api.get(`/lists/${1}`);
       console.log(response.data);
-      setColumns(response.data)
+      setColumns(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -143,7 +160,7 @@ function Workspace() {
                               return (
                                 <Draggable
                                   key={item.id}
-                                  draggableId={item.id}
+                                  draggableId={item.id.toString()}
                                   index={index}
                                 >
                                   {(provided, snapshot) => {
