@@ -1,4 +1,5 @@
-import {MenuLateral, MenuFeed, MenuTarefas, MenuReunioes, MenuChats, MenuLogout} from './styles';
+import {MenuLateral, MenuPerfil,  MenuFeed, MenuTarefas, MenuReunioes, MenuChats, MenuLogout} from './styles';
+import ImagePerfil from '../../assets/ImagesFeed/foto_perfil.png'
 import ImageFeed from '../../assets/ImagesIconesMenu/home_feed.png';
 import ImageTarefas from '../../assets/ImagesIconesMenu/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesIconesMenu/reunioes_diarias.png';
@@ -9,6 +10,10 @@ import ImageLogout from '../../assets/ImagesIconesMenu/sair.png';
 function MenuComponent() {
   return (
     <MenuLateral>
+      <MenuPerfil>
+        <img src={ImagePerfil} alt="Menu opção perfil" title="Menu opção perfil" />
+        <p>Perfil</p>
+      </MenuPerfil>
       <MenuFeed>
         <img src={ImageFeed} alt="Menu opção feed" title="Menu opção feed" />
         <p>Feed</p>
