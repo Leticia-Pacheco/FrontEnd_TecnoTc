@@ -17,12 +17,13 @@ import SprintReview from './pages/SprintReview';
 import SprintDaily from './pages/SprintDaily';
 import SprintRetrospective from './pages/SprintRetrospective';
 import ViewTarefa from './components/ModalTarefa';
+import Feed from './pages/Feed';
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
   } else {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   }
 }
 function Router() {
@@ -69,6 +70,9 @@ function Router() {
           {/*Perfil do aluno*/}
           <ProfileUser />
         </PrivateRoute>
+        <PrivateRoute path="/feed">
+          <Feed/>
+        </PrivateRoute>
         <Route path="/resetemailpassword">
           {' '}
           {/*Redefinir senha*/}
@@ -85,11 +89,11 @@ function Router() {
         </PrivateRoute>
         <PrivateRoute
           path="/sprintRetrospective/:sprintId"
-          children={<SprintDaily />}
+          children={<SprintRetrospective />}
         ></PrivateRoute>
         <PrivateRoute
           path="/sprintReview/:sprintId"
-          children={<SprintDaily />}
+          children={<SprintReview />}
         ></PrivateRoute>
       </Switch>
     </BrowserRouter>
