@@ -45,7 +45,7 @@ function ComponentQuadros({ workspaces }) {
 }
 const CONNECTION_PORT = 'localhost:3002/';
 let socket;
-function ChatGrup({ chat }) {
+function ChatGrup({ chat, groupId }) {
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [inRoom, setInRoom] = useState(false);
@@ -82,7 +82,7 @@ function ChatGrup({ chat }) {
   const sendMessage = async () => {
     let messageContent = {
       userId: user.user.userId,
-      groupId: 1,
+      groupId: groupId,
       chatId: chat.id,
       author: user.student.name,
       message: message,
@@ -165,7 +165,7 @@ function Grups() {
         <ComponetSubMenu onClick={handleTradeStade}>Grupo</ComponetSubMenu>
         <ComponetSubMenu onClick={handleTradeStadeChat}>Chat</ComponetSubMenu>
       </Submenu>
-      {showChat && <ChatGrup chat={group.Chat} />}
+      {showChat && <ChatGrup chat={group.Chat} groupId={id} />}
       {showComponentQuadro && <ComponentQuadros workspaces={workspaces} />}
     </Container>
   );
