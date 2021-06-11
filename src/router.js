@@ -84,14 +84,12 @@ function Router() {
           {/*Tela WorkSpace*/}
           <WorkSpace />
         </PrivateRoute>
-        <PrivateRoute path="/dailyScrum/:sprintId">
+        <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
           <SprintDaily />
         </PrivateRoute>
-        <PrivateRoute path="/sprintRetrospective/:sprintId">
-          <SprintRetrospective />
+        <PrivateRoute path="/sprintRetrospective/:sprintId" children={<SprintDaily />}>
         </PrivateRoute>
-        <PrivateRoute path="/sprintReview/:sprintId">
-          <SprintReview />
+        <PrivateRoute path="/sprintReview/:sprintId" children={<SprintDaily />}>
         </PrivateRoute>
       </Switch>
     </BrowserRouter>
