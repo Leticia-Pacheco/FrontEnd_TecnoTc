@@ -85,12 +85,15 @@ function Router() {
           <WorkSpace />
         </PrivateRoute>
         <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
-          <SprintDaily />
         </PrivateRoute>
-        <PrivateRoute path="/sprintRetrospective/:sprintId" children={<SprintDaily />}>
-        </PrivateRoute>
-        <PrivateRoute path="/sprintReview/:sprintId" children={<SprintDaily />}>
-        </PrivateRoute>
+        <PrivateRoute
+          path="/sprintRetrospective/:sprintId"
+          children={<SprintDaily />}
+        ></PrivateRoute>
+        <PrivateRoute
+          path="/sprintReview/:sprintId"
+          children={<SprintDaily />}
+        ></PrivateRoute>
       </Switch>
     </BrowserRouter>
   );
