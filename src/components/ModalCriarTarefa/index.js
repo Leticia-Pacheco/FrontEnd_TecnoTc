@@ -5,7 +5,7 @@ import {Container, Overlay} from './styles';
 
 function CreateAnotacoes({handleClose}) {
   const [newTask, setNewTask] = useState({
-    title: '',
+    task: '',
   });
   const handleInput = (e) => {
     setNewTask({...newTask, [e.target.id]: e.target.value});
@@ -37,11 +37,11 @@ function CreateAnotacoes({handleClose}) {
           <Input
             id="title"
             placeholder="Digite o título da anotação aqui"
-            value={newTask.title}
+            value={newTask.task}
             handler={handleInput}
             required
           />
-          <button>Criar anotação</button>
+          <button>Criar Tarefa</button>
         </Container>
       </Overlay>
     </>

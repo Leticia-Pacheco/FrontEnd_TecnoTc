@@ -1,11 +1,8 @@
 import {Container, Overlay} from './styles';
 import {AiOutlineUserAdd} from 'react-icons/ai';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import {useEffect, useState} from 'react';
-import {api} from '../../service/api';
-import {ComponentAnotacoes} from '../../pages/PerfilUsuarioAluno/styles';
-import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
 import ModalCriarTarefa from '../ModalCriarTarefa'
+import {useState} from 'react';
 function ModalViewTarefa({handleClose}) {
   const [modalCriarTarefa, setModalsetCriarTarefa] = useState(false);
 
