@@ -24,7 +24,7 @@ import {
   Send,
 } from '../../components/SendMessage/styles';
 import { api } from '../../service/api';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspaces }) {
   return (
@@ -161,7 +161,7 @@ function Grups() {
     <Container>
       <MenuComponent />
       <Submenu>
-        <h3>&larr; Voltar para o perfil</h3>
+        <h3>&larr;  <Link to="/profile">Voltar para o perfil</Link></h3>
         <ComponetSubMenu onClick={handleTradeStade}>Grupo</ComponetSubMenu>
         <ComponetSubMenu onClick={handleTradeStadeChat}>Chat</ComponetSubMenu>
       </Submenu>

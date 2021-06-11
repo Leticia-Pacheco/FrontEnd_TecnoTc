@@ -215,6 +215,7 @@ export const ComponentGrupo = styled.div`
     margin-left: 20px;
 
     display: flex;
+    cursor: pointer;
     align-items: center;
     flex-direction: column;
   
