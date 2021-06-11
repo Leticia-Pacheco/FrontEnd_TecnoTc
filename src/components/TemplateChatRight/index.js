@@ -1,8 +1,5 @@
-import { Container } from "./styles";
-import { useEffect, useState } from "react";
-
-
-function TemplateChatRight({ msg }) {
+import {Container} from "./styles";
+function TemplateChatRight({msg}) {
 
     return (
         <Container>

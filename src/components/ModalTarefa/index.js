@@ -1,11 +1,25 @@
-import Input from '../Input';
-import { Container, Overlay } from './styles';
-import { AiOutlineUserAdd } from 'react-icons/ai';
+import {Container, Overlay} from './styles';
+import {AiOutlineUserAdd} from 'react-icons/ai';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import {useEffect, useState} from 'react';
+import {api} from '../../service/api';
+import {ComponentAnotacoes} from '../../pages/PerfilUsuarioAluno/styles';
+import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
+import ModalCriarTarefa from '../ModalCriarTarefa'
+function ModalViewTarefa({handleClose}) {
+  const [modalCriarTarefa, setModalsetCriarTarefa] = useState(false);
 
-function ModalViewTarefa({ handleClose }) {
   return (
     <>
+      {
+        modalCriarTarefa && (
+          <ModalCriarTarefa
+            handleClose={() => {
+              setModalsetCriarTarefa(false);
+            }}
+          />
+        )
+      }
       <Overlay>
         <Container>
           <span onClick={handleClose}>X</span>
@@ -58,34 +72,19 @@ function ModalViewTarefa({ handleClose }) {
               <input type="Date" />
             </div>
           </div>
-          <div id="annotation">
-            <h3>Anotações</h3>
-            <textarea
-              placeholder="Digite uma descrição ou anotações para esta lista..."
-              cols="30"
-              rows="5"
-            ></textarea>
-          </div>
-          <div>
-            <h3>Lista de Cartões 0/3</h3>
+          <div id='createTask'>
+            <h3 onClick={() => setModalsetCriarTarefa(true)}>Criar Tarefas + 0/3</h3>
             <div id="cheklistCard">
+
               <div>
-                <input type="radio" name="radio" />
-                <label for="radio">Cartão 1</label>
-              </div>
-              <div>
-                <input type="radio" name="radio" />
+                <input type="checkbox" name="checkbox" />
                 <label for="radio">Cartão 2</label>
               </div>
               <div>
-                <input type="radio" name="radio" />
+                <input type="checkbox" name="checkbox" />
                 <label for="radio">Cartão 3</label>
               </div>
             </div>
-          </div>
-          <div id="">
-            <h3>Anexos</h3>
-            <input type="file" name="image" />
           </div>
         </Container>
       </Overlay>

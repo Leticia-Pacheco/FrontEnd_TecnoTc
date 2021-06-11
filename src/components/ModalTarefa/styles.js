@@ -14,7 +14,7 @@ export const Overlay = styled.div`
 
 export const Container = styled.div`
   width: 900px;
-  min-height: 550px;
+  min-height: 300px;
   height: auto;
   overflow: hidden;
   max-height: calc(
@@ -115,20 +115,18 @@ export const Container = styled.div`
       }
     }
   }
-  #annotation {
-    > textarea {
-      border: none;
-      background-color: #f1f1f1;
-      width: 90%;
-      padding: 10px;
-      font-size: 0.9rem;
-      resize: none;
+  #createTask{
+    height: auto;
+    >h3{
+      cursor: pointer;
+      :hover{
+        color: var(--primaryGreenWater);
+      }
     }
   }
   #cheklistCard {
     display: flex;
     flex-direction: column;
-    margin-bottom: 150px;
     > div {
       width: 90%;
       height: 40px;
