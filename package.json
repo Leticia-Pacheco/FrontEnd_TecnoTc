@@ -12,7 +12,7 @@
     "JSX": "^1.1.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
-    "date-fns": "^2.19.0",
+    "date-fns": "^2.22.1",
     "formik": "^2.2.6",
     "jsx": "^0.9.89",
     "jsx-for-web-components": "^1.2.1",
