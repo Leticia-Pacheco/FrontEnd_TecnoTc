@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import uuid from 'uuid/dist/v4';
 import {Container, Content} from './styles';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
@@ -9,9 +8,12 @@ import {api} from '../../service/api';
 import {useEffect} from 'react';
 import {useParams} from 'react-router';
 import ModalCreateTask from '../../components/ModalCriarTarefa';
+import ModalTask from '../../components/ModalTarefa';
 function Workspace() {
   const [columns, setColumns] = useState([]);
   const [modalCriarTarefa, setModalCriarTarefa] = useState(false);
+  const [modalTarefa, setModalTarefa] = useState(false);
+
   const {workspaceId} = useParams();
 
   const updateOrderCard = async ({id, order, listId}) => {
@@ -110,6 +112,13 @@ function Workspace() {
           }}
         />
       )}
+      {modalTarefa && (
+        <ModalTask
+          handleClose={() => {
+            setModalTarefa(false);
+          }}
+        />
+      )}
       <Container>
         <header>
           <img src={imgHomeFeed} alt="home" id="home" />
@@ -143,7 +152,7 @@ function Workspace() {
             >
               {Object.entries(columns).map(([columnId, column], index) => {
                 return (
-                  <div
+                  <div onClick={() => setModalTarefa(true)}
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
