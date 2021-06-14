@@ -151,7 +151,7 @@ function Workspace() {
             >
               {Object.entries(columns).map(([columnId, column], index) => {
                 return (
-                  <div onClick={() => setModalTarefa(true)}
+                  <div onClick={() => setModalCriarTarefa(true)}
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
