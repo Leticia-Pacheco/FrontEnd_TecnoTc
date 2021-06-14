@@ -3,23 +3,23 @@ import Input from '../Input';
 import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
 
-function CreateTask({handleClose}) {
-  const [newTask, setNewTask] = useState({
-    task : '',
+function CreateList({handleClose}) {
+  const [newList, setNewList] = useState({
+    name: '',
   });
   const handleInput = (e) => {
-    setNewTask({...newTask, [e.target.id]: e.target.value});
+    setNewList({...newList, [e.target.id]: e.target.value});
   };
-  const handleAddTask = async (e) => {
+  const handleAddList = async (e) => {
     e.preventDefault();
 
     try {
 
-      const response = await api.post('/task/:cardId', {
-        task : newTask.task,
+      const response = await api.post('/list/1', {
+        name : newList.name
       });
 
-      setNewTask(response.data);
+      setNewList(response.data);
       handleClose();
     } catch(error) {
       console.error(error);
@@ -29,22 +29,22 @@ function CreateTask({handleClose}) {
   return (
     <>
       <Overlay>
-        <Container onSubmit={handleAddTask}>
+        <Container onSubmit={handleAddList}>
           <span onClick={handleClose}>X</span>
-          <h2>Criar uma tarefa</h2>
-          <h3>Titulo da tarefa</h3>
+          <h2>Criar uma lista</h2>
+          <h3>Titulo da lista</h3>
           <Input
             id="title"
-            placeholder="Digite o título do card aqui"
-            value={newTask.task}
+            placeholder="Digite o título da lista aqui"
+            value={newList.name}
             handler={handleInput}
             required
           />
-          <button>Criar uma tarefa</button>
+          <button>Criar Tarefa</button>
         </Container>
       </Overlay>
     </>
   );
 }
 
-export default CreateTask;
+export default CreateList;

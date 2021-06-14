@@ -9,9 +9,12 @@ import {api} from '../../service/api';
 import {useEffect} from 'react';
 import {useParams} from 'react-router';
 import ModalCreateTask from '../../components/ModalCriarTarefa';
+import ModalCreateList from '../../components/ModalCriarLista';
+
 function Workspace() {
   const [columns, setColumns] = useState([]);
   const [modalCriarTarefa, setModalCriarTarefa] = useState(false);
+  const [modalCreateList, setModalCreateList] = useState(false);
   const {workspaceId} = useParams();
 
   const updateOrderCard = async ({id, order, listId}) => {
@@ -110,6 +113,13 @@ function Workspace() {
           }}
         />
       )}
+      {modalCreateList && (
+        <ModalCreateList
+          handleClose={() => {
+            setModalCreateList(false);
+          }}
+        />
+      )}
       <Container>
         <header>
           <img src={imgHomeFeed} alt="home" id="home" />
@@ -127,9 +137,8 @@ function Workspace() {
 
         <Content>
           <section>
-            <h3>Nome da Tarefa</h3>
-            <div onClick={() => setModalCriarTarefa(true)}>+ Adicionar nova tarefa</div>
-            <div>+ Adicionar outra lista</div>
+            <h3>Nome da Lista</h3>
+            <div onClick={() => setModalCreateList(true)}>+ Adicionar nova lista</div>
           </section>
           <div
             style={{
