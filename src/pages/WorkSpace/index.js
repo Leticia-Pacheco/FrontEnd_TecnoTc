@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import uuid from 'uuid/dist/v4';
 import {Container, Content} from './styles';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
@@ -152,7 +151,7 @@ function Workspace() {
             >
               {Object.entries(columns).map(([columnId, column], index) => {
                 return (
-                  <div
+                  <div onClick={() => setModalTarefa(true)}
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
