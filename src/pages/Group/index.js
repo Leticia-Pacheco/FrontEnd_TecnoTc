@@ -27,16 +27,24 @@ import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspaces }) {
+
+
+  const history = useHistory();
+
+  function goToWorkspace (e) {
+    console.log(e)
+      history.push(`/workspace/${e}`);
+  }
+
   return (
     <ComponetQuadros>
       <TituloQuadros>
         <h1> Quadros </h1>
       </TituloQuadros>
       <ContainerQuadros>
-        <CriarQuadros>Criar um novo quadro +</CriarQuadros>
         {workspaces.map((workspace) => (
-          <Quadros key={workspace.id}>
-            <h2>{workspace.name}</h2>
+          <Quadros key={workspace.id} onClick={() => goToWorkspace(workspace.id)}>
+            <h2></h2>
           </Quadros>
         ))}
       </ContainerQuadros>
