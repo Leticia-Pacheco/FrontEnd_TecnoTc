@@ -150,7 +150,7 @@ function Workspace() {
             <h3>Nome da Lista</h3>
             <div onClick={() => setModalCreateList(true)}>+ Adicionar nova lista</div>
           </section>
-          <div onClick={() => setModalCard(true)}
+          <div onDoubleClick={() => setModalCard(true)}
             style={{
               display: 'flex',
               justifyContent: 'space-between',
