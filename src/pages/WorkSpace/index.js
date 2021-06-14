@@ -1,22 +1,25 @@
-import React, {useState} from 'react';
-import {Container, Content} from './styles';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import React, { useState } from 'react';
+import { Container, Content } from './styles';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import {api} from '../../service/api';
-import {useEffect} from 'react';
-import {useParams} from 'react-router';
+import { api } from '../../service/api';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 import ModalCreateTask from '../../components/ModalCriarTarefa';
 import ModalCreateList from '../../components/ModalCriarLista';
+import ModalTask from '../../components/ModalTarefa';
+
 
 function Workspace() {
   const [columns, setColumns] = useState([]);
-  const [modalCriarTarefa, setModalCriarTarefa] = useState(false);
+  const [modalCreateCard, setModalCreateCard] = useState(false);
   const [modalCreateList, setModalCreateList] = useState(false);
-  const {workspaceId} = useParams();
+  const [modalCard, setModalCard] = useState(false);
+  const { workspaceId } = useParams();
 
-  const updateOrderCard = async ({id, order, listId}) => {
+  const updateOrderCard = async ({ id, order, listId }) => {
     const convertToInt = parseInt(id);
 
     const response = await api.put(`/cards/order/${convertToInt}/${listId}`, {
@@ -24,17 +27,17 @@ function Workspace() {
     });
   };
 
-  const updateCardList = async ({cardId, listId}) => {
+  const updateCardList = async ({ cardId, listId }) => {
     const response = await api.put(`/cards/list/${cardId}/${listId + 1}`);
   };
 
   const onDragEnd = (result, columns, setColumns) => {
-    if(!result.destination) return;
+    if (!result.destination) return;
 
-    const {source, destination, draggableId} = result;
+    const { source, destination, draggableId } = result;
     //console.log(result);
 
-    if(source.droppableId !== destination.droppableId) {
+    if (source.droppableId !== destination.droppableId) {
       //A LISTA QUE ESTOU ATUALMENTE
       const sourceColumn = columns[source.droppableId];
 
@@ -67,7 +70,7 @@ function Workspace() {
         },
       });
 
-      updateCardList({cardId: draggableId, listId: destination.droppableId});
+      updateCardList({ cardId: draggableId, listId: destination.droppableId });
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.Cards];
@@ -94,7 +97,7 @@ function Workspace() {
       const response = await api.get(`/lists/${workspaceId}`);
       console.log(response.data);
       setColumns(response.data);
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
   };
@@ -105,13 +108,21 @@ function Workspace() {
 
   return (
     <>
-      {modalCriarTarefa && (
+      {modalCreateCard && (
         <ModalCreateTask
           handleClose={() => {
-            setModalCriarTarefa(false);
+            setModalCreateCard(false);
           }}
         />
       )}
+      {modalCard && (
+        <ModalTask handleClose={() => {
+          setModalCard(false);
+        }}
+        />
+      )
+
+      }
       {modalCreateList && (
         <ModalCreateList
           handleClose={() => {
@@ -139,7 +150,7 @@ function Workspace() {
             <h3>Nome da Lista</h3>
             <div onClick={() => setModalCreateList(true)}>+ Adicionar nova lista</div>
           </section>
-          <div
+          <div onClick={() => setModalCard(true)}
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -151,7 +162,7 @@ function Workspace() {
             >
               {Object.entries(columns).map(([columnId, column], index) => {
                 return (
-                  <div onClick={() => setModalCriarTarefa(true)}
+                  <div
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -160,7 +171,7 @@ function Workspace() {
                     key={columnId}
                   >
                     <h2>{column.name}</h2>
-                    <div style={{margin: 8}}>
+                    <div style={{ margin: 8 }}>
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
                           return (
