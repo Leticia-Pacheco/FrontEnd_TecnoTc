@@ -226,7 +226,7 @@ export const FormNewQuestion = styled.form`
 
   > img {
     align-self: center;
-    max-width: 40%;
+    width: 50%;
     display: none;
   }
 

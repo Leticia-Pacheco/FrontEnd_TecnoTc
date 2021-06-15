@@ -42,7 +42,7 @@ function Answer({answer}) {
         por{" "}
           {student.student.id === answer.User.id
             ? "Você"
-            : answer.Student.name}
+            : answer.User.Student.name}
         </strong>
         <p>em {format(new Date(answer.createdAt), "dd/MM/yyyy 'às' HH:mm")} </p>
       </header>
@@ -170,7 +170,6 @@ function Posts({ question, setIsLoading, setCurrentGist }) {
       <header>
         <img src={Perfil} alt="Imagem de perfil" />
         <strong> 
-        por{" "} 
         por{" "}
           {student.user.id === question.UserId
             ? "Você"
@@ -183,9 +182,9 @@ function Posts({ question, setIsLoading, setCurrentGist }) {
         {question.image && <img src={question.image} alt="Imagem da questão" />}
       </section>
       <footer>
-        <h1 onClick={() => setShowAnswers(!showAnswers)}> Comentários 
+        <h1 onClick={() => setShowAnswers(!showAnswers)}>  
         {qtdAnswers === 0 ? (
-            "Seja o primeiro a responder"
+             "  Seja o primeiro a responder"
           ) : (
             <>
               {qtdAnswers}
