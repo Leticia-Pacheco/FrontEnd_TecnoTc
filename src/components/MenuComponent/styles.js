@@ -111,7 +111,6 @@ export const MenuChats = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
     padding: 5px;
 
     :hover {
@@ -136,6 +135,7 @@ export const MenuLogout = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 5px;
+    margin-top: 400px;
 
     :hover {
       cursor: pointer;
