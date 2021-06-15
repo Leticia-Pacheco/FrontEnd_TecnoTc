@@ -83,7 +83,7 @@ function Router() {
           {/*Criar oos*/}
           <CreateGroups />
         </Route>
-        <PrivateRoute path="/workspace/:workspaceId" children={<WorkSpace />}>
+        <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
         </PrivateRoute>
         <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
         </PrivateRoute>
