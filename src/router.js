@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import {isSignedIn} from './service/security';
 import ConfirmEmail from './pages/ConfirmEmail';
+import ConfirmGroup from './pages/ConfirmGroup';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from './components/ModalRedefinirSenha';
@@ -83,6 +84,9 @@ function Router() {
           {/*Criar oos*/}
           <CreateGroups />
         </Route>
+        <PrivateRoute path="/confirmGroup">
+          <ConfirmGroup/>
+        </PrivateRoute>
         <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
         </PrivateRoute>
         <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
