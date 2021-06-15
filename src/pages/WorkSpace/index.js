@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { Container, Content } from './styles';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, {useState} from 'react';
+import {Container, Content} from './styles';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import { api } from '../../service/api';
-import { useEffect } from 'react';
-import { useParams } from 'react-router';
+import {api} from '../../service/api';
+import {useEffect} from 'react';
+import {useParams} from 'react-router';
 import ModalCreateTask from '../../components/ModalCriarTarefa';
 import ModalCreateList from '../../components/ModalCriarLista';
 import ModalTask from '../../components/ModalTarefa';
-
+import ModalInviteStudent from '../../components/ModalConvidarAluno'
 
 function Workspace() {
   const [columns, setColumns] = useState([]);
   const [modalCreateCard, setModalCreateCard] = useState(false);
   const [modalCreateList, setModalCreateList] = useState(false);
-  const [modalCard, setModalCard] = useState(false);
-  const { workspaceId } = useParams();
+  const [modalConvidarAluno, setModalConvidarAluno] = useState(false);
 
-  const updateOrderCard = async ({ id, order, listId }) => {
+  const [modalCard, setModalCard] = useState(false);
+  const {workspaceId} = useParams();
+
+  const updateOrderCard = async ({id, order, listId}) => {
     const convertToInt = parseInt(id);
 
     const response = await api.put(`/cards/order/${convertToInt}/${listId}`, {
@@ -27,17 +29,17 @@ function Workspace() {
     });
   };
 
-  const updateCardList = async ({ cardId, listId }) => {
+  const updateCardList = async ({cardId, listId}) => {
     const response = await api.put(`/cards/list/${cardId}/${listId + 1}`);
   };
 
   const onDragEnd = (result, columns, setColumns) => {
-    if (!result.destination) return;
+    if(!result.destination) return;
 
-    const { source, destination, draggableId } = result;
+    const {source, destination, draggableId} = result;
     //console.log(result);
 
-    if (source.droppableId !== destination.droppableId) {
+    if(source.droppableId !== destination.droppableId) {
       //A LISTA QUE ESTOU ATUALMENTE
       const sourceColumn = columns[source.droppableId];
 
@@ -70,7 +72,7 @@ function Workspace() {
         },
       });
 
-      updateCardList({ cardId: draggableId, listId: destination.droppableId });
+      updateCardList({cardId: draggableId, listId: destination.droppableId});
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.Cards];
@@ -97,7 +99,7 @@ function Workspace() {
       const response = await api.get(`/lists/${workspaceId}`);
       console.log(response.data);
       setColumns(response.data);
-    } catch (error) {
+    } catch(error) {
       console.error(error);
     }
   };
@@ -108,6 +110,13 @@ function Workspace() {
 
   return (
     <>
+      {modalConvidarAluno && (
+        <ModalInviteStudent
+          handleClose={() => {
+            setModalConvidarAluno(false);
+          }}
+        />
+      )}
       {modalCreateCard && (
         <ModalCreateTask
           handleClose={() => {
@@ -141,7 +150,7 @@ function Workspace() {
           <article>
             <img src={perfil} alt="profileUser" className="profileUser" />
             <img src={perfil} alt="profileUser" className="profileUser" />
-            <div>Convidar</div>
+            <div onClick={() => setModalConvidarAluno(true)}>Convidar</div>
           </article>
         </div>
 
@@ -171,7 +180,7 @@ function Workspace() {
                     key={columnId}
                   >
                     <h2>{column.name}</h2>
-                    <div style={{ margin: 8 }}>
+                    <div style={{margin: 8}}>
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
                           return (
