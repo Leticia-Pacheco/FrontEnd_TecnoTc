@@ -87,6 +87,10 @@ function ProfileStudent() {
     history.push(`/group/${e}`);
   };
 
+  const goToFeed = () => {
+    history.push("/feed")
+  }
+
   useEffect(() => {
     loadPerfilInfo();
     loadAnnotations();
@@ -132,7 +136,7 @@ function ProfileStudent() {
 
             <MenuLateral>
               <ul>
-                <li>
+                <li onClick={goToFeed}>
                   <img
                     src={ImageFeed}
                     alt="Menu opção feed"

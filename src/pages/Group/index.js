@@ -28,12 +28,13 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspaces }) {
 
+  let { id } = useParams();
 
   const history = useHistory();
 
   function goToWorkspace (e) {
     console.log(e)
-      history.push(`/workspace/${e}`);
+      history.push(`/workspace/${e}/${id}`);
   }
 
   return (
