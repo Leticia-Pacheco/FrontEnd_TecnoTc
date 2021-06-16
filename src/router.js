@@ -1,8 +1,8 @@
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import {isSignedIn} from './service/security';
+import { isSignedIn } from './service/security';
 import ConfirmEmail from './pages/ConfirmEmail';
 import ConfirmGroup from './pages/ConfirmGroup';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
@@ -20,8 +20,8 @@ import SprintRetrospective from './pages/SprintRetrospective';
 import ViewTarefa from './components/ModalCriarSprint';
 import Feed from './pages/Feed';
 
-function PrivateRoute({children, ...rest}) {
-  if(isSignedIn()) {
+function PrivateRoute({ children, ...rest }) {
+  if (isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
   } else {
     return <Redirect to="/login" />;
@@ -31,10 +31,6 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/criasprint">
-          <ViewTarefa />
-          {/* this is modal delete for complete */}
-        </Route>
         <PrivateRoute path="/group/:id" children={<Group />} />
         <Route path="/chat">
           <Chat />
@@ -85,12 +81,16 @@ function Router() {
           <CreateGroups />
         </Route>
         <PrivateRoute path="/confirmGroup">
-          <ConfirmGroup/>
+          <ConfirmGroup />
         </PrivateRoute>
-        <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
-        </PrivateRoute>
-        <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
-        </PrivateRoute>
+        <PrivateRoute
+          path="/workspace/:workspaceId/:id"
+          children={<WorkSpace />}
+        ></PrivateRoute>
+        <PrivateRoute
+          path="/dailyScrum/:sprintId"
+          children={<SprintDaily />}
+        ></PrivateRoute>
         <PrivateRoute
           path="/sprintRetrospective/:sprintId"
           children={<SprintRetrospective />}
