@@ -61,9 +61,7 @@ function Register() {
         password,
       });
 
-      signIn(response.data);
-
-      history.push('/confirmemail');
+      history.push({pathname:"/orderconfirmemail", email : `${email}`});
     } catch(error) {
       console.error(error);
       alert(error.response.data.error);
