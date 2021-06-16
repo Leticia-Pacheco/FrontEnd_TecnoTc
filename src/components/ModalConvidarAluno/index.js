@@ -16,12 +16,9 @@ function InviteStudent({ handleClose }) {
   const inputSendInvite = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post(`/group/${id}/invite`, {
+      await api.post(`/group/${id}/invite`, {
         emailSend: sendInvite.email,
       });
-      
-      setMessage({ title: 'Tudo certo', description: 'Reunião diaria criada' });
-
       handleClose();
     } catch (error) {
       console.log(error);
