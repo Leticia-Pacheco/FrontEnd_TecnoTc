@@ -2,8 +2,11 @@ import {useState} from 'react';
 import Input from '../Input';
 import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
+import Alert from '../Alert';
 
 function CreateAnotacoes({handleClose}) {
+  const [message, setMessage] = useState(undefined);
+
   const [newAnnotation, setAnnotation] = useState({
     title: '',
     text: '',
@@ -21,17 +24,19 @@ function CreateAnotacoes({handleClose}) {
         title,
         text,
       });
-
       setAnnotation(response.data);
+      setMessage({title: 'Tudo certo', description: "Anotação criada"});
       handleClose();
     } catch(error) {
       console.error(error);
-      alert(error.response.data.error);
+      setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
   return (
     <>
+
       <Overlay>
+        <Alert message={message} type="error" handleClose={setMessage} />
         <Container onSubmit={handleAddAnnotation}>
           <span onClick={handleClose}>X</span>
           <h2>Criar uma anotação</h2>

@@ -7,6 +7,7 @@ import {api} from "../../service/api";
 import {signIn} from "../../service/security";
 import queryString from 'query-string'
 import {useLocation} from "react-router";
+import Alert from "../Alert";
 
 function RedefinirSenha(props) {
     const history = useHistory();
@@ -16,6 +17,7 @@ function RedefinirSenha(props) {
     const params = queryString.parse(location.search);
 
     console.log(params.passwordToken);
+    const [message, setMessage] = useState(undefined);
 
     const [user, setUser] = useState({
         password: '',
@@ -46,12 +48,15 @@ function RedefinirSenha(props) {
             history.push('/');
         } catch(error) {
             console.error(error);
-            alert(error.response.data.error);
+            setMessage({title: 'Ops...', description: error.response.data.error});
+
         }
     };
     return (
         <>
             <Overlay>
+                <Alert message={message} type="error" handleClose={setMessage} />
+
                 <ModalRedefinirSenha>
                     <Header>
                         <img src={Logo} alt="Logo" title="Logo" />

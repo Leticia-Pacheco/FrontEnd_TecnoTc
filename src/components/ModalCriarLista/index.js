@@ -2,8 +2,11 @@ import {useState} from 'react';
 import Input from '../Input';
 import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
+import Alert from '../Alert';
 
 function CreateList({handleClose}) {
+  const [message, setMessage] = useState(undefined);
+
   const [newList, setNewList] = useState({
     name: '',
   });
@@ -16,19 +19,23 @@ function CreateList({handleClose}) {
     try {
 
       const response = await api.post('/list/1', {
-        name : newList.name
+        name: newList.name
       });
 
       setNewList(response.data);
+      setMessage({title: 'Tudo certo', description: ''});
+
       handleClose();
     } catch(error) {
       console.error(error);
-      alert(error.response.data.error);
+      setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
   return (
     <>
       <Overlay>
+        <Alert message={message} type="error" handleClose={setMessage} />
+
         <Container onSubmit={handleAddList}>
           <span onClick={handleClose}>X</span>
           <h2>Criar uma lista</h2>

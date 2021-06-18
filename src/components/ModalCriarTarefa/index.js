@@ -2,10 +2,13 @@ import {useState} from 'react';
 import Input from '../Input';
 import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
+import Alert from '../Alert';
 
 function CreateTask({handleClose}) {
+  const [message, setMessage] = useState(undefined);
+
   const [newTask, setNewTask] = useState({
-    task : '',
+    task: '',
   });
   const handleInput = (e) => {
     setNewTask({...newTask, [e.target.id]: e.target.value});
@@ -16,19 +19,21 @@ function CreateTask({handleClose}) {
     try {
 
       const response = await api.post('/task/:cardId', {
-        task : newTask.task,
+        task: newTask.task,
       });
 
       setNewTask(response.data);
+      setMessage({title: 'Tudo certo', description: ''});
       handleClose();
     } catch(error) {
       console.error(error);
-      alert(error.response.data.error);
+      setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
   return (
     <>
       <Overlay>
+        <Alert message={message} type="error" handleClose={setMessage} />
         <Container onSubmit={handleAddTask}>
           <span onClick={handleClose}>X</span>
           <h2>Criar uma tarefa</h2>

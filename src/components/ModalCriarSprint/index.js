@@ -1,7 +1,7 @@
 import {Container, Overlay} from './styles';
 import logo from '../../assets/logos/logo_telas.png';
 
-function InviteStudent({handleClose}) {
+function CreateSprint({handleClose}) {
 
   return (
     <>
@@ -38,4 +38,4 @@ function InviteStudent({handleClose}) {
   );
 }
 
-export default InviteStudent;
+export default CreateSprint;

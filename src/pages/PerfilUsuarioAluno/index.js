@@ -30,15 +30,16 @@ import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
 import buttonAvancar from '../../assets/ImagesPerfis/seta_passar_itens.png';
 import buttonVoltar from '../../assets/ImagesPerfis/seta_voltar_itens.png';
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
-import { api } from '../../service/api';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import {api} from '../../service/api';
+import {useState} from 'react';
+import {useEffect} from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
-import { getUser, setUser, signOut } from '../../service/security';
-import { useHistory } from 'react-router';
+import {getUser, setUser, signOut} from '../../service/security';
+import {useHistory} from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import Alert from '../../components/Alert';
 
 function ProfileStudent() {
   const [modalEditProfile, setModalEditProfile] = useState(false);
@@ -54,12 +55,12 @@ function ProfileStudent() {
   const user = getUser();
 
   const loadPerfilInfo = async (reload) => {
-    if (user.user.userRole === 'student') {
+    if(user.user.userRole === 'student') {
       const response = await api.get('/students');
       setPerfil(response.data);
       setUser(response.data);
     }
-    if (user.user.userRole === 'teacher') {
+    if(user.user.userRole === 'teacher') {
       const response = await api.get('/teachers');
       setPerfil(response.data);
       setUser(response.data);

@@ -6,8 +6,10 @@ import {useState} from 'react';
 import {api} from '../../service/api';
 import {getUser} from '../../service/security';
 import Input from '../Input';
+import Alert from "../Alert";
 
 function RecoverPassword() {
+    const [message, setMessage] = useState(undefined);
 
     const history = useHistory();
 
@@ -29,12 +31,14 @@ function RecoverPassword() {
             history.push('/orderconfirmemail');
         } catch(error) {
             console.error(error);
-            alert(error.response.data.error);
+            setMessage({title: 'Ops...', description: error.response.data.error});
         }
     };
     return (
         <>
             <Overlay>
+                <Alert message={message} type="error" handleClose={setMessage} />
+
                 <ModalRecuperarSenha>
                     <Header>
                         <img src={Logo} alt="Logo" title="Logo" />
