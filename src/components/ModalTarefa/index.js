@@ -1,22 +1,47 @@
-import {Container, Overlay} from './styles';
-import {AiOutlineUserAdd} from 'react-icons/ai';
+import { Container, Overlay } from './styles';
+import { AiOutlineUserAdd } from 'react-icons/ai';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import ModalCriarTarefa from '../ModalCriarTarefa'
-import {useState} from 'react';
-function ModalViewTarefa({handleClose}) {
+import ModalCriarTarefa from '../ModalCreateTask';
+import { useState } from 'react';
+import { api } from '../../service/api';
+import { useEffect } from 'react';
+function ModalViewTarefa({ handleClose, cardId }) {
   const [modalCriarTarefa, setModalsetCriarTarefa] = useState(false);
+
+  const [tasks, setTasks] = useState([]);
+  const [taskChecked, setTaskChecked] = useState([]);
+
+  const loadTasks = async () => {
+    try {
+      const response = await api.get(`/tasks/${cardId}`);
+      console.log(response.data);
+      setTasks([...tasks, ...response.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const checkTask = async (e) => {
+    try {
+      await api.put(`/task/${e.target.defaultValue}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
 
   return (
     <>
-      {
-        modalCriarTarefa && (
-          <ModalCriarTarefa
-            handleClose={() => {
-              setModalsetCriarTarefa(false);
-            }}
-          />
-        )
-      }
+      {modalCriarTarefa && (
+        <ModalCriarTarefa
+          handleClose={() => {
+            setModalsetCriarTarefa(false);
+          }}
+        />
+      )}
       <Overlay>
         <Container>
           <span onClick={handleClose}>X</span>
@@ -69,18 +94,25 @@ function ModalViewTarefa({handleClose}) {
               <input type="Date" />
             </div>
           </div>
-          <div id='createTask'>
-            <h3 onClick={() => setModalsetCriarTarefa(true)}>Criar Tarefas + 0/3</h3>
+          <div id="createTask">
+            <h3 onClick={() => setModalsetCriarTarefa(true)}>
+              Criar Tarefas + 0/3
+            </h3>
             <div id="cheklistCard">
-
-              <div>
-                <input type="checkbox" name="checkbox" />
-                <label for="radio">Cartão 2</label>
-              </div>
-              <div>
-                <input type="checkbox" name="checkbox" />
-                <label for="radio">Cartão 3</label>
-              </div>
+              {tasks.map((task) => (
+                <div key={task.id}>
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    onChange={checkTask}
+                    value={task.id}
+                    checked={task.checked}
+                  />
+                  <label for="radio" value={task.id}>
+                    {task.task}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
         </Container>

@@ -4,27 +4,26 @@ import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
 import Alert from '../Alert';
 
-function CreateList({handleClose}) {
+function CreateTask({handleClose}) {
   const [message, setMessage] = useState(undefined);
 
-  const [newList, setNewList] = useState({
-    name: '',
+  const [newCard, setNewCard] = useState({
+    description: '',
   });
   const handleInput = (e) => {
-    setNewList({...newList, [e.target.id]: e.target.value});
+    setNewCard({...newCard, [e.target.id]: e.target.value});
   };
-  const handleAddList = async (e) => {
+  const handleAddTask = async (e) => {
     e.preventDefault();
 
     try {
 
-      const response = await api.post('/lists/1', {
-        name: newList.name
+      const response = await api.post('/cards/:listId', {
+        description: newCard.description,
       });
 
-      setNewList(response.data);
+      setNewCard(response.data);
       setMessage({title: 'Tudo certo', description: ''});
-
       handleClose();
     } catch(error) {
       console.error(error);
@@ -35,23 +34,22 @@ function CreateList({handleClose}) {
     <>
       <Overlay>
         <Alert message={message} type="error" handleClose={setMessage} />
-
-        <Container onSubmit={handleAddList}>
+        <Container onSubmit={handleAddTask}>
           <span onClick={handleClose}>X</span>
-          <h2>Criar uma lista</h2>
-          <h3>Titulo da lista</h3>
+          <h2>Criar uma tarefa</h2>
+          <h3>Titulo da tarefa</h3>
           <Input
-            id="name"
-            placeholder="Digite o título da lista aqui"
-            value={newList.name}
+            id="description"
+            placeholder="Digite o título do card aqui"
+            value={newCard.description}
             handler={handleInput}
             required
           />
-          <button>Criar Tarefa</button>
+          <button>Criar uma tarefa</button>
         </Container>
       </Overlay>
     </>
   );
 }
 
-export default CreateList;
+export default CreateTask;

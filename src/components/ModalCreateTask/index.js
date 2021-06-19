@@ -7,11 +7,11 @@ import Alert from '../Alert';
 function CreateTask({handleClose}) {
   const [message, setMessage] = useState(undefined);
 
-  const [newTask, setNewTask] = useState({
+  const [newTask, setnewTask] = useState({
     task: '',
   });
   const handleInput = (e) => {
-    setNewTask({...newTask, [e.target.id]: e.target.value});
+    setnewTask({...newTask, [e.target.id]: e.target.value});
   };
   const handleAddTask = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ function CreateTask({handleClose}) {
         task: newTask.task,
       });
 
-      setNewTask(response.data);
+      setnewTask(response.data);
       setMessage({title: 'Tudo certo', description: ''});
       handleClose();
     } catch(error) {
@@ -39,7 +39,7 @@ function CreateTask({handleClose}) {
           <h2>Criar uma tarefa</h2>
           <h3>Titulo da tarefa</h3>
           <Input
-            id="title"
+            id="description"
             placeholder="Digite o título do card aqui"
             value={newTask.task}
             handler={handleInput}

@@ -7,18 +7,25 @@ import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import { api } from '../../service/api';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import ModalCreateTask from '../../components/ModalCriarTarefa';
 import ModalCreateList from '../../components/ModalCriarLista';
 import ModalTask from '../../components/ModalTarefa';
 import ModalInviteStudent from '../../components/ModalConvidarAluno';
 
 function Workspace() {
   const [columns, setColumns] = useState([]);
+
   const [modalCreateCard, setModalCreateCard] = useState(false);
+
   const [modalCreateList, setModalCreateList] = useState(false);
+
   const [modalConvidarAluno, setModalConvidarAluno] = useState(false);
 
+  const [reload, setReload] = useState(null);
+
   const [modalCard, setModalCard] = useState(false);
+
+  const [card, setCard] = useState([])
+
   const { workspaceId } = useParams();
 
   const updateOrderCard = async ({ id, order, listId }) => {
@@ -37,31 +44,21 @@ function Workspace() {
     if (!result.destination) return;
 
     const { source, destination, draggableId } = result;
-    //console.log(result);
 
     if (source.droppableId !== destination.droppableId) {
-      //A LISTA QUE ESTOU ATUALMENTE
       const sourceColumn = columns[source.droppableId];
 
-      //RETORNA A LISTA PARA QUAL EU VOU
       const destColumn = columns[destination.droppableId];
-      //console.log(destColumn);
 
-      //RETORNA O QUE SOBROU DE UMA LISTA
       const sourceItems = [...sourceColumn.Cards];
-      //console.log(sourceItems);
 
-      //RETORNA UM ARRAY COM TUDO DE NOVO DA NOVA LISTA
       const destItems = [...destColumn.Cards];
-      //console.log(destItems);
 
-      //REMOVE UM ELEMENTO DA LISTA
       const [removed] = sourceItems.splice(source.index, 1);
 
       destItems.splice(destination.index, 0, removed);
       setColumns({
         ...columns,
-        //seta as colunas retornando tudo da lista que estou atualmente mais o que vem de noovo
         [source.droppableId]: {
           ...sourceColumn,
           Cards: sourceItems,
@@ -94,15 +91,26 @@ function Workspace() {
     }
   };
 
+  const handleReload = () => {
+    setColumns([]);
+    setReload(Math.random());
+  };
+
   const loadColumns = async () => {
     try {
       const response = await api.get(`/lists/${workspaceId}`);
-      console.log(response.data);
       setColumns(response.data);
     } catch (error) {
       console.error(error);
     }
   };
+
+  const handleOpenCardInfo = async (e) => {
+    console.log(e)
+   setModalCard(true)
+   setCard(e)
+  }
+  
 
   useEffect(() => {
     loadColumns();
@@ -117,18 +125,13 @@ function Workspace() {
           }}
         />
       )}
-      {modalCreateCard && (
-        <ModalCreateTask
-          handleClose={() => {
-            setModalCreateCard(false);
-          }}
-        />
-      )}
       {modalCard && (
         <ModalTask
           handleClose={() => {
             setModalCard(false);
           }}
+          handleReload={handleReload}
+          cardId={card}
         />
       )}
       {modalCreateList && (
@@ -161,7 +164,6 @@ function Workspace() {
             </div>
           </section>
           <div
-            onDoubleClick={() => setModalCard(true)}
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -208,6 +210,7 @@ function Workspace() {
                                     {(provided, snapshot) => {
                                       return (
                                         <div
+                                        onDoubleClick={() => handleOpenCardInfo(item.id)}
                                           ref={provided.innerRef}
                                           {...provided.draggableProps}
                                           {...provided.dragHandleProps}
