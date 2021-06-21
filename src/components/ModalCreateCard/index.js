@@ -4,7 +4,7 @@ import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
 import Alert from '../Alert';
 
-function CreateTask({handleClose}) {
+function CreateCard({handleClose}) {
   const [message, setMessage] = useState(undefined);
 
   const [newCard, setNewCard] = useState({
@@ -36,8 +36,8 @@ function CreateTask({handleClose}) {
         <Alert message={message} type="error" handleClose={setMessage} />
         <Container onSubmit={handleAddTask}>
           <span onClick={handleClose}>X</span>
-          <h2>Criar uma tarefa</h2>
-          <h3>Titulo da tarefa</h3>
+          <h2>Criar um card</h2>
+          <h3>Titulo do card</h3>
           <Input
             id="description"
             placeholder="Digite o título do card aqui"
@@ -45,11 +45,11 @@ function CreateTask({handleClose}) {
             handler={handleInput}
             required
           />
-          <button>Criar uma tarefa</button>
+          <button>Criar um card</button>
         </Container>
       </Overlay>
     </>
   );
 }
 
-export default CreateTask;
+export default CreateCard;

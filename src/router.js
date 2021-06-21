@@ -17,7 +17,6 @@ import WorkSpace from './pages/WorkSpace';
 import SprintReview from './pages/SprintReview';
 import SprintDaily from './pages/SprintDaily';
 import SprintRetrospective from './pages/SprintRetrospective';
-import ViewTarefa from './components/ModalCriarSprint';
 import Feed from './pages/Feed';
 
 function PrivateRoute({children, ...rest}) {
