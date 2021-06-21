@@ -28,12 +28,13 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspace }) {
 
+  console.log(workspace)
+
   let { id } = useParams();
 
   const history = useHistory();
 
   function goToWorkspace (e) {
-    console.log(e)
       history.push(`/workspace/${e}/${id}`);
   }
 
@@ -148,8 +149,7 @@ function Grups() {
 
     if (!response.data) return history.push('/profile');
     setGroup(response.data);
-    // setWorkspaces(response.data.Workspace);
-    console.log(response.data.Workspace)
+    setWorkspaces(response.data.Workspace);
   };
 
   useEffect(() => {
