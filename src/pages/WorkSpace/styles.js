@@ -88,9 +88,9 @@ export const Content = styled.div`
     >div{
       position: relative;
       display: flex;
+      justify-content: center;
       align-items: center;
       margin: 50px 10px;
-      padding-left: 20px;
       width: 300px;
       height: 50px;
       border-radius: 10px;
