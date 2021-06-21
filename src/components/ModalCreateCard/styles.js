@@ -4,6 +4,7 @@ export const Overlay = styled.div`
     position: absolute;
     width: 100vw;
     height: 100vh;
+    z-index: 9;
     background-color: #333C;
     display: flex;
     justify-content: center;
@@ -16,8 +17,6 @@ export const Container = styled.form`
     height: auto;
     overflow: hidden;
     max-height: calc(100vh - 20px); /*Para calcular uma boa altura e que não fique tão grande nem tão pequeno*/
-
-    z-index: 19;
     overflow-y: auto;
     position: absolute;
     flex-direction: column;
