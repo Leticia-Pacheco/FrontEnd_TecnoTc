@@ -26,7 +26,7 @@ import {
 import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
-function ComponentQuadros({ workspaces }) {
+function ComponentQuadros({ workspace }) {
 
   let { id } = useParams();
 
@@ -43,11 +43,9 @@ function ComponentQuadros({ workspaces }) {
         <h1> Quadros </h1>
       </TituloQuadros>
       <ContainerQuadros>
-        {workspaces.map((workspace) => (
           <Quadros key={workspace.id} onClick={() => goToWorkspace(workspace.id)}>
             <h2></h2>
           </Quadros>
-        ))}
       </ContainerQuadros>
     </ComponetQuadros>
   );
@@ -150,7 +148,8 @@ function Grups() {
 
     if (!response.data) return history.push('/profile');
     setGroup(response.data);
-    setWorkspaces(response.data.Workspaces);
+    // setWorkspaces(response.data.Workspace);
+    console.log(response.data.Workspace)
   };
 
   useEffect(() => {
@@ -175,7 +174,7 @@ function Grups() {
         <ComponetSubMenu onClick={handleTradeStadeChat}>Chat</ComponetSubMenu>
       </Submenu>
       {showChat && <ChatGrup chat={group.Chat} groupId={id} />}
-      {showComponentQuadro && <ComponentQuadros workspaces={workspaces} />}
+      {showComponentQuadro && <ComponentQuadros workspace={workspaces} />}
     </Container>
   );
 }
