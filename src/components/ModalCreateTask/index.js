@@ -4,7 +4,7 @@ import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
 import Alert from '../Alert';
 
-function CreateTask({handleClose}) {
+function CreateTask({handleClose, cardId}) {
   const [message, setMessage] = useState(undefined);
 
   const [newTask, setnewTask] = useState({
@@ -18,7 +18,7 @@ function CreateTask({handleClose}) {
 
     try {
 
-      const response = await api.post('/task/:cardId', {
+      const response = await api.post(`/task/${cardId}`, {
         task: newTask.task,
       });
 
@@ -39,8 +39,8 @@ function CreateTask({handleClose}) {
           <h2>Criar uma tarefa</h2>
           <h3>Titulo da tarefa</h3>
           <Input
-            id="description"
-            placeholder="Digite o título do card aqui"
+            id="task"
+            placeholder="Digite o título da tarefa aqui"
             value={newTask.task}
             handler={handleInput}
             required

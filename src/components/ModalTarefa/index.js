@@ -9,7 +9,8 @@ function ModalViewTarefa({ handleClose, cardId }) {
   const [modalCriarTarefa, setModalsetCriarTarefa] = useState(false);
 
   const [tasks, setTasks] = useState([]);
-  const [taskChecked, setTaskChecked] = useState([]);
+  const [progress, setProgress] = useState([]);
+  const [priorities, setPriorities] = useState([]);
 
   const loadTasks = async () => {
     try {
@@ -20,17 +21,41 @@ function ModalViewTarefa({ handleClose, cardId }) {
       console.log(error);
     }
   };
-
+  console.log(tasks)
   const checkTask = async (e) => {
     try {
       await api.put(`/task/${e.target.defaultValue}`);
+
+      setTasks(tasks.map((t) => t.id == e.target.defaultValue ? {...t, checked : !t.checked}: t))
     } catch (error) {
       console.log(error);
     }
   };
 
+  const loadProgress = async () => {
+    try {
+      const response = await api.get("/progresses");
+
+      setProgress(response.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const loadPriorities = async () => {
+    try {
+      const response = await api.get("/priorities");
+
+      setPriorities(response.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   useEffect(() => {
     loadTasks();
+    loadPriorities();
+    loadProgress();
   }, []);
 
   return (
@@ -40,6 +65,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
           handleClose={() => {
             setModalsetCriarTarefa(false);
           }}
+          id={cardId}
         />
       )}
       <Overlay>
@@ -56,31 +82,22 @@ function ModalViewTarefa({ handleClose, cardId }) {
           </div>
           <img src={perfil} alt="imageUser" id="imageUser" />
           <section>
-            <div id="selecetBucket">
-              <h3>Bucket</h3>
-              <select className="appearance-select">
-                <option value="">Sprint Backlog</option>
-                <option value="">Em análise</option>
-                <option value="">Em desenvolvimento </option>
-                <option value="">Em teste</option>
-                <option value="">Feito</option>
-              </select>
-            </div>
             <div id="selecetProgresso">
               <h3>Progresso</h3>
               <select className="appearance-select">
-                <option value="">Não iniciada</option>
-                <option value="">Em andamento</option>
-                <option value="">Concluida </option>
+              <option value="">Selecione</option>
+                {progress.map((progress) => (
+                  <option value={progress.id}>{progress.progress}</option>
+                ))}
               </select>
             </div>
             <div id="selecetPrioridades">
               <h3>Prioridades</h3>
               <select className="appearance-select">
-                <option value="">Urgente</option>
-                <option value="">Importante</option>
-                <option value="">Média</option>
-                <option value="">Baixa</option>
+                <option value="">Selecione</option>
+              {priorities.map((priority) => (
+                <option value={priority.id}>{priority.priority}</option>
+              ))}
               </select>
             </div>
           </section>
