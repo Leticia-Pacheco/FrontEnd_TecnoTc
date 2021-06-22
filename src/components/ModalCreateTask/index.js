@@ -5,7 +5,7 @@ import {Container, Overlay} from './styles';
 import Alert from '../Alert';
 
 function CreateTask({handleClose, cardId}) {
-  const [message, setMessage] = useState(undefined);
+   const [message, setMessage] = useState(undefined);
 
   const [newTask, setnewTask] = useState({
     task: '',

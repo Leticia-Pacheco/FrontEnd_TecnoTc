@@ -4,6 +4,8 @@ import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import ModalCriarTarefa from '../ModalCreateTask';
 import { useState } from 'react';
 import { api } from '../../service/api';
+import { format } from "date-fns";
+
 import { useEffect } from 'react';
 function ModalViewTarefa({ handleClose, cardId }) {
   const [modalCriarTarefa, setModalsetCriarTarefa] = useState(false);
@@ -12,6 +14,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
   const [progress, setProgress] = useState([]);
   const [priorities, setPriorities] = useState([]);
   const [cardsInfo, setCardsInfo] = useState([]);
+  const [currentProgress, setCurrentProgress] = useState([]);
 
   const loadTasks = async () => {
     try {
@@ -48,6 +51,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
       const response = await api.get("/cards/info/1");
 
       setCardsInfo(response.data);
+      setCurrentProgress(response.data.Priority);
       console.log(response.data)
     } catch (error) {
       console.log(error)
@@ -64,6 +68,10 @@ function ModalViewTarefa({ handleClose, cardId }) {
     }
   };
 
+  const receiveDate = async (e) => {
+    console.log(e.target.value);
+  }
+
   useEffect(() => {
     loadTasks();
     loadPriorities();
@@ -78,7 +86,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
           handleClose={() => {
             setModalsetCriarTarefa(false);
           }}
-          id={cardId}
+          cardId={cardId}
         />
       )}
       <Overlay>
@@ -87,7 +95,8 @@ function ModalViewTarefa({ handleClose, cardId }) {
           <header>
             <h2>{cardsInfo.description}</h2>
           </header>
-          <p>Última alteração há {cardsInfo.updatedAt}</p>
+          {/* <p>Última alteração há {format(new Date(cardsInfo.updatedAt), "dd/MM/yyyy 'às' HH:mm")}</p> */}
+          <p>Última alteração há </p>
           <div id="addUser">
             <AiOutlineUserAdd />
             <p>Adicionar membros</p>
@@ -100,7 +109,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
             <div id="selecetProgresso">
               <h3>Progresso</h3>
               <select className="appearance-select">
-              <option value="">Selecione</option>
+              <option value="">{cardsInfo.Progress?.progress || "Selecione"}</option>
                 {progress.map((progress) => (
                   <option value={progress.id}>{progress.progress}</option>
                 ))}
@@ -109,7 +118,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
             <div id="selecetPrioridades">
               <h3>Prioridades</h3>
               <select className="appearance-select">
-                <option value="">Selecione</option>
+                <option value="">{cardsInfo.Priority?.priority || "Selecione"}</option>
               {priorities.map((priority) => (
                 <option value={priority.id}>{priority.priority}</option>
               ))}
@@ -119,7 +128,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
           <div id="date">
             <div id="dateStart">
               <h3>Data de início</h3>
-              <input type="Date" />
+              <input type="Date" onChange={receiveDate}/>
             </div>
             <div id="dateEnd">
               <h3>Data de Termino</h3>
