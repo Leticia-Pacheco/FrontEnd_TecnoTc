@@ -11,6 +11,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
   const [tasks, setTasks] = useState([]);
   const [progress, setProgress] = useState([]);
   const [priorities, setPriorities] = useState([]);
+  const [cardsInfo, setCardsInfo] = useState([]);
 
   const loadTasks = async () => {
     try {
@@ -21,7 +22,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
       console.log(error);
     }
   };
-  console.log(tasks)
+
   const checkTask = async (e) => {
     try {
       await api.put(`/task/${e.target.defaultValue}`);
@@ -42,6 +43,17 @@ function ModalViewTarefa({ handleClose, cardId }) {
     }
   };
 
+  const loadInfoCard = async () => {
+    try {
+      const response = await api.get("/cards/info/1");
+
+      setCardsInfo(response.data);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const loadPriorities = async () => {
     try {
       const response = await api.get("/priorities");
@@ -56,6 +68,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
     loadTasks();
     loadPriorities();
     loadProgress();
+    loadInfoCard()
   }, []);
 
   return (
@@ -72,15 +85,17 @@ function ModalViewTarefa({ handleClose, cardId }) {
         <Container>
           <span onClick={handleClose}>X</span>
           <header>
-            <img src="" alt="state"></img>
-            <h2>Wiresframes</h2>
+            <h2>{cardsInfo.description}</h2>
           </header>
-          <p>Última alteração há 4 dias feita por Fulana</p>
+          <p>Última alteração há {cardsInfo.updatedAt}</p>
           <div id="addUser">
             <AiOutlineUserAdd />
             <p>Adicionar membros</p>
           </div>
-          <img src={perfil} alt="imageUser" id="imageUser" />
+          {cardsInfo.Users?.map((user) => (
+            <img src={user.Student.profileImage ||  perfil } alt="imageUser" id="imageUser" />
+          ))}
+    
           <section>
             <div id="selecetProgresso">
               <h3>Progresso</h3>
