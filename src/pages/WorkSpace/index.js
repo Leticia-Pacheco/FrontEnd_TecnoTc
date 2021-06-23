@@ -175,6 +175,7 @@ function Workspace() {
         <ModalCreateList
           handleClose={() => {
             setModalCreateList(false);
+            loadColumns();
           }}
         />
       )}
@@ -187,7 +188,7 @@ function Workspace() {
       )}
       <Container>
         <header>
-          <Link to={"/feed"}>
+          <Link to={'/feed'}>
             <img src={imgHomeFeed} alt="home" id="home" />
           </Link>
           <img src={logo} alt="logo" id="logo" />
@@ -218,13 +219,15 @@ function Workspace() {
             <div onClick={() => setModalCreateList(true)}>
               + Adicionar nova lista
             </div>
-            <div onClick={() => setModalCreateCard(true)}>+ Criar um card</div>
           </section>
           <div
             style={{
+              overflowY: 'hidden',
+              width: '90%',
               display: 'flex',
+              alignItems: 'center',
               justifyContent: 'space-between',
-              height: '100%'
+              height: '100%',
             }}
           >
             <DragDropContext
@@ -240,7 +243,23 @@ function Workspace() {
                     }}
                     key={columnId}
                   >
-                    <h2>{column.name}</h2>
+                    <h2
+                      style={{
+                        textAlign: 'left',
+                        fontSize: '1.3rem',
+                      }}
+                    >
+                      {column.name}
+                      <span
+                        style={{
+                          marginLeft: '10px',
+                          fontSize: '1.3rem',
+                        }}
+                        onClick={() => setModalCreateCard(true)}
+                      >
+                        +
+                      </span>
+                    </h2>
                     <div style={{ margin: 8 }}>
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
