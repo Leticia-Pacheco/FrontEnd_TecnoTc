@@ -93,6 +93,7 @@ function ChatGrup({ chat, groupId }) {
       chatId: chat.id,
       author: user.student.name,
       message: message,
+      createdAt : new Date().toISOString()
     };
 
     await socket.emit('send_message', messageContent);
