@@ -48,7 +48,14 @@ function Workspace() {
   };
 
   const updateCardList = async ({ cardId, listId }) => {
-    const response = await api.put(`/cards/list/${cardId}/${listId + 1}`);
+
+    const list = parseInt(listId);
+    try {
+      const response = await api.put(`/cards/list/${cardId}/${list + 1}`);
+    } catch (error) {
+      console.log(error)
+    }
+    
   };
 
   const onDragEnd = (result, columns, setColumns) => {
