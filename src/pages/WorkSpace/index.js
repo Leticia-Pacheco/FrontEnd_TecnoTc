@@ -212,7 +212,6 @@ function Workspace() {
             <div onClick={() => setModalCreateList(true)}>
               + Adicionar nova lista
             </div>
-            <div onClick={() => setModalCreateCard(true)}>+ Criar um card</div>
           </section>
           <div
             style={{

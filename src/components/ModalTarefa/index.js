@@ -4,7 +4,7 @@ import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
 import ModalCriarTarefa from '../ModalCreateTask';
 import { useState } from 'react';
 import { api } from '../../service/api';
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 import { useEffect } from 'react';
 function ModalViewTarefa({ handleClose, cardId }) {
@@ -30,7 +30,11 @@ function ModalViewTarefa({ handleClose, cardId }) {
     try {
       await api.put(`/task/${e.target.defaultValue}`);
 
-      setTasks(tasks.map((t) => t.id == e.target.defaultValue ? {...t, checked : !t.checked}: t))
+      setTasks(
+        tasks.map((t) =>
+          t.id == e.target.defaultValue ? { ...t, checked: !t.checked } : t
+        )
+      );
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +42,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
   const loadProgress = async () => {
     try {
-      const response = await api.get("/progresses");
+      const response = await api.get('/progresses');
 
       setProgress(response.data);
     } catch (error) {
@@ -48,19 +52,19 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
   const loadInfoCard = async () => {
     try {
-      const response = await api.get("/cards/info/1");
+      const response = await api.get('/cards/info/1');
 
       setCardsInfo(response.data);
       setCurrentProgress(response.data.Priority);
-      console.log(response.data)
+      console.log(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const loadPriorities = async () => {
     try {
-      const response = await api.get("/priorities");
+      const response = await api.get('/priorities');
 
       setPriorities(response.data);
     } catch (error) {
@@ -70,17 +74,17 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
   const initialDate = async (e) => {
     console.log(e);
-  }
+  };
 
   const finalDate = async (e) => {
     console.log(e);
-  }
+  };
 
   useEffect(() => {
     loadTasks();
     loadPriorities();
     loadProgress();
-    loadInfoCard()
+    loadInfoCard();
   }, []);
 
   return (
@@ -99,20 +103,38 @@ function ModalViewTarefa({ handleClose, cardId }) {
           <header>
             <h2>{cardsInfo.description}</h2>
           </header>
-          <p>Última alteração há {cardsInfo.updatedAt ? format(new Date(cardsInfo.updatedAt), "dd-MM-yyyy 'às' HH:mm") : "Data invalida"} </p>
+          <p>
+            Última alteração há{' '}
+            {cardsInfo.updatedAt
+              ? format(new Date(cardsInfo.updatedAt), "dd-MM-yyyy 'às' HH:mm")
+              : 'Data invalida'}{' '}
+          </p>
           <div id="addUser">
             <AiOutlineUserAdd />
-            <p>Adicionar membros</p>
+            <div id="dropdown">
+              <p id="dropbtn">Adicionar membros</p>
+              <div id="dropdown-content">
+                <span>teste 1</span>
+                <span>teste 2</span>
+                <span>teste 3</span>
+              </div>
+            </div>
           </div>
           {cardsInfo.Users?.map((user) => (
-            <img src={user.Student.profileImage ||  perfil } alt="imageUser" id="imageUser" />
+            <img
+              src={user.Student.profileImage || perfil}
+              alt="imageUser"
+              id="imageUser"
+            />
           ))}
-    
+
           <section>
             <div id="selecetProgresso">
               <h3>Progresso</h3>
               <select className="appearance-select">
-              <option value="">{cardsInfo.Progress?.progress || "Selecione"}</option>
+                <option value="">
+                  {cardsInfo.Progress?.progress || 'Selecione'}
+                </option>
                 {progress.map((progress) => (
                   <option value={progress.id}>{progress.progress}</option>
                 ))}
@@ -121,22 +143,40 @@ function ModalViewTarefa({ handleClose, cardId }) {
             <div id="selecetPrioridades">
               <h3>Prioridades</h3>
               <select className="appearance-select">
-                <option value="">{cardsInfo.Priority?.priority || "Selecione"}</option>
-              {priorities.map((priority) => (
-                <option value={priority.id}>{priority.priority}</option>
-              ))}
+                <option value="">
+                  {cardsInfo.Priority?.priority || 'Selecione'}
+                </option>
+                {priorities.map((priority) => (
+                  <option value={priority.id}>{priority.priority}</option>
+                ))}
               </select>
             </div>
           </section>
           <div id="date">
             <div id="dateStart">
               <h3>Data de início</h3>
-              <input type="Date" value={cardsInfo.initialDate ? format(new Date(cardsInfo.initialDate), "yyyy-MM-dd") : "2021-10-20"} onChange={initialDate}/>
+              <input
+                type="Date"
+                value={
+                  cardsInfo.initialDate
+                    ? format(new Date(cardsInfo.initialDate), 'yyyy-MM-dd')
+                    : '2021-10-20'
+                }
+                onChange={initialDate}
+              />
             </div>
             <div id="dateEnd">
               <h3>Data de Termino</h3>
-              
-              <input type="Date" value={cardsInfo.dueDate ? format(new Date(cardsInfo.dueDate), "yyyy-MM-dd") : "2021-10-20"} onChange={finalDate}/>
+
+              <input
+                type="Date"
+                value={
+                  cardsInfo.dueDate
+                    ? format(new Date(cardsInfo.dueDate), 'yyyy-MM-dd')
+                    : '2021-10-20'
+                }
+                onChange={finalDate}
+              />
             </div>
           </div>
           <div id="createTask">
