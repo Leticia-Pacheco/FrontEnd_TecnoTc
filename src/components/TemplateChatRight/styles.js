@@ -6,10 +6,10 @@ export const Container = styled.div`
   height: auto;
   overflow: hidden;
   width: 400px;
-  background-color: #332965;
+  background-color: ${colors.primaryPurple};
   border-radius: 10px 10px 10px 0px;
   padding: 10px;
-
+  margin-top: 20px;
   > p {
     color: white;
   }
