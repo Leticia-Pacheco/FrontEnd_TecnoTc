@@ -27,15 +27,14 @@ import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspace }) {
-
-  console.log(workspace)
+  console.log(workspace);
 
   let { id } = useParams();
 
   const history = useHistory();
 
-  function goToWorkspace (e) {
-      history.push(`/workspace/${e}/${id}`);
+  function goToWorkspace(e) {
+    history.push(`/workspace/${e}/${id}`);
   }
 
   return (
@@ -44,9 +43,9 @@ function ComponentQuadros({ workspace }) {
         <h1> Quadros </h1>
       </TituloQuadros>
       <ContainerQuadros>
-          <Quadros key={workspace.id} onClick={() => goToWorkspace(workspace.id)}>
-            <h2></h2>
-          </Quadros>
+        <Quadros key={workspace.id} onClick={() => goToWorkspace(workspace.id)}>
+          <h2></h2>
+        </Quadros>
       </ContainerQuadros>
     </ComponetQuadros>
   );
@@ -68,7 +67,7 @@ function ChatGrup({ chat, groupId }) {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-        setMessageList([...messageList, data]);
+      setMessageList([...messageList, data]);
     });
   });
 
@@ -169,7 +168,9 @@ function Grups() {
     <Container>
       <MenuComponent />
       <Submenu>
-        <h3>&larr;  <Link to="/profile">Voltar para o perfil</Link></h3>
+        <h3>
+          &larr; <Link to="/profile">Voltar para o perfil</Link>
+        </h3>
         <ComponetSubMenu onClick={handleTradeStade}>Grupo</ComponetSubMenu>
         <ComponetSubMenu onClick={handleTradeStadeChat}>Chat</ComponetSubMenu>
       </Submenu>
