@@ -18,7 +18,7 @@ function CreateCard({handleClose}) {
 
     try {
 
-      const response = await api.post('/cards/:listId', {
+      const response = await api.post('/cards/1', {
         description: newCard.description,
       });
 
