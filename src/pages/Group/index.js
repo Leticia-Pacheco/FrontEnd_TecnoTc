@@ -27,7 +27,6 @@ import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspace }) {
-  console.log(workspace);
 
   let { id } = useParams();
 
