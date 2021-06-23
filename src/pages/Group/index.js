@@ -103,7 +103,7 @@ function ChatGrup({ chat, groupId }) {
   return (
     <Mensagens>
       <ContatoMensagem>
-        <h1> Karina Soares </h1>
+        <h1> {user.student.name} </h1>
       </ContatoMensagem>
       <ContainerMensagens>
         {/* <TemplateChatRight/> */}

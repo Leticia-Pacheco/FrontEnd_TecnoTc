@@ -1,16 +1,18 @@
-import React, {useState} from 'react';
-import {Container, Content} from './styles';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import React, { useState } from 'react';
+import { Container, Content } from './styles';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-import {api} from '../../service/api';
-import {useEffect} from 'react';
-import {useParams} from 'react-router';
+import { api } from '../../service/api';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 import ModalCreateList from '../../components/ModalCriarLista';
 import ModalTask from '../../components/ModalTarefa';
 import ModalInviteStudent from '../../components/ModalConvidarAluno';
 import CreateCard from '../../components/ModalCreateCard';
+import { getUser } from '../../service/security';
+import { Link } from 'react-router-dom';
 
 function Workspace() {
   const [columns, setColumns] = useState([]);
@@ -25,11 +27,19 @@ function Workspace() {
 
   const [modalCard, setModalCard] = useState(false);
 
-  const [card, setCard] = useState([])
+  const [card, setCard] = useState([]);
 
-  const {workspaceId} = useParams();
+  const [userImages, setUserImages] = useState([]);
 
-  const updateOrderCard = async ({id, order, listId}) => {
+  const [groupInfo, setGroupInfo] = useState([]);
+
+  const { workspaceId } = useParams();
+
+  const { id } = useParams();
+
+  const user = getUser();
+
+  const updateOrderCard = async ({ id, order, listId }) => {
     const convertToInt = parseInt(id);
 
     const response = await api.put(`/cards/order/${convertToInt}/${listId}`, {
@@ -37,16 +47,16 @@ function Workspace() {
     });
   };
 
-  const updateCardList = async ({cardId, listId}) => {
+  const updateCardList = async ({ cardId, listId }) => {
     const response = await api.put(`/cards/list/${cardId}/${listId + 1}`);
   };
 
   const onDragEnd = (result, columns, setColumns) => {
-    if(!result.destination) return;
+    if (!result.destination) return;
 
-    const {source, destination, draggableId} = result;
+    const { source, destination, draggableId } = result;
 
-    if(source.droppableId !== destination.droppableId) {
+    if (source.droppableId !== destination.droppableId) {
       const sourceColumn = columns[source.droppableId];
 
       const destColumn = columns[destination.droppableId];
@@ -70,7 +80,7 @@ function Workspace() {
         },
       });
 
-      updateCardList({cardId: draggableId, listId: destination.droppableId});
+      updateCardList({ cardId: draggableId, listId: destination.droppableId });
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.Cards];
@@ -101,20 +111,39 @@ function Workspace() {
     try {
       const response = await api.get(`/lists/${workspaceId}`);
       setColumns(response.data);
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
   };
 
-  const handleOpenCardInfo = async (e) => {
-    console.log(e)
-    setModalCard(true)
-    setCard(e)
-  }
+  const loadUserGroup = async () => {
+    try {
+      const response = await api.get(`/group/users/${id}`);
+      setUserImages(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  const loadNameGroup = async () => {
+    try {
+      const response = await api.get(`/group/${id}`);
+      setGroupInfo(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOpenCardInfo = async (e) => {
+    console.log(e);
+    setModalCard(true);
+    setCard(e);
+  };
 
   useEffect(() => {
     loadColumns();
+    loadUserGroup();
+    loadNameGroup();
   }, []);
 
   return (
@@ -151,15 +180,27 @@ function Workspace() {
       )}
       <Container>
         <header>
-          <img src={imgHomeFeed} alt="home" id="home" />
+          <Link to={"/feed"}>
+            <img src={imgHomeFeed} alt="home" id="home" />
+          </Link>
           <img src={logo} alt="logo" id="logo" />
-          <img src={perfil} alt="profileUser" className="profileUser" />
+          <img
+            src={user.student.profileImage || perfil}
+            alt="profileUser"
+            className="profileUser"
+          />
         </header>
         <div id="sub-menu">
-          <h3>Nome Grupo</h3>
+          <h3>{groupInfo.name}</h3>
           <article>
-            <img src={perfil} alt="profileUser" className="profileUser" />
-            <img src={perfil} alt="profileUser" className="profileUser" />
+            {userImages.map((image) => (
+              <img
+                src={image.profileImage || perfil}
+                alt="profileUser"
+                className="profileUser"
+              />
+            ))}
+
             <div onClick={() => setModalConvidarAluno(true)}>Convidar</div>
           </article>
         </div>
@@ -170,15 +211,13 @@ function Workspace() {
             <div onClick={() => setModalCreateList(true)}>
               + Adicionar nova lista
             </div>
-            <div onClick={() => setModalCreateCard(true)}>
-              + Criar um card
-            </div>
+            <div onClick={() => setModalCreateCard(true)}>+ Criar um card</div>
           </section>
           <div
             style={{
               display: 'flex',
               justifyContent: 'space-between',
-              height: '100%',
+              height: '100%'
             }}
           >
             <DragDropContext
@@ -195,7 +234,7 @@ function Workspace() {
                     key={columnId}
                   >
                     <h2>{column.name}</h2>
-                    <div style={{margin: 8}}>
+                    <div style={{ margin: 8 }}>
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
                           return (
@@ -221,7 +260,9 @@ function Workspace() {
                                     {(provided, snapshot) => {
                                       return (
                                         <div
-                                          onDoubleClick={() => handleOpenCardInfo(item.id)}
+                                          onDoubleClick={() =>
+                                            handleOpenCardInfo(item.id)
+                                          }
                                           ref={provided.innerRef}
                                           {...provided.draggableProps}
                                           {...provided.dragHandleProps}
