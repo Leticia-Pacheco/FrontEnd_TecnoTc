@@ -11,6 +11,8 @@ import ModalCreateList from '../../components/ModalCriarLista';
 import ModalTask from '../../components/ModalTarefa';
 import ModalInviteStudent from '../../components/ModalConvidarAluno';
 import CreateCard from '../../components/ModalCreateCard';
+import { getUser } from '../../service/security';
+import { Link } from 'react-router-dom';
 
 function Workspace() {
   const [columns, setColumns] = useState([]);
@@ -27,7 +29,15 @@ function Workspace() {
 
   const [card, setCard] = useState([]);
 
+  const [userImages, setUserImages] = useState([]);
+
+  const [groupInfo, setGroupInfo] = useState([]);
+
   const { workspaceId } = useParams();
+
+  const { id } = useParams();
+
+  const user = getUser();
 
   const updateOrderCard = async ({ id, order, listId }) => {
     const convertToInt = parseInt(id);
@@ -106,6 +116,24 @@ function Workspace() {
     }
   };
 
+  const loadUserGroup = async () => {
+    try {
+      const response = await api.get(`/group/users/${id}`);
+      setUserImages(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadNameGroup = async () => {
+    try {
+      const response = await api.get(`/group/${id}`);
+      setGroupInfo(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleOpenCardInfo = async (e) => {
     console.log(e);
     setModalCard(true);
@@ -114,6 +142,8 @@ function Workspace() {
 
   useEffect(() => {
     loadColumns();
+    loadUserGroup();
+    loadNameGroup();
   }, []);
 
   return (
@@ -151,15 +181,27 @@ function Workspace() {
       )}
       <Container>
         <header>
-          <img src={imgHomeFeed} alt="home" id="home" />
+          <Link to={'/feed'}>
+            <img src={imgHomeFeed} alt="home" id="home" />
+          </Link>
           <img src={logo} alt="logo" id="logo" />
-          <img src={perfil} alt="profileUser" className="profileUser" />
+          <img
+            src={user.student.profileImage || perfil}
+            alt="profileUser"
+            className="profileUser"
+          />
         </header>
         <div id="sub-menu">
-          <h3>Nome Grupo</h3>
+          <h3>{groupInfo.name}</h3>
           <article>
-            <img src={perfil} alt="profileUser" className="profileUser" />
-            <img src={perfil} alt="profileUser" className="profileUser" />
+            {userImages.map((image) => (
+              <img
+                src={image.profileImage || perfil}
+                alt="profileUser"
+                className="profileUser"
+              />
+            ))}
+
             <div onClick={() => setModalConvidarAluno(true)}>Convidar</div>
           </article>
         </div>
@@ -170,6 +212,7 @@ function Workspace() {
             <div onClick={() => setModalCreateList(true)}>
               + Adicionar nova lista
             </div>
+            <div onClick={() => setModalCreateCard(true)}>+ Criar um card</div>
           </section>
           <div
             style={{
@@ -178,7 +221,7 @@ function Workspace() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginLeft: '80px',
+              height: '100%',
             }}
           >
             <DragDropContext

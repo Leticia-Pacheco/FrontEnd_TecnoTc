@@ -99,7 +99,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
           <header>
             <h2>{cardsInfo.description}</h2>
           </header>
-          <p>Última alteração há {cardsInfo.updatedAt ? format(new Date(cardsInfo.updatedAt), "dd/MM/yyyy 'às' HH:mm") : "Data invalida"} </p>
+          <p>Última alteração há {cardsInfo.updatedAt ? format(new Date(cardsInfo.updatedAt), "dd-MM-yyyy 'às' HH:mm") : "Data invalida"} </p>
           <div id="addUser">
             <AiOutlineUserAdd />
             <p>Adicionar membros</p>
@@ -131,12 +131,12 @@ function ModalViewTarefa({ handleClose, cardId }) {
           <div id="date">
             <div id="dateStart">
               <h3>Data de início</h3>
-              <input type="Date" onChange={initialDate}/>
+              <input type="Date" value={cardsInfo.initialDate ? format(new Date(cardsInfo.initialDate), "yyyy-MM-dd") : "2021-10-20"} onChange={initialDate}/>
             </div>
             <div id="dateEnd">
               <h3>Data de Termino</h3>
               
-              <input type="Date" value={cardsInfo.updatedAt ? format(new Date(cardsInfo.updatedAt), "yyyy/MM/dd") : "2021/10/20"} onChange={finalDate}/>
+              <input type="Date" value={cardsInfo.dueDate ? format(new Date(cardsInfo.dueDate), "yyyy-MM-dd") : "2021-10-20"} onChange={finalDate}/>
             </div>
           </div>
           <div id="createTask">

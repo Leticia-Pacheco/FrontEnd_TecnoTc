@@ -29,7 +29,7 @@ export const BarraPesquisa = styled.div`
   align-items: center;
   box-shadow: -1px 0px 15px black;
   z-index: 1;
-  margin-left: 77px;
+  margin-left: 105px;
 `;
 
 export const LogoTecnoTc = styled.div`
