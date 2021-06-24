@@ -52,9 +52,10 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
   const loadInfoCard = async () => {
     try {
-      const response = await api.get('/cards/info/1');
+      const response = await api.get(`/cards/info/${cardId}`);
 
       setCardsInfo(response.data);
+      console.log(response.data)
       setCurrentProgress(response.data.Priority);
       console.log(response.data);
     } catch (error) {
