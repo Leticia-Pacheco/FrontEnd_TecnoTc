@@ -146,7 +146,7 @@ function ProfileStudent() {
                   <p>Feed</p>
                 </li>
               </ul>
-              <ul>
+              {/* <ul>
                 <li>
                   <img
                     src={ImageTarefas}
@@ -165,7 +165,7 @@ function ProfileStudent() {
                   />
                   <p>Reuniões diárias</p>
                 </li>
-              </ul>
+              </ul> */}
               <ul>
                 <li>
                   <img
