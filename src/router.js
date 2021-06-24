@@ -40,7 +40,7 @@ function Router() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/Register">
+        <Route path="/register">
           <Register />
         </Route>
         <Route path="/orderconfirmemail">
@@ -84,22 +84,22 @@ function Router() {
         </PrivateRoute>
         <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
         </PrivateRoute>
-        <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
+        <PrivateRoute path="/dailyscrum/:sprintId" children={<SprintDaily />}>
         </PrivateRoute>
         <PrivateRoute
           path="/workspace/:workspaceId/:id"
           children={<WorkSpace />}
         ></PrivateRoute>
         <PrivateRoute
-          path="/dailyScrum/:sprintId"
+          path="/dailyscrum/:sprintId"
           children={<SprintDaily />}
         ></PrivateRoute>
         <PrivateRoute
-          path="/sprintRetrospective/:sprintId"
+          path="/sprintretrospective/:sprintId"
           children={<SprintRetrospective />}
         ></PrivateRoute>
         <PrivateRoute
-          path="/sprintReview/:sprintId"
+          path="/sprintreview/:sprintId"
           children={<SprintReview />}
         ></PrivateRoute>
       </Switch>
