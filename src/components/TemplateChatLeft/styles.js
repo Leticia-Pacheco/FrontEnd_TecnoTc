@@ -20,4 +20,9 @@ export const Container = styled.div`
     font-size: 0.7rem;
     color: ${colors.primaryGreenWater};
   }
+  > span {
+    margin-left: 300px;
+    font-size: 0.6rem;
+    color: ${colors.primaryGreenWater};
+  }
 `;
