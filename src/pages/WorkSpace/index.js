@@ -29,6 +29,8 @@ function Workspace() {
 
   const [card, setCard] = useState([]);
 
+  const [list, setList] = useState([]);
+
   const [userImages, setUserImages] = useState([]);
 
   const [groupInfo, setGroupInfo] = useState([]);
@@ -147,6 +149,11 @@ function Workspace() {
     setCard(e);
   };
 
+  const handleOpenCreateCard = async (e) => {
+    setModalCreateCard(true);
+    setList(e);
+  }
+
   useEffect(() => {
     loadColumns();
     loadUserGroup();
@@ -184,6 +191,7 @@ function Workspace() {
           handleClose={() => {
             setModalCreateCard(false);
           }}
+          id={list}
         />
       )}
       <Container>
@@ -255,7 +263,7 @@ function Workspace() {
                           marginLeft: '10px',
                           fontSize: '1.3rem',
                         }}
-                        onClick={() => setModalCreateCard(true)}
+                        onClick={() =>  handleOpenCardInfo(columnId)}
                       >
                         +
                       </span>
