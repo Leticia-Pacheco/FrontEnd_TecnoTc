@@ -19,7 +19,7 @@ import {
   AgrupamentoAnotacoes,
   ComponentAnotacoes,
 } from './styles';
-import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';

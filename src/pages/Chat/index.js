@@ -10,7 +10,7 @@ import {
   ContatoMensagem,
   ContainerMensagens,
 } from './styles';
-import ImageContato from '../../assets/ImagesChat/perfil.jpg';
+import ImageContato from '../../assets/ImagesChat/perfil.png';
 import InputSearch from '../../components/InputSearch';
 import SendMessage from '../../components/SendMessage';
 import TemplateChatLeft from '../../components/TemplateChatLeft';

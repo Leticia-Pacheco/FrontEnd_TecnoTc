@@ -1,6 +1,6 @@
 import { Container, Overlay } from './styles';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ModalCriarTarefa from '../ModalCreateTask';
 import { useState } from 'react';
 import { api } from '../../service/api';

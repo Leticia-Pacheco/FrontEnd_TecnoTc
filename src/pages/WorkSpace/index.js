@@ -3,7 +3,7 @@ import { Container, Content } from './styles';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
-import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import { api } from '../../service/api';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -263,7 +263,7 @@ function Workspace() {
                           marginLeft: '10px',
                           fontSize: '1.3rem',
                         }}
-                        onClick={() =>  handleOpenCardInfo(columnId)}
+                        onClick={() =>  handleOpenCreateCard(column.id)}
                       >
                         +
                       </span>
