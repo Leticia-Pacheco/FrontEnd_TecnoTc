@@ -40,7 +40,7 @@ function Router() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/register">
+        <Route path="/Register">
           <Register />
         </Route>
         <Route path="/orderconfirmemail">
@@ -79,27 +79,27 @@ function Router() {
           {/*Criar oos*/}
           <CreateGroups />
         </Route>
-        <PrivateRoute path="/confirmgroup/:inviteToken">
+        <PrivateRoute path="/confirmGroup/:inviteToken">
           <ConfirmGroup />
         </PrivateRoute>
         <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
         </PrivateRoute>
-        <PrivateRoute path="/dailyscrum/:sprintId" children={<SprintDaily />}>
+        <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
         </PrivateRoute>
         <PrivateRoute
           path="/workspace/:workspaceId/:id"
           children={<WorkSpace />}
         ></PrivateRoute>
         <PrivateRoute
-          path="/dailyscrum/:sprintId"
+          path="/dailyScrum/:sprintId"
           children={<SprintDaily />}
         ></PrivateRoute>
         <PrivateRoute
-          path="/sprintretrospective/:sprintId"
+          path="/sprintRetrospective/:sprintId"
           children={<SprintRetrospective />}
         ></PrivateRoute>
         <PrivateRoute
-          path="/sprintreview/:sprintId"
+          path="/sprintReview/:sprintId"
           children={<SprintReview />}
         ></PrivateRoute>
       </Switch>
