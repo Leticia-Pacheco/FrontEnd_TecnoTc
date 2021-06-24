@@ -33,11 +33,11 @@ export const Header = styled.header`
   #gif-animado-header {
     height: 100%;
   }
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     #gif-animado-header {
       display: none;
     }
-  }
+  } */
 `;
 
 export const MenuContainer = styled.header`
@@ -52,14 +52,19 @@ export const MenuContainer = styled.header`
   box-shadow: 0px 1px 10px black;
   display: flex;
   flex-direction: row;
-  // align-items: center;
+  /* // align-items: center; */
   justify-content: center;
 
   background-color: var(--primaryPurple);
 
   > ul {
-    margin-left: 350px;
+    margin-left: 800px;
     margin-top: 20px;
+
+    @media (max-width: 1280px) {
+      width: 700px;
+      margin-left: 300px;
+    }
   }
   > ul li {
     margin-left: 20px;
@@ -77,16 +82,17 @@ export const MenuContainer = styled.header`
 `;
 
 export const Logo = styled.div`
-  width: 150px;
-  height: 60px;
+  width: 170px;
+  height: 70px;
 
   > img {
-    width: 150px;
-    height: 60px;
+    width: 170px;
+    height: 70px;
   }
 `;
 
 export const TextoHeader = styled.div`
+  width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,6 +101,7 @@ export const TextoHeader = styled.div`
   overflow: hidden;
 
   margin-top: 85px;
+  margin-left: 60px;
 
   padding-left: 70px;
   padding-right: 70px;
@@ -134,18 +141,19 @@ export const TextoHeader = styled.div`
   }
 
   > span {
+    font-size: 18px;
     color: white;
 
     :hover {
       cursor: pointer;
     }
   }
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
+  } */
 `;
 
 export const SobreNos = styled.section`
@@ -165,9 +173,9 @@ export const SobreNos = styled.section`
 
     color: var(--primaryPurple);
   }
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     height: 300px;
-  }
+  } */
 `;
 
 export const Informacoes = styled.div`
@@ -187,6 +195,8 @@ export const Informacoes = styled.div`
   > img {
     width: 400px;
     height: 400px;
+
+    margin-right: 300px;
   }
 
   > p {
@@ -196,7 +206,7 @@ export const Informacoes = styled.div`
     color: #4a4e4e;
     color: #262c2c;
   }
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,7 +222,7 @@ export const Informacoes = styled.div`
     }
   }
   @media (max-width: 425px) {
-  }
+  } */
 `;
 
 export const Oferecemos = styled.section`
@@ -315,7 +325,7 @@ export const ImageApp = styled.div`
   height: auto;
   overflow: hidden;
 
-  // background-color: yellow;
+  /* // background-color: yellow; */
 
   align-self: self-end;
 
@@ -342,7 +352,7 @@ export const Equipe = styled.section`
   }
 
   > p {
-    text-align: justify;
+    text-align: center;
     font-size: 25px;
 
     margin-bottom: 50px;
@@ -351,11 +361,11 @@ export const Equipe = styled.section`
 
 export const PerfisEquipe = styled.div`
   width: 230px;
-  height: 300px;
+  height: 400px;
 
   display: flex;
   align-items: center;
-  // justify-content: center;
+  /* // justify-content: center; */
   flex-direction: column;
 
   padding-top: 10px;
@@ -363,6 +373,7 @@ export const PerfisEquipe = styled.div`
   margin-left: 30px;
 
   > h3 {
+    font-size: 25px;
     margin-bottom: 10px;
 
     text-align: center;
@@ -371,7 +382,7 @@ export const PerfisEquipe = styled.div`
   }
 
   > h2 {
-    font-size: 18px;
+    font-size: 25px;
     text-align: center;
     margin-top: -10px;
 
@@ -379,8 +390,8 @@ export const PerfisEquipe = styled.div`
   }
 
   > img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 
     margin-bottom: 10px;
     border-radius: 50%;
@@ -443,7 +454,7 @@ export const Contatos = styled.div`
 `;
 
 export const TermosPrivacidade = styled.div`
-  width: 230px;
+  width: 320px;
   min-height: 30px;
   height: auto;
   overflow: hidden;
@@ -452,7 +463,12 @@ export const TermosPrivacidade = styled.div`
   justify-content: center;
   text-align: center;
 
-  margin-right: 320px;
+  margin-right: 300px;
 
   color: white;
+
+  @media (max-width: 1280px) {
+    width: 220px;
+    margin-right: 200px;
+  }
 `;

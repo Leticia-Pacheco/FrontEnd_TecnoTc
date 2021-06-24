@@ -184,7 +184,7 @@ function Home() {
                   title="Imagem de um dos integrantes da equipe"
                 />
                 <span>Daniel Vitor</span>
-                <p>Desenvolvedor Back-end</p>
+                <p>Desenvolvedor Back-end e banco de dados</p>
               </PerfisEquipe>
               <PerfisEquipe>
                 <h3>Gerente Financeiro</h3>

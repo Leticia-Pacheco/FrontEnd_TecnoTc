@@ -72,7 +72,7 @@ function CreateGroups({ handleClose }) {
                     <input type="text" id="name" value={createGroup.name} onChange={handleInput} placeholder="Digite o nome do grupo aqui" />
 
                     <h3>Escolha uma foto para identificação do grupo:</h3>
-                    <label for="arquivo">Adicionar imagem</label>
+                    {/* <label for="arquivo">Adicionar imagem</label> */}
                     <input type="file" />
                     <button onClick={handleCreateGroup}>
                         Criar grupo

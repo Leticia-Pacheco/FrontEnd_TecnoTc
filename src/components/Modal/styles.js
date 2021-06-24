@@ -9,6 +9,7 @@ export const Overlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 `;
 
 export const ModalContainer = styled.section`

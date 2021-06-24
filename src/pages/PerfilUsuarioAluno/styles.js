@@ -97,7 +97,7 @@ export const MenuLateral = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
 
-  margin-bottom: 200px;
+  margin-bottom: 400px;
 
   display: flex;
   flex-direction: column;
@@ -321,7 +321,7 @@ export const ComponentAnotacoes = styled.div`
       font-weight: bold;
       color: white;
       text-align: center;
-      font-size: 15px;
+      font-size: 18px;
     }
 
     > img {

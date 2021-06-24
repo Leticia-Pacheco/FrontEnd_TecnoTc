@@ -103,7 +103,7 @@ export const ApresentacaoEmpresa = styled.div`
   font-weight: bold;
 
   color: var(--primaryPurple);
-  font-size: 25px;
+  font-size: 30px;
 
   @media (max-width: 1024px) {
     width: 60%;
@@ -126,7 +126,7 @@ export const BoasVindas = styled.div`
   min-height: 5px;
 
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 
   color: var(--grey);
@@ -159,15 +159,13 @@ export const InputsLogin = styled.form`
 
   padding: 5px;
 
-  // background-color: red;
-
   > p {
     margin-top: 10px;
     margin-bottom: 5px;
 
     color: var(--primaryPurple);
 
-    font-size: 14px;
+    font-size: 16px;
   }
 
   > input {
@@ -176,7 +174,9 @@ export const InputsLogin = styled.form`
 
     font-size: 15px;
 
-    border: solid 1px var(--primaryPurple);
+    padding-left: 20px;
+
+    border: solid 2px var(--primaryPurple);
   }
 
   @media (max-width: 1280px) {
@@ -255,10 +255,8 @@ export const IconLock = styled(FaLock)`
 
 export const RedefinirSenha = styled.div`
   min-width: 50px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
-
-  margin-top: -10px;
 
   > a {
     color: black;
@@ -308,6 +306,7 @@ export const TextCadastro = styled.div`
   align-self: unsafe-center;
 
   > p {
+    font-size: 16px;
     cursor: not-allowed;
   }
 

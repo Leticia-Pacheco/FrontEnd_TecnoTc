@@ -17,7 +17,7 @@
     "jsx": "^0.9.89",
     "jsx-for-web-components": "^1.2.1",
     "jwt-decode": "^3.1.2",
-    "mjml": "^4.9.3",
+    "mjml": "^4.10.0",
     "query-string": "^4.3.4",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
