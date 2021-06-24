@@ -79,9 +79,9 @@ function Router() {
           {/*Criar oos*/}
           <CreateGroups />
         </Route>
-        <Route path="/confirmGroup/:inviteToken">
+        <PrivateRoute path="/confirmGroup/:inviteToken">
           <ConfirmGroup />
-        </Route>
+        </PrivateRoute>
         <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
         </PrivateRoute>
         <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
