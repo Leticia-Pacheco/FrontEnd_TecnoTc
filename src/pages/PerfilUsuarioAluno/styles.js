@@ -223,17 +223,71 @@ export const ComponentGrupo = styled.div`
     border: 1px solid black;
 
     text-align: center;
+  
+    > p {
+        color: var(--primaryPurple);
+        font-weight: bold;
+    }
+    #dropbtn {
+    color: var(--primaryPurple);
+    font-size: 1.2rem;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    }
+
+  #dropdown {
+    position: relative;
+    display: inline-block;
     > img {
         width: 20px;
         height: 20px;
 
         margin-left: 170px;
     }
-    > p {
-        color: var(--primaryPurple);
-        font-weight: bold;
+  }
+
+  #dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    right: 0;
+    min-width: 60px;
+    height: 40px;
+    z-index: 1;
+    svg{
+      min-width: 60px;
+      height: 40px;
+      :hover {
+        background-color: #b3b3b3;
+        border-radius: 10px;
+
+      }
+
     }
-  `;
+  }
+
+  #dropdown-content span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  #dropdown-content span:hover {
+    background-color: #f1f1f1;
+  }
+
+  #dropdown:hover #dropdown-content {
+    display: block;
+  }
+
+  #dropdown:hover #dropbtn {
+    color: var(--primaryGreenWater);
+  }
+`;
 
 export const ImageGrupo = styled.div`
     width: 80px;
@@ -332,6 +386,65 @@ export const ComponentAnotacoes = styled.div`
 
       margin-left: 90px;
     }
+    #dropbtn {
+    color: var(--primaryPurple);
+    font-size: 1.2rem;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    }
+
+  #dropdown {
+    margin-left: 20px;
+    position: relative;
+    display: inline-block;
+    > img {
+        width: 20px;
+        height: 20px;
+    }
+  }
+
+  #dropdown-content {
+    width: 120px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    right: 0;
+    min-width: 60px;
+    height: 40px;
+    z-index: 1;
+    svg{
+      min-width: 60px;
+      height: 40px;
+      :hover {
+        background-color: #b3b3b3;
+        border-radius: 10px;
+
+      }
+
+    }
+  }
+
+  #dropdown-content span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  #dropdown-content span:hover {
+    background-color: #f1f1f1;
+  }
+
+  #dropdown:hover #dropdown-content {
+    display: block;
+  }
+
+  #dropdown:hover #dropbtn {
+    color: var(--primaryGreenWater);
+  }
 `;
 
 

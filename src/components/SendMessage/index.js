@@ -1,13 +1,13 @@
-import { ContainerInputMessage, IconSend, Send } from "./styles";
+import {ContainerInputMessage, IconSend, Send} from "./styles";
 
 function SendMessage({message}) {
   console.log(message)
 
-  return(
+  return (
     <ContainerInputMessage>
       <input placeholder="Digite uma mensagem" />
       <Send>
-       <IconSend/>
+        <IconSend />
       </Send>
     </ContainerInputMessage>
   );
