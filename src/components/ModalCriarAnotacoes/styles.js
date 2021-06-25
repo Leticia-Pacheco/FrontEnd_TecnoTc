@@ -6,15 +6,13 @@ export const Overlay = styled.div`
     height: 100vh;
     z-index: 9;
 
-    // background-color: #333C;
-    // background-color: var(--primaryPurple);
-
+    background-color: #333C;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-export const Container = styled.div`
+export const Container = styled.form`
     width: 800px;
     min-height: 550px;
     height: auto;
@@ -33,6 +31,7 @@ export const Container = styled.div`
     padding-bottom: 25px;
     
     align-items: center;
+    color: var(--primaryPurple);
 
     box-shadow: 2px 2px 10px black;
     background-color: white;
@@ -49,9 +48,10 @@ export const Container = styled.div`
         font-size: 18px;
         
         margin-bottom: 30px;
+        color: black;
     }
 
-    > span {
+    > h3 {
         font-size: 18px;
         color: var(--primaryPurple);
 
@@ -59,27 +59,19 @@ export const Container = styled.div`
 
         align-self: flex-start;
     }
-
-    > input {
-        width: 100%;
-        height: 35px;
-
-        border-radius: 4px;
-        margin-bottom: 40px;
-
-        background-color: var(--greyQuaternary);
-        border: solid 2px var(--greyQuaternary);
-
-        font-size: 16px;
-        padding: 5px;
-
-        align-self: flex-start;
+    >span{
+        margin-left: 650px;
+        color: black;
+        cursor: pointer;
+        :hover {
+            color: red;  
+        }
     }
 
     > textarea {
         width: 100%;
 
-        resize: vertical;
+        // resize: vertical;
         resize: none;
         
         font-size: 16px;
@@ -92,6 +84,39 @@ export const Container = styled.div`
         align-self: flex-start;
     }
 
+    > input {
+        width: 100%;
+        height: 35px;
+
+        border-radius: 4px;
+        margin-bottom: 25px;
+
+        background-color: var(--greyQuaternary);
+        border: solid 2px var(--greyQuaternary);
+
+        font-size: 16px;
+        padding: 5px;
+
+        align-self: flex-start;
+    }
+
+    // > textarea {
+    //     width: 100%;
+    //     height: 35px;
+
+    //     // resize: vertical;
+    //     resize: none;
+        
+    //     font-size: 16px;
+    //     padding: 5px;
+        
+    //     border-radius: 4px;
+    //     background-color: var(--greyQuaternary);
+    //     border: solid 2px var(--greyQuaternary);
+
+    //     align-self: flex-start;
+    // }
+
     > button {
         width: 280px;
         height: 35px;
@@ -103,12 +128,34 @@ export const Container = styled.div`
         color: white;
         font-weight: bold;
         
-        margin-top: 50px;
+        margin-top: 20px;
         
         background-color: var(--primaryGreenWater);
 
         :hover {
             cursor: pointer;
         }
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+    label {
+        width: 200px;
+        height: 25px;
+
+        padding: 4px;
+        display: block;
+        cursor: pointer;
+        
+        align-self: flex-start;
+
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+
+        border-radius: 5px;
+        color: white;
+        background-color: var(--primaryPurple);
     }
 `;

@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 import px2vw from "../../utils/px2vw";
 
 const modalAnimation = keyframes`
-    0%{
+    0% {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
@@ -114,13 +114,14 @@ export const MensagemRecuperacaoSenha = styled.div`
     }
 `;
 
-export const InserirEmail = styled.div`
+export const InserirEmail = styled.form`
     width: 90%;
     height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     > p {
         font-size: 25px;
@@ -128,11 +129,10 @@ export const InserirEmail = styled.div`
     }
 
     > input {
-        width: 60%;
+        width: 70%;
         height: 40px;
 
         font-size: 20px;
-        padding: 5px;
 
         border-radius: 5px;
         border: solid 2px var(--primaryPurple);

@@ -11,8 +11,8 @@ import {
 import GifProfessores from '../../assets/ImagesRegister/GifProfessores.gif';
 import GifAlunos from '../../assets/ImagesRegister/GifAlunos.gif';
 import GifOutros from '../../assets/ImagesRegister/GifOutros.gif';
-import { Link, useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import {Link, useHistory} from 'react-router-dom';
+import {useState} from 'react';
 import {
   FormRegister,
   IconEmail,
@@ -20,8 +20,8 @@ import {
   IconUsuary,
 } from '../../components/InputsRegister/styles';
 import Input from '../../components/Input';
-import { api } from './../../service/api';
-import { signIn } from '../../service/security';
+import {api} from './../../service/api';
+import {signIn} from '../../service/security';
 import ImageLogo from "../../assets/logos/logo_fundo_branco_png.png";
 
 function Register() {
@@ -33,16 +33,16 @@ function Register() {
     validPassword: '',
   });
   const handleInput = (e) => {
-    setUserRegister({ ...userRegister, [e.target.id]: e.target.value });
+    setUserRegister({...userRegister, [e.target.id]: e.target.value});
   };
 
   const validPassword = () =>
     userRegister.password === userRegister.validPassword;
 
   const buttonDisabled = () => {
-    const { name, email, password } = userRegister;
+    const {name, email, password} = userRegister;
 
-    if (!name || !email || !password || !validPassword()) return true;
+    if(!name || !email || !password || !validPassword()) return true;
 
     return false;
   };
@@ -50,10 +50,10 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validPassword()) return alert('As senhas precisam ser iguais!');
+    if(!validPassword()) return alert('As senhas precisam ser iguais!');
 
     try {
-      const { name, email, password } = userRegister;
+      const {name, email, password} = userRegister;
 
       const response = await api.post('/students', {
         name,
@@ -61,15 +61,8 @@ function Register() {
         password,
       });
 
-<<<<<<< HEAD
-      signIn(response.data);
-
-      history.push('/orderconfirmemail');
-    } catch (error) {
-=======
       history.push({pathname:"/orderconfirmemail", email : `${email}`});
     } catch(error) {
->>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
       console.error(error);
       alert(error.response.data.error);
     }
@@ -146,7 +139,7 @@ function Register() {
             placeholder="Confirmar Senha"
             type="password"
             onBlur={(e) => {
-              if (!validPassword()) alert('As senhas precisam ser iguais');
+              if(!validPassword()) alert('As senhas precisam ser iguais');
             }}
             value={userRegister.validPassword}
             handler={handleInput}
@@ -154,17 +147,16 @@ function Register() {
           />
           <IconLock />
           
-          <Link to="orderconfirmemail">
             <InputCadastrar disabled={buttonDisabled()}>
               <p>Cadastrar</p>
             </InputCadastrar>
-          </Link>
+             
         </FormRegister>
 
         <TextLogin>
           <p>
             Já possui uma conta?
-            <Link to="/login">
+            <Link to="/">
               <span> Entre agora!</span>
             </Link>
           </p>

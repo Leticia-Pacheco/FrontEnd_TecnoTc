@@ -1,11 +1,5 @@
-import { ModalRedefinirSenha, Overlay, Header, MensagemUsuario, InserirNovaSenha, ButtonRedefinirSenha } from "./styles";
+import {Overlay, Header, MensagemUsuario, InserirNovaSenha, ButtonRedefinirSenha, ModalRedefinirSenha} from "./styles";
 import Logo from "../../assets/logos/logo_fundo_roxo_png.png";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-
-function RedefinePassword () {
-    return(
-=======
 import Input from "../Input";
 import {useHistory} from "react-router";
 import {useState} from "react";
@@ -59,14 +53,13 @@ function RedefinirSenha(props) {
         }
     };
     return (
->>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
         <>
             <Overlay>
                 <Alert message={message} type="error" handleClose={setMessage} />
 
                 <ModalRedefinirSenha>
                     <Header>
-                        <img src={Logo} alt="Logo" title="Logo"/>
+                        <img src={Logo} alt="Logo" title="Logo" />
                     </Header>
 
                     <h1>Recuperação de senha</h1>
@@ -74,24 +67,37 @@ function RedefinirSenha(props) {
                         <p>Ah! Defina uma senha fácil de lembrar e de alta segurança para evitar esse processo de recuperação!</p>
                     </MensagemUsuario>
 
-                    <InserirNovaSenha>
+                    <InserirNovaSenha onSubmit={handleSubmit}>
                         <p>Nova senha:</p>
-                        <input type="text" placeholder="Insira a nova senha"/>
-                    </InserirNovaSenha>
-                    <InserirNovaSenha>
-                        <p>Repita a senha:</p>
-                        <input type="text" placeholder="Insira novamente sua senha"/>
-                    </InserirNovaSenha>
 
-                    <Link to="/">
+                        <Input
+                            id="password"
+                            value={user.password}
+                            handler={handleInput}
+                            type="password"
+                            placeholder="Digite aqui sua senha"
+                            required
+                        />
+                        <p>Repita a senha:</p>
+                        <Input
+                            id="validPassword"
+                            placeholder="Confirmar Senha"
+                            type="password"
+                            onBlur={(e) => {
+                                if(!validPassword()) alert('As senhas precisam ser iguais');
+                            }}
+                            value={user.validPassword}
+                            handler={handleInput}
+                            required
+                        />
                         <ButtonRedefinirSenha>
                             <button>Redefinir senha</button>
                         </ButtonRedefinirSenha>
-                    </Link>
-                </ModalRedefinirSenha>
-            </Overlay>
+                    </InserirNovaSenha>
+                </ModalRedefinirSenha >
+            </Overlay >
         </>
     );
 }
 
-export default RedefinePassword;
+export default RedefinirSenha;

@@ -1,6 +1,6 @@
-import { Container } from './styles';
+import {Container} from './styles';
 
-function Input({ id, label, value, handler, placeholder, ...rest }) {
+function Input({id, label, value, handler, placeholder, ...rest}) {
   return (
     <Container>
       <input
@@ -10,7 +10,6 @@ function Input({ id, label, value, handler, placeholder, ...rest }) {
         value={value}
         onChange={handler}
       />
-      <label htmlFor={id}>{label}</label>
     </Container>
   );
 }

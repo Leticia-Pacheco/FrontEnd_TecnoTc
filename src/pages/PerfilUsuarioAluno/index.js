@@ -19,27 +19,17 @@ import {
   AgrupamentoAnotacoes,
   ComponentAnotacoes,
 } from './styles';
-<<<<<<< HEAD
-import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
-=======
 import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.png';
->>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
 import ImageChats from '../../assets/ImagesPerfis/chats.png';
+import ImageVisuAlunos from '../../assets/ImagesPerfis/ver_meus_alunos.png';
 import ImageLogout from '../../assets/ImagesPerfis/sair.png';
 import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
-import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
-import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
+import buttonAvancar from '../../assets/ImagesPerfis/seta_passar_itens.png';
+import buttonVoltar from '../../assets/ImagesPerfis/seta_voltar_itens.png';
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-
-function ProfileStudent() {
-  return (
-    <>
-=======
 import { api } from '../../service/api';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -134,20 +124,19 @@ function ProfileStudent() {
           }}
         />
       )}
->>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
       <Container>
         <ContainerPerfilConteudo>
           <PerfilInfoUsuario>
             <InformacoesUsuario>
               <ImageUsuario>
                 <img
-                  src={ImgUsuarioAluno}
+                  src={perfil.profileImage || ImgUser}
                   alt="Foto de perfil do usuário"
                   title="Foto de perfil do usuário"
                 />
               </ImageUsuario>
               <TextInfos>
-                <span>Larissa Pacheco</span>
+                <span>{perfil.name}</span>
                 <p>Senai José Ephim Mindlin | Jandira</p>
               </TextInfos>
             </InformacoesUsuario>
@@ -180,9 +169,7 @@ function ProfileStudent() {
                     alt="Menu opção reuniões diárias"
                     title="Menu opção reuniões diárias"
                   />
-                  <Link to ="/sprintDaily">
-                    <p>Reuniões diárias</p>
-                  </Link>
+                  <p>Reuniões diárias</p>
                 </li>
               </ul> */}
               <ul>
@@ -195,6 +182,18 @@ function ProfileStudent() {
                   <p>Chats</p>
                 </li>
               </ul>
+              {perfil.role === 'teacher' && (
+                <ul>
+                  <li>
+                    <img
+                      src={ImageVisuAlunos}
+                      alt="Menu opção visualizar progresso de alunos"
+                      title="Menu opção visualizar progresso de alunos"
+                    />
+                    <p>Visualizar alunos</p>
+                  </li>
+                </ul>
+              )}
               <ul>
                 <li>
                   <img
@@ -202,71 +201,99 @@ function ProfileStudent() {
                     alt="Menu opção Sair da aplicação"
                     title="Menu opção Sair da aplicação"
                   />
-                  <p>Sair</p>
+                  <p onClick={handleSignOut}>Sair</p>
                 </li>
               </ul>
             </MenuLateral>
 
-            <Link to="/editprofile">
-              <EditarPerfil>
-                <img
-                  src={Configuracoes}
-                  alt="Configurações do perfil"
-                  title="Configurações do perfil"
-                />
-                <p>Editar perfil</p>
-              </EditarPerfil>
-            </Link>
+            <EditarPerfil onClick={() => setModalEditProfile(true)}>
+              <img
+                src={Configuracoes}
+                alt="Configurações do perfil"
+                title="Configurações do perfil"
+              />
+              <p>Editar perfil</p>
+            </EditarPerfil>
           </PerfilInfoUsuario>
 
           <Conteudo>
-                <h3>Meus grupos</h3>
-              <Grupos>
-                <ButtonAvancarGrupos>
-                  <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                </ButtonAvancarGrupos>
+            <h3 id="btn-grup" onClick={() => setModalCreateGrup(true)}>
+              Meus grupos +
+            </h3>
+
+            <Grupos>
+              <ButtonAvancarGrupos>
+                <img
+                  src={buttonVoltar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
+              </ButtonAvancarGrupos>
+              <ScrollContainer horizontal={true}>
                 <Agrupamento>
-
-                  <ComponentGrupo>
-                      {/* <img src={Configuracoes} alt="Configuração dos grupos" title="Configuração dos grupos"/> */}
+                  {groups.map((group) => (
+                    <ComponentGrupo onClick={() => goGroup(group.id)}>
+                      <img
+                        src={Configuracoes}
+                        alt="Configuração dos grupos"
+                        title="Configuração dos grupos"
+                      />
                       <ImageGrupo>
-                          <p>DS</p>
+                        <p>DS</p>
                       </ImageGrupo>
-                      <p>Desenvolvimento de sistemas</p>
-                  </ComponentGrupo>
-
+                      <p>{group.name}</p>
+                    </ComponentGrupo>
+                  ))}
                 </Agrupamento>
-                <ButtonAvancarGrupos>
-                  <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                </ButtonAvancarGrupos>
-              </Grupos>
+              </ScrollContainer>
+              <ButtonAvancarGrupos>
+                <img
+                  src={buttonAvancar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
+              </ButtonAvancarGrupos>
+            </Grupos>
 
-              <h3>Anotações
-                <Link to="/createanotacoes">
-                    <span> +</span>
-                </Link>
-              </h3>
-              <Anotacoes>
-                <ButtonAvancarAnotacoes>
-                  <img src={buttonVoltar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                </ButtonAvancarAnotacoes>
+            <h3 id="btn-anotation" onClick={() => setModalAnotation(true)}>
+              Anotações +
+            </h3>
+            <Anotacoes>
+              <ButtonAvancarAnotacoes>
+                <img
+                  src={buttonVoltar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
+              </ButtonAvancarAnotacoes>
+              <ScrollContainer>
                 <AgrupamentoAnotacoes>
-                  <ComponentAnotacoes>
-                    <p>03-11-2020</p>
-                    <img src={ConfiguracoesAnotacoes} alt="Configuração de anotações" title="Configuração de anotações"/>
-                  </ComponentAnotacoes>
+                  {annotations.map((annotation) => (
+                    <ComponentAnotacoes key={annotation.id}>
+                      <p>{annotation.title}</p>
+                      <img
+                        src={ConfiguracoesAnotacoes}
+                        alt="Configuração de anotações"
+                        title="Configuração de anotações"
+                      />
+                    </ComponentAnotacoes>
+                  ))}
                 </AgrupamentoAnotacoes>
-
-                <ButtonAvancarAnotacoes>
-                  <img src={buttonAvancar} alt="Avançar para outros componentes" title="Avançar para outros componentes"/>
-                </ButtonAvancarAnotacoes>
-              </Anotacoes>
+              </ScrollContainer>
+              <ButtonAvancarAnotacoes>
+                <img
+                  src={buttonAvancar}
+                  alt="Avançar para outros componentes"
+                  title="Avançar para outros componentes"
+                />
+              </ButtonAvancarAnotacoes>
+            </Anotacoes>
           </Conteudo>
         </ContainerPerfilConteudo>
+        <Footer>
+          <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
+        </Footer>
       </Container>
-      <Footer>
-        <p>Copyright © 2021 | TecnoTc Todos os direitos reservados</p>
-      </Footer>
     </>
   );
 }

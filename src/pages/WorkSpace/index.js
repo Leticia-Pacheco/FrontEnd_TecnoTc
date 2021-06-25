@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import { Container } from './styles';
-import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
-// import logo from '../../assets/logos/logo_fundo_roxo_png.png';
-=======
 import React, { useState } from 'react';
 import { Container, Content } from './styles';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
@@ -19,7 +14,6 @@ import CreateCard from '../../components/ModalCreateCard';
 import { getUser } from '../../service/security';
 import { Link } from 'react-router-dom';
 
->>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
 function Workspace() {
   const [columns, setColumns] = useState([]);
 

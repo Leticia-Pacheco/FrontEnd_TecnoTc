@@ -9,8 +9,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
 
   z-index: -1;
+  
 `;
 
 export const ContainerPerfilConteudo = styled.div`
@@ -122,21 +124,12 @@ export const MenuLateral = styled.div`
 
       margin-right: 10px;
     }
-
-    a {
-      margin-top: 20px;
-
-      text-align: left;
-      color: var(--primaryPurple);
-      font-weight: bold;
-    }
   }
 `;
 
 export const EditarPerfil = styled.div`
   width: 100%¨;
   height: 25px;
-
   text-align: center;
   justify-content: center;
 
@@ -150,6 +143,7 @@ export const EditarPerfil = styled.div`
   }
 
   > p {
+    cursor: pointer;
     font-family: 'Roboto';
     line-height: 22px;
     font-size: 17px;
@@ -168,6 +162,18 @@ export const Conteudo = styled.div`
 
     color: var(--primaryPurple);
   }
+  >#btn-anotation{
+    :hover{
+      cursor: pointer;
+      color: var(--primaryGreenWater);
+    }
+  }
+  >#btn-grup{
+    :hover{
+      cursor: pointer;
+      color: var(--primaryGreenWater);
+    }
+  }
 `;
 
 export const Grupos = styled.div`
@@ -177,12 +183,14 @@ export const Grupos = styled.div`
   margin-bottom: 50px;
 
   display: flex;
+  flex-direction: row;
 `;
 
 export const Agrupamento = styled.div`
   width: 92%;
   height: 200px;
-
+  display: flex;
+  flex-direction: row;
   padding-right: 5px;
 `;
 
@@ -194,9 +202,9 @@ export const AgrupamentoAnotacoes = styled.div`
 
   display: flex;
   align-items: center;
-  // justify-content: center;
+  justify-content: center;
   flex-direction: row;
-  // display:table-cell;
+  /* // display:table-cell; */
 `;
 
 export const ComponentGrupo = styled.div`
@@ -204,17 +212,23 @@ export const ComponentGrupo = styled.div`
     height: 200px;
 
     padding: 5px;
-    margin-left: 5px;
+    margin-left: 20px;
 
     display: flex;
     cursor: pointer;
     align-items: center;
     flex-direction: column;
-
-    box-shadow: 2px 2px 10px black;
+  
+    box-shadow: 2px 2px 2px black;
+    border: 1px solid black;
 
     text-align: center;
+    > img {
+        width: 20px;
+        height: 20px;
 
+        margin-left: 170px;
+    }
     > p {
         color: var(--primaryPurple);
         font-weight: bold;
@@ -229,7 +243,7 @@ export const ImageGrupo = styled.div`
 
     border-radius: 15px 15px 15px 15px;
 
-    background-color: var(--primaryGreenWater);
+    background-color: blue;
 
     line-height: 80px;
     margin-bottom: 20px;
@@ -245,7 +259,7 @@ export const ButtonAvancarGrupos = styled.div`
     height: 200px;
 
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     display: flex;
 
     :hover {
@@ -289,9 +303,9 @@ export const Anotacoes = styled.div`
   display: flex;
 `;
 
-export const ComponentAnotacoes= styled.div`
+export const ComponentAnotacoes = styled.div`
     width: 200px;
-    height: 35px;
+    height: 50px;
 
     margin-left: 5px;
 
@@ -301,7 +315,7 @@ export const ComponentAnotacoes= styled.div`
     align-items: center;
     padding-left: 5px;
 
-    background-color: var(--primaryGreenWater);
+    background-color: #DD4A88;
 
     > p {
       font-weight: bold;
@@ -314,15 +328,13 @@ export const ComponentAnotacoes= styled.div`
       width: 17px;
       height: 17px;
 
-      // margin-right: -100px;
+      margin-right: -100px;
 
       margin-left: 90px;
-
-      :hover {
-        cursor: pointer;
-      }
     }
 `;
+
+
 
 export const Footer = styled.footer`
   width: 100%;

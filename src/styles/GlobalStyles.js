@@ -26,7 +26,6 @@ export const GlobalStyles = createGlobalStyle`
         --greyTerciary: #DEE4E4;
         --greyQuaternary: #F1F0F0;
         --light: #EDF2F4;
-        // F7F7F7
 
         // font-size: ${px2vw(24)};
 
@@ -48,12 +47,12 @@ export const GlobalStyles = createGlobalStyle`
     
     /* A parte de trás da barra de rolagem */
     ::-webkit-scrollbar-track {
-        background-color: var(--greyQuaternary);
+        background-color: var(--darkGray);
     }
 
     /* O cursorzinho que, normalmente é cinza escuro. */
     ::-webkit-scrollbar-thumb {
-        background-color: var(--greySecondary);
+        background-color: var(--primaryGreenWater);
         border-radius: 5px 5px 5px 5px;
     }
 
