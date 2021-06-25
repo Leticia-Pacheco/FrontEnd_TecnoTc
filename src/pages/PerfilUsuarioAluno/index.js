@@ -19,7 +19,11 @@ import {
   AgrupamentoAnotacoes,
   ComponentAnotacoes,
 } from './styles';
+<<<<<<< HEAD
 import ImgUsuarioAluno from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+=======
+import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.png';
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
@@ -29,11 +33,108 @@ import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
 import buttonAvancar from "../../assets/ImagesPerfis/seta_passar_itens.png";
 import buttonVoltar from "../../assets/ImagesPerfis/seta_voltar_itens.png";
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 
 function ProfileStudent() {
   return (
     <>
+=======
+import { api } from '../../service/api';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import ModalEditProfile from '../../components/ModalEditarPerfil';
+import ModalAnotation from '../../components/ModalCriarAnotacoes';
+import ModalCreateGrup from '../../components/ModalCriarGrupos';
+import { getUser, setUser, signOut } from '../../service/security';
+import { useHistory } from 'react-router';
+import ScrollContainer from 'react-indiana-drag-scroll';
+import Alert from '../../components/Alert';
+
+function ProfileStudent() {
+  const [modalEditProfile, setModalEditProfile] = useState(false);
+  const [modalAnotation, setModalAnotation] = useState(false);
+  const [modalCreateGrup, setModalCreateGrup] = useState(false);
+  const [perfil, setPerfil] = useState([]);
+  const [annotations, setAnnotations] = useState([]);
+  const [groups, setGroups] = useState([]);
+  const [reload, setReload] = useState(null);
+
+  const history = useHistory();
+
+  const user = getUser();
+
+  const loadPerfilInfo = async (reload) => {
+    if (user.user.userRole === 'student') {
+      const response = await api.get('/students');
+      setPerfil(response.data);
+      setUser(response.data);
+    }
+    if (user.user.userRole === 'teacher') {
+      const response = await api.get('/teachers');
+      setPerfil(response.data);
+      setUser(response.data);
+    }
+  };
+
+  const loadAnnotations = async () => {
+    const response = await api.get('/annotations');
+
+    setAnnotations(response.data);
+  };
+
+  const handleSignOut = () => {
+    signOut();
+
+    history.replace('/');
+  };
+
+  const loadGroups = async () => {
+    const response = await api.get('/group');
+    setGroups(response.data);
+  };
+
+  const goGroup = async (e) => {
+    history.push(`/group/${e}`);
+  };
+
+  const goToFeed = () => {
+    history.push('/feed');
+  };
+
+  useEffect(() => {
+    loadPerfilInfo();
+    loadAnnotations();
+    loadGroups();
+  }, []);
+
+  return (
+    <>
+      {modalEditProfile && (
+        <ModalEditProfile
+          handleClose={() => {
+            setModalEditProfile(false);
+            loadPerfilInfo();
+          }}
+        />
+      )}
+      {modalAnotation && (
+        <ModalAnotation
+          handleClose={() => {
+            setModalAnotation(false);
+            loadAnnotations();
+          }}
+        />
+      )}
+      {modalCreateGrup && (
+        <ModalCreateGrup
+          handleClose={() => {
+            setModalCreateGrup(false);
+            loadGroups();
+          }}
+        />
+      )}
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
       <Container>
         <ContainerPerfilConteudo>
           <PerfilInfoUsuario>
@@ -53,7 +154,7 @@ function ProfileStudent() {
 
             <MenuLateral>
               <ul>
-                <li>
+                <li onClick={goToFeed}>
                   <img
                     src={ImageFeed}
                     alt="Menu opção feed"
@@ -62,7 +163,7 @@ function ProfileStudent() {
                   <p>Feed</p>
                 </li>
               </ul>
-              <ul>
+              {/* <ul>
                 <li>
                   <img
                     src={ImageTarefas}
@@ -83,7 +184,7 @@ function ProfileStudent() {
                     <p>Reuniões diárias</p>
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
               <ul>
                 <li>
                   <img

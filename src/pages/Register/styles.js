@@ -87,7 +87,7 @@ export const ApresentacaoEmpresa = styled.div`
   }
 
   > p {
-    font-size: 13px;
+    font-size: 17px;
   }
 `;
 
@@ -177,6 +177,10 @@ export const TextLogin = styled.div`
   font-size: 13px;
   font-weight: bold;
   word-spacing: 1px;
+
+  > p {
+    font-size: 16px;
+  }
 
   :hover {
     cursor: pointer;

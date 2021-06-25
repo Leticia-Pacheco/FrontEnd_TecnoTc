@@ -14,6 +14,7 @@ function CreateGroups () {
                     <span>Nome do grupo:</span>
                     <input type="text" placeholder="Digite o nome do grupo aqui"/>
 
+<<<<<<< HEAD
                     <span>Descrição:</span>
                     <input type="text" placeholder="Digite a descrição do grupo aqui"/>
                     
@@ -28,6 +29,13 @@ function CreateGroups () {
                         <Link to="/profileteacher">
                             Criar Grupo
                         </Link>
+=======
+                    <h3>Escolha uma foto para identificação do grupo:</h3>
+                    {/* <label for="arquivo">Adicionar imagem</label> */}
+                    <input type="file" />
+                    <button onClick={handleCreateGroup}>
+                        Criar grupo
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
                     </button>
                 </Container>
             </Overlay>

@@ -61,10 +61,15 @@ function Register() {
         password,
       });
 
+<<<<<<< HEAD
       signIn(response.data);
 
       history.push('/orderconfirmemail');
     } catch (error) {
+=======
+      history.push({pathname:"/orderconfirmemail", email : `${email}`});
+    } catch(error) {
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
       console.error(error);
       alert(error.response.data.error);
     }

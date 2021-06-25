@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0px;
         outline: 0px; /*Para não colocar aquelas linhas clarinhas em volta do componente*/
         box-sizing: border-box;
-        font-family: arial;
+        font-family: 'Roboto', sans-serif;
         list-style: none;
 
         a {

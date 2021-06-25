@@ -17,6 +17,7 @@ import {
   PerfisEquipe,
   Contatos,
   TermosPrivacidade,
+<<<<<<< HEAD
   OpcoesMenu,
   LogoHeader,
   ContInfosHeader,
@@ -38,6 +39,26 @@ import ContWhatsapp from "../../assets/ImagesHome/contato_whatsapp.png";
 import ContInstagram from "../../assets/ImagesHome/contato_instagram.png";
 import ContEmail from "../../assets/ImagesHome/contato_email.png";
 import { Link } from "react-router-dom";
+=======
+} from './styles';
+import ImageLogo from '../../assets/logos/logo_fundo_roxo.png';
+import GifImageHeader from '../../assets/ImagesHome/gif_apresentacao.gif';
+import GifImageQuemSomos from '../../assets/ImagesHome/gif_quem_somos.gif';
+import ImgOferInteracao from '../../assets/ImagesHome/oferecemos_interacao.jpeg';
+import ImgOferCriarGrupos from '../../assets/ImagesHome/oferecemos_grupos.jpeg';
+import ImgOferPosts from '../../assets/ImagesHome/oferecemos_posts.gif';
+import ImgOferAnotacoes from '../../assets/ImagesHome/oferecemos_anotacoes.jpeg';
+import ImgOferChats from '../../assets/ImagesHome/oferecemos_chats.jpeg';
+import ImgApp from '../../assets/ImagesHome/nosso_app.png';
+import IntegLeticia from '../../assets/ImagesHome/leticia2.jpg';
+import IntegDaniel from '../../assets/ImagesHome/daniel.jpg';
+import IntegKarina from '../../assets/ImagesHome/karina.jpg';
+import IntegBianca from '../../assets/ImagesHome/bianca.jpg';
+import ContWhatsapp from '../../assets/ImagesHome/contato_whatsapp.png';
+import ContInstagram from '../../assets/ImagesHome/contato_instagram.png';
+import ContEmail from '../../assets/ImagesHome/contato_email.png';
+import { Link } from 'react-router-dom';
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
 
 function Home() {
   return (
@@ -46,6 +67,7 @@ function Home() {
         <Conteudo>
           <Header>
             <MenuContainer>
+<<<<<<< HEAD
               <LogoHeader>
                 <img src={ImageLogo} alt="Logo" title="Logo" />
               </LogoHeader>
@@ -78,6 +100,43 @@ function Home() {
               </TextoHeader>
               <img src={GifImageHeader} alt="Gif animado" title="Gif animado" />
             </ContInfosHeader>
+=======
+              <Logo>
+                <img src={ImageLogo} alt="Logo" title="Logo" />
+              </Logo>
+
+              <ul>
+                <li>Nossa equipe</li>
+                <li>Conheça nosso app!</li>
+                <li>O que oferecemos?</li>
+                <li>
+                  <a href="#SobreNos">Quem somos nós?</a>
+                </li>
+              </ul>
+            </MenuContainer>
+            <TextoHeader>
+              <h1>A TecnoTc te ajuda a alcançar seu objetivo!</h1>
+              <p>
+                A plataforma perfeita para manter sua organização durante a
+                criação de seu TCC. Experimente!
+              </p>
+
+              <button>
+                <Link to="/Register">Comece por aqui!</Link>
+              </button>
+              <span>
+                <Link to="/login">Possui uma conta?</Link>
+              </span>
+            </TextoHeader>
+            <div id="div-gif-header">
+              <img
+                id="gif-animado-header"
+                src={GifImageHeader}
+                alt="Gif animado"
+                title="Gif animado"
+              />
+            </div>
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
           </Header>
           <SobreNos>
             <h1>Quem somos nós?</h1>
@@ -184,7 +243,11 @@ function Home() {
                   title="Imagem de um dos integrantes da equipe"
                 />
                 <span>Daniel Vitor</span>
+<<<<<<< HEAD
                 <p>Desenvolvedor Back-end</p>
+=======
+                <p>Desenvolvedor Back-end e banco de dados</p>
+>>>>>>> acbb8121a585bc1eabb4d67d484d742a3efef718
               </PerfisEquipe>
               <PerfisEquipe>
                 <h3>Gerente Financeiro</h3>

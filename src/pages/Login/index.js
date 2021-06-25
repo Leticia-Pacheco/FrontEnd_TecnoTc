@@ -92,7 +92,7 @@ function Login() {
                   type="password"
                   value={login.password}
                   handler={handleInput}
-                  placeholder="Digite aqui seu email"
+                  placeholder="Digite aqui sua senha"
                 />
                 <IconLock />
 

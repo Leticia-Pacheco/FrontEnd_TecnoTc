@@ -8,10 +8,13 @@ import {
   Logo,
 } from './styles';
 import GifConfirmEmail from '../../assets/ImagesConfirmEmail/GifConfirmEmail.gif';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import LogoImage from "../../assets/logos/logo_fundo_roxo_png.png";
 
 function PedidoConfirmEmail() {
+
+  const location = useLocation()
+
   return (
     <>
       <Overlay>
@@ -26,7 +29,7 @@ function PedidoConfirmEmail() {
           <Mensagem>
             <p>A equipe agradece o seu cadastro!</p>
             <p>
-              Enviaremos uma confirmação ao email cliente.exemplo@hotmail.com, ok?
+              Enviaremos uma confirmação ao email {location.email}, ok?
             </p>
 
             <ImageConfirmEmail>

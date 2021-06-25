@@ -8,7 +8,7 @@ export const FormRegister = styled.form`
   overflow: hidden;
 
   > p {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
 
     color: var(--primaryPurple);

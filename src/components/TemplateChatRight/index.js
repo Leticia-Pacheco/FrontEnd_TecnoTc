@@ -1,14 +1,15 @@
-import { Container } from "./styles";
-import { useEffect, useState } from "react";
-
-
+import { Container } from './styles';
+import { format } from 'date-fns';
 function TemplateChatRight({ msg }) {
-
-    return (
-        <Container>
-            <p> {msg.message}</p>
-        </Container>
-    )
+  return (
+    <Container>
+      <h3>{msg.author ? msg.author : msg.User?.Student.name || msg.User?.Teacher.name}</h3>
+      <p> {msg.message}</p>
+      <span>{msg.createdAt
+          ? format(new Date(msg.createdAt), 'dd/MM HH:mm')
+          : 'Data invalida'}</span>
+    </Container>
+  );
 }
 
 export default TemplateChatRight;
