@@ -72,7 +72,9 @@ import {
                       alt="Menu opção tarefas"
                       title="Menu opção tarefas"
                     />
-                    <p>Tarefas</p>
+                    <Link to="checklistproject">
+                      <p>Tarefas</p>
+                    </Link>
                   </li>
                 </ul>
                 <ul>

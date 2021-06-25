@@ -26,6 +26,7 @@ export const GlobalStyles = createGlobalStyle`
         --greyTerciary: #DEE4E4;
         --greyQuaternary: #F1F0F0;
         --light: #EDF2F4;
+        // F7F7F7
 
         // font-size: ${px2vw(24)};
 

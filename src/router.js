@@ -16,6 +16,8 @@ import CreateAnotacoes from "./components/ModalCriarAnotacoes";
 import SprintRetrospective from "./pages/SprintRetrospective";
 import SprintReview from "./pages/SprintReview";
 import SprintDaily from "./pages/SprintDaily";
+import ChecklistProject from "./components/ChecklistProject";
+
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -73,6 +75,9 @@ function Router() {
         </Route>
         <Route path="/sprintDaily">
           <SprintDaily/>
+        </Route>
+        <Route path="/checklistproject">
+          <ChecklistProject/>
         </Route>
       </Switch>
     </BrowserRouter>
