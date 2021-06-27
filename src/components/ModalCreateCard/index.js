@@ -4,7 +4,7 @@ import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
 import Alert from '../Alert';
 
-function CreateCard({handleClose}) {
+function CreateCard({handleClose, id}) {
   const [message, setMessage] = useState(undefined);
 
   const [newCard, setNewCard] = useState({
@@ -18,13 +18,15 @@ function CreateCard({handleClose}) {
 
     try {
 
-      const response = await api.post('/cards/1', {
+      const response = await api.post(`/cards/${id}`, {
         description: newCard.description,
       });
 
       setNewCard(response.data);
-      setMessage({title: 'Tudo certo', description: ''});
-      handleClose();
+      setMessage({title: 'Tudo certo', description: response.data});
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
     } catch(error) {
       console.error(error);
       setMessage({title: 'Ops...', description: error.response.data.error});

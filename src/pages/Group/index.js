@@ -27,7 +27,6 @@ import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspace }) {
-  console.log(workspace);
 
   let { id } = useParams();
 
@@ -50,7 +49,7 @@ function ComponentQuadros({ workspace }) {
     </ComponetQuadros>
   );
 }
-const CONNECTION_PORT = 'localhost:3002/';
+const CONNECTION_PORT = 'https://tecno-tcc-chat.herokuapp.com/';
 let socket;
 function ChatGrup({ chat, groupId }) {
   const [message, setMessage] = useState('');

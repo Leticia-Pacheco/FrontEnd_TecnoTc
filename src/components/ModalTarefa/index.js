@@ -1,6 +1,6 @@
 import { Container, Overlay } from './styles';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ModalCriarTarefa from '../ModalCreateTask';
 import { useState } from 'react';
 import { api } from '../../service/api';
@@ -52,9 +52,10 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
   const loadInfoCard = async () => {
     try {
-      const response = await api.get('/cards/info/1');
+      const response = await api.get(`/cards/info/${cardId}`);
 
       setCardsInfo(response.data);
+      console.log(response.data)
       setCurrentProgress(response.data.Priority);
       console.log(response.data);
     } catch (error) {

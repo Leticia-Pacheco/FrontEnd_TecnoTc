@@ -8,7 +8,7 @@ import {
   EditarDados,
   ComponentEditarDados,
 } from './styles';
-import ImageUsuario from '../../assets/ImagesPerfis/image_perfil_professor.jpg';
+import ImageUsuario from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ImageLogo from '../../assets/logos/logo_fundo_roxo_png.png';
 import { getUser } from '../../service/security';
 import { api } from '../../service/api';

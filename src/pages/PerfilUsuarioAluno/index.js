@@ -19,7 +19,7 @@ import {
     AgrupamentoAnotacoes,
     ComponentAnotacoes,
 } from './styles';
-import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.jpg';
+import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
 import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
@@ -51,6 +51,7 @@ function ProfileStudent() {
     const [annotations, setAnnotations] = useState([]);
     const [groups, setGroups] = useState([]);
     const [reload, setReload] = useState(null);
+    const [message, setMessage] = useState(undefined);
 
     const history = useHistory();
 
@@ -101,7 +102,9 @@ function ProfileStudent() {
     }, []);
 
     return (
+
         <>
+            <Alert message={message} handleClose={setMessage} />
             {modalEditProfile && (
                 <ModalEditProfile
                     handleClose={() => {
