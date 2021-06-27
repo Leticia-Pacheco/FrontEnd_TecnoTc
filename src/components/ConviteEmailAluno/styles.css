@@ -1,0 +1,91 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+.centerObject {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:link,  a:visited, a:active{
+    text-decoration: none;
+}
+
+h2 {
+    margin-bottom: 50px;
+
+    font-size: 26px;
+    color: #1f1456;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    text-align: justify;
+
+    margin-bottom: 5px;
+}
+
+#Container {
+    max-width: 700px;
+    min-height: 630px;
+    height: auto;
+    overflow: hidden;
+
+    border: solid 2px #1f1456;
+}
+
+header {
+    width: 100%;
+    height: 300px;
+
+    background-image: url(../../assets/ImagesConviteEmail/fundo_convite.jpeg);
+    background-attachment: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#conteudo {
+    width: 70%;
+    height: 330px;
+
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: -150px;
+
+    box-shadow: 5px 2px 30px black;
+    background-color: white;
+}
+
+button {
+    width: 200px;
+
+    padding: 5px;
+
+    margin-top: 40px;
+    margin-left: 110px;
+    
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    
+    background-color: #4ADDA9;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#Logo > img{
+    width: 120px;
+    height: 50px;
+
+    margin-top: 85px;
+}

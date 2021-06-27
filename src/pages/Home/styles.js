@@ -61,6 +61,10 @@ export const MenuContainer = styled.header`
     margin-left: 800px;
     margin-top: 20px;
 
+    @media (max-width: 1366px) {
+      width: 800px;
+      margin-left: 300px;
+    }
     @media (max-width: 1280px) {
       width: 700px;
       margin-left: 300px;
