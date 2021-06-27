@@ -23,9 +23,10 @@ function CreateList({handleClose}) {
       });
 
       setNewList(response.data);
-      setMessage({title: 'Tudo certo', description: ''});
-
-      handleClose();
+      setMessage({title: 'Tudo certo', description: response.data});
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
     } catch(error) {
       console.error(error);
       setMessage({title: 'Ops...', description: error.response.data.error});

@@ -19,14 +19,15 @@ function CreateAnotacoes({handleClose}) {
 
     try {
       const {title, text} = newAnnotation;
-
       const response = await api.post('/annotations', {
         title,
         text,
       });
       setAnnotation(response.data);
       setMessage({title: 'Tudo certo', description: "Anotação criada"});
-      handleClose();
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
     } catch(error) {
       console.error(error);
       setMessage({title: 'Ops...', description: error.response.data.error});
@@ -36,7 +37,7 @@ function CreateAnotacoes({handleClose}) {
     <>
 
       <Overlay>
-        <Alert message={message} type="error" handleClose={setMessage} />
+        <Alert message={message} handleClose={setMessage} />
         <Container onSubmit={handleAddAnnotation}>
           <span onClick={handleClose}>X</span>
           <h2>Criar uma anotação</h2>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaPaperPlane } from "react-icons/fa";
+import {FaPaperPlane} from "react-icons/fa";
 import colors from "../../styles/colors";
 
 export const ContainerInputMessage = styled.div`
@@ -42,7 +42,7 @@ export const ContainerInputMessage = styled.div`
     }
 `;
 
-export const Send = styled.div`
+export const Send = styled.button`
     width: 40px;
     height: 40px;
     position: relative;
