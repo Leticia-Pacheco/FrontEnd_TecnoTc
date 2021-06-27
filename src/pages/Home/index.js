@@ -242,7 +242,7 @@ function Home() {
             <TermosPrivacidade>
               <p>Copyright © 2021 TecnoTc Ltda.</p>
               <p>Todos os direitos reservados.</p>
-              <p>#fiqueEmCasa</p>
+              <p>#FiqueEmCasa</p>
             </TermosPrivacidade>
 
             <Logo>
