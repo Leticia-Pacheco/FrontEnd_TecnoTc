@@ -11,8 +11,8 @@ import {
 import GifProfessores from '../../assets/ImagesRegister/GifProfessores.gif';
 import GifAlunos from '../../assets/ImagesRegister/GifAlunos.gif';
 import GifOutros from '../../assets/ImagesRegister/GifOutros.gif';
-import {Link, useHistory} from 'react-router-dom';
-import {useState} from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import {
   FormRegister,
   IconEmail,
@@ -20,9 +20,9 @@ import {
   IconUsuary,
 } from '../../components/InputsRegister/styles';
 import Input from '../../components/Input';
-import {api} from './../../service/api';
-import {signIn} from '../../service/security';
-import ImageLogo from "../../assets/logos/logo_fundo_branco_png.png";
+import { api } from './../../service/api';
+import { signIn } from '../../service/security';
+import ImageLogo from '../../assets/logos/logo_fundo_branco_png.png';
 
 function Register() {
   const history = useHistory();
@@ -33,16 +33,16 @@ function Register() {
     validPassword: '',
   });
   const handleInput = (e) => {
-    setUserRegister({...userRegister, [e.target.id]: e.target.value});
+    setUserRegister({ ...userRegister, [e.target.id]: e.target.value });
   };
 
   const validPassword = () =>
     userRegister.password === userRegister.validPassword;
 
   const buttonDisabled = () => {
-    const {name, email, password} = userRegister;
+    const { name, email, password } = userRegister;
 
-    if(!name || !email || !password || !validPassword()) return true;
+    if (!name || !email || !password || !validPassword()) return true;
 
     return false;
   };
@@ -50,10 +50,10 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!validPassword()) return alert('As senhas precisam ser iguais!');
+    if (!validPassword()) return alert('As senhas precisam ser iguais!');
 
     try {
-      const {name, email, password} = userRegister;
+      const { name, email, password } = userRegister;
 
       const response = await api.post('/students', {
         name,
@@ -61,10 +61,10 @@ function Register() {
         password,
       });
 
-      history.push({pathname:"/orderconfirmemail", email : `${email}`});
-    } catch(error) {
+      history.push({ pathname: '/orderconfirmemail', email: `${email}` });
+    } catch (error) {
       console.error(error);
-      alert(error.response.data.error);
+      // alert(error.response.data.error);
     }
   };
 
@@ -72,7 +72,7 @@ function Register() {
     <Container>
       <RegisterUsuary>
         <Logo>
-          <img src={ImageLogo} alt="Logo" title="Logo"/>
+          <img src={ImageLogo} alt="Logo" title="Logo" />
         </Logo>
 
         <ApresentacaoEmpresa>
@@ -139,18 +139,17 @@ function Register() {
             placeholder="Confirmar Senha"
             type="password"
             onBlur={(e) => {
-              if(!validPassword()) alert('As senhas precisam ser iguais');
+              if (!validPassword()) alert('As senhas precisam ser iguais');
             }}
             value={userRegister.validPassword}
             handler={handleInput}
             required
           />
           <IconLock />
-          
-            <InputCadastrar disabled={buttonDisabled()}>
-              <p>Cadastrar</p>
-            </InputCadastrar>
-             
+
+          <InputCadastrar disabled={buttonDisabled()}>
+            <p>Cadastrar</p>
+          </InputCadastrar>
         </FormRegister>
 
         <TextLogin>

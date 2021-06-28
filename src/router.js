@@ -1,10 +1,10 @@
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import {isSignedIn} from './service/security';
+import { isSignedIn } from './service/security';
 import ConfirmGroup from './pages/ConfirmGroup';
-import ConfirmEmail from './pages/ConfirmEmail'
+import ConfirmEmail from './pages/ConfirmEmail';
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from './components/ModalRedefinirSenha';
@@ -16,10 +16,11 @@ import WorkSpace from './pages/WorkSpace';
 import SprintReview from './pages/SprintReview';
 import SprintDaily from './pages/SprintDaily';
 import SprintRetrospective from './pages/SprintRetrospective';
+import ChekListProject from './components/ChecklistProject';
 import Feed from './pages/Feed';
 
-function PrivateRoute({children, ...rest}) {
-  if(isSignedIn()) {
+function PrivateRoute({ children, ...rest }) {
+  if (isSignedIn()) {
     return <Route {...rest}>{children}</Route>;
   } else {
     return <Redirect to="/login" />;
@@ -48,7 +49,6 @@ function Router() {
           <OrderConfirmEmail />
         </Route>
         <Route path="/confirmemail">
-    
           <ConfirmEmail />
         </Route>
         <Route path="/recoverpassword">
@@ -75,10 +75,6 @@ function Router() {
         <PrivateRoute path="/confirmGroup/:inviteToken">
           <ConfirmGroup />
         </PrivateRoute>
-        <PrivateRoute path="/workspace/:workspaceId/:id" children={<WorkSpace />}>
-        </PrivateRoute>
-        <PrivateRoute path="/dailyScrum/:sprintId" children={<SprintDaily />}>
-        </PrivateRoute>
         <PrivateRoute
           path="/workspace/:workspaceId/:id"
           children={<WorkSpace />}
@@ -87,6 +83,17 @@ function Router() {
           path="/dailyScrum/:sprintId"
           children={<SprintDaily />}
         ></PrivateRoute>
+        <PrivateRoute
+          path="/workspace/:workspaceId/:id"
+          children={<WorkSpace />}
+        ></PrivateRoute>
+        <PrivateRoute
+          path="/dailyScrum/:sprintId"
+          children={<SprintDaily />}
+        ></PrivateRoute>
+        <Route path="/check">
+          <ChekListProject />
+        </Route>
         <PrivateRoute
           path="/sprintRetrospective/:sprintId"
           children={<SprintRetrospective />}

@@ -14,16 +14,16 @@ import {
   IconEmail,
   RedefinirSenha,
   GifImages,
-  Container
+  Container,
 } from './styles';
 import GifColor from '../../assets/ImagesLogin/GifColor.gif';
 import ImageLogin from '../../assets/ImagesLogin/ImageLogin.gif';
-import ImageLogo from "../../assets/logos/logo_fundo_branco_png.png";
-import {Link, useHistory} from 'react-router-dom';
+import ImageLogo from '../../assets/logos/logo_fundo_branco_png.png';
+import { Link, useHistory } from 'react-router-dom';
 import Input from '../../components/Input';
-import {useState} from 'react';
-import {api} from '../../service/api';
-import {signIn} from '../../service/security';
+import { useState } from 'react';
+import { api } from '../../service/api';
+import { signIn } from '../../service/security';
 import Alert from '../../components/Alert';
 
 function Login() {
@@ -43,16 +43,15 @@ function Login() {
 
       signIn(response.data);
 
-      history.push('/profile')
-
-    } catch(error) {
+      history.push('/profile');
+    } catch (error) {
       console.error(error);
-      setMessage({title: 'Ops...', description: error.response.data.error});
+      // setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
 
   const handleInput = (e) => {
-    setLogin({...login, [e.target.id]: e.target.value});
+    setLogin({ ...login, [e.target.id]: e.target.value });
   };
 
   return (
@@ -113,7 +112,7 @@ function Login() {
                 <TextCadastro>
                   <p>
                     Não tem uma conta?
-                  <Link to="/Register">
+                    <Link to="/Register">
                       <span> Cadastre-se!</span>
                     </Link>
                   </p>
@@ -124,7 +123,11 @@ function Login() {
 
           <GifImages>
             <GifImageLogin>
-              <img src={ImageLogin} alt="Imagem animada" title="Imagem animada" />
+              <img
+                src={ImageLogin}
+                alt="Imagem animada"
+                title="Imagem animada"
+              />
             </GifImageLogin>
             <GifColorLogin>
               <img src={GifColor} alt="Imagem animada" title="Imagem animada" />
