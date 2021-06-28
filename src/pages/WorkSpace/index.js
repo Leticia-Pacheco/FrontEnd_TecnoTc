@@ -36,6 +36,7 @@ function Workspace() {
   const [groupInfo, setGroupInfo] = useState([]);
 
   const {workspaceId} = useParams();
+  console.log(workspaceId)
 
   const {id} = useParams();
 
@@ -69,9 +70,7 @@ function Workspace() {
       const sourceColumn = columns[source.droppableId];
 
       const destColumn = columns[destination.droppableId];
-
       const sourceItems = [...sourceColumn.Cards];
-
       const destItems = [...destColumn.Cards];
 
       const [removed] = sourceItems.splice(source.index, 1);
@@ -89,9 +88,10 @@ function Workspace() {
         },
       });
 
-      updateCardList({cardId: draggableId, listId: destination.droppableId});
+      updateCardList({cardId: draggableId, listId: sourceColumn.id});
     } else {
       const column = columns[source.droppableId];
+      console.log(column)
       const copiedItems = [...column.Cards];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
@@ -102,7 +102,7 @@ function Workspace() {
           Cards: copiedItems,
         },
       });
-
+      console.log(column.id)
       updateOrderCard({
         id: draggableId,
         order: destination.index,
@@ -184,6 +184,7 @@ function Workspace() {
             setModalCreateList(false);
             loadColumns();
           }}
+          id={workspaceId}
         />
       )}
       {modalCreateCard && (
