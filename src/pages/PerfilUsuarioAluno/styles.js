@@ -289,7 +289,7 @@ export const ComponentGrupo = styled.div`
   }
 `;
 
-export const ImageGrupo = styled.div`
+export const ImageGrupo = styled.img`
     width: 80px;
     height: 80px;
 
