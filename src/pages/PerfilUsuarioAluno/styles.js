@@ -243,7 +243,7 @@ export const ImageGrupo = styled.div`
 
     border-radius: 15px 15px 15px 15px;
 
-    background-color: blue;
+    background-color: var(--primaryGreen);
 
     line-height: 80px;
     margin-bottom: 20px;
