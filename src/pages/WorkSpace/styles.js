@@ -23,9 +23,9 @@ export const Container = styled.div`
       background-color: #dcddd7;
     }
     #logo{
-      width: 300px;
+      width: 250px;
       height: 90px;
-      image-rendering: pixelated;
+      image-rendering: pixelated;  
     }
     .profileUser{
       width: 60px;

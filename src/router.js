@@ -3,13 +3,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import {isSignedIn} from './service/security';
-import ConfirmEmail from './pages/ConfirmEmail';
 import ConfirmGroup from './pages/ConfirmGroup';
+import ConfirmEmail from './pages/ConfirmEmail'
 import OrderConfirmEmail from './pages/OrderConfirmEmail';
 import RecoverPassword from './components/ModalRecuperarSenha';
 import RedefinePassword from './components/ModalRedefinirSenha';
 import ProfileUser from './pages/PerfilUsuarioAluno';
-import ResetEmailPassword from './components/RedefinirSenhaEmail';
 import CreateGroups from './components/ModalCriarGrupos';
 import Group from './pages/Group';
 import Chat from './pages/Chat';
@@ -49,8 +48,7 @@ function Router() {
           <OrderConfirmEmail />
         </Route>
         <Route path="/confirmemail">
-          {' '}
-          {/*Permissão para enviar o email de confirmação*/}
+    
           <ConfirmEmail />
         </Route>
         <Route path="/recoverpassword">
@@ -69,11 +67,6 @@ function Router() {
         <PrivateRoute path="/feed">
           <Feed />
         </PrivateRoute>
-        <Route path="/resetemailpassword">
-          {' '}
-          {/*Redefinir senha*/}
-          <ResetEmailPassword />
-        </Route>
         <Route path="/creategroups">
           {' '}
           {/*Criar oos*/}

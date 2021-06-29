@@ -4,7 +4,7 @@ import {api} from '../../service/api';
 import {Container, Overlay} from './styles';
 import Alert from '../Alert';
 
-function CreateList({handleClose}) {
+function CreateList({handleClose, id}) {
   const [message, setMessage] = useState(undefined);
 
   const [newList, setNewList] = useState({
@@ -18,17 +18,14 @@ function CreateList({handleClose}) {
 
     try {
 
-      const response = await api.post('/lists/1', {
+      const response = await api.post(`/lists/${id}`, {
         name: newList.name
       });
 
       setNewList(response.data);
-      setMessage({title: 'Tudo certo', description: ''});
-
       handleClose();
     } catch(error) {
       console.error(error);
-      setMessage({title: 'Ops...', description: error.response.data.error});
     }
   };
   return (

@@ -1,15 +1,15 @@
-import { useRef } from "react";
-import { useState } from "react";
-import { api } from "../../service/api";
-import { Container, Overlay } from "./styles";
+import {useRef} from "react";
+import {useState} from "react";
+import {api} from "../../service/api";
+import {Container, Overlay} from "./styles";
 import Alert from "../Alert"
 
-function CreateGroups({ handleClose }) {
+function CreateGroups({handleClose}) {
 
     const [createGroup, setCreateGroup] = useState({
         name: '',
     });
-    const [errorMessage, setErrorMessage] = useState(undefined);
+    const [message, setMessage] = useState(undefined);
 
     const [image, setImage] = useState(null);
 
@@ -29,7 +29,7 @@ function CreateGroups({ handleClose }) {
     // };
 
     const handleInput = async (e) => {
-        setCreateGroup({ ...createGroup, [e.target.id]: e.target.value })
+        setCreateGroup({...createGroup, [e.target.id]: e.target.value})
     }
 
     const handleCreateGroup = async (e) => {
@@ -39,28 +39,30 @@ function CreateGroups({ handleClose }) {
 
         data.append("name", createGroup.name)
 
-        if (image) data.append("image", image);
+        if(image) data.append("image", image);
 
         try {
             await api.post("/group", data, {
                 headers: {
                     "Content-type": "multipart/form-data",
                 },
-            });
+            },
+            );
+            setMessage({title: 'Tudo certo', description: ''});
+            setTimeout(() => {
+                handleClose();
+            }, 1000);
 
-            handleClose();
-            setErrorMessage({title : "Tudo certo", description : "Grupo criado com sucesos"});
-
-        } catch (error) {
+        } catch(error) {
             console.error(error);
-            setErrorMessage({ title: "Algo deu errado", description: "Nome do grupo não pode ser vazio" })
+            setMessage({title: "Algo deu errado", description: "Nome do grupo não pode ser vazio"})
         }
     }
 
     return (
         <>
             <Overlay>
-            <Alert message={errorMessage} type="error" handleClose={setErrorMessage} />
+                <Alert message={message} handleClose={setMessage} />
                 <Container>
                     <span onClick={handleClose}>X</span>
                     <h2>Criar um grupo</h2>
