@@ -1,42 +1,47 @@
-import {useState} from 'react';
-import {useParams} from 'react-router-dom';
-import {api} from '../../service/api';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { api } from '../../service/api';
 import Input from '../Input';
-import {Container, Overlay} from './styles';
-import Alert from '../Alert';
+import { Container, Overlay } from './styles';
+import { toast } from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
 
-function InviteStudent({handleClose}) {
+function InviteStudent({ handleClose }) {
   const [sendInvite, setSendInvite] = useState({
     email: '',
   });
-  const [message, setMessage] = useState(undefined);
 
-  const {id} = useParams();
+  const { id } = useParams();
 
+  const notify = (message, type) => {
+    toast[type](message);
+  };
   const inputSendInvite = async (e) => {
     e.preventDefault();
     try {
       await api.post(`/group/${id}/invite`, {
         emailSend: sendInvite.email,
       });
-      setMessage({title: 'Tudo certo', description: ''});
+      notify('Convite enviado', 'success');
+
       setTimeout(() => {
         handleClose();
-      }, 1000);
-    } catch(error) {
+      }, 2000);
+    } catch (error) {
       console.log(error);
-      setMessage({title: 'Ops...', description: error.response.data.error});
+      notify(error.response.data.error, 'error');
     }
   };
 
   const handleInput = (e) => {
-    setSendInvite({...sendInvite, [e.target.id]: e.target.value});
+    setSendInvite({ ...sendInvite, [e.target.id]: e.target.value });
   };
 
   return (
     <>
-      <Alert message={message} type="error" handleClose={setMessage} />
       <Overlay>
+        <Toast />
         <Container>
           <span onClick={handleClose}>X</span>
           <h2>Convidar um Aluno</h2>

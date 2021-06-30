@@ -2,17 +2,21 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { api } from '../../service/api';
 import { Container, Overlay } from './styles';
-import Alert from '../Alert';
-
+import { toast } from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
 function CreateGroups({ handleClose }) {
   const [createGroup, setCreateGroup] = useState({
     name: '',
   });
-  const [message, setMessage] = useState(undefined);
 
   const [image, setImage] = useState(null);
 
   const imageRef = useRef();
+
+  const notify = (message, type) => {
+    toast[type](message);
+  };
 
   const handleImage = (e) => {
     if (e.target.files[0]) {
@@ -22,7 +26,6 @@ function CreateGroups({ handleClose }) {
       imageRef.current.src = '';
       imageRef.current.style.display = 'none';
     }
-
     setImage(e.target.files[0]);
   };
 
@@ -46,23 +49,21 @@ function CreateGroups({ handleClose }) {
           'Content-type': 'multipart/form-data',
         },
       });
-      setMessage({ title: 'Tudo certo', description: '' });
+
+      notify('O seu grupo foi criado com sucesso', 'success');
       setTimeout(() => {
         handleClose();
       }, 1000);
     } catch (error) {
       console.error(error);
-      setMessage({
-        title: 'Algo deu errado',
-        description: 'Nome do grupo não pode ser vazio',
-      });
+      notify(error.response.data.error, 'error');
     }
   };
 
   return (
     <>
       <Overlay>
-        <Alert message={message} handleClose={setMessage} />
+        <Toast />
         <Container>
           <span onClick={handleClose}>X</span>
           <h2>Criar um grupo</h2>
