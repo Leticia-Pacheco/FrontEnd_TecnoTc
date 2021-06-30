@@ -49,7 +49,7 @@ function ComponentQuadros({ workspace }) {
     </ComponetQuadros>
   );
 }
-const CONNECTION_PORT = 'https://tecno-tcc-chat.herokuapp.com/';
+const CONNECTION_PORT = 'http://localhost:3002/';
 let socket;
 function ChatGrup({ chat, groupId }) {
   const [message, setMessage] = useState('');
@@ -69,6 +69,11 @@ function ChatGrup({ chat, groupId }) {
       setMessageList([...messageList, data]);
     });
   });
+  // useEffect(() => {
+  //     socket.on('message_delete', (data) => {
+  //       console.log(data)
+  //     });
+  // })
 
   const loadMessages = async () => {
     const response = await api.get(`/messages/${chat.id}`);
@@ -80,9 +85,20 @@ function ChatGrup({ chat, groupId }) {
     socket.emit('join_room', chat.id);
   };
 
+  // const deleteMessage = async() => {
+   
+  //   const messageContent = {
+  //     id : "a5ea4040-e6df-44b3-b7fd-5ec1d0529d6d",
+  //     userId : 2,
+  //   }
+
+  //   await socket.emit('delete_message', messageContent)
+  // }
+
   useEffect(() => {
     loadMessages();
     connectToRoom();
+    // deleteMessage();
   }, []);
 
   const sendMessage = async () => {
@@ -110,7 +126,7 @@ function ChatGrup({ chat, groupId }) {
         {messageList.map((message) => (
           <>
             {user.user.userId === message.userId ? (
-              <TemplateChatLeft key={message.id} msg={message} />
+              <TemplateChatLeft key={message.id} msg={message} socket={socket} />
             ) : (
               <TemplateChatRight key={message.id} msg={message} />
             )}
