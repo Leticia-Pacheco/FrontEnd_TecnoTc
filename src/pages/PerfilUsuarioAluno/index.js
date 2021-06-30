@@ -39,7 +39,6 @@ import ModalCreateGrup from '../../components/ModalCriarGrupos';
 import { getUser, setUser, signOut } from '../../service/security';
 import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import Alert from '../../components/Alert';
 import { BsTrash } from 'react-icons/bs';
 import { MdEdit } from 'react-icons/md';
 
@@ -51,7 +50,6 @@ function ProfileStudent() {
   const [annotations, setAnnotations] = useState([]);
   const [groups, setGroups] = useState([]);
   const [reload, setReload] = useState(null);
-  const [message, setMessage] = useState(undefined);
 
   const history = useHistory();
 
@@ -103,7 +101,6 @@ function ProfileStudent() {
 
   return (
     <>
-      <Alert message={message} handleClose={setMessage} />
       {modalEditProfile && (
         <ModalEditProfile
           handleClose={() => {
@@ -249,9 +246,11 @@ function ProfileStudent() {
                           <MdEdit />
                         </div>
                       </div>
-                       { console.log(group)}
-                      <ImageGrupo onClick={() => goGroup(group.id)} src={group.image ? group.image : ImgUser}>
-                      </ImageGrupo>
+                      {console.log(group)}
+                      <ImageGrupo
+                        onClick={() => goGroup(group.id)}
+                        src={group.image ? group.image : ImgUser}
+                      ></ImageGrupo>
                       <p>{group.name}</p>
                     </ComponentGrupo>
                   ))}

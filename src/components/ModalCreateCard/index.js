@@ -1,39 +1,43 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Input from '../Input';
-import {api} from '../../service/api';
-import {Container, Overlay} from './styles';
-import Alert from '../Alert';
+import { api } from '../../service/api';
+import { Container, Overlay } from './styles';
+import { toast } from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
 
-function CreateCard({handleClose, id}) {
-  const [message, setMessage] = useState(undefined);
-
+function CreateCard({ handleClose, id }) {
   const [newCard, setNewCard] = useState({
     description: '',
   });
+  const notify = (message, type) => {
+    toast[type](message);
+  };
   const handleInput = (e) => {
-    setNewCard({...newCard, [e.target.id]: e.target.value});
+    setNewCard({ ...newCard, [e.target.id]: e.target.value });
   };
   const handleAddTask = async (e) => {
     e.preventDefault();
 
     try {
-
       const response = await api.post(`/cards/${id}`, {
         description: newCard.description,
       });
 
       setNewCard(response.data);
-      handleClose();
-      setMessage({title: 'Tudo certo', description: response.data});
-    } catch(error) {
+      notify('Card criado com sucesso', 'success');
+      setTimeout(() => {
+        handleClose();
+      }, 2000);
+    } catch (error) {
       console.error(error);
-      setMessage({title: 'Ops...', description: error.response.data.error});
+      notify(error.response.data.error, 'error');
     }
   };
   return (
     <>
       <Overlay>
-        <Alert message={message} type="error" handleClose={setMessage} />
+        <Toast />
         <Container onSubmit={handleAddTask}>
           <span onClick={handleClose}>X</span>
           <h2>Criar um card</h2>

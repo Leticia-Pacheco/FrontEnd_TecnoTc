@@ -1,37 +1,45 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Input from '../Input';
-import {api} from '../../service/api';
-import {Container, Overlay} from './styles';
-import Alert from '../Alert';
+import { api } from '../../service/api';
+import { Container, Overlay } from './styles';
+import { toast } from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
 
-function CreateList({handleClose, id}) {
+function CreateList({ handleClose, id }) {
   const [message, setMessage] = useState(undefined);
 
   const [newList, setNewList] = useState({
     name: '',
   });
+  const notify = (message, type) => {
+    toast[type](message);
+  };
   const handleInput = (e) => {
-    setNewList({...newList, [e.target.id]: e.target.value});
+    setNewList({ ...newList, [e.target.id]: e.target.value });
   };
   const handleAddList = async (e) => {
     e.preventDefault();
 
     try {
-
       const response = await api.post(`/lists/${id}`, {
-        name: newList.name
+        name: newList.name,
       });
 
       setNewList(response.data);
-      handleClose();
-    } catch(error) {
+      notify('Lista criada com sucesso', 'success');
+      setTimeout(() => {
+        handleClose();
+      }, 2000);
+    } catch (error) {
       console.error(error);
+      notify(error.response.data.error, 'error');
     }
   };
   return (
     <>
       <Overlay>
-        <Alert message={message} type="error" handleClose={setMessage} />
+        <Toast />
 
         <Container onSubmit={handleAddList}>
           <span onClick={handleClose}>X</span>

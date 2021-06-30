@@ -1,43 +1,46 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Input from '../Input';
-import {api} from '../../service/api';
-import {Container, Overlay} from './styles';
-import Alert from '../Alert';
+import { api } from '../../service/api';
+import { Container, Overlay } from './styles';
+import { toast } from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
 
-function CreateAnotacoes({handleClose}) {
-  const [message, setMessage] = useState(undefined);
-
+function CreateAnotacoes({ handleClose }) {
   const [newAnnotation, setAnnotation] = useState({
     title: '',
     text: '',
   });
+
+  const notify = (message, type) => {
+    toast[type](message);
+  };
   const handleInput = (e) => {
-    setAnnotation({...newAnnotation, [e.target.id]: e.target.value});
+    setAnnotation({ ...newAnnotation, [e.target.id]: e.target.value });
   };
   const handleAddAnnotation = async (e) => {
     e.preventDefault();
 
     try {
-      const {title, text} = newAnnotation;
+      const { title, text } = newAnnotation;
       const response = await api.post('/annotations', {
         title,
         text,
       });
       setAnnotation(response.data);
-      setMessage({title: 'Tudo certo', description: "Anotação criada"});
+      notify('Anotação criada com sucesso', 'success');
       setTimeout(() => {
         handleClose();
-      }, 1000);
-    } catch(error) {
+      }, 2000);
+    } catch (error) {
       console.error(error);
-      setMessage({title: 'Ops...', description: error.response.data.error});
+      notify(error.response.data.error, 'error');
     }
   };
   return (
     <>
-
       <Overlay>
-        <Alert message={message} handleClose={setMessage} />
+        <Toast />
         <Container onSubmit={handleAddAnnotation}>
           <span onClick={handleClose}>X</span>
           <h2>Criar uma anotação</h2>

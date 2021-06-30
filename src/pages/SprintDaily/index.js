@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { api } from '../../service/api';
 import { Container, Conteudo, Form } from './styles';
+import { toast } from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SprintDaily() {
   const [sprintDaily, setSprintDaily] = useState({
@@ -10,7 +13,6 @@ function SprintDaily() {
     goingToDoDay: '',
     someObstacle: '',
   });
-  const [message, setMessage] = useState(undefined);
 
   const [sprint, setSprint] = useState([]);
 
@@ -32,6 +34,9 @@ function SprintDaily() {
     findSprint();
   }, []);
 
+  const notify = (message, type) => {
+    toast[type](message);
+  };
   const handleInput = (e) => {
     setSprintDaily({ ...sprintDaily, [e.target.id]: e.target.value });
   };
@@ -46,18 +51,16 @@ function SprintDaily() {
         someObstacle: sprintDaily.someObstacle,
       });
 
-      setMessage({ title: 'Tudo certo', description: 'Reunião diaria criada' });
+      notify('Reunião diaria foi criada', 'success');
     } catch (error) {
       console.error(error);
-      setMessage({
-        title: 'algo deu errado',
-        description: error.response.data.error,
-      });
+      notify(error.response.data.error, 'error');
     }
   };
 
   return (
     <Container>
+      <Toast />
       <Form>
         <Conteudo>
           <h1>Sprint Diária</h1>
