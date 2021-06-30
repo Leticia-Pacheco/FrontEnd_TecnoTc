@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
-import {Container, Content} from './styles';
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import React, { useState } from 'react';
+import { Container, Content } from './styles';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import imgHomeFeed from '../../assets/ImagesPerfis/home_feed.png';
 import logo from '../../assets/logos/logo_fundo_roxo_png.png';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.png';
-import {api} from '../../service/api';
-import {useEffect} from 'react';
-import {useParams} from 'react-router';
+import { api } from '../../service/api';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 import ModalCreateList from '../../components/ModalCriarLista';
 import ModalTask from '../../components/ModalTarefa';
 import ModalInviteStudent from '../../components/ModalConvidarAluno';
 import CreateCard from '../../components/ModalCreateCard';
-import {getUser} from '../../service/security';
-import {Link} from 'react-router-dom';
+import { getUser } from '../../service/security';
+import { Link } from 'react-router-dom';
+import Loading from '../../components/Loading';
 
 function Workspace() {
   const [columns, setColumns] = useState([]);
@@ -35,14 +36,16 @@ function Workspace() {
 
   const [groupInfo, setGroupInfo] = useState([]);
 
-  const {workspaceId} = useParams();
-  console.log(workspaceId)
+  const [isLoading, setIsLoading] = useState(false);
 
-  const {id} = useParams();
+  const { workspaceId } = useParams();
+  console.log(workspaceId);
+
+  const { id } = useParams();
 
   const user = getUser();
 
-  const updateOrderCard = async ({id, order, listId}) => {
+  const updateOrderCard = async ({ id, order, listId }) => {
     const convertToInt = parseInt(id);
 
     const response = await api.put(`/cards/order/${convertToInt}/${listId}`, {
@@ -50,23 +53,21 @@ function Workspace() {
     });
   };
 
-  const updateCardList = async ({cardId, listId}) => {
-
+  const updateCardList = async ({ cardId, listId }) => {
     const list = parseInt(listId);
     try {
       const response = await api.put(`/cards/list/${cardId}/${list + 1}`);
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-
   };
 
   const onDragEnd = (result, columns, setColumns) => {
-    if(!result.destination) return;
+    if (!result.destination) return;
 
-    const {source, destination, draggableId} = result;
+    const { source, destination, draggableId } = result;
 
-    if(source.droppableId !== destination.droppableId) {
+    if (source.droppableId !== destination.droppableId) {
       const sourceColumn = columns[source.droppableId];
 
       const destColumn = columns[destination.droppableId];
@@ -88,10 +89,10 @@ function Workspace() {
         },
       });
 
-      updateCardList({cardId: draggableId, listId: sourceColumn.id});
+      updateCardList({ cardId: draggableId, listId: sourceColumn.id });
     } else {
       const column = columns[source.droppableId];
-      console.log(column)
+      console.log(column);
       const copiedItems = [...column.Cards];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
@@ -102,7 +103,7 @@ function Workspace() {
           Cards: copiedItems,
         },
       });
-      console.log(column.id)
+      console.log(column.id);
       updateOrderCard({
         id: draggableId,
         order: destination.index,
@@ -120,7 +121,7 @@ function Workspace() {
     try {
       const response = await api.get(`/lists/${workspaceId}`);
       setColumns(response.data);
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
   };
@@ -129,7 +130,7 @@ function Workspace() {
     try {
       const response = await api.get(`/group/users/${id}`);
       setUserImages(response.data);
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -138,7 +139,7 @@ function Workspace() {
     try {
       const response = await api.get(`/group/${id}`);
       setGroupInfo(response.data);
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -152,7 +153,7 @@ function Workspace() {
   const handleOpenCreateCard = async (e) => {
     setModalCreateCard(true);
     setList(e);
-  }
+  };
 
   useEffect(() => {
     loadColumns();
@@ -162,6 +163,8 @@ function Workspace() {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {modalConvidarAluno && (
         <ModalInviteStudent
           handleClose={() => {
@@ -185,6 +188,7 @@ function Workspace() {
             loadColumns();
           }}
           id={workspaceId}
+          setIsLoading={setIsLoading}
         />
       )}
       {modalCreateCard && (
@@ -269,7 +273,7 @@ function Workspace() {
                         +
                       </span>
                     </h2>
-                    <div style={{margin: 8}}>
+                    <div style={{ margin: 8 }}>
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
                           return (

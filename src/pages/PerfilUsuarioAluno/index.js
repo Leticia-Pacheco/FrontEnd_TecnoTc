@@ -36,6 +36,7 @@ import { useEffect } from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
+import Loading from '../../components/Loading';
 import { getUser, setUser, signOut } from '../../service/security';
 import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -49,7 +50,8 @@ function ProfileStudent() {
   const [perfil, setPerfil] = useState([]);
   const [annotations, setAnnotations] = useState([]);
   const [groups, setGroups] = useState([]);
-  const [reload, setReload] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
 
@@ -101,6 +103,7 @@ function ProfileStudent() {
 
   return (
     <>
+      {isLoading && <Loading />}
       {modalEditProfile && (
         <ModalEditProfile
           handleClose={() => {
@@ -122,7 +125,9 @@ function ProfileStudent() {
           handleClose={() => {
             setModalCreateGrup(false);
             loadGroups();
+            setIsLoading(false);
           }}
+          setIsLoading={setIsLoading}
         />
       )}
       <Container>

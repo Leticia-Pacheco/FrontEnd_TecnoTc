@@ -5,7 +5,7 @@ import { Container, Overlay } from './styles';
 import { toast } from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
-function CreateGroups({ handleClose }) {
+function CreateGroups({ handleClose, setIsLoading }) {
   const [createGroup, setCreateGroup] = useState({
     name: '',
   });
@@ -43,19 +43,18 @@ function CreateGroups({ handleClose }) {
     if (image) data.append('image', image);
 
     try {
-      console.log(data);
+      setIsLoading(true);
+
       await api.post('/group', data, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
       });
-
+      handleClose();
       notify('O seu grupo foi criado com sucesso', 'success');
-      setTimeout(() => {
-        handleClose();
-      }, 1000);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       notify(error.response.data.error, 'error');
     }
   };
