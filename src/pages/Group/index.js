@@ -14,6 +14,7 @@ import {
 import MenuComponent from '../../components/MenuComponent';
 import TemplateChatLeft from '../../components/TemplateChatLeft';
 import TemplateChatRight from '../../components/TemplateChatRight';
+import ChekListProject from '../../components/ChecklistProject';
 import { useState } from 'react';
 import io from 'socket.io-client';
 import { useEffect } from 'react';
@@ -27,7 +28,6 @@ import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 function ComponentQuadros({ workspace }) {
-
   let { id } = useParams();
 
   const history = useHistory();
@@ -108,7 +108,7 @@ function ChatGrup({ chat, groupId }) {
       chatId: chat.id,
       author: user.student.name,
       message: message,
-      createdAt : new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
 
     await socket.emit('send_message', messageContent);
@@ -152,6 +152,7 @@ function ChatGrup({ chat, groupId }) {
 function Grups() {
   const [showChat, setShowChat] = useState(false);
   const [showComponentQuadro, setShowComponentQuadro] = useState(true);
+  const [showCheckList, setShowChekList] = useState(false);
   const [group, setGroup] = useState([]);
   const [workspaces, setWorkspaces] = useState([]);
 
@@ -174,10 +175,17 @@ function Grups() {
   const handleTradeStade = () => {
     setShowComponentQuadro(true);
     setShowChat(false);
+    setShowChekList(false);
   };
   const handleTradeStadeChat = () => {
     setShowComponentQuadro(false);
     setShowChat(true);
+    setShowChekList(false);
+  };
+  const handleTradeStadeCheckList = () => {
+    setShowComponentQuadro(false);
+    setShowChat(false);
+    setShowChekList(true);
   };
 
   return (
@@ -189,9 +197,13 @@ function Grups() {
         </h3>
         <ComponetSubMenu onClick={handleTradeStade}>Grupo</ComponetSubMenu>
         <ComponetSubMenu onClick={handleTradeStadeChat}>Chat</ComponetSubMenu>
+        <ComponetSubMenu onClick={handleTradeStadeCheckList}>
+          Blabla
+        </ComponetSubMenu>
       </Submenu>
       {showChat && <ChatGrup chat={group.Chat} groupId={id} />}
       {showComponentQuadro && <ComponentQuadros workspace={workspaces} />}
+      {showCheckList && <ChekListProject />}
     </Container>
   );
 }
