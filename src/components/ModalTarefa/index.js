@@ -73,6 +73,15 @@ function ModalViewTarefa({ handleClose, cardId }) {
     }
   };
 
+  const handleUpdateInfo = () => {
+  
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+
   const initialDate = async (e) => {
     console.log(e);
   };
@@ -158,7 +167,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
               <h3>Data de início</h3>
               <input
                 type="Date"
-                value={
+                defaultValue={
                   cardsInfo.initialDate
                     ? format(new Date(cardsInfo.initialDate), 'yyyy-MM-dd')
                     : '2021-10-20'
@@ -171,7 +180,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
               <input
                 type="Date"
-                value={
+                defaultValue={
                   cardsInfo.dueDate
                     ? format(new Date(cardsInfo.dueDate), 'yyyy-MM-dd')
                     : '2021-10-20'

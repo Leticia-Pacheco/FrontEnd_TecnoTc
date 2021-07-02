@@ -238,7 +238,7 @@ function ProfileStudent() {
               <ScrollContainer horizontal={true}>
                 <Agrupamento>
                   {groups.map((group) => (
-                    <ComponentGrupo>
+                    <ComponentGrupo onClick={() => goGroup(group.id)}>
                       <div id="dropdown">
                         <img
                           src={Configuracoes}
@@ -253,7 +253,6 @@ function ProfileStudent() {
                       </div>
                       {console.log(group)}
                       <ImageGrupo
-                        onClick={() => goGroup(group.id)}
                         src={group.image ? group.image : ImgUser}
                       ></ImageGrupo>
                       <p>{group.name}</p>
