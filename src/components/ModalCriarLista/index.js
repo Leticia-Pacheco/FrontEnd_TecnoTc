@@ -5,8 +5,9 @@ import { Container, Overlay } from './styles';
 import { toast } from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
+import { set } from 'date-fns/esm';
 
-function CreateList({ handleClose, id }) {
+function CreateList({ handleClose, id, setIsLoading }) {
   const [message, setMessage] = useState(undefined);
 
   const [newList, setNewList] = useState({
@@ -22,17 +23,17 @@ function CreateList({ handleClose, id }) {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const response = await api.post(`/lists/${id}`, {
         name: newList.name,
       });
 
       setNewList(response.data);
+      handleClose();
       notify('Lista criada com sucesso', 'success');
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       notify(error.response.data.error, 'error');
     }
   };

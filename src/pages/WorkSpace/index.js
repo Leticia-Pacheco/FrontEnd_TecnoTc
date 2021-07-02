@@ -186,9 +186,10 @@ function Workspace() {
           handleClose={() => {
             setModalCreateList(false);
             loadColumns();
+            setIsLoading(false);
           }}
-          id={workspaceId}
           setIsLoading={setIsLoading}
+          id={workspaceId}
         />
       )}
       {modalCreateCard && (
