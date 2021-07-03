@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Input from '../Input';
-import { api } from '../../service/api';
-import { Container, Overlay } from './styles';
-import { toast } from 'react-toastify';
+import {api} from '../../service/api';
+import {Container, Overlay} from './styles';
+import {toast} from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
 
-function CreateAnotacoes({ handleClose }) {
+function CreateAnotacoes({handleClose, setIsLoading}) {
   const [newAnnotation, setAnnotation] = useState({
     title: '',
     text: '',
@@ -16,13 +16,14 @@ function CreateAnotacoes({ handleClose }) {
     toast[type](message);
   };
   const handleInput = (e) => {
-    setAnnotation({ ...newAnnotation, [e.target.id]: e.target.value });
+    setAnnotation({...newAnnotation, [e.target.id]: e.target.value});
   };
   const handleAddAnnotation = async (e) => {
     e.preventDefault();
 
     try {
-      const { title, text } = newAnnotation;
+      setIsLoading(true);
+      const {title, text} = newAnnotation;
       const response = await api.post('/annotations', {
         title,
         text,
@@ -31,9 +32,10 @@ function CreateAnotacoes({ handleClose }) {
       notify('Anotação criada com sucesso', 'success');
       setTimeout(() => {
         handleClose();
-      }, 2000);
-    } catch (error) {
+      }, 1500);
+    } catch(error) {
       console.error(error);
+      setIsLoading(false);
       notify(error.response.data.error, 'error');
     }
   };

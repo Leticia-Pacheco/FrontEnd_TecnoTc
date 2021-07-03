@@ -1,14 +1,14 @@
-import { Container, Overlay } from './styles';
+import {Container, Overlay} from './styles';
 import logo from '../../assets/logos/logo_telas.png';
-import { useRef, useState } from 'react';
+import {useRef, useState} from 'react';
 import Toast from '../../components/Toast';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { api } from '../../service/api';
+import {api} from '../../service/api';
 import Select from '../Select';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
-function CreateSprint({ handleClose, groupId }) {
+function CreateSprint({handleClose, groupId, setIsLoading}) {
   const [sprint, setSprint] = useState({
     name: '',
     timeBox: '2021-10-10',
@@ -43,6 +43,7 @@ function CreateSprint({ handleClose, groupId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await api.post(`/sprints/${groupId}`, {
         name: sprint.name,
         timeBox: sprint.timeBox,
@@ -51,8 +52,11 @@ function CreateSprint({ handleClose, groupId }) {
       console.log(storiesSelect);
 
       notify('Sprint criada com sucesso', 'success');
-      handleClose();
-    } catch (error) {
+      setTimeout(() => {
+        handleClose();
+      }, 1500);
+    } catch(error) {
+      setIsLoading(false);
       console.error(error);
       notify(error.response.data.error, 'error');
     }
@@ -60,12 +64,13 @@ function CreateSprint({ handleClose, groupId }) {
 
   const handleInput = (e) => {
     console.log(e);
-    setSprint({ ...sprint, [e.target.id]: e.target.value });
+    setSprint({...sprint, [e.target.id]: e.target.value});
   };
 
   return (
     <>
       <Overlay>
+        <Toast />
         <Container>
           <span onClick={handleClose}>X</span>
           <header>

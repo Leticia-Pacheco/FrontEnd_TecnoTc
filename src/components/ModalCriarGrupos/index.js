@@ -1,11 +1,11 @@
-import { useRef } from 'react';
-import { useState } from 'react';
-import { api } from '../../service/api';
-import { Container, Overlay } from './styles';
-import { toast } from 'react-toastify';
+import {useRef} from 'react';
+import {useState} from 'react';
+import {api} from '../../service/api';
+import {Container, Overlay} from './styles';
+import {toast} from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
-function CreateGroups({ handleClose, setIsLoading }) {
+function CreateGroups({handleClose, setIsLoading}) {
   const [createGroup, setCreateGroup] = useState({
     name: '',
   });
@@ -19,7 +19,7 @@ function CreateGroups({ handleClose, setIsLoading }) {
   };
 
   const handleImage = (e) => {
-    if (e.target.files[0]) {
+    if(e.target.files[0]) {
       imageRef.current.src = URL.createObjectURL(e.target.files[0]);
       imageRef.current.style.display = 'flex';
     } else {
@@ -30,7 +30,7 @@ function CreateGroups({ handleClose, setIsLoading }) {
   };
 
   const handleInput = async (e) => {
-    setCreateGroup({ ...createGroup, [e.target.id]: e.target.value });
+    setCreateGroup({...createGroup, [e.target.id]: e.target.value});
   };
 
   const handleCreateGroup = async (e) => {
@@ -40,19 +40,20 @@ function CreateGroups({ handleClose, setIsLoading }) {
 
     data.append('name', createGroup.name);
 
-    if (image) data.append('image', image);
+    if(image) data.append('image', image);
 
     try {
       setIsLoading(true);
-
       await api.post('/group', data, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
       });
-      handleClose();
       notify('O seu grupo foi criado com sucesso', 'success');
-    } catch (error) {
+      setTimeout(() => {
+        handleClose();
+      }, 1500);
+    } catch(error) {
       console.error(error);
       setIsLoading(false);
       notify(error.response.data.error, 'error');

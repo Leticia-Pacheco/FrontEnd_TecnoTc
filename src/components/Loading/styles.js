@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const spin = keyframes`
     100% {
@@ -9,7 +9,7 @@ const spin = keyframes`
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   background-color: #333c;
   z-index: 99;
   display: flex;

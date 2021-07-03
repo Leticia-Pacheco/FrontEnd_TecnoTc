@@ -6,30 +6,30 @@ import {
   Submenu,
   ContainerQuadros,
   Quadros,
-  CriarQuadros,
   Mensagens,
   ContatoMensagem,
   ContainerMensagens,
 } from './styles';
-import MenuComponent from '../../components/MenuComponent';
-import TemplateChatLeft from '../../components/TemplateChatLeft';
-import TemplateChatRight from '../../components/TemplateChatRight';
-import ChekListProject from '../../components/ChecklistProject';
-import { useState } from 'react';
-import io from 'socket.io-client';
-import { useEffect } from 'react';
-import { getUser } from '../../service/security';
 import {
   ContainerInputMessage,
   IconSend,
   Send,
 } from '../../components/SendMessage/styles';
-import { api } from '../../service/api';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import MenuComponent from '../../components/MenuComponent';
+import TemplateChatLeft from '../../components/TemplateChatLeft';
+import TemplateChatRight from '../../components/TemplateChatRight';
+import ChekListProject from '../../components/ChecklistProject';
+import {useState} from 'react';
+import io from 'socket.io-client';
+import {useEffect} from 'react';
+import {getUser} from '../../service/security';
+import {api} from '../../service/api';
+import {useParams, useHistory, Link} from 'react-router-dom';
 import CreateSprint from '../../components/ModalCriarSprint';
+import Loading from '../../components/Loading';
 
-function ComponentQuadros({ workspace }) {
-  let { id } = useParams();
+function ComponentQuadros({workspace}) {
+  let {id} = useParams();
 
   const history = useHistory();
 
@@ -44,7 +44,7 @@ function ComponentQuadros({ workspace }) {
       </TituloQuadros>
       <ContainerQuadros>
         <Quadros key={workspace.id} onClick={() => goToWorkspace(workspace.id)}>
-          <h2></h2>
+          <h2>{workspace.name}</h2>
         </Quadros>
       </ContainerQuadros>
     </ComponetQuadros>
@@ -52,7 +52,7 @@ function ComponentQuadros({ workspace }) {
 }
 const CONNECTION_PORT = 'http://localhost:3002/';
 let socket;
-function ChatGrup({ chat, groupId }) {
+function ChatGrup({chat, groupId}) {
   const [message, setMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [inRoom, setInRoom] = useState(false);
@@ -142,16 +142,17 @@ function Grups() {
   const [showCreateSprint, setShowCreateSprint] = useState(false);
   const [group, setGroup] = useState([]);
   const [workspaces, setWorkspaces] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
 
-  let { id } = useParams();
+  let {id} = useParams();
 
   const verifyGroup = async () => {
     const response = await api.get(`/group/${id}`);
 
-    if (!response.data) return history.push('/profile');
-    setGroup(response.data);  
+    if(!response.data) return history.push('/profile');
+    setGroup(response.data);
     setWorkspaces(response.data.Workspace);
   };
 
@@ -186,6 +187,7 @@ function Grups() {
 
   return (
     <Container>
+      {isLoading && <Loading />}
       <MenuComponent />
       <Submenu>
         <h3>
@@ -201,7 +203,12 @@ function Grups() {
       {showChat && <ChatGrup chat={group.Chat} groupId={id} />}
       {showComponentQuadro && <ComponentQuadros workspace={workspaces} />}
       {showCheckList && <ChekListProject />}
-      {showCreateSprint && <CreateSprint handleClose={() => setShowCreateSprint(false)} groupId={id}/>}
+      {showCreateSprint && <CreateSprint handleClose={() => {
+        setShowCreateSprint(false);
+        setIsLoading(false);
+      }}
+        setIsLoading={setIsLoading}
+        groupId={id} />}
     </Container>
   );
 }

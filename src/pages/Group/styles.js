@@ -240,26 +240,14 @@ export const Quadros = styled.div`
     background-image: url(${ImageQuadro});
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #584C95;
+    cursor: pointer;
     border-radius: 10px;
    >h2{
        padding-left: 20px;
        font-size:2rem;
-       color: white;
+       color: ${colors.primaryGreenWater};
    }
-`;
-export const CriarQuadros = styled.div`
-    width: 450px;
-    height: 200px;
-    background-color:#d1d1d1;
-    border-radius: 10px;
-    padding-left: 20px;
-    font-size:2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    :hover {
-        background-color:#b3b3b3;
-    }
 `;
 
 

@@ -10,11 +10,13 @@ import {
 } from './styles';
 import ImageUsuario from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ImageLogo from '../../assets/logos/logo_fundo_roxo_png.png';
-import { getUser } from '../../service/security';
-import { api } from '../../service/api';
-import { useState } from 'react';
-import Alert from '../Alert';
-function EditProfile({ handleClose }) {
+import {getUser} from '../../service/security';
+import {api} from '../../service/api';
+import {useState} from 'react';
+import {toast} from 'react-toastify';
+import Toast from '../../components/Toast';
+import 'react-toastify/dist/ReactToastify.css';
+function EditProfile({handleClose, setIsLoading}) {
   const [editPerfil, setEditPerfil] = useState({
     email: '',
     name: '',
@@ -23,14 +25,14 @@ function EditProfile({ handleClose }) {
     repeatNewPassword: '',
   });
 
-  const [message, setMessage] = useState(undefined)
-
-
+  const notify = (message, type) => {
+    toast[type](message);
+  };
   const validPassword = () =>
     editPerfil.newPassword === editPerfil.repeatNewPassword;
 
   const handleSubmit = async (e) => {
-    if (!validPassword()) return alert('As senhas precisam ser iguais!');
+    if(!validPassword()) return alert('As senhas precisam ser iguais!');
 
     e.preventDefault();
 
@@ -39,9 +41,11 @@ function EditProfile({ handleClose }) {
       console.log(user.token);
       let userRoute;
 
-      if (user.userRole === 'teacher') userRoute = 'teachers';
+      if(user.userRole === 'teacher') userRoute = 'teachers';
       else userRoute = 'students';
 
+
+      setIsLoading(true);
       const response = await api.put(`/${userRoute}`, {
         name: editPerfil.name,
         email: editPerfil.email,
@@ -49,22 +53,24 @@ function EditProfile({ handleClose }) {
         newPassword: editPerfil.newPassword,
       });
 
-      setMessage({ title: "Tudo certo", description: "Perfil salvo" });
-
-      handleClose();
-    } catch (error) {
+      notify('O seu perfil foi atualizado com sucesso', 'success');
+      setTimeout(() => {
+        handleClose();
+      }, 1500);
+    } catch(error) {
       console.error(error);
-      setMessage({ title: "algo deu errado", description: error.response.data.error });
+      setIsLoading(false);
+      notify(error.response.data.error, 'error');
     }
   };
 
   const handleInput = (e) => {
-    setEditPerfil({ ...editPerfil, [e.target.id]: e.target.value });
+    setEditPerfil({...editPerfil, [e.target.id]: e.target.value});
   };
 
   return (
     <Overlay>
-      <Alert message={message} type="sucess" handleClose={setMessage} />
+      <Toast />
       <ModalEditarPerfil>
         <Header>
           <ImagemUsuario>

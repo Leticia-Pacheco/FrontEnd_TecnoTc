@@ -56,22 +56,6 @@ export const Container = styled.form`
             color: red;  
         }
     }
-    > input {
-        width: 100%;
-        height: 35px;
-
-        border-radius: 4px;
-        margin-bottom: 25px;
-
-        background-color: var(--greyQuaternary);
-        border: solid 2px var(--greyQuaternary);
-
-        font-size: 16px;
-        padding: 5px;
-
-        align-self: flex-start;
-    }
-
     > button {
         width: 280px;
         height: 35px;

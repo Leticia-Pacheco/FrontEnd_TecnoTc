@@ -1,7 +1,6 @@
-import { Container } from './styles';
-import { format } from 'date-fns';
-import { useEffect } from 'react';
-function TemplateChatLeft({ msg, socket }) {
+import {Container} from './styles';
+import {format} from 'date-fns';
+function TemplateChatLeft({msg, socket}) {
   const deleteMessage = async (del) => {
     const deleteMessageUser = {
       id: del.id,

@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Input from '../Input';
-import { api } from '../../service/api';
-import { Container, Overlay } from './styles';
-import { toast } from 'react-toastify';
+import {api} from '../../service/api';
+import {Container, Overlay} from './styles';
+import {toast} from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
 
-function CreateTask({ handleClose, cardId }) {
-  const [message, setMessage] = useState(undefined);
+function CreateTask({handleClose, cardId, setIsLoading}) {
 
   const [newTask, setnewTask] = useState({
     task: '',
@@ -16,12 +15,13 @@ function CreateTask({ handleClose, cardId }) {
     toast[type](message);
   };
   const handleInput = (e) => {
-    setnewTask({ ...newTask, [e.target.id]: e.target.value });
+    setnewTask({...newTask, [e.target.id]: e.target.value});
   };
   const handleAddTask = async (e) => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const response = await api.post(`/task/${cardId}`, {
         task: newTask.task,
       });
@@ -30,9 +30,10 @@ function CreateTask({ handleClose, cardId }) {
       notify('Tarefa criada com sucesso', 'success');
       setTimeout(() => {
         handleClose();
-      }, 2000);
-    } catch (error) {
+      }, 1500);
+    } catch(error) {
       console.error(error);
+      setIsLoading(false);
       notify(error.response.data.error, 'error');
     }
   };

@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Input from '../Input';
-import { api } from '../../service/api';
-import { Container, Overlay } from './styles';
-import { toast } from 'react-toastify';
+import {api} from '../../service/api';
+import {Container, Overlay} from './styles';
+import {toast} from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
 
-function CreateCard({ handleClose, id }) {
+function CreateCard({handleClose, id, setIsLoading}) {
   const [newCard, setNewCard] = useState({
     description: '',
   });
@@ -14,12 +14,13 @@ function CreateCard({ handleClose, id }) {
     toast[type](message);
   };
   const handleInput = (e) => {
-    setNewCard({ ...newCard, [e.target.id]: e.target.value });
+    setNewCard({...newCard, [e.target.id]: e.target.value});
   };
   const handleAddTask = async (e) => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const response = await api.post(`/cards/${id}`, {
         description: newCard.description,
       });
@@ -28,9 +29,10 @@ function CreateCard({ handleClose, id }) {
       notify('Card criado com sucesso', 'success');
       setTimeout(() => {
         handleClose();
-      }, 2000);
-    } catch (error) {
+      }, 1500);
+    } catch(error) {
       console.error(error);
+      setIsLoading(false);
       notify(error.response.data.error, 'error');
     }
   };

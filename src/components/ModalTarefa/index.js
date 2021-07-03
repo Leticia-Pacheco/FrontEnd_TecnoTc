@@ -1,15 +1,16 @@
-import { Container, Overlay } from './styles';
-import { AiOutlineUserAdd } from 'react-icons/ai';
+import {Container, Overlay} from './styles';
+import {AiOutlineUserAdd} from 'react-icons/ai';
 import perfil from '../../assets/ImagesPerfis/image_perfil_aluno.png';
 import ModalCriarTarefa from '../ModalCreateTask';
-import { useState } from 'react';
-import { api } from '../../service/api';
-import { format } from 'date-fns';
+import {useState} from 'react';
+import {api} from '../../service/api';
+import {format} from 'date-fns';
 
-import { useEffect } from 'react';
-function ModalViewTarefa({ handleClose, cardId }) {
+import {useEffect} from 'react';
+import Loading from '../Loading';
+function ModalViewTarefa({handleClose, cardId}) {
   const [modalCriarTarefa, setModalsetCriarTarefa] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [progress, setProgress] = useState([]);
   const [priorities, setPriorities] = useState([]);
@@ -26,7 +27,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
       const response = await api.get(`/tasks/${cardId}`);
       console.log(response.data);
       setTasks([...tasks, ...response.data]);
-    } catch (error) {
+    } catch(error) {
       console.log(error);
     }
   };
@@ -37,10 +38,10 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
       setTasks(
         tasks.map((t) =>
-          t.id == e.target.defaultValue ? { ...t, checked: !t.checked } : t
+          t.id === e.target.defaultValue ? {...t, checked: !t.checked} : t
         )
       );
-    } catch (error) {
+    } catch(error) {
       console.log(error);
     }
   };
@@ -50,7 +51,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
       const response = await api.get('/progresses');
 
       setProgress(response.data);
-    } catch (error) {
+    } catch(error) {
       alert(error);
     }
   };
@@ -60,7 +61,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
       const response = await api.get(`/cards/info/${cardId}`);
 
       setCardsInfo(response.data);
-    } catch (error) {
+    } catch(error) {
       console.log(error);
     }
   };
@@ -70,7 +71,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
       const response = await api.get('/priorities');
 
       setPriorities(response.data);
-    } catch (error) {
+    } catch(error) {
       alert(error);
     }
   };
@@ -79,14 +80,14 @@ function ModalViewTarefa({ handleClose, cardId }) {
     try {
       const response = await api.put(`/cards/info/${cardId}`, updateCardInfo);
       console.log(response.data);
-    } catch (error) {
+    } catch(error) {
       console.log(error);
     }
   };
 
   const handleInput = (e) => {
     console.log(e);
-    setUpdateCardInfo({ [e.target.id]: e.target.value });
+    setUpdateCardInfo({[e.target.id]: e.target.value});
     console.log(updateCardInfo);
     handleUpdateInfo();
   };
@@ -100,11 +101,15 @@ function ModalViewTarefa({ handleClose, cardId }) {
 
   return (
     <>
+      {isLoading && <Loading />}
+
       {modalCriarTarefa && (
         <ModalCriarTarefa
           handleClose={() => {
             setModalsetCriarTarefa(false);
+            setIsLoading(false);
           }}
+          setIsLoading={setIsLoading}
           cardId={cardId}
         />
       )}
@@ -127,7 +132,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
               <div id="dropdown-content">
                 {cardsInfo.Users?.map((user) => (
                   <>
-                    <span value={user.id}onClick={handleInput}>
+                    <span value={user.id} onClick={handleInput}>
                       {user.Student.name || user.Teacher.name}
                     </span>
                   </>

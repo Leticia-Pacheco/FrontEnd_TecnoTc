@@ -1,14 +1,12 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Input from '../Input';
-import { api } from '../../service/api';
-import { Container, Overlay } from './styles';
-import { toast } from 'react-toastify';
+import {api} from '../../service/api';
+import {Container, Overlay} from './styles';
+import {toast} from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
-import { set } from 'date-fns/esm';
 
-function CreateList({ handleClose, id, setIsLoading }) {
-  const [message, setMessage] = useState(undefined);
+function CreateList({handleClose, id, setIsLoading}) {
 
   const [newList, setNewList] = useState({
     name: '',
@@ -17,7 +15,7 @@ function CreateList({ handleClose, id, setIsLoading }) {
     toast[type](message);
   };
   const handleInput = (e) => {
-    setNewList({ ...newList, [e.target.id]: e.target.value });
+    setNewList({...newList, [e.target.id]: e.target.value});
   };
   const handleAddList = async (e) => {
     e.preventDefault();
@@ -29,9 +27,11 @@ function CreateList({ handleClose, id, setIsLoading }) {
       });
 
       setNewList(response.data);
-      handleClose();
       notify('Lista criada com sucesso', 'success');
-    } catch (error) {
+      setTimeout(() => {
+        handleClose();
+      }, 1500);
+    } catch(error) {
       console.error(error);
       setIsLoading(false);
       notify(error.response.data.error, 'error');
@@ -41,7 +41,6 @@ function CreateList({ handleClose, id, setIsLoading }) {
     <>
       <Overlay>
         <Toast />
-
         <Container onSubmit={handleAddList}>
           <span onClick={handleClose}>X</span>
           <h2>Criar uma lista</h2>

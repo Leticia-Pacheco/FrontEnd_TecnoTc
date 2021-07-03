@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "date-fns": "^2.22.1",
+    "eslint-plugin-react-hooks": "^4.2.1-alpha-ed6c091fe-20210701",
     "formik": "^2.2.6",
     "jsx": "^0.9.89",
     "jsx-for-web-components": "^1.2.1",

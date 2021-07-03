@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { api } from '../../service/api';
+import {useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {api} from '../../service/api';
 import Input from '../Input';
-import { Container, Overlay } from './styles';
-import { toast } from 'react-toastify';
+import {Container, Overlay} from './styles';
+import {toast} from 'react-toastify';
 import Toast from '../../components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
 
-function InviteStudent({ handleClose }) {
+function InviteStudent({handleClose, setIsLoading}) {
   const [sendInvite, setSendInvite] = useState({
     email: '',
   });
 
-  const { id } = useParams();
+  const {id} = useParams();
 
   const notify = (message, type) => {
     toast[type](message);
@@ -20,6 +20,7 @@ function InviteStudent({ handleClose }) {
   const inputSendInvite = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       await api.post(`/group/${id}/invite`, {
         emailSend: sendInvite.email,
       });
@@ -27,15 +28,16 @@ function InviteStudent({ handleClose }) {
 
       setTimeout(() => {
         handleClose();
-      }, 2000);
-    } catch (error) {
+      }, 1500);
+    } catch(error) {
       console.log(error);
+      setIsLoading(false);
       notify(error.response.data.error, 'error');
     }
   };
 
   const handleInput = (e) => {
-    setSendInvite({ ...sendInvite, [e.target.id]: e.target.value });
+    setSendInvite({...sendInvite, [e.target.id]: e.target.value});
   };
 
   return (

@@ -4,17 +4,15 @@ import {
   MenuFeed,
   MenuTarefas,
   MenuReunioes,
-  MenuChats,
   MenuLogout,
 } from './styles';
 import ImagePerfil from '../../assets/ImagesFeed/foto_perfil.png';
 import ImageFeed from '../../assets/ImagesIconesMenu/home_feed.png';
 import ImageTarefas from '../../assets/ImagesIconesMenu/tarefas.png';
 import ImageReunioesDiarias from '../../assets/ImagesIconesMenu/reunioes_diarias.png';
-import ImageChats from '../../assets/ImagesIconesMenu/chats.png';
 import ImageLogout from '../../assets/ImagesIconesMenu/sair.png';
-import { useHistory } from 'react-router-dom';
-import { getUser, signOut } from '../../service/security';
+import {useHistory} from 'react-router-dom';
+import {getUser, signOut} from '../../service/security';
 
 function MenuComponent() {
   const history = useHistory();
