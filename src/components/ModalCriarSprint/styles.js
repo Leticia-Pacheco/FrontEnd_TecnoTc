@@ -124,7 +124,7 @@ export const Container = styled.form`
       }
     }
     > #dateEnd {
-      padding-left: 50px;
+      margin-top: 20px;
       > input {
         width: 250px;
         height: 40px;

@@ -11,6 +11,6 @@ export const Container = styled.div`
     }
 
     > select {
-        
+        height: 30px;
     }
 `;

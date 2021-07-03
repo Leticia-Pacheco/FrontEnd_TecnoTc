@@ -26,6 +26,7 @@ import {
 } from '../../components/SendMessage/styles';
 import { api } from '../../service/api';
 import { useParams, useHistory, Link } from 'react-router-dom';
+import CreateSprint from '../../components/ModalCriarSprint';
 
 function ComponentQuadros({ workspace }) {
   let { id } = useParams();
@@ -69,11 +70,6 @@ function ChatGrup({ chat, groupId }) {
       setMessageList([...messageList, data]);
     });
   });
-  // useEffect(() => {
-  //     socket.on('message_delete', (data) => {
-  //       console.log(data)
-  //     });
-  // })
 
   const loadMessages = async () => {
     const response = await api.get(`/messages/${chat.id}`);
@@ -84,16 +80,6 @@ function ChatGrup({ chat, groupId }) {
     setInRoom(true);
     socket.emit('join_room', chat.id);
   };
-
-  // const deleteMessage = async() => {
-   
-  //   const messageContent = {
-  //     id : "a5ea4040-e6df-44b3-b7fd-5ec1d0529d6d",
-  //     userId : 2,
-  //   }
-
-  //   await socket.emit('delete_message', messageContent)
-  // }
 
   useEffect(() => {
     loadMessages();
@@ -153,6 +139,7 @@ function Grups() {
   const [showChat, setShowChat] = useState(false);
   const [showComponentQuadro, setShowComponentQuadro] = useState(true);
   const [showCheckList, setShowChekList] = useState(false);
+  const [showCreateSprint, setShowCreateSprint] = useState(false);
   const [group, setGroup] = useState([]);
   const [workspaces, setWorkspaces] = useState([]);
 
@@ -164,7 +151,7 @@ function Grups() {
     const response = await api.get(`/group/${id}`);
 
     if (!response.data) return history.push('/profile');
-    setGroup(response.data);
+    setGroup(response.data);  
     setWorkspaces(response.data.Workspace);
   };
 
@@ -176,16 +163,25 @@ function Grups() {
     setShowComponentQuadro(true);
     setShowChat(false);
     setShowChekList(false);
+    setShowCreateSprint(false)
   };
   const handleTradeStadeChat = () => {
     setShowComponentQuadro(false);
     setShowChat(true);
     setShowChekList(false);
+    setShowCreateSprint(false)
   };
   const handleTradeStadeCheckList = () => {
     setShowComponentQuadro(false);
     setShowChat(false);
     setShowChekList(true);
+    setShowCreateSprint(false)
+  };
+  const handleTradeSprint = () => {
+    setShowComponentQuadro(false);
+    setShowChat(false);
+    setShowChekList(false);
+    setShowCreateSprint(true)
   };
 
   return (
@@ -198,12 +194,14 @@ function Grups() {
         <ComponetSubMenu onClick={handleTradeStade}>Grupo</ComponetSubMenu>
         <ComponetSubMenu onClick={handleTradeStadeChat}>Chat</ComponetSubMenu>
         <ComponetSubMenu onClick={handleTradeStadeCheckList}>
-          Blabla
+          Histórias do projeto
         </ComponetSubMenu>
+        <ComponetSubMenu onClick={handleTradeSprint}>Criar Sprint</ComponetSubMenu>
       </Submenu>
       {showChat && <ChatGrup chat={group.Chat} groupId={id} />}
       {showComponentQuadro && <ComponentQuadros workspace={workspaces} />}
       {showCheckList && <ChekListProject />}
+      {showCreateSprint && <CreateSprint handleClose={() => setShowCreateSprint(false)} groupId={id}/>}
     </Container>
   );
 }

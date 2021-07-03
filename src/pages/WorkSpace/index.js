@@ -103,7 +103,6 @@ function Workspace() {
           Cards: copiedItems,
         },
       });
-      console.log(column.id);
       updateOrderCard({
         id: draggableId,
         order: destination.index,
