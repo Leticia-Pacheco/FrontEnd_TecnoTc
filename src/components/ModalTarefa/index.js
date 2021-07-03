@@ -14,7 +14,12 @@ function ModalViewTarefa({ handleClose, cardId }) {
   const [progress, setProgress] = useState([]);
   const [priorities, setPriorities] = useState([]);
   const [cardsInfo, setCardsInfo] = useState([]);
-  const [currentProgress, setCurrentProgress] = useState([]);
+  const [updateCardInfo, setUpdateCardInfo] = useState({
+    initialDate: '',
+    dueDate: '',
+    progressId: '',
+    priorityId: '',
+  });
 
   const loadTasks = async () => {
     try {
@@ -55,9 +60,6 @@ function ModalViewTarefa({ handleClose, cardId }) {
       const response = await api.get(`/cards/info/${cardId}`);
 
       setCardsInfo(response.data);
-      console.log(response.data)
-      setCurrentProgress(response.data.Priority);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -73,21 +75,20 @@ function ModalViewTarefa({ handleClose, cardId }) {
     }
   };
 
-  const handleUpdateInfo = () => {
-  
+  const handleUpdateInfo = async () => {
     try {
-      
+      const response = await api.put(`/cards/info/${cardId}`, updateCardInfo);
+      console.log(response.data);
     } catch (error) {
-      
+      console.log(error);
     }
-  }
-
-  const initialDate = async (e) => {
-    console.log(e);
   };
 
-  const finalDate = async (e) => {
+  const handleInput = (e) => {
     console.log(e);
+    setUpdateCardInfo({ [e.target.id]: e.target.value });
+    console.log(updateCardInfo);
+    handleUpdateInfo();
   };
 
   useEffect(() => {
@@ -124,15 +125,19 @@ function ModalViewTarefa({ handleClose, cardId }) {
             <div id="dropdown">
               <p id="dropbtn">Adicionar membros</p>
               <div id="dropdown-content">
-                <span>teste 1</span>
-                <span>teste 2</span>
-                <span>teste 3</span>
+                {cardsInfo.Users?.map((user) => (
+                  <>
+                    <span value={user.id}onClick={handleInput}>
+                      {user.Student.name || user.Teacher.name}
+                    </span>
+                  </>
+                ))}
               </div>
             </div>
           </div>
           {cardsInfo.Users?.map((user) => (
             <img
-              src={user.Student.profileImage || perfil}
+              src={user.Student.profileImage || user.Teacher.name || perfil}
               alt="imageUser"
               id="imageUser"
             />
@@ -141,7 +146,12 @@ function ModalViewTarefa({ handleClose, cardId }) {
           <section>
             <div id="selecetProgresso">
               <h3>Progresso</h3>
-              <select className="appearance-select">
+              <select
+                className="appearance-select"
+                id="progressId"
+                onChange={handleInput}
+                value={updateCardInfo.priorityId}
+              >
                 <option value="">
                   {cardsInfo.Progress?.progress || 'Selecione'}
                 </option>
@@ -152,7 +162,12 @@ function ModalViewTarefa({ handleClose, cardId }) {
             </div>
             <div id="selecetPrioridades">
               <h3>Prioridades</h3>
-              <select className="appearance-select">
+              <select
+                className="appearance-select"
+                id="priorityId"
+                onChange={handleInput}
+                value={updateCardInfo.priorityId}
+              >
                 <option value="">
                   {cardsInfo.Priority?.priority || 'Selecione'}
                 </option>
@@ -166,26 +181,37 @@ function ModalViewTarefa({ handleClose, cardId }) {
             <div id="dateStart">
               <h3>Data de início</h3>
               <input
+                id="initialDate"
                 type="Date"
                 defaultValue={
                   cardsInfo.initialDate
                     ? format(new Date(cardsInfo.initialDate), 'yyyy-MM-dd')
                     : '2021-10-20'
                 }
-                onChange={initialDate}
+                onChange={handleInput}
               />
             </div>
             <div id="dateEnd">
               <h3>Data de Termino</h3>
-
+              {console.log(
+                cardsInfo.dueDate
+                  ? format(new Date(cardsInfo.dueDate), 'yyyy-MM-dd')
+                  : '2021-10-20'
+              )}
               <input
+                id="dueDate"
                 type="Date"
+                onChange={handleInput}
                 defaultValue={
                   cardsInfo.dueDate
                     ? format(new Date(cardsInfo.dueDate), 'yyyy-MM-dd')
                     : '2021-10-20'
                 }
-                onChange={finalDate}
+                value={
+                  updateCardInfo.dueDate
+                    ? format(new Date(updateCardInfo.dueDate), 'yyyy-MM-dd')
+                    : '2021-10-20'
+                }
               />
             </div>
           </div>
