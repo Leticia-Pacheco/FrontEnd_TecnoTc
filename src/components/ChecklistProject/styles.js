@@ -174,3 +174,9 @@ export const ContainersCheck = styled.div`
     }
   }
 `;
+
+export const InputAddStory = styled.input`
+  width: 90%;
+  height: 30px;
+  margin-top: 50px;
+`;
