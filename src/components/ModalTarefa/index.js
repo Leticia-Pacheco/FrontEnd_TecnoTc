@@ -34,10 +34,9 @@ function ModalViewTarefa({ handleClose, cardId }) {
   const checkTask = async (e) => {
     try {
       await api.put(`/task/${e.target.defaultValue}`);
-
       setTasks(
         tasks.map((t) =>
-          t.id === e.target.defaultValue ? { ...t, checked: !t.checked } : t
+          t.id == e.target.defaultValue ? { ...t, checked: !t.checked } : t
         )
       );
     } catch (error) {
@@ -85,9 +84,7 @@ function ModalViewTarefa({ handleClose, cardId }) {
   };
 
   const handleInput = (e) => {
-    console.log(e);
     setUpdateCardInfo({ [e.target.id]: e.target.value });
-    console.log(updateCardInfo);
     handleUpdateInfo();
   };
 
@@ -198,11 +195,6 @@ function ModalViewTarefa({ handleClose, cardId }) {
             </div>
             <div id="dateEnd">
               <h3>Data de Termino</h3>
-              {console.log(
-                cardsInfo.dueDate
-                  ? format(new Date(cardsInfo.dueDate), 'yyyy-MM-dd')
-                  : '2021-10-20'
-              )}
               <input
                 id="dueDate"
                 type="Date"
