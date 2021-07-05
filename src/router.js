@@ -18,6 +18,7 @@ import SprintDaily from './pages/SprintDaily';
 import SprintRetrospective from './pages/SprintRetrospective';
 import ChekListProject from './components/ChecklistProject';
 import Feed from './pages/Feed';
+import Sprints from './pages/Sprints';
 
 function PrivateRoute({ children, ...rest }) {
   if (isSignedIn()) {
@@ -102,6 +103,9 @@ function Router() {
           path="/sprintReview/:sprintId"
           children={<SprintReview />}
         ></PrivateRoute>
+        <PrivateRoute path="/sprints">
+          <Sprints />
+        </PrivateRoute>
       </Switch>
     </BrowserRouter>
   );

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
+import { GrConfigure } from 'react-icons/gr';
 
 export const Container = styled.div`
   width: 100%;
@@ -12,11 +14,10 @@ export const Container = styled.div`
   flex-direction: column;
 
   z-index: -1;
-  
 `;
 
 export const ContainerPerfilConteudo = styled.div`
-  width: 1300px;
+  width: 80vw;
   min-height: 800px;
   height: auto;
   overflow: hidden;
@@ -38,7 +39,7 @@ export const PerfilInfoUsuario = styled.div`
 
   display: flex;
   flex-direction: column;
-  background-color: var(--greyTerciary);
+  background-color: ${colors.primaryPurple};
   a {
     color: black;
   }
@@ -47,7 +48,7 @@ export const PerfilInfoUsuario = styled.div`
 export const InformacoesUsuario = styled.div`
   width: 100%;
   height: 140px;
-
+  color: white;
   margin-bottom: 50px;
 
   padding-left: 15px;
@@ -60,7 +61,6 @@ export const InformacoesUsuario = styled.div`
 export const ImageUsuario = styled.div`
   width: 100px;
   height: 100px;
-
   border-radius: 50%;
 
   > img {
@@ -81,7 +81,7 @@ export const TextInfos = styled.div`
   > span {
     font-weight: bold;
 
-    color: black;
+    color: white;
     font-size: 18px;
   }
 `;
@@ -98,10 +98,8 @@ export const MenuLateral = styled.div`
   padding-bottom: 20px;
 
   margin-bottom: 400px;
-
   display: flex;
   flex-direction: column;
-
   > ul > li {
     display: flex;
     margin-bottom: 40px;
@@ -114,7 +112,8 @@ export const MenuLateral = styled.div`
       margin-top: 20px;
 
       text-align: left;
-      color: var(--primaryPurple);
+      color: white;
+
       font-weight: bold;
     }
 
@@ -132,7 +131,7 @@ export const EditarPerfil = styled.div`
   height: 25px;
   text-align: center;
   justify-content: center;
-
+  color: white;
   display: flex;
 
   > img {
@@ -149,6 +148,9 @@ export const EditarPerfil = styled.div`
     font-size: 17px;
   }
 `;
+export const ConfigIcon = styled(GrConfigure)`
+  color: #fff;
+`;
 
 export const Conteudo = styled.div`
   width: 70%;
@@ -162,14 +164,14 @@ export const Conteudo = styled.div`
 
     color: var(--primaryPurple);
   }
-  >#btn-anotation{
-    :hover{
+  > #btn-anotation {
+    :hover {
       cursor: pointer;
       color: var(--primaryGreenWater);
     }
   }
-  >#btn-grup{
-    :hover{
+  > #btn-grup {
+    :hover {
       cursor: pointer;
       color: var(--primaryGreenWater);
     }
@@ -208,42 +210,42 @@ export const AgrupamentoAnotacoes = styled.div`
 `;
 
 export const ComponentGrupo = styled.div`
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 
-    padding: 5px;
-    margin-left: 20px;
+  padding: 5px;
+  margin-left: 20px;
 
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    flex-direction: column;
-  
-    box-shadow: 2px 2px 2px black;
-    border: 1px solid black;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  flex-direction: column;
 
-    text-align: center;
-  
-    > p {
-        color: var(--primaryPurple);
-        font-weight: bold;
-    }
-    #dropbtn {
+  box-shadow: 2px 2px 2px black;
+  border: 1px solid black;
+
+  text-align: center;
+
+  > p {
+    color: var(--primaryPurple);
+    font-weight: bold;
+  }
+  #dropbtn {
     color: var(--primaryPurple);
     font-size: 1.2rem;
     margin-left: 10px;
     border: none;
     cursor: pointer;
-    }
+  }
 
   #dropdown {
     position: relative;
     display: inline-block;
     > img {
-        width: 20px;
-        height: 20px;
+      width: 20px;
+      height: 20px;
 
-        margin-left: 170px;
+      margin-left: 170px;
     }
   }
 
@@ -257,15 +259,13 @@ export const ComponentGrupo = styled.div`
     min-width: 60px;
     height: 40px;
     z-index: 1;
-    svg{
+    svg {
       min-width: 60px;
       height: 40px;
       :hover {
         background-color: #b3b3b3;
         border-radius: 10px;
-
       }
-
     }
   }
 
@@ -290,64 +290,64 @@ export const ComponentGrupo = styled.div`
 `;
 
 export const ImageGrupo = styled.img`
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 
-    margin-top: 15px;
+  margin-top: 15px;
 
-    border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
 
-    background-color: var(--primaryGreen);
+  background-color: var(--primaryGreen);
 
-    line-height: 80px;
-    margin-bottom: 20px;
+  line-height: 80px;
+  margin-bottom: 20px;
 
-    > p {
-        font-weight: bold;
-        color: white;
-    }
+  > p {
+    font-weight: bold;
+    color: white;
+  }
 `;
 
 export const ButtonAvancarGrupos = styled.div`
-    width: 4%;
-    height: 200px;
+  width: 4%;
+  height: 200px;
 
-    align-items: center;
-    justify-content: end;
-    display: flex;
+  align-items: center;
+  justify-content: end;
+  display: flex;
 
-    :hover {
-      background-color: var(--greyQuaternary);
-      transition: 0.4s;
-      cursor: pointer;
-    }
+  :hover {
+    background-color: var(--greyQuaternary);
+    transition: 0.4s;
+    cursor: pointer;
+  }
 
-    > img {
-      width: 20px;
-      height: 20px;
-    }
+  > img {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const ButtonAvancarAnotacoes = styled.div`
-    width: 4%;
-    height: 80px;
+  width: 4%;
+  height: 80px;
 
-    align-items: center;
-    justify-content: center;
-    display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 
-    line-height: 10px;
+  line-height: 10px;
 
-    :hover {
-      background-color: var(--greyQuaternary);
-      transition: 0.4s;
-      cursor: pointer;
-    }
+  :hover {
+    background-color: var(--greyQuaternary);
+    transition: 0.4s;
+    cursor: pointer;
+  }
 
-    > img {
-      width: 20px;
-      height: 20px;
-    }
+  > img {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const Anotacoes = styled.div`
@@ -358,49 +358,49 @@ export const Anotacoes = styled.div`
 `;
 
 export const ComponentAnotacoes = styled.div`
-    width: 200px;
-    height: 50px;
+  width: 200px;
+  height: 50px;
 
-    margin-left: 5px;
+  margin-left: 5px;
 
-    display: flex;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+
+  background-color: #dd4a88;
+
+  > p {
+    font-weight: bold;
+    color: white;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding-left: 5px;
+    font-size: 18px;
+  }
 
-    background-color: #DD4A88;
+  > img {
+    width: 17px;
+    height: 17px;
 
-    > p {
-      font-weight: bold;
-      color: white;
-      text-align: center;
-      font-size: 18px;
-    }
+    margin-right: -100px;
 
-    > img {
-      width: 17px;
-      height: 17px;
-
-      margin-right: -100px;
-
-      margin-left: 90px;
-    }
-    #dropbtn {
+    margin-left: 90px;
+  }
+  #dropbtn {
     color: var(--primaryPurple);
     font-size: 1.2rem;
     margin-left: 10px;
     border: none;
     cursor: pointer;
-    }
+  }
 
   #dropdown {
     margin-left: 20px;
     position: relative;
     display: inline-block;
     > img {
-        width: 20px;
-        height: 20px;
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -415,15 +415,13 @@ export const ComponentAnotacoes = styled.div`
     min-width: 60px;
     height: 40px;
     z-index: 1;
-    svg{
+    svg {
       min-width: 60px;
       height: 40px;
       :hover {
         background-color: #b3b3b3;
         border-radius: 10px;
-
       }
-
     }
   }
 
@@ -446,8 +444,6 @@ export const ComponentAnotacoes = styled.div`
     color: var(--primaryGreenWater);
   }
 `;
-
-
 
 export const Footer = styled.footer`
   width: 100%;
