@@ -18,31 +18,29 @@ import {
   ButtonAvancarAnotacoes,
   AgrupamentoAnotacoes,
   ComponentAnotacoes,
+  ConfigIcon,
 } from './styles';
 import ImgUser from '../../assets/ImagesPerfis/image_perfil_aluno.png';
-import ImageFeed from '../../assets/ImagesPerfis/home_feed.png';
-import ImageTarefas from '../../assets/ImagesPerfis/tarefas.png';
-import ImageReunioesDiarias from '../../assets/ImagesPerfis/reunioes_diarias.png';
-import ImageChats from '../../assets/ImagesPerfis/chats.png';
+import ImageFeed from '../../assets/ImagesIconesMenu/home_feed.png';
+import ImageChats from '../../assets/ImagesIconesMenu/chats.png';
 import ImageVisuAlunos from '../../assets/ImagesPerfis/ver_meus_alunos.png';
-import ImageLogout from '../../assets/ImagesPerfis/sair.png';
+import ImageLogout from '../../assets/ImagesIconesMenu/sair.png';
 import Configuracoes from '../../assets/ImagesPerfis/configuracao_grupos.png';
 import buttonAvancar from '../../assets/ImagesPerfis/seta_passar_itens.png';
 import buttonVoltar from '../../assets/ImagesPerfis/seta_voltar_itens.png';
 import ConfiguracoesAnotacoes from '../../assets/ImagesPerfis/configuracao_anotacoes.png';
-import {api} from '../../service/api';
-import {useState} from 'react';
-import {useEffect} from 'react';
+import { api } from '../../service/api';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import ModalEditProfile from '../../components/ModalEditarPerfil';
 import ModalAnotation from '../../components/ModalCriarAnotacoes';
 import ModalCreateGrup from '../../components/ModalCriarGrupos';
 import Loading from '../../components/Loading';
-import {getUser, setUser, signOut} from '../../service/security';
-import {useHistory} from 'react-router';
+import { getUser, setUser, signOut } from '../../service/security';
+import { useHistory } from 'react-router';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import {BsTrash} from 'react-icons/bs';
-import {MdEdit} from 'react-icons/md';
-
+import { BsTrash } from 'react-icons/bs';
+import { MdEdit } from 'react-icons/md';
 function ProfileStudent() {
   const [modalEditProfile, setModalEditProfile] = useState(false);
   const [modalAnotation, setModalAnotation] = useState(false);
@@ -58,12 +56,12 @@ function ProfileStudent() {
   const user = getUser();
 
   const loadPerfilInfo = async (reload) => {
-    if(user.user.userRole === 'student') {
+    if (user.user.userRole === 'student') {
       const response = await api.get('/students');
       setPerfil(response.data);
       setUser(response.data);
     }
-    if(user.user.userRole === 'teacher') {
+    if (user.user.userRole === 'teacher') {
       const response = await api.get('/teachers');
       setPerfil(response.data);
       setUser(response.data);
@@ -94,7 +92,7 @@ function ProfileStudent() {
   const goToFeed = () => {
     history.push('/feed');
   };
-
+  let style = { color: 'white', fontSize: '1.5em' };
   useEffect(() => {
     loadPerfilInfo();
     loadAnnotations();
@@ -162,7 +160,7 @@ function ProfileStudent() {
                   <p>Feed</p>
                 </li>
               </ul>
-              <ul>
+              {/* <ul>
                 <li>
                   <img
                     src={ImageTarefas}
@@ -182,6 +180,7 @@ function ProfileStudent() {
                   <p>Reuniões diárias</p>
                 </li>
               </ul>
+              */}
               <ul>
                 <li>
                   <img
@@ -217,11 +216,7 @@ function ProfileStudent() {
             </MenuLateral>
 
             <EditarPerfil onClick={() => setModalEditProfile(true)}>
-              <img
-                src={Configuracoes}
-                alt="Configurações do perfil"
-                title="Configurações do perfil"
-              />
+              <ConfigIcon />
               <p>Editar perfil</p>
             </EditarPerfil>
           </PerfilInfoUsuario>
