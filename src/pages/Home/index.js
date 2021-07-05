@@ -30,7 +30,7 @@ import ImgApp from '../../assets/ImagesHome/nosso_app.png';
 import IntegLeticia from '../../assets/ImagesHome/leticia2.jpg';
 import IntegDaniel from '../../assets/ImagesHome/daniel.jpg';
 import IntegKarina from '../../assets/ImagesHome/karina.jpg';
-import IntegBianca from '../../assets/ImagesHome/bianca.jpg';
+import IntegBianca from '../../assets/ImagesHome/bianca.png';
 import ContWhatsapp from '../../assets/ImagesHome/contato_whatsapp.png';
 import ContInstagram from '../../assets/ImagesHome/contato_instagram.png';
 import ContEmail from '../../assets/ImagesHome/contato_email.png';
