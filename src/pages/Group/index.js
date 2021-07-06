@@ -202,7 +202,7 @@ function Grups() {
       </Submenu>
       {showChat && <ChatGrup chat={group.Chat} groupId={id} />}
       {showComponentQuadro && <ComponentQuadros workspace={workspaces} />}
-      {showCheckList && <ChekListProject groupId={id}/>}
+      {showCheckList && <ChekListProject groupId={id} />}
       {showCreateSprint && <CreateSprint handleClose={() => {
         setShowCreateSprint(false);
         setIsLoading(false);
