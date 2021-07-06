@@ -200,6 +200,7 @@ function Workspace() {
           handleClose={() => {
             setModalCreateCard(false);
             setIsLoading(false);
+            loadColumns();
           }}
           setIsLoading={setIsLoading}
           id={list}
