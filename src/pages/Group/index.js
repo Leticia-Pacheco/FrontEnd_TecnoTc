@@ -188,7 +188,7 @@ function Grups() {
   return (
     <Container>
       {isLoading && <Loading />}
-      <MenuComponent />
+      <MenuComponent groupId={id}/>
       <Submenu>
         <h3>
           &larr; <Link to="/profile">Voltar para o perfil</Link>

@@ -14,7 +14,8 @@ import ImageLogout from '../../assets/ImagesIconesMenu/sair.png';
 import {useHistory} from 'react-router-dom';
 import {getUser, signOut} from '../../service/security';
 
-function MenuComponent() {
+function MenuComponent({groupId}) {
+  console.log(groupId)
   const history = useHistory();
 
   const goToFeed = () => {
@@ -26,6 +27,10 @@ function MenuComponent() {
 
     history.replace('/');
   };
+
+  const goToSprints = () => {
+    history.push(`/sprint/${groupId}`)
+  }
 
 
   const goToProfile = () => {
@@ -56,7 +61,7 @@ function MenuComponent() {
         />
         <p>Perfil</p>
       </MenuTarefas>
-      <MenuReunioes>
+      <MenuReunioes onClick={goToSprints}>
         <img
           src={ImageReunioesDiarias}
           alt="Menu opção reuniões diárias"

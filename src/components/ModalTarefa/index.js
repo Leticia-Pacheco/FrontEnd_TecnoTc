@@ -185,11 +185,6 @@ function ModalViewTarefa({ handleClose, cardId }) {
               <input
                 id="initialDate"
                 type="Date"
-                defaultValue={
-                  cardsInfo.initialDate
-                    ? format(new Date(cardsInfo.initialDate), 'yyyy-MM-dd')
-                    : '2021-10-20'
-                }
                 onChange={handleInput}
               />
             </div>
@@ -199,16 +194,11 @@ function ModalViewTarefa({ handleClose, cardId }) {
                 id="dueDate"
                 type="Date"
                 onChange={handleInput}
-                defaultValue={
-                  cardsInfo.dueDate
-                    ? format(new Date(cardsInfo.dueDate), 'yyyy-MM-dd')
-                    : '2021-10-20'
-                }
-                value={
-                  updateCardInfo.dueDate
-                    ? format(new Date(updateCardInfo.dueDate), 'yyyy-MM-dd')
-                    : '2021-10-20'
-                }
+                //value={
+                  //updateCardInfo.dueDate
+                    //? format(new Date(updateCardInfo.dueDate), 'yyyy-MM-dd')
+                  //  : '2021-10-20'
+                //}
               />
             </div>
           </div>

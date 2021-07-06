@@ -23,13 +23,10 @@ function SprintReview() {
     toast[type](message);
   };
   const findSprint = async () => {
-    const response = await api.get(`/sprints/${sprintId}`);
-    console.log(response.data);
+    const response = await api.get(`/sprint/${sprintId}`);
 
     if (!response.data) return history.push('/profile');
     setSprint(response.data.Group);
-
-    console.log(response.data.Group);
   };
 
   useEffect(() => {
@@ -44,12 +41,15 @@ function SprintReview() {
     e.preventDefault();
 
     try {
-      const response = await api.post(`/sprintReview/${sprintId}`, {
+      await api.post(`/sprintReview/${sprintId}`, {
         wasDelivered: sprintReview.wasDelivered,
         feedback: sprintReview.feedback,
       });
 
       notify('Anotação criada com sucesso', 'success');
+      setTimeout(() => {
+        history.goBack();
+      }, 1000);
     } catch (error) {
       console.error(error);
       notify(error.response.data.error, 'error');
@@ -66,7 +66,8 @@ function SprintReview() {
 
           <p>Preencha corretamente todos os campos.</p>
 
-          <span>Nome do projeto : {sprint.name}</span>
+          <span>Nome do projeto</span>
+          <input type="text" value={sprint.name} />
 
           <span>Funcionalidades entregues</span>
           <textarea

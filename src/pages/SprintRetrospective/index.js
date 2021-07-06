@@ -20,13 +20,10 @@ function SprintRetrospective() {
   const history = useHistory();
 
   const findSprint = async () => {
-    const response = await api.get(`/sprints/${sprintId}`);
-    console.log(response.data);
+    const response = await api.get(`/sprint/${sprintId}`);
 
     if (!response.data) return history.push('/profile');
     setSprint(response.data.Group);
-
-    console.log(response.data.Group);
   };
 
   useEffect(() => {
@@ -46,12 +43,16 @@ function SprintRetrospective() {
     e.preventDefault();
 
     try {
-      const response = await api.post(`/sprintRetrospective/${sprintId}`, {
+      await api.post(`/sprintRetrospective/${sprintId}`, {
         doneError: sprintRetrospective.doneError,
         doneRight: sprintRetrospective.doneRight,
         fieldAction: sprintRetrospective.fieldAction,
       });
-      notify('sucesso', 'success');
+      notify('Sprint Retrospective criado com sucesso', 'success');
+
+      setTimeout(() => {
+        history.goBack();
+      }, 1000);
     } catch (error) {
       console.error(error);
       notify(error.response.data.error, 'error');
@@ -67,7 +68,8 @@ function SprintRetrospective() {
 
           <p>Preencha corretamente todos os campos.</p>
 
-          <span>Nome do projeto : {sprint.name}</span>
+          <span>Nome do projeto</span>
+          <input type="text" value={sprint.name} />
 
           <span>O que foi feito?</span>
           <textarea

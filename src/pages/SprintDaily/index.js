@@ -21,13 +21,11 @@ function SprintDaily() {
   const history = useHistory();
 
   const findSprint = async () => {
-    const response = await api.get(`/sprints/${sprintId}`);
-    console.log(response.data);
+    const response = await api.get(`/sprint/${sprintId}`);
 
     if (!response.data) return history.push('/profile');
     setSprint(response.data.Group);
 
-    console.log(response.data.Group);
   };
 
   useEffect(() => {
@@ -45,13 +43,17 @@ function SprintDaily() {
     e.preventDefault();
 
     try {
-      const response = await api.post(`/dailyScrum/${sprintId}`, {
+      await api.post(`/dailyScrum/${sprintId}`, {
         doneYesterday: sprintDaily.doneYesterday,
         goingToDoDay: sprintDaily.goingToDoDay,
         someObstacle: sprintDaily.someObstacle,
       });
 
-      notify('Reunião diaria foi criada', 'success');
+      notify('Reunião diaria criada com successo', 'success');
+
+      setTimeout(() => {
+        history.goBack();
+      }, 1000);
     } catch (error) {
       console.error(error);
       notify(error.response.data.error, 'error');
@@ -68,7 +70,7 @@ function SprintDaily() {
           <p>Preencha corretamente todos os campos.</p>
 
           <span>Nome do projeto</span>
-          <input type="text" />
+          <input type="text" value={sprint.name} />
 
           <span>O que você fez ontem?</span>
           <textarea

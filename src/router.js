@@ -103,7 +103,7 @@ function Router() {
           path="/sprintReview/:sprintId"
           children={<SprintReview />}
         ></PrivateRoute>
-        <PrivateRoute path="/sprints">
+        <PrivateRoute path="/sprint/:groupId">
           <Sprints />
         </PrivateRoute>
       </Switch>
