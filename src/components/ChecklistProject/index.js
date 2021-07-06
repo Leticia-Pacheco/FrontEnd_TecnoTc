@@ -43,6 +43,8 @@ function ChecklistProject({ groupId }) {
         priority: 1,
       });
 
+      notify('Historia criada com sucesso', 'success');
+
       const storyAdd = {
         id: response.data.id,
         description: newStory,
@@ -50,14 +52,12 @@ function ChecklistProject({ groupId }) {
         createdAt: response.data.createdAt,
       };
 
-      notify('História criada com sucesso', 'sucess');
-
       setStories([...stories, storyAdd]);
-
+      console.log('Chegeui aquii');
       setNewStory('');
     } catch (error) {
       console.log(error);
-      notify(error.response.data.error, 'error');
+      notify('Algo deu errado', 'error');
     }
   };
 
