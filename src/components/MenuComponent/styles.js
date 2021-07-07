@@ -8,6 +8,7 @@ export const MenuLateral = styled.div`
   flex-direction: column;
   padding-top: 20px;
   background-color: ${colors.primaryPurple};
+  position: fixed;
 `;
 
 export const MenuPerfil = styled.div`

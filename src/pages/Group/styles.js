@@ -6,6 +6,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  overflow-x: hidden;
 `;
 
 export const MenuLateral = styled.div`
@@ -222,31 +223,28 @@ export const TituloQuadros = styled.div`
 export const ContainerQuadros = styled.div`
     width: auto;
     height: 90%;
-    padding: 15px;
+    padding: 40px;
     display: grid;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
     grid-gap: 1rem;
-    overflow-x: hidden; 
-    overflow-y: scroll; 
-    white-space: nowrap; 
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
 `;
 export const Quadros = styled.div`
-    width: 450px;
+    width: 400px;
     height: 200px;
     grid-column-start: auto;
-    background-image: url(${ImageQuadro});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #584C95;
+    background-color: var(--primaryGreenWater);
     cursor: pointer;
     border-radius: 10px;
+    padding: 20px;
    >h2{
-       padding-left: 20px;
        font-size:2rem;
-       color: ${colors.primaryGreenWater};
+       color: white;
    }
 `;
 

@@ -8,7 +8,7 @@ import {
 } from './styles';
 import ImagePerfil from '../../assets/ImagesFeed/foto_perfil.png';
 import ImageFeed from '../../assets/ImagesIconesMenu/home_feed.png';
-import ImageTarefas from '../../assets/ImagesIconesMenu/tarefas.png';
+import ImageVoltarPerfil from '../../assets/ImagesIconesMenu/perfil.png';
 import ImageReunioesDiarias from '../../assets/ImagesIconesMenu/reunioes_diarias.png';
 import ImageLogout from '../../assets/ImagesIconesMenu/sair.png';
 import {useHistory} from 'react-router-dom';
@@ -55,7 +55,7 @@ function MenuComponent({groupId}) {
       </MenuFeed>
       <MenuTarefas onClick={goToProfile}>
         <img
-          src={ImageTarefas}
+          src={ImageVoltarPerfil}
           alt="Menu opção tarefas"
           title="Menu opção tarefas"
         />
@@ -64,8 +64,8 @@ function MenuComponent({groupId}) {
       <MenuReunioes onClick={goToSprints}>
         <img
           src={ImageReunioesDiarias}
-          alt="Menu opção reuniões diárias"
-          title="Menu opção reuniões diárias"
+          alt="Menu opção sprints"
+          title="Menu opção sprints"
         />
         <p>Sprints</p>
       </MenuReunioes>
