@@ -7,6 +7,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   overflow-x: hidden;
+  overflow-y: hidden;
 `;
 
 export const ContainerPosts = styled.div`
@@ -16,7 +17,7 @@ export const ContainerPosts = styled.div`
   align-items: center;
   padding: 10px 0px;
   gap: 10px;
-  // overflow-y: auto;
+  overflow-y: auto;
   padding-top: 100px;
   margin-bottom: 2px;
 `;
